@@ -10,11 +10,12 @@ namespace _05TopIntegers
         static void Main(string[] args)
         {
             List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            // Коментар
 
             for (int i = 0; i < numbers.Count-1; i++)
             {
                 bool isBigger = true;
-
+                 
                 for (int j = i+1; j < numbers.Count; j++)
                 {
                     if (numbers[i] < numbers[j])

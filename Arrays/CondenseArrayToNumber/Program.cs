@@ -7,6 +7,7 @@ namespace CondenseArrayToNumber
     {
         static void Main(string[] args)
         {
+            //
             int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
             int[] condensed = new int [numbers.Length-1];

@@ -8,29 +8,25 @@ namespace _02PascalTriangle
     {
         static void Main(string[] args)
         {
-            int rowForTriangle = int.Parse(Console.ReadLine());
-            int counter = 1;
+            int rows = int.Parse(Console.ReadLine()), 
+                val = 1, 
+                 i, j;
 
-            List<int> triangle = new List<int>();
+            // Console.WriteLine("Pascal's triangle");
 
-            triangle.Add(1);
-            Console.WriteLine(triangle[0]);
-            triangle.Add(1);
-
-            Console.WriteLine(string.Join(" ", triangle));
-
-            for (int i = 0; i < rowForTriangle-2; i++)
+            for (i = 0; i < rows; i++)
             {
-                triangle.Insert(counter, triangle[i]+ triangle[i+1]);
-
-                Console.WriteLine(string.Join(" ", triangle));
-
-                if (counter == triangle.Count)
+                
+                for (j = 0; j <= i; j++)
                 {
-                    continue;
+                    if (j == 0 || i == 0)
+                        val = 1;
+                    else
+                        val = val * (i - j + 1) / j;
+                    Console.Write(val + " ");
                 }
 
-                counter++;
+                Console.WriteLine();
             }
         }
     }

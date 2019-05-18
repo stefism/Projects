@@ -46,6 +46,33 @@ namespace _07_TheatrePromotions
                         break;
                 }
             }
+
+            else if (age > 64 && age <= 122)
+            {
+                switch (day)
+                {
+                    case "Weekday":
+                        price = 12;
+                        break;
+
+                    case "Weekend":
+                        price = 15;
+                        break;
+
+                    case "Holiday":
+                        price = 10;
+                        break;
+                }
+            }
+
+            if (age >=0 && age <= 122)
+            {
+                Console.WriteLine($"{price}$");
+            }
+            else
+            {
+                Console.WriteLine("Error!");
+            }
         }
     }
 }

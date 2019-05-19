@@ -79,7 +79,7 @@ namespace _03_Vacation
                 totalPrice = priceForOnePerson * (peopleNumber-10);
             }
 
-            else if (peopleType == "Regulal" && peopleNumber >= 10 && peopleNumber <= 20)
+            else if (peopleType == "Regular" && peopleNumber >= 10 && peopleNumber <= 20)
             {
                 totalPrice *= 0.95;
             }

@@ -11,11 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-Login", "05-Login\05-Log
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-StrongNumber", "06-StrongNumber\06-StrongNumber.csproj", "{18DD4C42-4992-40EA-A94D-A8735939DB4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-VendingMashine", "07-VendingMashine\07-VendingMashine.csproj", "{BE0AE93C-D4D0-49CF-9A20-82970C1F1991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-VendingMashine", "07-VendingMashine\07-VendingMashine.csproj", "{BE0AE93C-D4D0-49CF-9A20-82970C1F1991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-Vend_machineWithMethod", "Probi\07-Vend_machineWithMethod.csproj", "{D0222F87-8541-4DE6-8A45-A6B8ABAC5BF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-VendmachineWithMethod", "Probi\07-VendmachineWithMethod.csproj", "{D0222F87-8541-4DE6-8A45-A6B8ABAC5BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Vacation", "03-Vacation\03-Vacation.csproj", "{017FC344-957D-47BC-AC3A-6C8C5C67E088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Vacation", "03-Vacation\03-Vacation.csproj", "{017FC344-957D-47BC-AC3A-6C8C5C67E088}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-PrintAndSum", "04-PrintAndSum\04-PrintAndSum.csproj", "{1DB75314-E07A-4F2A-AEB4-7BB16FEC2982}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-TriangleOfNumbers", "08-TriangleOfNumbers\08-TriangleOfNumbers.csproj", "{CE0295EE-5437-47BB-9B84-1856D750CA7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-PadawanEquipment", "09-PadawanEquipment\09-PadawanEquipment.csproj", "{4F2FA97A-5F7F-4728-BF2D-1B974410F011}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-RageExpenses", "10-RageExpenses\10-RageExpenses.csproj", "{1539FCE1-2405-422B-9DA1-0E2C4A459E19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +59,22 @@ Global
 		{017FC344-957D-47BC-AC3A-6C8C5C67E088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{017FC344-957D-47BC-AC3A-6C8C5C67E088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{017FC344-957D-47BC-AC3A-6C8C5C67E088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB75314-E07A-4F2A-AEB4-7BB16FEC2982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB75314-E07A-4F2A-AEB4-7BB16FEC2982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB75314-E07A-4F2A-AEB4-7BB16FEC2982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB75314-E07A-4F2A-AEB4-7BB16FEC2982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0295EE-5437-47BB-9B84-1856D750CA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0295EE-5437-47BB-9B84-1856D750CA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0295EE-5437-47BB-9B84-1856D750CA7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0295EE-5437-47BB-9B84-1856D750CA7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F2FA97A-5F7F-4728-BF2D-1B974410F011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2FA97A-5F7F-4728-BF2D-1B974410F011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2FA97A-5F7F-4728-BF2D-1B974410F011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F2FA97A-5F7F-4728-BF2D-1B974410F011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1539FCE1-2405-422B-9DA1-0E2C4A459E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1539FCE1-2405-422B-9DA1-0E2C4A459E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1539FCE1-2405-422B-9DA1-0E2C4A459E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1539FCE1-2405-422B-9DA1-0E2C4A459E19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

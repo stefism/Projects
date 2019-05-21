@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestIncreasingSubsequenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIS-1", "LIS-1\LIS-1.csproj", "{594F54FA-DB9B-46B8-BB53-9B783F0C7CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MostFrequentNumber", "MostFrequentNumber\MostFrequentNumber.csproj", "{5E112B88-0962-4190-8D36-D3CD943767F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MostFrequentNumber", "MostFrequentNumber\MostFrequentNumber.csproj", "{5E112B88-0962-4190-8D36-D3CD943767F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieveOfEratosthenes", "SieveOfEratosthenes\SieveOfEratosthenes.csproj", "{5353258F-281A-4250-850C-A9EC4495E34C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5E112B88-0962-4190-8D36-D3CD943767F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E112B88-0962-4190-8D36-D3CD943767F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E112B88-0962-4190-8D36-D3CD943767F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5353258F-281A-4250-850C-A9EC4495E34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5353258F-281A-4250-850C-A9EC4495E34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5353258F-281A-4250-850C-A9EC4495E34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5353258F-281A-4250-850C-A9EC4495E34C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

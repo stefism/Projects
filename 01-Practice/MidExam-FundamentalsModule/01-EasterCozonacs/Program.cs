@@ -23,7 +23,7 @@ namespace _01_EasterCozonacs
             double coloredEgg = couzunakMade * 3;
 
             int lostEgg = 0;
-
+             
             for (int i = 1; i <= couzunakMade; i++)
             {
                 if (i % 3 == 0)

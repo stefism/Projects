@@ -27,7 +27,7 @@ namespace _01_EasterCozonacs
             for (int i = 1; i <= couzunakMade; i++)
             {
                 if (i % 3 == 0)
-                {
+                { 
                     lostEgg += i - 2;
                 }
             }

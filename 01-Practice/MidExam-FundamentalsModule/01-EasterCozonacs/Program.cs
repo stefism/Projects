@@ -6,7 +6,8 @@ namespace _01_EasterCozonacs
     {
         static void Main(string[] args)
         {
-            //Technology Fundamentals Retake Mid Exam - 16 April 2019 
+            //Technology Fundamentals Retake Mid Exam - 16 April 2019
+            
             double budget = double.Parse(Console.ReadLine());
             double floorPrice = double.Parse(Console.ReadLine());
 

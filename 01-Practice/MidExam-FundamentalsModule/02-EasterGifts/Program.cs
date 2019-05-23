@@ -8,6 +8,8 @@ namespace _02_EasterGifts
     {
         static void Main(string[] args)
         {
+            //Technology Fundamentals Retake Mid Exam - 16 April 2019
+
             List<string> gifts = Console.ReadLine().Split().ToList();
 
             while (true)

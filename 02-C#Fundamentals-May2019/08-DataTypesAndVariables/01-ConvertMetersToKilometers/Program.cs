@@ -6,7 +6,10 @@ namespace _01_ConvertMetersToKilometers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Henbnbnrld!");
+            double meters = double.Parse(Console.ReadLine());
+            double kilometers = meters / 1000;
+
+            Console.WriteLine("{0:F2}", kilometers);
         }
     }
 }

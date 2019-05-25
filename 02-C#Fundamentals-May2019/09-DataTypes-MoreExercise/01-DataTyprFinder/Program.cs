@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _01_DataTyprFinder
+namespace _01_DataTypeFinder
 {
     class Program
     {

@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-EasterCozonacs", "01-EasterCozonacs\01-EasterCozonacs.csproj", "{A87B190D-C856-4589-8A99-DB123D1A23AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-EasterCozonacs", "01-EasterCozonacs\01-EasterCozonacs.csproj", "{A87B190D-C856-4589-8A99-DB123D1A23AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-EasterGifts", "02-EasterGifts\02-EasterGifts.csproj", "{E62FC5E1-A253-4863-90F3-ABF7B6FB172D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-EasterGifts", "02-EasterGifts\02-EasterGifts.csproj", "{E62FC5E1-A253-4863-90F3-ABF7B6FB172D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-EasterShopping", "03-EasterShopping\03-EasterShopping.csproj", "{19D16426-7FD3-4006-9531-3C352EFD0E43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-EasterShopping", "03-EasterShopping\03-EasterShopping.csproj", "{19D16426-7FD3-4006-9531-3C352EFD0E43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-TheHuntingGames", "01-TheHuntingGames\01-TheHuntingGames.csproj", "{FF7556DD-C954-49BE-95FC-4D474776EE22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-SeizeTheFire", "02-SeizeTheFire\02-SeizeTheFire.csproj", "{726BB6D8-5441-4B6C-8967-8BE816AEDA40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{19D16426-7FD3-4006-9531-3C352EFD0E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D16426-7FD3-4006-9531-3C352EFD0E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19D16426-7FD3-4006-9531-3C352EFD0E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF7556DD-C954-49BE-95FC-4D474776EE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF7556DD-C954-49BE-95FC-4D474776EE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF7556DD-C954-49BE-95FC-4D474776EE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF7556DD-C954-49BE-95FC-4D474776EE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726BB6D8-5441-4B6C-8967-8BE816AEDA40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726BB6D8-5441-4B6C-8967-8BE816AEDA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726BB6D8-5441-4B6C-8967-8BE816AEDA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726BB6D8-5441-4B6C-8967-8BE816AEDA40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

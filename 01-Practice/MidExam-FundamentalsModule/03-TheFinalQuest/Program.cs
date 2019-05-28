@@ -8,6 +8,8 @@ namespace _03_TheFinalQuest
     {
         static void Main(string[] args)
         {
+            //Technology Fundamentals Mid Exam - 10 March 2019 Group 2
+
             List<string> input = Console.ReadLine().Split().ToList();
 
             while (true)
@@ -40,8 +42,8 @@ namespace _03_TheFinalQuest
 
                     case "Put":
                         int indexB = int.Parse(commands[2]);
-                        if (indexB >=1 && indexB <= input.Count-1)
-                        {
+                        if (indexB >=1 && indexB <= input.Count+1) //В case "Put" проверката трябва да е if (indexB >=1 && indexB <= input.Count + 1).
+                        { // Беше if (indexB >=1 && indexB <= input.Count-1)
                             input.Insert(indexB-1, commands[1]); // ?? Тука да направиме евентуално проверка, ако индекса е нула да не е минус 1
                         }
                         break;

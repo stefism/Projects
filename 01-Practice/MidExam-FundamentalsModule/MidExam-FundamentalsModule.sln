@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TheHuntingGames", "01-Th
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-SeizeTheFire", "02-SeizeTheFire\02-SeizeTheFire.csproj", "{726BB6D8-5441-4B6C-8967-8BE816AEDA40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-TheFinalQuest", "03-TheFinalQuest\03-TheFinalQuest.csproj", "{024F48CD-2B60-4D2E-B81E-3BA3BD165773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-TheFinalQuest", "03-TheFinalQuest\03-TheFinalQuest.csproj", "{024F48CD-2B60-4D2E-B81E-3BA3BD165773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-HelloFrance", "02-HelloFrance\02-HelloFrance.csproj", "{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{024F48CD-2B60-4D2E-B81E-3BA3BD165773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{024F48CD-2B60-4D2E-B81E-3BA3BD165773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{024F48CD-2B60-4D2E-B81E-3BA3BD165773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

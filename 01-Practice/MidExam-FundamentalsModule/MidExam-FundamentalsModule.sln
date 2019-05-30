@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-SeizeTheFire", "02-Seize
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-TheFinalQuest", "03-TheFinalQuest\03-TheFinalQuest.csproj", "{024F48CD-2B60-4D2E-B81E-3BA3BD165773}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-HelloFrance", "02-HelloFrance\02-HelloFrance.csproj", "{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-HelloFrance", "02-HelloFrance\02-HelloFrance.csproj", "{9A58A34C-BDDC-4EB3-B2F3-FCD40BBB0548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

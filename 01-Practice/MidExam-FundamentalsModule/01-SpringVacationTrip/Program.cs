@@ -42,8 +42,12 @@ namespace _01_SpringVacationTrip
                 }
                 else if (days % 7 == 0)
                 {
+                    double dayExpences = (foodExpencesForDayPerPerson * groupOfPeople)
+                        + (roomPriceForNightPerPerson * groupOfPeople)
+                        + totalFuelExpences;
+
                     double receiveMoney = currentExpences / groupOfPeople;
-                    budget += receiveMoney;
+                    budget += receiveMoney; 
                 }
             }
 

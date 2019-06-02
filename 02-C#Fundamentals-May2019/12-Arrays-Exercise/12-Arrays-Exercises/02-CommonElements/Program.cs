@@ -6,7 +6,23 @@ namespace _02_CommonElements
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] firstArr = Console.ReadLine().Split();
+            string[] secondArr = Console.ReadLine().Split();
+
+            for (int i = 0; i < secondArr.Length; i++)
+            {
+                string secondElement = secondArr[i];
+
+                for (int j = 0; j < firstArr.Length; j++)
+                {
+                    string firstElement = firstArr[j];
+
+                    if (secondElement == firstElement)
+                    {
+                        Console.Write(secondElement + " ");
+                    }
+                }
+            }
         }
     }
 }

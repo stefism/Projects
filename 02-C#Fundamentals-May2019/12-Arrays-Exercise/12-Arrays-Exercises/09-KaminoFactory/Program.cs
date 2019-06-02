@@ -9,6 +9,7 @@ namespace _09_KaminoFactory
         {
             int sequences = int.Parse(Console.ReadLine());
             int sequencesCounter = 0;
+            int inputCounter = 0;
             int[] bestDna = new int[sequences];
 
             int currentStartIndex = 0;
@@ -26,7 +27,7 @@ namespace _09_KaminoFactory
                 }
                 else
                 {
-                    sequencesCounter++;
+                    inputCounter++;
                     int[] currentDna = new int[sequences];
 
                     for (int i = 0; i < sequences; i++)
@@ -44,6 +45,7 @@ namespace _09_KaminoFactory
                     if (currentDnaSeuqence > currentBestDnaSequence)
                     {
                         bestDna = currentDna;
+                        sequencesCounter++;
                     }
 
                     else if (currentDnaSeuqence == currentBestDnaSequence)
@@ -54,6 +56,7 @@ namespace _09_KaminoFactory
                         if (currentStartIndex < currentBestStartIndex)
                         {
                             bestDna = currentDna;
+                            sequencesCounter++;
                         }
                     }
 
@@ -62,6 +65,7 @@ namespace _09_KaminoFactory
                         if (currenrDnaSum > bestDnaSum)
                         {
                             bestDna = currentDna;
+                            sequencesCounter++;
                         }
                     }
                  }
@@ -124,15 +128,17 @@ namespace _09_KaminoFactory
                         if (input[j] == input[i])
                         {
                             sequenceCounter++;
-                            startInex = i;
+                            //startInex = i;
                             if (sequenceCounter > maxCounter)
                             {
                                 maxCounter = sequenceCounter;
+                                startInex = i;
                             }
                         }
                         else
                         {
                             sequenceCounter = 1;
+                            break;
                         }
                     }
                 }

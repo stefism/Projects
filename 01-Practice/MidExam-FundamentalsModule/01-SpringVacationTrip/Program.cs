@@ -6,6 +6,8 @@ namespace _01_SpringVacationTrip
     {
         static void Main(string[] args)
         {
+            //Technology Fundamentals Mid Exam - 10 March 2019 Group 1
+
             int daysOfTheTrip = int.Parse(Console.ReadLine());
             double budget = double.Parse(Console.ReadLine());
             int groupOfPeople = int.Parse(Console.ReadLine());
@@ -21,6 +23,11 @@ namespace _01_SpringVacationTrip
             currentExpences += totalFoodExpences;
             
             double totalHotelExpences = roomPriceForNightPerPerson * groupOfPeople * daysOfTheTrip;
+
+            if (groupOfPeople >= 10)
+            {
+                totalHotelExpences *= 0.75;
+            }
 
             budget = CalculateBudget(totalHotelExpences, budget);
             currentExpences += totalHotelExpences;

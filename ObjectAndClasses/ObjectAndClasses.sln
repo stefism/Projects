@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01DayOfWeek", "ObjectAndClasses\01DayOfWeek.csproj", "{09DB230B-2070-4E89-8F7C-34FB2F6CF63E}"
 EndProject
@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02RandomizeWords", "02Rando
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03BigFactorial", "03BigFactorial\03BigFactorial.csproj", "{7BA506DE-D2D7-4AD4-852F-3A4EFAF3497F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SantasList", "SantasList\SantasList.csproj", "{E945206C-855C-44CC-B2B6-E1B87DBB5602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantasList", "SantasList\SantasList.csproj", "{E945206C-855C-44CC-B2B6-E1B87DBB5602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChristmasSpirit", "ChristmasSpirit\ChristmasSpirit.csproj", "{20C19BAD-00C9-4B19-B92B-2266F245AEFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChristmasSpirit", "ChristmasSpirit\ChristmasSpirit.csproj", "{20C19BAD-00C9-4B19-B92B-2266F245AEFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{3E4EC9D1-BC4F-4066-A079-F669C2535547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{20C19BAD-00C9-4B19-B92B-2266F245AEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C19BAD-00C9-4B19-B92B-2266F245AEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C19BAD-00C9-4B19-B92B-2266F245AEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

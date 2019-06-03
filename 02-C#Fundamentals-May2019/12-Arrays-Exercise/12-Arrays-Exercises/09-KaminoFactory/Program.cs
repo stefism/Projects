@@ -67,6 +67,17 @@ namespace _09_KaminoFactory
                             bestDna = currentDna;
                             sequencesCounter++;
                         }
+                        else if (currenrDnaSum == bestDnaSum)
+                        {
+                            for (int i = 0; i < sequences; i++)
+                            {
+                                if (bestDna[i] == 0 && currentDna[i] == 1)
+                                {
+                                    bestDna = currentDna;
+                                    sequencesCounter++;
+                                }
+                            }
+                        }
                     }
                  }
             }

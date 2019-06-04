@@ -24,7 +24,7 @@ namespace _01_SpringVacationTrip
             
             double totalHotelExpences = roomPriceForNightPerPerson * groupOfPeople * daysOfTheTrip;
 
-            if (groupOfPeople >= 10)
+            if (groupOfPeople > 10)
             {
                 totalHotelExpences *= 0.75;
             }
@@ -49,12 +49,16 @@ namespace _01_SpringVacationTrip
                 }
                 else if (days % 7 == 0)
                 {
-                    double dayExpences = (foodExpencesForDayPerPerson * groupOfPeople)
-                        + (roomPriceForNightPerPerson * groupOfPeople)
-                        + totalFuelExpences;
-
                     double receiveMoney = currentExpences / groupOfPeople;
-                    budget += receiveMoney; 
+                    currentExpences -= receiveMoney;
+                    budget += receiveMoney;
+
+                    //double dayExpences = (foodExpencesForDayPerPerson * groupOfPeople)
+                    //    + (roomPriceForNightPerPerson * groupOfPeople)
+                    //    + totalFuelExpences;
+
+                    //double receiveMoney = currentExpences / groupOfPeople;
+                    //budget += receiveMoney; 
                 }
             }
 

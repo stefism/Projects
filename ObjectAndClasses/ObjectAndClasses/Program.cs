@@ -16,7 +16,5 @@ namespace _01DayOfWeek
 
             Console.WriteLine(dateTime.DayOfWeek);
         }
-
-
     }
 }

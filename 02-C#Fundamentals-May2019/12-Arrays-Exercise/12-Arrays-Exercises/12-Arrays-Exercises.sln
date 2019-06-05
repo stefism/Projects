@@ -7,17 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-CommonElements", "02-Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-ZigZagArrays", "03-ZigZagArrays\03-ZigZagArrays.csproj", "{AC6E12B0-F6D1-4C19-91AA-642280227CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-ArrayRotations", "04-ArrayRotations\04-ArrayRotations.csproj", "{CDBFDB9C-5A0C-43A3-8454-15B3A7BC47EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-ArrayRotations", "04-ArrayRotations\04-ArrayRotations.csproj", "{CDBFDB9C-5A0C-43A3-8454-15B3A7BC47EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-TopIntegers", "05-TopIntegers\05-TopIntegers.csproj", "{85DDF97D-ADD9-4ED7-82BE-EBC681A22D5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-TopIntegers", "05-TopIntegers\05-TopIntegers.csproj", "{85DDF97D-ADD9-4ED7-82BE-EBC681A22D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-EqualSums", "06-EqualSums\06-EqualSums.csproj", "{4C420A41-D987-422A-8C0A-EFB03772544D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-EqualSums", "06-EqualSums\06-EqualSums.csproj", "{4C420A41-D987-422A-8C0A-EFB03772544D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-MaxSequenceOfEqualElements", "07-MaxSequenceOfEqualElements\07-MaxSequenceOfEqualElements.csproj", "{87E2437A-B56D-453A-BC72-E4AD6967E919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-MaxSequenceOfEqualElements", "07-MaxSequenceOfEqualElements\07-MaxSequenceOfEqualElements.csproj", "{87E2437A-B56D-453A-BC72-E4AD6967E919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-MagicSum", "08-MagicSum\08-MagicSum.csproj", "{8DE05C55-E52E-4411-8347-7BDF29D6830F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-MagicSum", "08-MagicSum\08-MagicSum.csproj", "{8DE05C55-E52E-4411-8347-7BDF29D6830F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-KaminoFactory", "09-KaminoFactory\09-KaminoFactory.csproj", "{C25B0076-2AB6-4CB0-B30B-67E8A54215D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-KaminoFactory", "09-KaminoFactory\09-KaminoFactory.csproj", "{C25B0076-2AB6-4CB0-B30B-67E8A54215D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-LadyBugs", "10-LadyBugs\10-LadyBugs.csproj", "{E0261E0F-5A30-48EF-B148-37A3D47F02D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{C25B0076-2AB6-4CB0-B30B-67E8A54215D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C25B0076-2AB6-4CB0-B30B-67E8A54215D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C25B0076-2AB6-4CB0-B30B-67E8A54215D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0261E0F-5A30-48EF-B148-37A3D47F02D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0261E0F-5A30-48EF-B148-37A3D47F02D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0261E0F-5A30-48EF-B148-37A3D47F02D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0261E0F-5A30-48EF-B148-37A3D47F02D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

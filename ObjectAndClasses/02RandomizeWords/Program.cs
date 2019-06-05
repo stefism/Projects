@@ -8,17 +8,17 @@ namespace _02RandomizeWords
     {
         static void Main(string[] args)
         {
-            var words = Console.ReadLine().Split(' ');
-            var random = new Random();
-            var shuffleWords = new List<string>();
+            string[] words = Console.ReadLine().Split();
+            Random random = new Random();
+            List<string> shuffleWords = new List<string>();
 
-            foreach (var item in words)
+            foreach (string item in words)
             {
                 int newIndex = random.Next(0, shuffleWords.Count + 1);
                 shuffleWords.Insert(newIndex, item);
             }
 
-            foreach (var item in shuffleWords)
+            foreach (string item in shuffleWords)
             {
                 Console.WriteLine(item);
             }

@@ -21,12 +21,14 @@ namespace _10_LadyBugs
                 }
             }
 
-            foreach (var item in ladysIndexes)
-            {
-                int result = Convert.ToInt32(item);
-                Console.Write(result + " ");
-            }
-            Console.WriteLine();
+            //Console.WriteLine(string.Join(" ", ladysIndexes.Select(Convert.ToInt32)));
+
+            //foreach (var item in ladysIndexes)
+            //{
+            //    int result = Convert.ToInt32(item);
+            //    Console.Write(result + " ");
+            //}
+            //Console.WriteLine();
 
             while (true)
             {
@@ -34,6 +36,7 @@ namespace _10_LadyBugs
 
                 if (commands[0] == "end")
                 {
+                    Console.WriteLine(string.Join(" ", ladysIndexes.Select(Convert.ToInt32)));
                     break;
                 }
 
@@ -44,23 +47,30 @@ namespace _10_LadyBugs
                 switch (flyDirection)
                 {
                     case "left":
+
                         if (flyFromIndex >= 0 && flyFromIndex <= ladysIndexes.Length - 1)
                         {
                             ladysIndexes = FlightLeft(flyFromIndex, flyToIndex, ladysIndexes);
                         }
                         break;
 
-                    case "right":
+                    case "right": // Проверка за валиден индекс.
 
+                        if (flyFromIndex >= 0 && flyFromIndex <= ladysIndexes.Length - 1)
+                        {
+                            ladysIndexes = FlightRight(flyFromIndex, flyToIndex, ladysIndexes);
+                        }
                         break;
                 }
 
-                foreach (var item in ladysIndexes)
-                {
-                    int result = Convert.ToInt32(item);
-                    Console.Write(result + " ");
-                }
-                Console.WriteLine();
+                //Console.WriteLine(string.Join(" ", ladysIndexes.Select(Convert.ToInt32)));
+
+                //foreach (var item in ladysIndexes) 
+                //{
+                //    int result = Convert.ToInt32(item);
+                //    Console.Write(result + " ");
+                //}
+                //Console.WriteLine();
             }
         }
 
@@ -96,32 +106,102 @@ namespace _10_LadyBugs
                         }
                     }
                 }
-            }
 
-            else
-            {
-                if (flyFrom - flyTo < 0)
-                {
-                    ladysIndexes[flyFrom] = false;
-                }
                 else
                 {
-                    for (int i = flyFrom - flyTo; i >= 0; i--)
+                    if (flyFrom - flyTo < 0)
                     {
-                        if (ladysIndexes[i] == false)
+                        ladysIndexes[flyFrom] = false;
+                    }
+                    else
+                    {
+                        for (int i = flyFrom - flyTo; i >= 0; i--)
                         {
-                            ladysIndexes[flyFrom] = false;
-                            ladysIndexes[i] = true;
-                            break;
+                            if (i == 0)
+                            {
+                                if (ladysIndexes[i] == true)
+                                {
+                                    ladysIndexes[flyFrom] = false;
+                                    break;
+                                }
+                            }
+
+                            if (ladysIndexes[i] == false)
+                            {
+                                ladysIndexes[flyFrom] = false;
+                                ladysIndexes[i] = true;
+                                break;
+                            }
                         }
                     }
                 }
             }
+            return ladysIndexes;
+        }
 
+        static bool[] FlightRight(int flyFrom, int flyTo, bool[] ladysIndexes)
+        {
+            if (ladysIndexes[flyFrom] == true)
+            {
+                if (flyTo < 0)
+                {
+                    if (flyFrom - flyTo < 0)
+                    {
+                        ladysIndexes[flyFrom] = false;
+                    }
+                    else
+                    {
+                        for (int i = flyFrom - Math.Abs(flyTo); i >= 0; i--)
+                        {
+                            if (i == 0)
+                            {
+                                if (ladysIndexes[i] == true)
+                                {
+                                    ladysIndexes[flyFrom] = false;
+                                    break;
+                                }
+                            }
+
+                            if (ladysIndexes[i] == false)
+                            {
+                                ladysIndexes[i] = true;
+                                ladysIndexes[flyFrom] = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = flyFrom; i <= ladysIndexes.Length-1; i++)
+                    {
+                        if (i == ladysIndexes.Length-1)
+                        {
+                            if (ladysIndexes[i] == true)
+                            {
+                                ladysIndexes[flyFrom] = false;
+                                break;
+                            }
+                        }
+
+                        if (flyFrom + flyTo > ladysIndexes.Length-1)
+                        {
+                            ladysIndexes[flyFrom] = false;
+                            break;
+                        }
+                        else
+                        {
+                            if (ladysIndexes[i] == false)
+                            {
+                                ladysIndexes[i] = true;
+                                ladysIndexes[flyFrom] = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
             return ladysIndexes;
         }
     }
 }
-
-
-

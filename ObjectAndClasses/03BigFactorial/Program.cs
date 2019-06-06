@@ -17,5 +17,5 @@ namespace _03BigFactorial
 
             Console.WriteLine(result);
         }
-    }
+    } 
 }

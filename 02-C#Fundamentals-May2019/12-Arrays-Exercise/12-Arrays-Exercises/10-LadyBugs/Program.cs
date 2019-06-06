@@ -50,6 +50,11 @@ namespace _10_LadyBugs
 
                         if (flyFromIndex >= 0 && flyFromIndex <= ladysIndexes.Length - 1)
                         {
+                            if (flyToIndex == 0)
+                            {
+                                continue;
+                            }
+
                             ladysIndexes = FlightLeft(flyFromIndex, flyToIndex, ladysIndexes);
                         }
                         break;
@@ -58,6 +63,11 @@ namespace _10_LadyBugs
 
                         if (flyFromIndex >= 0 && flyFromIndex <= ladysIndexes.Length - 1)
                         {
+                            if (flyToIndex == 0)
+                            {
+                                continue;
+                            }
+
                             ladysIndexes = FlightRight(flyFromIndex, flyToIndex, ladysIndexes);
                         }
                         break;

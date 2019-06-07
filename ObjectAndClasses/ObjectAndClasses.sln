@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantasList", "SantasList\Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChristmasSpirit", "ChristmasSpirit\ChristmasSpirit.csproj", "{20C19BAD-00C9-4B19-B92B-2266F245AEFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{3E4EC9D1-BC4F-4066-A079-F669C2535547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Examples.csproj", "{3E4EC9D1-BC4F-4066-A079-F669C2535547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Songs", "04-Songs\04-Songs.csproj", "{4D1B2C2A-1225-4DA5-BB6B-324CE8AC4524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Students", "05-Students\05-Students.csproj", "{4907DC2C-30FA-419A-BDC2-8EF8CEC74AD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E4EC9D1-BC4F-4066-A079-F669C2535547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1B2C2A-1225-4DA5-BB6B-324CE8AC4524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1B2C2A-1225-4DA5-BB6B-324CE8AC4524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1B2C2A-1225-4DA5-BB6B-324CE8AC4524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1B2C2A-1225-4DA5-BB6B-324CE8AC4524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4907DC2C-30FA-419A-BDC2-8EF8CEC74AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4907DC2C-30FA-419A-BDC2-8EF8CEC74AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4907DC2C-30FA-419A-BDC2-8EF8CEC74AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4907DC2C-30FA-419A-BDC2-8EF8CEC74AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

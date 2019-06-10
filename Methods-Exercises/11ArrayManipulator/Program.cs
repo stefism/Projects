@@ -28,12 +28,12 @@ namespace _11ArrayManipulator
 
                         int index = int.Parse(commnands[1]);
 
-                        if (index > 0 && index <= input.Length-2)
+                        if (index >= 0 && index <= input.Length-2)
                         {
                             input = SplitArray(index, input);
                         }
 
-                        else if (index == 0 || index == input.Length-1)
+                        else if (index == input.Length-1)
                         {
 
                         }
@@ -81,7 +81,7 @@ namespace _11ArrayManipulator
 
                         int indexFirst = int.Parse(commnands[1]);
 
-                        if (indexFirst >= 0 && indexFirst <= input.Length-1)
+                        if (indexFirst >= 0 && indexFirst <= input.Length) //Евентуално без -1
                         {
                             string evenOrOddFirst = commnands[2];
                             string result = ReturnFirtsEvenOrOddElements(indexFirst, evenOrOddFirst, input);
@@ -98,7 +98,7 @@ namespace _11ArrayManipulator
 
                         int indexLast = int.Parse(commnands[1]);
 
-                        if (indexLast >= 0 && indexLast <= input.Length-1)
+                        if (indexLast >= 0 && indexLast <= input.Length)
                         {
                             string evenOrOddLast = commnands[2];
                             string resultLast = ReturnLastEvenOrOddElements(indexLast, evenOrOddLast, input);
@@ -149,7 +149,11 @@ namespace _11ArrayManipulator
                         }
                         break;
                 }
-                
+                //
+                if (i == 0)
+                {
+                    return "[" + string.Join(", ", evenOrOddList) + "]";
+                }
             }
 
             return " ";
@@ -184,11 +188,22 @@ namespace _11ArrayManipulator
                             {
                                 return "[" + string.Join(", ", evenOrOddList) + "]";
                             }
-                         }
+                            //if (i == input.Length-1)
+                            //{
+                            //    return "[" + string.Join(", ", evenOrOddList) + "]";
+
+                            //}
+                        }
                         break;
                 }
-            }
+                //
+                if (i == input.Length - 1)
+                {
+                    return "[" + string.Join(", ", evenOrOddList) + "]";
 
+                }
+            }
+            
             return " ";
         }
         static int ReturnMinEvemOrOddNumber(string evenOrOdd, int[] input)
@@ -288,11 +303,12 @@ namespace _11ArrayManipulator
                 counrerSplit++;
             }
 
-            counrerSplit = index;
-            for (int i = 0; i <= index; i++)
+            int indexSplit = 0;
+            for (int i = counrerSplit; i <= splitArr.Length-1; i++) // 
             {
-                splitArr[counrerSplit] = input[i];
+                splitArr[counrerSplit] = input[indexSplit];
                 counrerSplit++;
+                indexSplit++;
             }
 
             return splitArr;

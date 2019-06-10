@@ -7,57 +7,55 @@ namespace _10TopNumber
         static void Main(string[] args)
         {
             int number = int.Parse(Console.ReadLine());
-
-            
-
-            for (int i = 16; i <= number; i++)
+           
+            for (int i = 1; i <= number; i++)
             {
-                int sum = SumFromDigitInNumber(i);
-                bool isSumDivide = false;
-
-                for (int j = 8; j < number; j++)
+                bool isOddDigitExist = IsOddDigitExist(i);
+                if (isOddDigitExist)
                 {
-                    if (sum == j)
+                    bool isDivideBy8 = IsDivideBy8(i);
+                    if (isDivideBy8)
                     {
-                        isSumDivide = true;
+                        Console.WriteLine(i);
                     }
-                    else if (sum > j)
-                    {
-                        j += 8;
-                    }
-                }
-
-                bool isContain = IsContainLeastOneDigit(i);
-
-                if (isSumDivide && isContain)
-                {
-                    Console.WriteLine(i);
                 }
             }
         }
 
-        static int SumFromDigitInNumber(int number)
+        static bool IsOddDigitExist(int number)
         {
-            int sum = 0;
+            int Digit = number;
 
-            while (number != 0)
+            while (Digit > 0)
             {
-                sum += number % 10;
-                number /= 10;
-            }
+                int currentDigit = Digit % 10;
 
-            return sum;
-        }
-
-        static bool IsContainLeastOneDigit(int number)
-        {
-            while (number != 0)
-            {
-                if (number % 10 == 1)
+                if (Digit % 2 == 1)
                 {
                     return true;
                 }
-                number /= 10;
+
+                Digit /= 10;
+            }
+
+            return false;
+        }
+
+        static bool IsDivideBy8(int number)
+        {
+            int Digit = number;
+            int sum = 0;
+
+            while (Digit > 0)
+            {
+                int currentDigit = Digit % 10;
+                sum += currentDigit;
+                Digit /= 10;
+            }
+
+            if (sum % 8 == 0)
+            {
+                return true;
             }
 
             return false;

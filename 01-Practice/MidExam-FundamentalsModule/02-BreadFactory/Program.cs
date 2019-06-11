@@ -50,6 +50,7 @@ namespace _02_BreadFactory
                         else
                         {
                             coins += value;
+                            //energy -= 30;
                             Console.WriteLine($"You earned {value} coins.");
                         }
                         break;

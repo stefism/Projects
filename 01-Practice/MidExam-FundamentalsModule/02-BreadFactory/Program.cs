@@ -39,24 +39,40 @@ namespace _02_BreadFactory
                         }
                         break;
 
+                        //Енергията ти става -30, само ако имаш такава! 
+                        //Ако ти е по-малко от нула, не намаляваш с - 30.
+                        // Затова долу става +80, а не + 50 както беше.
+                        //+50 от текущата енергия.
+
                     case "order":
                         energy -= 30;
 
                         if (energy < 0)
                         {
-                            energy += 50; // energy += 50;
+                            energy += 80; // беше energy += 50; 
                             Console.WriteLine("You had to rest!");
                         }
+
+             /*
+                           Дословен превод ...
+            If you are not bankrupt (coins <= 0)you've bought the ingredient successfully, and you should print
+            Ако не си банкрутирал (пари <=0 ) ти си купуваш подправката успешно, и трябва да отпечаташ ...
+            В случая действително ти е дадено условието което се счита за банкрут -> когато парите са <=0
+            След 2 корекции по кода вече дава 100/100. Първата е за условието за банкрут coins > value, 
+            а втората за възстановяването на енергията с 80 (50+30) Отнемаш още в началото 30 без 
+            да е изпълнил поръчката, които трябва да се върнат обратно.
+            https://pastebin.com/HCyDPxzE
+            */
+
                         else
                         {
                             coins += value;
-                            //energy -= 30;
                             Console.WriteLine($"You earned {value} coins.");
                         }
                         break;
 
                     default:
-                        if (coins >= value) // Тука
+                        if (coins > value) // Тука беше coins >= value
                         {
                             Console.WriteLine($"You bought {command}.");
                             coins -= value;

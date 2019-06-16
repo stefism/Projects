@@ -5,7 +5,12 @@ Exercise:gosho
 Swap:gosho:dragan
 course start
 
-тука гърми
+работи
+----
+gosho, pesho, ivan, dragan
+Exercise:gosho
+Swap:dragan:gosho
+course start
 ----
 gosho, pesho, ivan, dragan
 Exercise:pesho

@@ -67,9 +67,9 @@ namespace _08_AnonymousThreat
                         newPartitions.Add(currentNewPartition);
                     }
 
-                    if (divideString.Length/charInPartition > newPartitions.Count) // divideString.Length > newPartitions.Count
+                    if (divideString.Length/charInPartition > newPartitions.Count) 
                     {
-                        for (int i = newPartitions.Count; i < divideString.Length; i++)
+                        for (int i = divideCounter; i < divideString.Length; i++)  // int i = newPartitions.Count; i < divideString.Length; i++
                         {
                             newPartitions[newPartitions.Count - 1] += divideString[i];
                         }

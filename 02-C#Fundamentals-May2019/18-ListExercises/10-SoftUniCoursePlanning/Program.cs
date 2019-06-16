@@ -20,7 +20,7 @@ namespace _10_SoftUniCoursePlanning
                 {
                     condition = currentCommands[1];
                 }
-                
+
                 if (command == "Add")
                 {
                     if (!lessons.Contains(condition))
@@ -86,16 +86,32 @@ namespace _10_SoftUniCoursePlanning
                         lessons[indexLesson1] = lesson2;
                         lessons[indexLesson2] = lesson1;
 
-                        if (lessons.Contains(lesson1+ "-Exercise"))
+                        if (lessons.Contains(lesson1 + "-Exercise")) 
                         {
                             lessons.Remove(lesson1 + "-Exercise");
-                            lessons.Insert(indexLesson2+1, lesson1 + "-Exercise");
+
+                            if (indexLesson2 >= lessons.Count-1) ////// Тука добавихме проверка.
+                            {
+                                lessons.Add(lesson1 + "-Exercise");
+                            }
+                            else
+                            {
+                                lessons.Insert(indexLesson2 + 1, lesson1 + "-Exercise");
+                            }
                         }
 
                         if (lessons.Contains(lesson2 + "-Exercise"))
                         {
                             lessons.Remove(lesson2 + "-Exercise");
-                            lessons.Insert(indexLesson1 + 1, lesson2 + "-Exercise");
+
+                            if (indexLesson1 >= lessons.Count-1) ///// И тука.
+                            {
+                                lessons.Add(lesson2 + "-Exercise");
+                            }
+                            else
+                            {
+                                lessons.Insert(indexLesson1 + 1, lesson2 + "-Exercise");
+                            }
                         }
                     }
                 }

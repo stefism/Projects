@@ -48,10 +48,19 @@ namespace _10_SoftUniCoursePlanning
 
                 else if (command == "Exercise")
                 {
+
                     if (lessons.Contains(condition))
                     {
                         int index = lessons.IndexOf(condition);
-                        lessons.Insert(index+1, condition + "-Exercise");
+
+                        if (index == lessons.Count - 1)
+                        {
+                            lessons.Add(condition + "-Exercise");
+                        }
+                        else
+                        {
+                            lessons.Insert(index + 1, condition + "-Exercise");
+                        }
                     }
                     else
                     {

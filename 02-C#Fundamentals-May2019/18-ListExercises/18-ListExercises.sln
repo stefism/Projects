@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-SoftUniCoursePlanning", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{5721C70B-7ACB-46C6-A6FE-4E1E310CE810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-AnonymousThreat", "08-AnonymousThreat\08-AnonymousThreat.csproj", "{7188A251-2785-4282-AC7B-A5A16CD12115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-AnonymousThreat", "08-AnonymousThreat\08-AnonymousThreat.csproj", "{7188A251-2785-4282-AC7B-A5A16CD12115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-PokemonDontGo", "09-PokemonDontGo\09-PokemonDontGo.csproj", "{7461DC04-FD99-4289-AC18-4EA78D687690}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-PokemonDontGo", "09-PokemonDontGo\09-PokemonDontGo.csproj", "{7461DC04-FD99-4289-AC18-4EA78D687690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01m-Messaging", "01m-Messaging\01m-Messaging.csproj", "{262B57C9-F1A1-4935-BD08-D59A742CAA17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7461DC04-FD99-4289-AC18-4EA78D687690}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7461DC04-FD99-4289-AC18-4EA78D687690}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7461DC04-FD99-4289-AC18-4EA78D687690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

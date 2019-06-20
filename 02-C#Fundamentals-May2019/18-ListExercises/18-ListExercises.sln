@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-AnonymousThreat", "08-An
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-PokemonDontGo", "09-PokemonDontGo\09-PokemonDontGo.csproj", "{7461DC04-FD99-4289-AC18-4EA78D687690}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01m-Messaging", "01m-Messaging\01m-Messaging.csproj", "{262B57C9-F1A1-4935-BD08-D59A742CAA17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01m-Messaging", "01m-Messaging\01m-Messaging.csproj", "{262B57C9-F1A1-4935-BD08-D59A742CAA17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02m-CarRace", "02m-CarRace\02m-CarRace.csproj", "{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03m-TakeSkipRope", "03m-TakeSkipRope\03m-TakeSkipRope.csproj", "{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{262B57C9-F1A1-4935-BD08-D59A742CAA17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

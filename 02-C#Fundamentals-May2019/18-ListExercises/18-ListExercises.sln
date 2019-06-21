@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01m-Messaging", "01m-Messag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02m-CarRace", "02m-CarRace\02m-CarRace.csproj", "{C84B7FDA-62B3-40EA-B67B-3B262DF8EF9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03m-TakeSkipRope", "03m-TakeSkipRope\03m-TakeSkipRope.csproj", "{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03m-TakeSkipRope", "03m-TakeSkipRope\03m-TakeSkipRope.csproj", "{388C4937-21F4-4BD3-8EEE-3EB20D1A3C6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04m-MixedUpLists", "04m-MixedUpLists\04m-MixedUpLists.csproj", "{6421AA58-EDF2-4B21-970A-E815854AB8BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04m-MixedUpLists", "04m-MixedUpLists\04m-MixedUpLists.csproj", "{6421AA58-EDF2-4B21-970A-E815854AB8BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05m-DrumSet", "05m-DrumSet\05m-DrumSet.csproj", "{EF2F7E8D-8C64-4284-8253-0B2D7AB49B45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6421AA58-EDF2-4B21-970A-E815854AB8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6421AA58-EDF2-4B21-970A-E815854AB8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6421AA58-EDF2-4B21-970A-E815854AB8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF2F7E8D-8C64-4284-8253-0B2D7AB49B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2F7E8D-8C64-4284-8253-0B2D7AB49B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2F7E8D-8C64-4284-8253-0B2D7AB49B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2F7E8D-8C64-4284-8253-0B2D7AB49B45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

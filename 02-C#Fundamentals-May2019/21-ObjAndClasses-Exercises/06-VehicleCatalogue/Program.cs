@@ -80,6 +80,13 @@ namespace _06_VehicleCatalogue
                 Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
                 Console.WriteLine($"Trucks have average horsepower of: 0.00.");
             }
+
+            else if (carCounter == 0 && truckCounter == 0)
+            {
+                Console.WriteLine($"Cars have average horsepower of: 0.00");
+                Console.WriteLine($"Trucks have average horsepower of: 0.00.");
+            }
+
             else if (truckCounter > 0 && carCounter > 0)
             {
                 Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");

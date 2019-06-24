@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _05_Teamworkrojects
+namespace _05_Teamworkrojects_Proba
 {
     class Program
     {
         static void Main(string[] args)
         {
+            // 50 от 100
+
             int numberOfTeams = int.Parse(Console.ReadLine());
 
             List<Teams> teams = new List<Teams>();
 
             while (true)
             {
+                // List<string> currentTeamInfo = Console.ReadLine().Split(new string[] {"-", "->"}, StringSplitOptions.None).ToList();
+
                 List<string> currentTeamInfo = Console.ReadLine().Split("-").ToList();
 
                 if (currentTeamInfo[0] == "end of assignment")
                 {
                     teams = teams.OrderByDescending(a => a.TeamMembers.Count).ToList();
                     teams = teams.OrderBy(a => a.TeamName).ToList();
+                    //teams.ForEach(a => a.TeamMembers.Sort((z, b) => b.CompareTo(z)));
                     teams.ForEach(a => a.TeamMembers.Sort((z, b) => z.CompareTo(b)));
                     List<string> disbandTeam = new List<string>();
 
@@ -59,7 +64,7 @@ namespace _05_Teamworkrojects
                     Console.WriteLine($"Team {teamName} was already created!");
                 }
 
-                else if (isTeamCreatorExist && !isTeamNameExist && !teamName.StartsWith(">"))
+                else if (isTeamCreatorExist && isTeamNameExist && !teamName.StartsWith(">"))
                 {
                     Console.WriteLine($"{memberName} cannot create another team!"); // Тука също да видиме дали работи?
                 }
@@ -124,7 +129,7 @@ namespace _05_Teamworkrojects
         {
             foreach (var item in teams)
             {
-                for (int i = 0; i < item.TeamMembers.Count; i++)
+                for (int i = 0; i < item.TeamMembers.Count - 1; i++)
                 {
                     if (item.TeamMembers[i] == member)
                     {

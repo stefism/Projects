@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-Teamworkrojects", "05-Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teamwork-proba", "Teamwork-proba\Teamwork-proba.csproj", "{3480AAD5-DDA1-4174-9A0D-45A1F4E15501}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-VehicleCatalogue", "06-VehicleCatalogue\06-VehicleCatalogue.csproj", "{689E4D35-9C29-4573-83D2-B9FBA2295247}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3480AAD5-DDA1-4174-9A0D-45A1F4E15501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3480AAD5-DDA1-4174-9A0D-45A1F4E15501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3480AAD5-DDA1-4174-9A0D-45A1F4E15501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689E4D35-9C29-4573-83D2-B9FBA2295247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689E4D35-9C29-4573-83D2-B9FBA2295247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689E4D35-9C29-4573-83D2-B9FBA2295247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689E4D35-9C29-4573-83D2-B9FBA2295247}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -70,8 +70,21 @@ namespace _06_VehicleCatalogue
             double averageCarsHorsePower = carsHorsePower / carCounter;
             double averageTrucksHorsePower = trucksHorsePower / truckCounter;
 
-            Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
-            Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+            if (carCounter == 0)
+            {
+                Console.WriteLine($"Cars have average horsepower of: 0.00");
+                Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+            }
+            else if (truckCounter == 0)
+            {
+                Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
+                Console.WriteLine($"Trucks have average horsepower of: 0.00.");
+            }
+            else if (truckCounter > 0 && carCounter > 0)
+            {
+                Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
+                Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+            }
         }
     }
     class Cars

@@ -67,31 +67,60 @@ namespace _06_VehicleCatalogue
                 }
             }
 
+            // Така не работи!
+            // И пак - ако и двете са нули, влиза в първия иф - печата и horsepower 
+            //на trucks е NaN. Печатане да става само на едно място, a в ифовете 
+            //слагаш стойности 0 на даден horsepower
+
+            //double averageCarsHorsePower = carsHorsePower / carCounter;
+            //double averageTrucksHorsePower = trucksHorsePower / truckCounter;
+
+            //if (carCounter == 0)
+            //{
+            //    Console.WriteLine($"Cars have average horsepower of: 0.00");
+            //    Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+            //}
+            //else if (truckCounter == 0)
+            //{
+            //    Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
+            //    Console.WriteLine($"Trucks have average horsepower of: 0.00.");
+            //}
+
+            //else if (carCounter == 0 && truckCounter == 0)
+            //{
+            //    Console.WriteLine($"Cars have average horsepower of: 0.00");
+            //    Console.WriteLine($"Trucks have average horsepower of: 0.00.");
+            //}
+
+            //else if (truckCounter > 0 && carCounter > 0)
+            //{
+            //    Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
+            //    Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+            //}
+
+            /*
+             * а може би Джъдж очаква вместо 0.00 -> 0,00 :) няма смисъл да ги кодваш по този начин, 
+             * защото не знаеш винаги на какви машини с локални настройки ще се изпълнява. 
+             * Просто проверяваш ако count-ера е 0 и другото е 0 и това е.
+             */
+
+            // Така работи!
+
             double averageCarsHorsePower = carsHorsePower / carCounter;
             double averageTrucksHorsePower = trucksHorsePower / truckCounter;
 
             if (carCounter == 0)
             {
-                Console.WriteLine($"Cars have average horsepower of: 0.00");
-                Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
+                averageCarsHorsePower = 0;
             }
-            else if (truckCounter == 0)
+                
+            if (truckCounter == 0)
             {
-                Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
-                Console.WriteLine($"Trucks have average horsepower of: 0.00.");
+                averageTrucksHorsePower = 0;
             }
-
-            else if (carCounter == 0 && truckCounter == 0)
-            {
-                Console.WriteLine($"Cars have average horsepower of: 0.00");
-                Console.WriteLine($"Trucks have average horsepower of: 0.00.");
-            }
-
-            else if (truckCounter > 0 && carCounter > 0)
-            {
-                Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
-                Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
-            }
+                
+            Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:F2}.");
+            Console.WriteLine($"Trucks have average horsepower of: {averageTrucksHorsePower:F2}.");
         }
     }
     class Cars

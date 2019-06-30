@@ -7,7 +7,6 @@ namespace _05m_Shopping_Spree
 
     class Program
     {
-        public static List<PeoplesAndProducts> ByedItemsForPrint = new List<PeoplesAndProducts>();
         static void Main(string[] args)
         {
             List<string> inputPersons = Console.ReadLine().Split(";", StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -28,20 +27,20 @@ namespace _05m_Shopping_Spree
 
                 if (command[0] == "END")
                 {
-                    foreach (var item in ByedItemsForPrint)
+                    foreach (var item in persons)
                     {
                         //if (item.BuyedProducts.Count == 0)
                         //{
                         //    item.BuyedProducts.Add("Nothing bought");
                         //}
 
-                        if (item.BuyedProducts.Count == 0)
+                        if (item.BoughtProducts.Count == 0)
                         {
-                            Console.WriteLine($"{item.PeopleName} - Nothing bought");
+                            Console.WriteLine($"{item.PersonName} - Nothing bought");
                         }
                         else
                         {
-                            Console.WriteLine($"{item.PeopleName} - {string.Join(", ", item.BuyedProducts)}");
+                            Console.WriteLine($"{item.PersonName} - {string.Join(", ", item.BoughtProducts)}");
                         }
                     }
 
@@ -52,16 +51,7 @@ namespace _05m_Shopping_Spree
 
             }
         }
-        static void AddProductToList(string personName, string productName)
-        {
-            foreach (var item in ByedItemsForPrint)
-            {
-                if (item.PeopleName == personName)
-                {
-                    item.BuyedProducts.Add(productName);
-                }
-            }
-        }
+        
         static void BuyProductOrNot(List<Person> persons, List<string> command, List<Product> products)
         {
             string personName = command[0];
@@ -77,7 +67,7 @@ namespace _05m_Shopping_Spree
                     {
                         Console.WriteLine($"{item.PersonName} bought {productName}");
                         item.PersonMoney -= productPrice;
-                        AddProductToList(personName, productName);
+                        item.BoughtProducts.Add(productName);
                     }
                     else
                     {
@@ -123,26 +113,8 @@ namespace _05m_Shopping_Spree
                 person.PersonName = splitedPerson[0];
                 person.PersonMoney = double.Parse(splitedPerson[1]);
                 outputPerson.Add(person);
-
-                PeoplesAndProducts products = new PeoplesAndProducts();
-                products.PeopleName = splitedPerson[0];
-                ByedItemsForPrint.Add(products);
-
-                //ByedItemsForPrint.Add(new PeoplesAndProducts {PeopleName = splitedPerson[0]});
-                // Тоя ред замества горните три.
             }
             return outputPerson;
-        }
-    }
-
-    class PeoplesAndProducts
-    {
-        public string PeopleName { get; set; }
-        public List<string> BuyedProducts { get; set; }
-
-        public PeoplesAndProducts()
-        {
-            BuyedProducts = new List<string>();
         }
     }
 
@@ -150,6 +122,12 @@ namespace _05m_Shopping_Spree
     {
         public string PersonName { get; set; }
         public double PersonMoney { get; set; }
+        public List<string> BoughtProducts { get; set; }
+
+        public Person()
+        {
+            BoughtProducts = new List<string>();
+        }
     }
 
     class Product

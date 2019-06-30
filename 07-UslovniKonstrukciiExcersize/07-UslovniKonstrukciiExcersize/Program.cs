@@ -11,7 +11,7 @@ namespace _07_UslovniKonstrukciiExcersize
             int minute3 = int.Parse(Console.ReadLine());
 
             int minuteSum = minute1 + minute2 + minute3;
-
+              
             int minutes = minuteSum / 60;
             int seconds = minuteSum % 60;
 

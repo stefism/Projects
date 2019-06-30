@@ -21,7 +21,7 @@ namespace _04_LastStop
                 {
                     int currentNumber = int.Parse(commandArgs[1]);
                     int newNumber = int.Parse(commandArgs[2]);
-
+                     
                     if (numbers.Contains(currentNumber))
                     {
                         int index = numbers.IndexOf(currentNumber);

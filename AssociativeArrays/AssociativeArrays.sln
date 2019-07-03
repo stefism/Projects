@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-WordFilter", "05-WordFil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Largest3Numbers", "04-Largest3Numbers\04-Largest3Numbers.csproj", "{74A40A1B-B8F9-4FF7-A529-49D4DE9A1096}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-OddOccurrences", "02-OddOccurrences\02-OddOccurrences.csproj", "{9C823D23-D8B3-49FA-B6D0-1DC3BF88FC30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{74A40A1B-B8F9-4FF7-A529-49D4DE9A1096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74A40A1B-B8F9-4FF7-A529-49D4DE9A1096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74A40A1B-B8F9-4FF7-A529-49D4DE9A1096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C823D23-D8B3-49FA-B6D0-1DC3BF88FC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C823D23-D8B3-49FA-B6D0-1DC3BF88FC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C823D23-D8B3-49FA-B6D0-1DC3BF88FC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C823D23-D8B3-49FA-B6D0-1DC3BF88FC30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

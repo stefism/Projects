@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-RawData", "04-RawData\04
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05m-Shopping Spree", "05m-Shopping Spree\05m-Shopping Spree.csproj", "{F2C5C410-06BD-47E8-9169-CDEBFA36BCF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingSphere-v2", "ShoppingSphere-v2\ShoppingSphere-v2.csproj", "{51AB5099-42B5-4397-B382-D2583D54DD01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingSphere-v2", "ShoppingSphere-v2\ShoppingSphere-v2.csproj", "{51AB5099-42B5-4397-B382-D2583D54DD01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{459B4FA4-7499-4A06-BD34-7FA6A3FA760D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{51AB5099-42B5-4397-B382-D2583D54DD01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51AB5099-42B5-4397-B382-D2583D54DD01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51AB5099-42B5-4397-B382-D2583D54DD01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459B4FA4-7499-4A06-BD34-7FA6A3FA760D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459B4FA4-7499-4A06-BD34-7FA6A3FA760D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459B4FA4-7499-4A06-BD34-7FA6A3FA760D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459B4FA4-7499-4A06-BD34-7FA6A3FA760D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

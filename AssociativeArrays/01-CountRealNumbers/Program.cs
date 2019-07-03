@@ -9,22 +9,21 @@ namespace _01_CountRealNumbers
         static void Main(string[] args)
         {
             List<double> input = Console.ReadLine().Split().Select(double.Parse).ToList();
-
-            var counts = new SortedDictionary<double, int>();
+            var numbers = new SortedDictionary<double, int>();
 
             foreach (var item in input)
             {
-                if (!counts.ContainsKey(item))
+                if (numbers.ContainsKey(item))
                 {
-                    counts[item] = 1;
+                    numbers[item]++;
                 }
                 else
                 {
-                    counts[item]++;
+                    numbers[item] = 1;
                 }
             }
 
-            foreach (var item in counts)
+            foreach (var item in numbers)
             {
                 Console.WriteLine($"{item.Key} -> {item.Value}");
             }

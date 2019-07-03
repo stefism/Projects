@@ -7,21 +7,38 @@ namespace _03_WordSynonyms
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
+            int words = int.Parse(Console.ReadLine());
+            var synonymsWords = new Dictionary<string, List<string>>();
 
-            Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < words; i++)
             {
                 string word = Console.ReadLine();
                 string synonym = Console.ReadLine();
 
-                if (!dictionary.ContainsKey(word))
+                //if (synonymsWords.ContainsKey(word))
+                //{
+                //    synonymsWords[word].Add(synonym);
+                //}
+
+                //else
+                //{
+                //    synonymsWords[word] = new List<string>();
+                //    synonymsWords[word].Add(synonym); // Повтарящ се код!
+                //}
+
+                if (!synonymsWords.ContainsKey(word))
                 {
-                    dictionary[word] = new List<string>(); //  или dictionary.Add(word, new List<string>());
+                    synonymsWords[word] = new List<string>();
                 }
 
-                dictionary[word].Add(synonym);
+                synonymsWords[word].Add(synonym);
+                // Когато имаме повтарящ се код, го изнасяме извън проверки и неща.
+                // Не е хубаво да имаме код, който се повтаря.
+            }
+
+            foreach (var item in synonymsWords)
+            {
+                Console.WriteLine(item.Key + " - " + string.Join(", ", item.Value));
             }
         }
     }

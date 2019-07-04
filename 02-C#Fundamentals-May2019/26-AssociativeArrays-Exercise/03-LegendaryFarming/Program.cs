@@ -8,26 +8,90 @@ namespace _03_LegendaryFarming
     {
         static void Main(string[] args)
         {
-            List<string> input = Console.ReadLine().Split().ToList();
+            //string inputpr = Console.ReadLine().Replace(Environment.NewLine, " ");
+            //List<string> input = Console.ReadLine().Split(new string[] { " ", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
             var minerals = new Dictionary<string, int>();
 
             // Пълниме minerals със всички входни елементи и техните стойности.
 
-            for (int i = 0; i < input.Count; i++)
+            while (true)
             {
-                if (i % 2 == 1)
+                List<string> input = Console.ReadLine().Split().ToList();
+                for (int i = 0; i < input.Count; i++)
                 {
-                    string currentMineral = input[i].ToLower();
-                    int currentValue = int.Parse(input[i - 1]);
-
-                    if (!minerals.ContainsKey(currentMineral))
+                    if (i % 2 == 1)
                     {
-                        minerals[currentMineral] = currentValue;
+                        string currentMineral = input[i].ToLower();
+                        int currentValue = int.Parse(input[i - 1]);
+
+                        if (!minerals.ContainsKey(currentMineral))
+                        {
+                            minerals[currentMineral] = currentValue;
+                        }
+
+                        else
+                        {
+                            minerals[currentMineral] += currentValue;
+                        }
+
+                        // Проверяваме за текущия ред дали не е станало >= 250
+                        if (minerals.ContainsKey("shards"))
+                        {
+                            if (minerals["shards"] >= 250)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (minerals.ContainsKey("fragments"))
+                        {
+                            if (minerals["fragments"] >= 250)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (minerals.ContainsKey("motes"))
+                        {
+                            if (minerals["motes"] >= 250)
+                            {
+                                break;
+                            }
+                        }
                     }
 
-                    else
+                    // Правим проверка дали някой legendaryItems >= 250
+                    // Ако е да, спираме цикъла, отпечатваме итема и ако е стойността е по-голяма от 250,
+                    // трябва да извадим 250 от съответната натрупана стойност.
+                }
+                if (minerals.ContainsKey("shards"))
+                {
+                    if (minerals["shards"] >= 250)
                     {
-                        minerals[currentMineral] += currentValue;
+                        Console.WriteLine($"Shadowmourne obtained!");
+                        minerals["shards"] -= 250;
+                        break;
+                    }
+                }
+
+                if (minerals.ContainsKey("fragments"))
+                {
+                    if (minerals["fragments"] >= 250)
+                    {
+                        Console.WriteLine($"Valanyr obtained!");
+                        minerals["fragments"] -= 250;
+                        break;
+                    }
+                }
+
+                if (minerals.ContainsKey("motes"))
+                {
+                    if (minerals["motes"] >= 250)
+                    {
+                        Console.WriteLine($"Dragonwrath obtained!");
+                        minerals["motes"] -= 250;
+                        break;
                     }
                 }
             }
@@ -79,34 +143,24 @@ namespace _03_LegendaryFarming
                 legendaryItems["motes"] = 0;
             }
 
-            // Ако някой от легендарните има стойност >= 250, печатиме и
-            // изваждаме от него тази стойност (250).
-
-            if (legendaryItems["shards"] >= 250)
-            {
-                Console.WriteLine($"Shadowmourne obtained!");
-                legendaryItems["shards"] -= 250;
-            }
-
-            if (legendaryItems["fragments"] >= 250)
-            {
-                Console.WriteLine($"Valanyr obtained!");
-                legendaryItems["fragments"] -= 250;
-            }
-
-            if (legendaryItems["motes"] >= 250)
-            {
-                Console.WriteLine($"Dragonwrath obtained!");
-                legendaryItems["motes"] -= 250;
-            }
-
-            // Отпечатваме легендарните по зададените критерии.
-            // (подредени по количество в низходящ ред, след това 
-            // по име във възходящ ред, всеки на нов ред).
             // На следващите три реда отпечатайте останалите ключови материали в низходящ ред по количество
-            // два ключови материала имат едно и също количество, отпечатайте ги по азбучен ред
+            // два ключови материала имат едно и също количество, отпечатайте ги по азбучен ред.
+
+            // Печатаме ключовите материали и след тях, печатим осналите с два foreach цикъла.
 
             var ordered = legendaryItems.OrderByDescending(a => a.Value).ThenBy(b => b.Key);
+
+            foreach (var item in ordered)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
+
+            var orderedMinerals = minerals.OrderBy(a => a.Key);
+
+            foreach (var item in orderedMinerals)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
         }
     }
 }

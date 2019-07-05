@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-CountCharsInAString", "01-CountCharsInAString\01-CountCharsInAString.csproj", "{3DCEB6AB-74A9-4832-A3E0-208ED1E13C65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-AMinerTask", "02-AMinerTask\02-AMinerTask.csproj", "{F9FF509C-58BD-4A06-8EA1-54DF96EF1A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-AMinerTask", "02-AMinerTask\02-AMinerTask.csproj", "{F9FF509C-58BD-4A06-8EA1-54DF96EF1A50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-LegendaryFarming", "03-LegendaryFarming\03-LegendaryFarming.csproj", "{510867E5-DE40-4950-891E-1F83F9B93A04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-LegendaryFarming", "03-LegendaryFarming\03-LegendaryFarming.csproj", "{510867E5-DE40-4950-891E-1F83F9B93A04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Orders", "04-Orders\04-Orders.csproj", "{D35955FC-A5A0-48B0-883D-2FD79B32DE4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{510867E5-DE40-4950-891E-1F83F9B93A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510867E5-DE40-4950-891E-1F83F9B93A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510867E5-DE40-4950-891E-1F83F9B93A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35955FC-A5A0-48B0-883D-2FD79B32DE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35955FC-A5A0-48B0-883D-2FD79B32DE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35955FC-A5A0-48B0-883D-2FD79B32DE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35955FC-A5A0-48B0-883D-2FD79B32DE4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

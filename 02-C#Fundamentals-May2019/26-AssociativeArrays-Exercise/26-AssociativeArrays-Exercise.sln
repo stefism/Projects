@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-CompanyUsers", "08-Compa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Orders-v2", "04-Orders-v2\04-Orders-v2.csproj", "{24672B5C-B386-4156-B0E2-7AFADDEA9CDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-ForceBook-Daskal", "09-ForceBook-Daskal\09-ForceBook-Daskal.csproj", "{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{24672B5C-B386-4156-B0E2-7AFADDEA9CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24672B5C-B386-4156-B0E2-7AFADDEA9CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24672B5C-B386-4156-B0E2-7AFADDEA9CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -47,7 +47,21 @@ namespace _09_ForceBook
                         sides[side] = new List<string>();
                     }
 
-                    sides[side].Add(name);
+                    bool isMemberExist = false;
+
+                    foreach (var item in sides)
+                    {
+                        if (item.Value.Contains(name))
+                        {
+                            isMemberExist = true;
+                            break;
+                        }
+                    }
+
+                    if (!sides[side].Contains(name) && !isMemberExist)
+                    {
+                        sides[side].Add(name);
+                    }
                 }
 
                 else if (commands.Contains("->"))

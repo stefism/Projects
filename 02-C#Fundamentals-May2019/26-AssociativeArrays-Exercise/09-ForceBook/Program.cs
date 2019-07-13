@@ -84,6 +84,13 @@ namespace _09_ForceBook
                         sides[side].Add(name);
                         Console.WriteLine($"{name} joins the {side} side!");
                     }
+
+                    if(!sides.ContainsKey(side))
+                    {
+                        sides[side] = new List<string>();
+                        sides[side].Add(name);
+                        Console.WriteLine($"{name} joins the {side} side!");
+                    }
                 }
             }
         }

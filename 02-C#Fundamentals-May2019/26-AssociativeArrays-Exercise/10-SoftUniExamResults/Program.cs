@@ -21,6 +21,25 @@ namespace _10_SoftUniExamResults
 
                 if (studentNameValue == "exam finished")
                 {
+                    Console.WriteLine("Results:");
+
+                    foreach (var item in studentsInformation)
+                    {
+                        Console.WriteLine(string.Join(Environment.NewLine, item.Value
+                            .OrderByDescending(x => x.StudentPoints)
+                            .ThenBy(x => x.StudentName)
+                            .Select(x => $"{x.StudentName} | {x.StudentPoints}")));
+                    }
+
+                    languagesCount = languagesCount.OrderByDescending(x => x.Value)
+                        .ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+
+                    Console.WriteLine("Submissions:");
+
+                    foreach (var item in languagesCount)
+                    {
+                        Console.WriteLine($"{item.Key} - {item.Value}");
+                    }
 
                     break;
                 }
@@ -28,6 +47,25 @@ namespace _10_SoftUniExamResults
                 // break
 
                 string languageKey = currentStudentInfo[1];
+
+                if (languageKey == "banned")
+                {
+                    foreach (var student in studentsInformation)
+                    {
+                        foreach (var studentValues in student.Value)
+                        {
+                            if (studentValues.StudentName == studentNameValue)
+                            {
+                                string key = student.Key;
+                                studentsInformation[key].Remove(studentValues);
+                                break;
+                            }
+                        }
+                    }
+
+                    continue;
+                }
+
                 int pointsValue = int.Parse(currentStudentInfo[2]);
 
                 if (!studentsInformation.ContainsKey(languageKey))
@@ -70,7 +108,6 @@ namespace _10_SoftUniExamResults
                     currentInfo.StudentPoints = pointsValue;
                     languagesCount[languageKey]++;
                 }
-
             }
         }
     }

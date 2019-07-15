@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-ValidUsernames", "01-ValidUsernames\01-ValidUsernames.csproj", "{F8528C92-28C1-4AFC-8525-E1C816D23DF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ValidUsernames", "01-ValidUsernames\01-ValidUsernames.csproj", "{F8528C92-28C1-4AFC-8525-E1C816D23DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-CharacterMultiplier", "02-CharacterMultiplier\02-CharacterMultiplier.csproj", "{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-CharacterMultiplier", "02-CharacterMultiplier\02-CharacterMultiplier.csproj", "{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-CharacterM-er-Daskal", "02-CharacterM-er-Daskal\02-CharacterM-er-Daskal.csproj", "{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MultiplyBig-Daskal", "05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-LettersChangeNumbers", "08-LettersChangeNumbers\08-LettersChangeNumbers.csproj", "{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-Letters-v2", "08-Letters-v2\08-Letters-v2.csproj", "{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

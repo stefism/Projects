@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace _05_MultiplyBigNumber
 {
@@ -53,7 +55,8 @@ namespace _05_MultiplyBigNumber
                 }
             }
 
-            string lastResult = Reverse(finalResultToString);
+            string lastResult = string.Join("", finalResultToString.ToString().Reverse());
+            //string lastResult = Reverse(finalResultToString);
             Console.WriteLine(lastResult);
         }
 

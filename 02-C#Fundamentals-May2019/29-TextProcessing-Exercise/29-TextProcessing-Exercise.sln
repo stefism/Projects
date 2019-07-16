@@ -7,15 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ValidUsernames", "01-Val
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-CharacterMultiplier", "02-CharacterMultiplier\02-CharacterMultiplier.csproj", "{DBEA4C22-7D1B-4583-A7FA-3415315B20C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-CharacterM-er-Daskal", "02-CharacterM-er-Daskal\02-CharacterM-er-Daskal.csproj", "{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-CharacterM-er-Daskal", "02-CharacterM-er-Daskal\02-CharacterM-er-Daskal.csproj", "{B6F8905E-15AB-4DCD-84B0-63B5AFC1766A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MultiplyBigNumber", "05-MultiplyBigNumber\05-MultiplyBigNumber.csproj", "{AC3E4021-5A09-41B2-94DB-B40E5433C06A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-MultiplyBigNumber", "05-MultiplyBigNumber\05-MultiplyBigNumber.csproj", "{AC3E4021-5A09-41B2-94DB-B40E5433C06A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MultiplyBig-Daskal", "05-MultiplyBig-Daskal\05-MultiplyBig-Daskal.csproj", "{C18F2CB7-8041-4318-AAB2-7593A89AA09F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-MultiplyBig-Daskal", "05-MultiplyBig-Daskal\05-MultiplyBig-Daskal.csproj", "{C18F2CB7-8041-4318-AAB2-7593A89AA09F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-LettersChangeNumbers", "08-LettersChangeNumbers\08-LettersChangeNumbers.csproj", "{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-LettersChangeNumbers", "08-LettersChangeNumbers\08-LettersChangeNumbers.csproj", "{7C7D7880-DC38-4F92-9B1F-EF21C91160D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-Letters-v2", "08-Letters-v2\08-Letters-v2.csproj", "{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-Letters-v2", "08-Letters-v2\08-Letters-v2.csproj", "{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-StringExplosion", "pr\07-StringExplosion.csproj", "{573B879D-0C4B-425A-A64D-09D759F38FCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,7 +34,7 @@ namespace _08_LettersChangeNumbers_v2
                     positionLastLetterString);
 
                 //Изчисляваме крайния резултат
-                finalResult += sumFromString;
+                finalResult += sumFromString * 1.0;
             }
 
             Console.WriteLine($"{Math.Abs(finalResult):F2}");
@@ -46,20 +46,20 @@ namespace _08_LettersChangeNumbers_v2
 
             if (isFirstUpper)
             {
-                sum = number / firstPosition;
+                sum = number / firstPosition * 1.0;
             }
             else
             {
-                sum = number * firstPosition;
+                sum = number * firstPosition * 1.0;
             }
 
             if (isLastUpper)
             {
-                sum -= lastPosition;
+                sum -= lastPosition * 1.0;
             }
             else
             {
-                sum += lastPosition;
+                sum += lastPosition * 1.0;
             }
 
             return sum;

@@ -25,8 +25,8 @@ namespace _08_LettersChangeNumbers_v2
                 bool isFirstLetterStringIsUpper = IsCharIsUpper(firstLetterString);
                 bool isLastLetterStringIsUpper = IsCharIsUpper(lastLetterString);
 
-                int positionFirstLetterString = CharAlphabetNumber(firstLetterString);
-                int positionLastLetterString = CharAlphabetNumber(lastLetterString);
+                int positionFirstLetterString = Math.Abs(CharAlphabetNumber(firstLetterString));
+                int positionLastLetterString = Math.Abs(CharAlphabetNumber(lastLetterString));
 
                 //Изчисляваме сумата на текущия  string.
                 double sumFromString = CalculateSumFromLetters(isFirstLetterStringIsUpper,
@@ -34,7 +34,7 @@ namespace _08_LettersChangeNumbers_v2
                     positionLastLetterString);
 
                 //Изчисляваме крайния резултат
-                finalResult += sumFromString * 1.0;
+                finalResult += (sumFromString * 1.0);
             }
 
             Console.WriteLine($"{Math.Abs(finalResult):F2}");
@@ -46,20 +46,20 @@ namespace _08_LettersChangeNumbers_v2
 
             if (isFirstUpper)
             {
-                sum = number / firstPosition * 1.0;
+                sum = number / (firstPosition * 1.0);
             }
             else
             {
-                sum = number * firstPosition * 1.0;
+                sum = number * (firstPosition * 1.0);
             }
 
             if (isLastUpper)
             {
-                sum -= lastPosition * 1.0;
+                sum -= (lastPosition * 1.0);
             }
             else
             {
-                sum += lastPosition * 1.0;
+                sum += (lastPosition * 1.0);
             }
 
             return sum;

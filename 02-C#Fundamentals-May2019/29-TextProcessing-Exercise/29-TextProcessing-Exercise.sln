@@ -17,7 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-LettersChangeNumbers", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-Letters-v2", "08-Letters-v2\08-Letters-v2.csproj", "{05BC5C40-1D1D-45BE-B869-296EE92B5E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-StringExplosion", "pr\07-StringExplosion.csproj", "{573B879D-0C4B-425A-A64D-09D759F38FCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-StringExplosion", "pr\07-StringExplosion.csproj", "{573B879D-0C4B-425A-A64D-09D759F38FCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-ExtractFile", "03-ExtractFile\03-ExtractFile.csproj", "{8366BCF6-E842-47FA-872C-7E8E5078A69F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-CaesarCipher", "04-CaesarCipher\04-CaesarCipher.csproj", "{D054876D-EB5B-45B7-829D-8D50ACDD71F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-ReplaceRepeatingChars", "06-ReplaceRepeatingChars\06-ReplaceRepeatingChars.csproj", "{D148B203-0E5A-4163-8059-2C7134999944}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +63,18 @@ Global
 		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{573B879D-0C4B-425A-A64D-09D759F38FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8366BCF6-E842-47FA-872C-7E8E5078A69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8366BCF6-E842-47FA-872C-7E8E5078A69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8366BCF6-E842-47FA-872C-7E8E5078A69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8366BCF6-E842-47FA-872C-7E8E5078A69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D054876D-EB5B-45B7-829D-8D50ACDD71F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D054876D-EB5B-45B7-829D-8D50ACDD71F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D054876D-EB5B-45B7-829D-8D50ACDD71F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D054876D-EB5B-45B7-829D-8D50ACDD71F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D148B203-0E5A-4163-8059-2C7134999944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D148B203-0E5A-4163-8059-2C7134999944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D148B203-0E5A-4163-8059-2C7134999944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D148B203-0E5A-4163-8059-2C7134999944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

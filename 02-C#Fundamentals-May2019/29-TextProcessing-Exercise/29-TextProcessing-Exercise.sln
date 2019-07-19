@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-CaesarCipher", "04-Caesa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-ReplaceRepeatingChars", "06-ReplaceRepeatingChars\06-ReplaceRepeatingChars.csproj", "{D148B203-0E5A-4163-8059-2C7134999944}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-LettersChange-Daskal", "08-LettersChange-Daskal\08-LettersChange-Daskal.csproj", "{47696B6A-E557-4BBD-AAE4-7B9FBFFD41D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{D148B203-0E5A-4163-8059-2C7134999944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D148B203-0E5A-4163-8059-2C7134999944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D148B203-0E5A-4163-8059-2C7134999944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47696B6A-E557-4BBD-AAE4-7B9FBFFD41D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47696B6A-E557-4BBD-AAE4-7B9FBFFD41D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47696B6A-E557-4BBD-AAE4-7B9FBFFD41D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47696B6A-E557-4BBD-AAE4-7B9FBFFD41D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

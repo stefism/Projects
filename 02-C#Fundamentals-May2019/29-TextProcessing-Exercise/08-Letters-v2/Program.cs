@@ -8,10 +8,10 @@ namespace _08_LettersChangeNumbers_v2
         static void Main(string[] args)
         {
             // Прочитаме двата стринга.
-            string[] inputString = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string[] inputString = Console.ReadLine().Split(new char[] {' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Инициализираме променлива за крайния резултат.
-            double finalResult = 0;
+            decimal finalResult = 0;
 
             foreach (var @string in inputString)
             {
@@ -29,37 +29,37 @@ namespace _08_LettersChangeNumbers_v2
                 int positionLastLetterString = Math.Abs(CharAlphabetNumber(lastLetterString));
 
                 //Изчисляваме сумата на текущия  string.
-                double sumFromString = CalculateSumFromLetters(isFirstLetterStringIsUpper,
+                decimal sumFromString = CalculateSumFromLetters(isFirstLetterStringIsUpper,
                     isLastLetterStringIsUpper, numberString, positionFirstLetterString,
                     positionLastLetterString);
 
                 //Изчисляваме крайния резултат
-                finalResult += (sumFromString * 1.0);
+                finalResult += (sumFromString * 1.0m);
             }
 
-            Console.WriteLine($"{Math.Abs(finalResult):F2}");
+            Console.WriteLine($"{finalResult:F2}");
         }
 
-        static double CalculateSumFromLetters(bool isFirstUpper, bool isLastUpper, int number, int firstPosition, int lastPosition)
+        static decimal CalculateSumFromLetters(bool isFirstUpper, bool isLastUpper, int number, int firstPosition, int lastPosition)
         {
-            double sum = 0;
+            decimal sum = 0;
 
             if (isFirstUpper)
             {
-                sum = number / (firstPosition * 1.0);
+                sum = number / (firstPosition * 1.0m);
             }
             else
             {
-                sum = number * (firstPosition * 1.0);
+                sum = number * (firstPosition * 1.0m);
             }
 
             if (isLastUpper)
             {
-                sum -= (lastPosition * 1.0);
+                sum -= (lastPosition * 1.0m);
             }
             else
             {
-                sum += (lastPosition * 1.0);
+                sum += (lastPosition * 1.0m);
             }
 
             return sum;

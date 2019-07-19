@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Orders-v2", "04-Orders-v
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-ForceBook-Daskal", "09-ForceBook-Daskal\09-ForceBook-Daskal.csproj", "{6ACC439D-1ABC-4236-9E3B-416D97ED5C98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-SoftUniExamResults", "10-SoftUniExamResults\10-SoftUniExamResults.csproj", "{0DFF23E9-37E4-40CB-96DC-65D5AEEF2B2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-SoftUniExamResults", "10-SoftUniExamResults\10-SoftUniExamResults.csproj", "{0DFF23E9-37E4-40CB-96DC-65D5AEEF2B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-SoftUniExam-v2", "10-SoftUniExam-v2\10-SoftUniExam-v2.csproj", "{D1502512-025B-4A7E-BE7A-0D739FBA5CA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{0DFF23E9-37E4-40CB-96DC-65D5AEEF2B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFF23E9-37E4-40CB-96DC-65D5AEEF2B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFF23E9-37E4-40CB-96DC-65D5AEEF2B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1502512-025B-4A7E-BE7A-0D739FBA5CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1502512-025B-4A7E-BE7A-0D739FBA5CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1502512-025B-4A7E-BE7A-0D739FBA5CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1502512-025B-4A7E-BE7A-0D739FBA5CA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

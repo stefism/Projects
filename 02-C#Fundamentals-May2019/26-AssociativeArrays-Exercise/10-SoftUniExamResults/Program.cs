@@ -23,12 +23,15 @@ namespace _10_SoftUniExamResults
                 {
                     Console.WriteLine("Results:");
 
-                    foreach (var item in studentsInformation)
+                    List<LanguagesAndPoints> listOfLanguagesAndPoints = studentsInformation
+                        .SelectMany(x => x.Value).ToList();
+
+                    listOfLanguagesAndPoints = listOfLanguagesAndPoints
+                        .OrderByDescending(x => x.StudentPoints).ThenBy(y => y.StudentName).ToList();
+
+                    foreach (var item in listOfLanguagesAndPoints)
                     {
-                        Console.WriteLine(string.Join(Environment.NewLine, item.Value
-                            .OrderByDescending(x => x.StudentPoints)
-                            .ThenBy(x => x.StudentName)
-                            .Select(x => $"{x.StudentName} | {x.StudentPoints}")));
+                        Console.WriteLine($"{item.StudentName} | {item.StudentPoints}");
                     }
 
                     languagesCount = languagesCount.OrderByDescending(x => x.Value)

@@ -35,20 +35,6 @@ namespace _01_Ranking
 
                 if (contestName == "end of submissions")
                 {
-                    var studentsAndPoints = new Dictionary<string, int>();
-
-                    studentsAndPoints = CalculateStudentPoints(contestInfo);
-                    studentsAndPoints = studentsAndPoints.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-                    Console.WriteLine($"Best candidate is {studentsAndPoints.ElementAt(0).Key} with total {studentsAndPoints.ElementAt(0).Value} points.");
-
-                    Console.WriteLine("Ranking:");
-                    AddToFinalResult(contestInfo, finalResult);
-
-                    finalResult = finalResult.OrderBy(x => x.Key)
-                        .ThenByDescending(x => x.Value.OrderByDescending(y => y.ContestPoints))
-                        .ToDictionary(z => z.Key, z => z.Value);
-
                     break;
                 }
 
@@ -66,6 +52,9 @@ namespace _01_Ranking
 
                     if (isPasswordValid)
                     {
+                        AddToFinalResult(finalResult, userName, contestName, userPoints);
+                        // finalResult, string studentName, string contestName, int points
+
                         if (!contestInfo.ContainsKey(contestName))
                         {
                             contestInfo[contestName] = new List<Contest>();
@@ -88,26 +77,68 @@ namespace _01_Ranking
                     }
                 }
             }
+
+            var studentsAndPoints = new Dictionary<string, int>();
+
+            studentsAndPoints = CalculateStudentPoints(contestInfo);
+            studentsAndPoints = studentsAndPoints.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (var item in studentsAndPoints)
+            {
+                Console.WriteLine($"Best candidate is {item.Key} with total {item.Value} points.");
+                break;
+            }
+
+            Console.WriteLine("Ranking:");
+
+            foreach (var item in contestInfo)
+            {
+                Console.WriteLine(item.Value.Select(x => $"{x.StudentUserName}"));
+
+
+                //Console.WriteLine($"# {item.Key} => {item.Value.Select(x => $"{x.StudentPoints}")}");
+
+                //Console.WriteLine($"{item.Key}");
+                //Console.WriteLine(string.Join(Environment.NewLine, item.Value
+                //    .Select(x => $"# {x.StudentUserName} -> {x.StudentPoints}")));
+            }
+
         }
 
-        private static void AddToFinalResult(Dictionary<string, List<Contest>> contestInfo, Dictionary<string, List<ContestAndPoints>> finalResult)
+        static void AddToFinalResult(Dictionary<string, List<ContestAndPoints>> finalResult, string studentName, string contestName, int points)
         {
-            foreach (var contestInfoItem in contestInfo)
+            if (!finalResult.ContainsKey(studentName))
             {
-                foreach (var studentInfo in contestInfoItem.Value)
-                {
-                    if (!finalResult.Keys.Contains(studentInfo.StudentUserName))
-                    {
-                        finalResult[studentInfo.StudentUserName] = new List<ContestAndPoints>();
-                    }
+                finalResult[studentName] = new List<ContestAndPoints>();
+            }
 
-                    finalResult[studentInfo.StudentUserName].Add(new ContestAndPoints
+            ContestAndPoints currentInfo = new ContestAndPoints();
+            finalResult[studentName].Add(currentInfo);
+
+            //if (currentInfo.ContestPoints < points)
+            //{
+            //    currentInfo.ContestPoints = points;
+            //}
+
+            foreach (var item in finalResult)
+            {
+                if (item.Key == studentName)
+                {
+                    foreach (var atrubutes in item.Value)
                     {
-                        ContestName = contestInfoItem.Key,
-                        ContestPoints = studentInfo.StudentPoints
-                    });
+                        if (atrubutes.ContestPoints < points)
+                        {
+                            atrubutes.ContestPoints = points;
+                        }
+                        else
+                        {
+                            currentInfo.ContestName = contestName;
+                        }
+                    }
                 }
             }
+
+            finalResult[studentName].Add(currentInfo);
         }
 
         static Dictionary<string, int> CalculateStudentPoints(Dictionary<string, List<Contest>> students)
@@ -140,6 +171,23 @@ namespace _01_Ranking
                         if (element.StudentPoints < point)
                         {
                             element.StudentPoints = point;
+                        }
+                    }
+                }
+            }
+        }
+
+        static void AddPointsIfIsBuger(Dictionary<string, List<ContestAndPoints>> info, string contestName, int point)
+        {
+            foreach (var item in info)
+            {
+                if (item.Key == contestName)
+                {
+                    foreach (var element in item.Value)
+                    {
+                        if (element.ContestPoints < point)
+                        {
+                            element.ContestPoints = point;
                         }
                     }
                 }

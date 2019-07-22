@@ -18,6 +18,35 @@ namespace _03_FeedTheAnimals
 
                 if (command == "Last Info")
                 {
+                    animals = animals.OrderByDescending(x => x.Value[0].FoodInGrams)
+                        .ThenBy(x => x.Key)
+                        .ToDictionary(x => x.Key, x => x.Value);
+
+                    Console.WriteLine("Animals:");
+                    Console.WriteLine(string.Join(Environment.NewLine, animals.Select(x => $"{x.Key} -> {x.Value[0].FoodInGrams}g")));
+
+                    Console.WriteLine("Areas with hungry animals:");
+
+                    var hungryAreas = new Dictionary<string, int>();
+
+                    foreach (var item in animals)
+                    {
+                        string currentArea = item.Value[0].Area;
+
+                        if (!hungryAreas.ContainsKey(currentArea))
+                        {
+                            hungryAreas[currentArea] = 0;
+                        }
+
+                        hungryAreas[currentArea]++;
+                    }
+
+                    hungryAreas = hungryAreas.OrderByDescending(x => x.Value)
+                        .ThenByDescending(x => x.Key)
+                        .ToDictionary(x => x.Key, x => x.Value);
+
+                    Console.WriteLine(string.Join(Environment.NewLine, hungryAreas.Select(x => $"{x.Key} : {x.Value}")));
+
                     break;
                 }
 
@@ -30,49 +59,25 @@ namespace _03_FeedTheAnimals
                     if (!animals.ContainsKey(animalName))
                     {
                         animals[animalName] = new List<Animals>();
-                        animals[animalName].Add(new Animals{FoodInGrams = animalFood, Area = animalArea });
+                        animals[animalName].Add(new Animals { FoodInGrams = animalFood, Area = animalArea });
                     }
                     else
                     {
-                        foreach (var item in animals)
-                        {
-                            if (item.Key == animalName)
-                            {
-                                foreach (var animalValues in animals.Values)
-                                {
-                                    foreach (var item2 in animalValues)
-                                    {
-                                        item2.FoodInGrams += animalFood;
-                                        break;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
+                        animals[animalName].Select(x => x.FoodInGrams += animalFood).ToList();
                     }
                 }
 
                 else if (command == "Feed")
                 {
-                    bool isFeed = false;
-
-                    foreach (var animalValues in animals.Values)
+                    if (animals.ContainsKey(animalName))
                     {
-                        foreach (var item in animalValues)
+                        animals[animalName].Select(x => x.FoodInGrams -= animalFood).ToList();
+
+                        if (animals[animalName][0].FoodInGrams <= 0)
                         {
-                            item.FoodInGrams -= animalFood;
-
-                            if (item.FoodInGrams <= 0)
-                            {
-                                isFeed = true;
-                            }
+                            Console.WriteLine($"{animalName} was successfully fed");
+                            animals.Remove(animalName);
                         }
-                    }
-
-                    if (isFeed)
-                    {
-                        Console.WriteLine($"{animalName} was successfully fed");
-                        animals.Remove(animalName);
                     }
                 }
             }

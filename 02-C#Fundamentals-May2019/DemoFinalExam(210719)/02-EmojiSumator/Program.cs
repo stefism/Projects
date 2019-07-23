@@ -22,6 +22,13 @@ namespace _02_EmojiSumator
 
             var regex = new Regex(@" :[a-z]{4,}:[ ,.!?]");
 
+            //Здравей,
+            //може да прочетеш за Lookahead и Lookbehind и да пробваш с този regex:
+            //(?<=[\s])(:[a - z]{ 4,}:)(?=[\s,.! ?])
+            //Поздрави:) - Това да видя също!
+            // Да прочета пак условието на задачата и да разгадая израза.
+
+
             var matches = regex.Matches(inputText);
 
             List<string> matchesWords = new List<string>();

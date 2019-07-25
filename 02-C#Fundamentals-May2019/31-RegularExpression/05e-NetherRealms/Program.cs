@@ -9,7 +9,12 @@ namespace _05e_NetherRealms
     {
         static void Main(string[] args)
         {
-            string[] input = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries);
+            //string[] input = Console.ReadLine().Split(new string[] { ", ", ","}, StringSplitOptions.RemoveEmptyEntries);
+            // Горното не работи.
+            // separated by commas and zero or more spaces
+
+            string[] input = Regex.Split(Console.ReadLine(), @"\s*,\s*");
+            // Само така сплитнат входа с регекс изпълнява условието separated by commas and zero or more spaces.
 
             var infoDictionary = new Dictionary<string, Values>();
 

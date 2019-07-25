@@ -88,20 +88,20 @@ namespace _04e_StarEnigma
         {
             for (int currentChar = 0; currentChar < encryptedMessage.Length; currentChar++)
             {
-                string[] containsSymbol = { "s", "t", "a", "r", "S", "T", "A", "R" };
+                char[] containsSymbol = {'s', 't', 'a', 'r', 'S', 'T', 'A', 'R' };
 
-                //if (encryptedMessage[currentChar] == containsSymbol.Where(x => "x"))
-                //{
-                //    countKey++;
-                //}
-
-                if (encryptedMessage[currentChar] == 's' || encryptedMessage[currentChar] == 't'
-                    || encryptedMessage[currentChar] == 'a' || encryptedMessage[currentChar] == 'r'
-                    || encryptedMessage[currentChar] == 'S' || encryptedMessage[currentChar] == 'T'
-                    || encryptedMessage[currentChar] == 'A' || encryptedMessage[currentChar] == 'R')
+                if (containsSymbol.Contains(encryptedMessage[currentChar]))
                 {
                     countKey++;
                 }
+
+                //if (encryptedMessage[currentChar] == 's' || encryptedMessage[currentChar] == 't'
+                //    || encryptedMessage[currentChar] == 'a' || encryptedMessage[currentChar] == 'r'
+                //    || encryptedMessage[currentChar] == 'S' || encryptedMessage[currentChar] == 'T'
+                //    || encryptedMessage[currentChar] == 'A' || encryptedMessage[currentChar] == 'R')
+                //{
+                //    countKey++;
+                //}
             }
 
             return countKey;

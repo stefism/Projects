@@ -10,9 +10,9 @@ namespace _03e_SoftUniBarIncome
     {
         static void Main(string[] args)
         {
-            // %(?<customer>[A-Z][a-z]+)%[^|\$%\.]*<(?<product>[A-Za-z]+)>[^|\$%\.]*\|(?<count>\d+)\|[^|\$%\.0-9]*(?<price>\d+\.?\d+)\$
-
-            var regex = new Regex(@"%(?<customer>[A-Z][a-z]+)%[^|\$%\.]*<(?<product>[A-Za-z]+)>[^|\$%\.]*\|(?<count>\d+)\|[^|\$%\.0-9]*(?<price>\d+\.?\d+)\$");
+            // %(?<customer>[A-Z][a-z]+)%[^|\$%\.]*<(?<product>[A-Za-z]+)>[^|\$%\.]*\|(?<count>\d+)\|[^|\$%\.0-9]*(?<price>\d+\.?\d+)\$ - 70 от 100.
+            //•	Valid product contains any word character and must be surrounded by '<' and '>' 
+            var regex = new Regex(@"%(?<customer>[A-Z][a-z]+)%[^|\$%\.]*<(?<product>\w+)>[^|\$%\.]*\|(?<count>\d+)\|[^|\$%\.0-9]*(?<price>\d+\.?\d+)\$");
 
             double totalIncome = 0;
 

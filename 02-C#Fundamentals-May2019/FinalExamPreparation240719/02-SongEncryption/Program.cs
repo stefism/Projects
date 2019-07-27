@@ -13,8 +13,15 @@ namespace _02_SongEncryption
             // (?<artist>[A-Z]\s*[\s*'?a-z]*):
             // :(?<song>[\s*A-Z]*)
 
-            var artistRegex = new Regex(@"^(?<artist>[A-Z]\s*[\s*'?a-z]*):");
-            var songRegex = new Regex(@":(?<song>[\s*A-Z]*)");
+            //var artistRegex = new Regex(@"^(?<artist>[A-Z]\s*[\s*'?a-z]*):");
+            //var songRegex = new Regex(@":(?<song>[\s*A-Z]*)");
+            // 85 от 100 - накрая трябва да е плюс (+), не (*).
+            // A: - ето този вход иначе гърми.
+            // Трябва да има поне една малка буква след главната. затова трябва да е 
+            //с +(поне един или много), а не с * (може да е и нула или много).
+
+            var artistRegex = new Regex(@"^(?<artist>[A-Z]\s*[\s*'?a-z]+):");
+            var songRegex = new Regex(@":(?<song>[\s*A-Z]+)");
 
             while (true)
             {

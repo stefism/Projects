@@ -8,6 +8,8 @@ namespace _01_AnimalSanctuary
     {
         static void Main(string[] args)
         {
+            // Technology Fundamentals Retake Final Exam - 18 April 2018
+
             int numberOfInput = int.Parse(Console.ReadLine());
 
             int totalWeight = 0;
@@ -80,7 +82,7 @@ namespace _01_AnimalSanctuary
 
             for (int i = 2; i < nameToExtract.Length; i++)
             {
-                if (char.IsLetter(nameToExtract[i]))
+                if (char.IsLetter(nameToExtract[i]) || char.IsWhiteSpace(nameToExtract[i]))
                 {
                     name += nameToExtract[i];
                 }
@@ -97,7 +99,8 @@ namespace _01_AnimalSanctuary
 
             for (int i = 3; i < country.Length; i++)
             {
-                if (!char.IsWhiteSpace(country[i]) && !char.IsLetter(country[i])) // Тука евентуално да стане интервал.
+
+                if (country[i] != ' ' && !char.IsLetter(country[i]))
                 {
                     return false;
                 }
@@ -113,13 +116,15 @@ namespace _01_AnimalSanctuary
                 return false;
             }
 
-            for (int i = 2; i < kind.Length; i++)
-            {
-                if (kind[i] == ';')
-                {
-                    return false;
-                }
-            }
+            //for (int i = 2; i < kind.Length; i++)
+            //{
+            //    if (kind[i] == ';')
+            //    {
+            //        return false;
+            //    }
+            //}
+
+            // Тука също като долното.
 
             return true;
         }
@@ -130,13 +135,15 @@ namespace _01_AnimalSanctuary
                 return false;
             }
 
-            for (int i = 2; i < name.Length; i++)
-            {
-                if (name[i] == ';')
-                {
-                    return false;
-                }
-            }
+            //for (int i = 2; i < name.Length; i++)
+            //{
+            //    if (name[i] == ';')
+            //    {
+            //        return false;
+            //    }
+            //}
+
+            // Нема нужда от нея щото като го сплитне по ; то така или иначе ги маха и няма как да има ; във вече сплитнатото име.
 
             return true;
         }

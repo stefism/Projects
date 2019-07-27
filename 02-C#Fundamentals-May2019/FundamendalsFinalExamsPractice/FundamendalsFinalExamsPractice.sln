@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-AnimalSanctuary", "01-AnimalSanctuary\01-AnimalSanctuary.csproj", "{F2B4043D-E5FF-4250-9FE1-7223E287ED43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-PracticeSessions", "02-PracticeSessions\02-PracticeSessions.csproj", "{BD7108AD-5C4D-48C9-866C-6388EA7B98C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F2B4043D-E5FF-4250-9FE1-7223E287ED43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2B4043D-E5FF-4250-9FE1-7223E287ED43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2B4043D-E5FF-4250-9FE1-7223E287ED43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD7108AD-5C4D-48C9-866C-6388EA7B98C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7108AD-5C4D-48C9-866C-6388EA7B98C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7108AD-5C4D-48C9-866C-6388EA7B98C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7108AD-5C4D-48C9-866C-6388EA7B98C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

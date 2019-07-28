@@ -2,3 +2,5 @@
 using System.Text
 Работа със Subsrting
 Работа със StringBuilder
+Емоджи суматора от Регексите да видя.
+Associative Arrays лаб, упражнения и допълнителните упражнения задачите пак да видя.

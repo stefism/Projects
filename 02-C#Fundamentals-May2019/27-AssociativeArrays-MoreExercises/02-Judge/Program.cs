@@ -71,35 +71,35 @@ namespace _02_Judge
 
                 foreach (var item in users)
                 {
-                    if (!item.Value.Select(x => x.UserName).Contains(user))
+                    if (item.Key == contest) // Винаги се прави проверка дали сме в правилния ключ.
                     {
-                        users[contest].Add(new Contest { UserName = user, UserPoints = points });
-                        break;
-                    }
-                    else
-                    {
-                        if (item.Value.Any(x => x.UserName == user && x.UserPoints < points))
+                        if (!item.Value.Select(x => x.UserName).Contains(user))
                         {
-
-                            Contest @class = item.Value.FirstOrDefault(x => x.UserName == user);
-
-                            if (@class.UserPoints < points)
-                            {
-                                @class.UserPoints = points;
-                                userPoints[user] += points;
-                                break;
-                            }
-
-                            //foreach (var values in item.Value)
-                            //{
-                            //    if (values.UserName == user)
-                            //    {
-                            //        values.UserPoints = points;
-                            //        break;
-                            //    }
-                            //} // - Прави същото като горното.
-
+                            users[contest].Add(new Contest { UserName = user, UserPoints = points });
                             break;
+                        }
+                        else
+                        {
+                            if (item.Value.Any(x => x.UserName == user && x.UserPoints < points))
+                            {
+                                Contest @class = item.Value.FirstOrDefault(x => x.UserName == user);
+
+                                if (@class.UserPoints < points)
+                                {
+                                    @class.UserPoints = points;
+                                    //userPoints[user] += points; не му е мястото тука.
+                                    break;
+                                }
+
+                                //foreach (var values in item.Value)
+                                //{
+                                //    if (values.UserName == user)
+                                //    {
+                                //        values.UserPoints = points;
+                                //        break;
+                                //    }
+                                //} // - Прави същото като горното.
+                            }
                         }
                     }
                 }

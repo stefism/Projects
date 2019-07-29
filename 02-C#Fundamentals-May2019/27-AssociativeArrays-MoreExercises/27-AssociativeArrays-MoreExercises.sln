@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-MobaChallenger", "03-Mob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Snowwhite", "04-Snowwhite\04-Snowwhite.csproj", "{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Snowwhite-v2", "03-Snowwhite-v2\03-Snowwhite-v2.csproj", "{7444256B-6C6E-448E-BB90-22BBA29EDD90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Snowwhite-v2", "03-Snowwhite-v2\03-Snowwhite-v2.csproj", "{7444256B-6C6E-448E-BB90-22BBA29EDD90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proba", "Proba\Proba.csproj", "{70697F25-6EF9-49AE-B333-B59BA97F37E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proba", "Proba\Proba.csproj", "{70697F25-6EF9-49AE-B333-B59BA97F37E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-DragonArmy", "05-DragonArmy\05-DragonArmy.csproj", "{71100020-F5C0-4CEA-88DE-6F3645B7F16C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71100020-F5C0-4CEA-88DE-6F3645B7F16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71100020-F5C0-4CEA-88DE-6F3645B7F16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71100020-F5C0-4CEA-88DE-6F3645B7F16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71100020-F5C0-4CEA-88DE-6F3645B7F16C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

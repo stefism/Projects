@@ -39,7 +39,9 @@ namespace _03_MobaChallenger
                         {
                             if (item.Key == player)
                             {
-                                if (item.Value.Any(x => x.Position == position && x.Skill < skill))
+                                //if (item.Value.Any(x => x.Position == position && x.Skill < skill)) не работи
+
+                                if (item.Value.Any(x => x.Position == position))
                                 {
                                     Player playerValue = item.Value.FirstOrDefault(x => x.Position == position);
 
@@ -77,7 +79,8 @@ namespace _03_MobaChallenger
                             {
                                 playersDictionary.Remove(player2);
                             }
-                            else
+
+                            else if (player1TotalSum < player2TotalSum)
                             {
                                 playersDictionary.Remove(player1);
                             }

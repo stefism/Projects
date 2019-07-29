@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Proba", "01-Proba\01-Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Judge", "02-Judge\02-Judge.csproj", "{D06CF23A-E081-4614-B6AE-F45A5560E64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-MobaChallenger", "03-MobaChallenger\03-MobaChallenger.csproj", "{CE5195F7-7555-4C64-BB57-B94B9E014796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-MobaChallenger", "03-MobaChallenger\03-MobaChallenger.csproj", "{CE5195F7-7555-4C64-BB57-B94B9E014796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Snowwhite", "04-Snowwhite\04-Snowwhite.csproj", "{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Snowwhite", "04-Snowwhite\04-Snowwhite.csproj", "{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Snowwhite-v2", "03-Snowwhite-v2\03-Snowwhite-v2.csproj", "{7444256B-6C6E-448E-BB90-22BBA29EDD90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proba", "Proba\Proba.csproj", "{70697F25-6EF9-49AE-B333-B59BA97F37E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEFBE2B-9F42-44C1-B78C-06D5B14C791C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7444256B-6C6E-448E-BB90-22BBA29EDD90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7444256B-6C6E-448E-BB90-22BBA29EDD90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7444256B-6C6E-448E-BB90-22BBA29EDD90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7444256B-6C6E-448E-BB90-22BBA29EDD90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70697F25-6EF9-49AE-B333-B59BA97F37E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

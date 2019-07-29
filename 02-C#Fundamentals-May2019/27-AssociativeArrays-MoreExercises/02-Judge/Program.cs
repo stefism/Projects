@@ -80,7 +80,7 @@ namespace _02_Judge
                         }
                         else
                         {
-                            if (item.Value.Any(x => x.UserName == user && x.UserPoints < points))
+                            if (item.Value.Any(x => x.UserName == user))
                             {
                                 Contest @class = item.Value.FirstOrDefault(x => x.UserName == user);
 

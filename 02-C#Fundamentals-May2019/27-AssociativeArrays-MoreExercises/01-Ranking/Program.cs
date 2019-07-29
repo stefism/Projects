@@ -45,9 +45,17 @@ namespace _01_Ranking
                     Console.WriteLine("Ranking:");
                     AddToFinalResult(contestInfo, finalResult);
 
-                    finalResult = finalResult.OrderBy(x => x.Key)
-                        .ThenByDescending(x => x.Value.OrderByDescending(y => y.ContestPoints))
-                        .ToDictionary(z => z.Key, z => z.Value);
+                    foreach (var item in finalResult.OrderBy(x => x.Key))
+                    {
+                        Console.WriteLine(item.Key);
+
+                        if (item.Value.Count > 0)
+                        {
+                            Console.WriteLine(string.Join(Environment.NewLine, item.Value
+                                .OrderByDescending(x => x.ContestPoints)
+                                .Select(x => $"#  {x.ContestName} -> {x.ContestPoints}")));
+                        }
+                    }
 
                     break;
                 }

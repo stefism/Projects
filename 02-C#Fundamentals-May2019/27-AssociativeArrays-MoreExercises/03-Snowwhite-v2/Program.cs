@@ -19,19 +19,20 @@ namespace _03_Snowwhite_v2
 
                 if (name == "Once upon a time")
                 {
+
                     foreach (var item in dwarfs)
                     {
                         List<Dwarf> values = item.Value;
-                        //string itemKey = item.Key;
+                        string itemKey = item.Key;
 
-                        //foreach (var values in item.Value.OrderByDescending(x => x.Physics))
-                        //{
-                        //    Console.WriteLine($"{item.Key} {values.Name} <-> {values.Physics}");
-                        //}
+                        foreach (var value in item.Value.OrderByDescending(x => x.Physics))
+                        {
+                            Console.WriteLine($"{item.Key} {value.Name} <-> {value.Physics}");
+                        }
 
                         //Console.WriteLine(Environment.NewLine, item.Value
-                        //    .Select(x => $"{itemKey} {x.Name} <-> {x.Physics}")); // Не печати нищо.
-                           
+                        //    .Select(x => $"{itemKey} {x.Name} <-> {x.Physics}"));
+
                     }
 
                     break;

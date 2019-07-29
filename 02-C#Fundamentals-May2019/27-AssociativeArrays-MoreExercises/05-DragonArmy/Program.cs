@@ -37,20 +37,31 @@ namespace _05_DragonArmy
                             {
                                 if (values.Name == name)
                                 {
-                                    dragonsDictionary.Remove(type);
+                                    dragonsDictionary[type].Remove(values);
                                     AddInfoToDictionary(dragonsDictionary, type, name, damageOrNull, damage, healthOrNull, health, armorOrNull, armor);
                                     break;
                                 }
                                 else
                                 {
                                     AddInfoToDictionary(dragonsDictionary, type, name, damageOrNull, damage, healthOrNull, health, armorOrNull, armor);
+                                    break;
                                 }
                             }
                         }
                     }
                 }
-                
+            }
 
+            foreach (var dragon in dragonsDictionary)
+            {
+                double averageDamage = dragon.Value.Select(x => x.Damage).Average();
+                double averageHealth = dragon.Value.Select(x => x.Health).Average();
+                double averageArmor = dragon.Value.Select(x => x.Armor).Average();
+
+                Console.WriteLine($"{dragon.Key}::({averageDamage:F2}/{averageHealth:F2}/{averageArmor:F2})");
+
+                Console.WriteLine(string.Join(Environment.NewLine, dragon.Value.OrderBy(x => x.Name)
+                    .Select(x => $"-{x.Name} -> damage: {x.Damage}, health: {x.Health}, armor: {x.Armor}")));
             }
         }
 

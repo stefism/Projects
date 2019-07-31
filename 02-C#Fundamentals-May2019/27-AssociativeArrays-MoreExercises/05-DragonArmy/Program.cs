@@ -52,6 +52,10 @@ namespace _05_DragonArmy
                 }
             }
 
+            //dragonsDictionary = dragonsDictionary.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value); // Не работи
+
+            //List<Dragons> current = dragonsDictionary.Values;
+
             foreach (var dragon in dragonsDictionary)
             {
                 double averageDamage = dragon.Value.Select(x => x.Damage).Average();
@@ -60,8 +64,18 @@ namespace _05_DragonArmy
 
                 Console.WriteLine($"{dragon.Key}::({averageDamage:F2}/{averageHealth:F2}/{averageArmor:F2})");
 
-                Console.WriteLine(string.Join(Environment.NewLine, dragon.Value.OrderBy(x => x.Name)
-                    .Select(x => $"-{x.Name} -> damage: {x.Damage}, health: {x.Health}, armor: {x.Armor}")));
+                List<Dragons> current = dragon.Value;
+                current = current.OrderBy(x => x.Name).ToList();
+
+                foreach (var value in current)
+                {
+                    //List<Dragons> current = value;
+                    Console.WriteLine($"-{value.Name} -> damage: {value.Damage}, health: {value.Health}, armor: {value.Armor}");
+                    //Console.WriteLine($"-{value.Name} -> damage: {value.Damage}, health: {value.Health}, armor: {value.Armor}");
+                }
+
+                //Console.WriteLine(string.Join(Environment.NewLine, dragon.Value.OrderBy(x => x.Name)
+                //    .Select(x => $"-{x.Name} -> damage: {x.Damage}, health: {x.Health}, armor: {x.Armor}")));
             }
         }
 

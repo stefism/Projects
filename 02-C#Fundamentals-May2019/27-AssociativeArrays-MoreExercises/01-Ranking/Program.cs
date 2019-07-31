@@ -91,7 +91,7 @@ namespace _01_Ranking
                         }
                         else
                         {
-                            AddPointsIfIsBuger(contestInfo, contestName, userPoints);
+                            AddPointsIfIsBigger(contestInfo, contestName, userPoints, userName);
                         }
                     }
                 }
@@ -100,10 +100,12 @@ namespace _01_Ranking
 
         private static void AddToFinalResult(Dictionary<string, List<Contest>> contestInfo, Dictionary<string, List<ContestAndPoints>> finalResult)
         {
+           
             foreach (var contestInfoItem in contestInfo)
             {
                 foreach (var studentInfo in contestInfoItem.Value)
                 {
+                    
                     if (!finalResult.Keys.Contains(studentInfo.StudentUserName))
                     {
                         finalResult[studentInfo.StudentUserName] = new List<ContestAndPoints>();
@@ -137,26 +139,29 @@ namespace _01_Ranking
             return studentsAndPointsInfo;
         }
 
-        static void AddPointsIfIsBuger(Dictionary<string, List<Contest>> info, string contestName, int point)
+        static void AddPointsIfIsBigger(Dictionary<string, List<Contest>> contestInfo, string contestName, int point, string name)
         {
-            foreach (var item in info)
+            foreach (var item in contestInfo)
             {
                 if (item.Key == contestName)
                 {
                     foreach (var element in item.Value)
                     {
-                        if (element.StudentPoints < point)
+                        if (element.StudentUserName == name)
                         {
-                            element.StudentPoints = point;
+                            if (element.StudentPoints < point)
+                            {
+                                element.StudentPoints = point;
+                            }
                         }
                     }
                 }
             }
         }
 
-        static bool IsUserExist(Dictionary<string, List<Contest>> students, string userName, string contestName)
+        static bool IsUserExist(Dictionary<string, List<Contest>> contestInfo, string userName, string contestName)
         {
-            foreach (var item in students)
+            foreach (var item in contestInfo)
             {
                 if (item.Key == contestName)
                 {

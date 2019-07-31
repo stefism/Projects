@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-EmojiSumator", "02-Emoji
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-FeedTheAnimals", "03-FeedTheAnimals\03-FeedTheAnimals.csproj", "{58AD13BA-C0BF-4E5D-B984-A7CE61319C9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-String-Daskal", "01-String-Daskal\01-String-Daskal.csproj", "{306355E0-0B17-4863-A45C-8DEE5DCBFFB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-String-Daskal", "01-String-Daskal\01-String-Daskal.csproj", "{306355E0-0B17-4863-A45C-8DEE5DCBFFB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Emoji-Daskal", "02-Emoji-Daskal\02-Emoji-Daskal.csproj", "{BD3AD430-80D4-432F-BF5E-512FC08A43E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Emoji-Daskal", "02-Emoji-Daskal\02-Emoji-Daskal.csproj", "{BD3AD430-80D4-432F-BF5E-512FC08A43E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-FeedTheAnimals-Daskal", "03-FeedTheAnimals-Daskal\03-FeedTheAnimals-Daskal.csproj", "{2828AE79-3350-4018-8889-A16252EE716C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{BD3AD430-80D4-432F-BF5E-512FC08A43E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD3AD430-80D4-432F-BF5E-512FC08A43E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3AD430-80D4-432F-BF5E-512FC08A43E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2828AE79-3350-4018-8889-A16252EE716C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2828AE79-3350-4018-8889-A16252EE716C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2828AE79-3350-4018-8889-A16252EE716C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2828AE79-3350-4018-8889-A16252EE716C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

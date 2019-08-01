@@ -9,13 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-PracticeSessions", "02-P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ArrivingInKathmandu", "01-ArrivingInKathmandu\01-ArrivingInKathmandu.csproj", "{2EA01656-64C1-4D42-B224-36AC0A260DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-ArrivingInKathmanduWithRegex", "01-ArrivingInKathmanduWithRegex\01-ArrivingInKathmanduWithRegex.csproj", "{12F2171A-CBA9-469A-828D-DA80285FB03E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ArrivingInKathmanduWithRegex", "01-ArrivingInKathmanduWithRegex\01-ArrivingInKathmanduWithRegex.csproj", "{12F2171A-CBA9-469A-828D-DA80285FB03E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-OnTheWayToAnnapurna", "02-OnTheWayToAnnapurna\02-OnTheWayToAnnapurna.csproj", "{B74F1A4F-8080-4632-9220-BA0552392CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-OnTheWayToAnnapurna", "02-OnTheWayToAnnapurna\02-OnTheWayToAnnapurna.csproj", "{B74F1A4F-8080-4632-9220-BA0552392CA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-VaporWinterSale", "01-VaporWinterSale\01-VaporWinterSale.csproj", "{FAA84EA0-A147-4ECE-89FA-87004DCDF4A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-VaporWinterSale", "01-VaporWinterSale\01-VaporWinterSale.csproj", "{FAA84EA0-A147-4ECE-89FA-87004DCDF4A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-ActivationKeys", "02-ActivationKeys\02-ActivationKeys.csproj", "{DD458D04-F9A0-4CA8-8264-91B81A6AF9B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-ActivationKeys", "02-ActivationKeys\02-ActivationKeys.csproj", "{DD458D04-F9A0-4CA8-8264-91B81A6AF9B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-SongEncryption", "02-SongEncryption\02-SongEncryption.csproj", "{7017A4BF-CFCC-4823-88FB-675DA11CE135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-SantasSecretHelper", "03-SantasSecretHelper\03-SantasSecretHelper.csproj", "{DD475ADC-590F-4DC4-AD42-47567E4E168C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-SantasNewList", "04-SantasNewList\04-SantasNewList.csproj", "{9A61A7E7-99F6-4BF2-BCC1-6A7F974E18DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Regexmon", "03-Regexmon\03-Regexmon.csproj", "{9968DB66-56A5-4EBE-B6BD-6165AA6C6291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +59,22 @@ Global
 		{DD458D04-F9A0-4CA8-8264-91B81A6AF9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD458D04-F9A0-4CA8-8264-91B81A6AF9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD458D04-F9A0-4CA8-8264-91B81A6AF9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7017A4BF-CFCC-4823-88FB-675DA11CE135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7017A4BF-CFCC-4823-88FB-675DA11CE135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7017A4BF-CFCC-4823-88FB-675DA11CE135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7017A4BF-CFCC-4823-88FB-675DA11CE135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD475ADC-590F-4DC4-AD42-47567E4E168C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD475ADC-590F-4DC4-AD42-47567E4E168C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD475ADC-590F-4DC4-AD42-47567E4E168C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD475ADC-590F-4DC4-AD42-47567E4E168C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A61A7E7-99F6-4BF2-BCC1-6A7F974E18DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A61A7E7-99F6-4BF2-BCC1-6A7F974E18DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A61A7E7-99F6-4BF2-BCC1-6A7F974E18DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A61A7E7-99F6-4BF2-BCC1-6A7F974E18DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9968DB66-56A5-4EBE-B6BD-6165AA6C6291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9968DB66-56A5-4EBE-B6BD-6165AA6C6291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9968DB66-56A5-4EBE-B6BD-6165AA6C6291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9968DB66-56A5-4EBE-B6BD-6165AA6C6291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

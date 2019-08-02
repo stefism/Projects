@@ -21,9 +21,9 @@ namespace _03_Regexmon
             while (manipulatedString != "")
             {
                 var firstOtherMatch = firstRegexOther.Match(manipulatedString);
-                
+                var secondLettersMatch = secondRegexLetters.Match(manipulatedString);
 
-                if (!firstOtherMatch.Success)
+                if (!firstOtherMatch.Success && !secondLettersMatch.Success)
                 {
                     break;
                 }
@@ -35,9 +35,7 @@ namespace _03_Regexmon
 
                 manipulatedString = manipulatedString.Remove(0, firstIndex + firstMatch.Length);
 
-                var secondLettersMatch = secondRegexLetters.Match(manipulatedString);
-
-                if (!secondLettersMatch.Success)
+                if (manipulatedString == "")
                 {
                     break;
                 }

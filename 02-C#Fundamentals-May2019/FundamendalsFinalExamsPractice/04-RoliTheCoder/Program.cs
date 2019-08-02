@@ -25,7 +25,7 @@ namespace _04_RoliTheCoder
                     continue;
                 }
 
-                if (!char.IsLetterOrDigit(input[index+1]))
+                if (!char.IsLetter(input[index+1]))
                 {
                     input = Console.ReadLine();
                     continue;
@@ -87,7 +87,9 @@ namespace _04_RoliTheCoder
                 input = Console.ReadLine();
             }
 
-            foreach (var member in eventsAndMembers.OrderByDescending(x => x.Value.Count))
+            foreach (var member in eventsAndMembers
+                .OrderByDescending(x => x.Value.Count)
+                .ThenBy(x => x.Key))
             {
                 Console.WriteLine($"{member.Key} - {member.Value.Count}");
 

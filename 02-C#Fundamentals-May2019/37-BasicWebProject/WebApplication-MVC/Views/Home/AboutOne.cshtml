@@ -60,11 +60,24 @@
     <p>Проба 123</p>
 
     <ul class="nums">
-        @foreach (var num in ViewBag.Nums)
+
+        @if (ViewBag.Nums != null && ViewBag.Nums.Count > 0)
         {
-        <li>@num</li>
+            @foreach (var num in ViewBag.Nums)
+            {
+                <li style="color: yellow; font-size: 30px">@num</li>
+            }
+        }
+        else
+        {
+            <div style="color: yellow; font-size: 30px">Няма ги числата</div>
         }
     </ul>
 
 </div>
 
+<form method="get">
+    Start: <input type ="number" value="@ViewBag.Start" name="start" />
+    End:   <input type ="number" value="@ViewBag.End" name="end" />
+              <input type="submit" />
+    </form>>

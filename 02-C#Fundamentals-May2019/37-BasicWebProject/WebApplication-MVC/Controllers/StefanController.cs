@@ -8,8 +8,9 @@ namespace WebApplication_MVC.Controllers
 {
     public class StefanController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Hello()
         {
+            ViewBag.Rand = new Random().Next(1, 101);
             return View();
         }
     }

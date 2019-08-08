@@ -34,16 +34,20 @@ namespace WebApplication_MVC.Controllers
             return View();
         }
 
-        public IActionResult AboutOne()
+        public IActionResult AboutOne(int start = 5, int end = 10)
         {
             List<int> nums = new List<int>();
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = start; i <= end; i++)
             {
                 nums.Add(i);
             }
 
             ViewBag.Nums = nums;
+
+            ViewBag.Start = start;
+            ViewBag.End = end;
+
             return View();
         }
 

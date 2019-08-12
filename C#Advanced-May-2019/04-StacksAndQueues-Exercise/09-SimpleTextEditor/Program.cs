@@ -24,8 +24,8 @@ namespace _09_SimpleTextEditor
                     string[] splitedCommand = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                     string textToAdd = splitedCommand[1];
 
-                    @string += textToAdd;
                     undoes.Push(@string);
+                    @string += textToAdd;
                 }
 
                 else if (command.StartsWith("3"))
@@ -33,7 +33,7 @@ namespace _09_SimpleTextEditor
                     string[] splitedCommand = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                     int index = int.Parse(splitedCommand[1]) - 1;
 
-                    if (index >= 0 && index <= @string.Length)
+                    if (index >= 0 && index < @string.Length)
                     {
                         Console.WriteLine(@string[index]);
                     }
@@ -41,6 +41,8 @@ namespace _09_SimpleTextEditor
 
                 else if (command.StartsWith("2"))
                 {
+                    undoes.Push(@string);
+
                     string[] splitedCommand = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                     int elementToErase = int.Parse(splitedCommand[1]);
 
@@ -50,8 +52,7 @@ namespace _09_SimpleTextEditor
                     }
                     else
                     {
-                        @string = @string.Remove(elementToErase - @string.Length);
-                        //undoes.Push(@string);
+                        @string = @string.Remove(@string.Length - elementToErase);
                     }
                 }
 

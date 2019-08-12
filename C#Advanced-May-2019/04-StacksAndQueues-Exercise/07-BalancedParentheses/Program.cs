@@ -16,6 +16,12 @@ namespace _08_BalancedParentheses
                 return;
             }
 
+            if (!input.Contains('(') && !input.Contains('[') && !input.Contains('{')) // Ако не съдържа нито едно от трите.
+            {
+                Console.WriteLine("NO");
+                return;
+            }
+
             Stack<char> brackets = new Stack<char>();
 
             for (int i = 0; i < input.Length; i++)
@@ -28,6 +34,12 @@ namespace _08_BalancedParentheses
                 }
                 else if (currentChar == '}' || currentChar == ']' || currentChar == ')')
                 {
+                    if (brackets.Count == 0)
+                    {
+                        Console.WriteLine("NO");
+                        return;
+                    }
+
                     char lastStackChar = brackets.Peek();
 
                     if ((lastStackChar == '(' && currentChar == ')') || (lastStackChar == '[' && currentChar == ']') || (lastStackChar == '{' && currentChar == '}'))

@@ -10,13 +10,54 @@ namespace _09_BalancedParentheses_Daskal
         {
             char[] input = Console.ReadLine().ToCharArray();
 
+            Stack<char> stackOfParenteses = new Stack<char>();
+
             char[] openPareneteses = new char[] { '(', '{', '[' };
 
             bool isValid = true;
 
-            if (!openPareneteses.Contains(input[0]))
+            foreach (var item in input)
             {
-                isValid = false;
+                if (openPareneteses.Contains(item))
+                {
+                    stackOfParenteses.Push(item);
+                    continue;
+                }
+
+                if (stackOfParenteses.Count == 0)
+                {
+                    isValid = false;
+                    break;
+                }
+
+                if (stackOfParenteses.Peek() == '(' && item == ')')
+                {
+                    stackOfParenteses.Pop();
+                }
+
+                else if (stackOfParenteses.Peek() == '[' && item == ']')
+                {
+                    stackOfParenteses.Pop();
+                }
+
+                else if (stackOfParenteses.Peek() == '{' && item == '}')
+                {
+                    stackOfParenteses.Pop();
+                }
+
+                else
+                {
+                    isValid = false;
+                }
+            }
+
+            if (isValid)
+            {
+                Console.WriteLine("YES");
+            }
+            else
+            {
+                Console.WriteLine("NO");
             }
         }
     }

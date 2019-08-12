@@ -31,9 +31,12 @@ namespace _09_SimpleTextEditor
                 else if (command.StartsWith("3"))
                 {
                     string[] splitedCommand = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                    int index = int.Parse(splitedCommand[1]);
+                    int index = int.Parse(splitedCommand[1]) - 1;
 
-                    Console.WriteLine(@string[index-1]);
+                    if (index >= 0 && index <= @string.Length)
+                    {
+                        Console.WriteLine(@string[index]);
+                    }
                 }
 
                 else if (command.StartsWith("2"))
@@ -41,8 +44,15 @@ namespace _09_SimpleTextEditor
                     string[] splitedCommand = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                     int elementToErase = int.Parse(splitedCommand[1]);
 
-                    @string = @string.Remove(elementToErase - @string.Length);
-                    //undoes.Push(@string);
+                    if (elementToErase > @string.Length)
+                    {
+                        @string = @string.Remove(0);
+                    }
+                    else
+                    {
+                        @string = @string.Remove(elementToErase - @string.Length);
+                        //undoes.Push(@string);
+                    }
                 }
 
                 else if (command.StartsWith("4"))

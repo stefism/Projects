@@ -41,6 +41,35 @@ namespace _06_BombTheBasement
                     }
                 }
             }
+
+            for (int col = 0; col < cols; col++)
+            {
+                int onesCounter = 0;
+
+                for (int row = 0; row < rows; row++)
+                {
+                    if (matrix[row, col] == 1)
+                    {
+                        onesCounter++;
+                        matrix[row, col] = 0;
+                    }
+                }
+
+                for (int row = 0; row < onesCounter; row++)
+                {
+                    matrix[row, col] = 1;
+                }
+            }
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    Console.Write(matrix[row, col]);
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }

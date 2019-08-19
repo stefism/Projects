@@ -22,7 +22,7 @@ namespace _02_2x2SuqaresInMatrix
 
             for (int row = 0; row < rows; row++)
             {
-                char[] currentInput = Console.ReadLine().Split().Select(char.Parse).ToArray();
+                char[] currentInput = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(char.Parse).ToArray();
 
                 for (int col = 0; col < cols; col++)
                 {

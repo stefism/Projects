@@ -49,6 +49,10 @@ namespace _08_Bombs
                 {
                     currentBomb.BombPower = matrix[currentBombRow, currentBombCol];
                 }
+                else
+                {
+                    continue;
+                }
 
                 // Горен над бомбата ред
 
@@ -159,7 +163,7 @@ namespace _08_Bombs
                 }
             }
 
-            if (currentBomb.BombRow < matrix.GetLength(0) - 1
+            if (currentBomb.BombRow >= 1 // Тука.
                 && currentBomb.BombCol < matrix.GetLength(1) - 1) // Проверка за горе в дясно
             {
                 if (matrix[currentBomb.BombRow - 1, currentBomb.BombCol + 1] > 0)

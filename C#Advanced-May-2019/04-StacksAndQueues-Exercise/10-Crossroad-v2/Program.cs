@@ -64,7 +64,7 @@ namespace _10_Crossroad_v2
                             }
                             else
                             {
-                                if (currentCar.Length < freeWindow)
+                                if (currentCar.Length <= freeWindow + greenLight) //  if (currentCar.Length < freeWindow) - не работи.
                                 {
                                     passedCarsCount++;
                                     break;

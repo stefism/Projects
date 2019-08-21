@@ -41,7 +41,10 @@ namespace _07_SoftUniParty
 
             if (guests.Count > 0)
             {
-                Console.WriteLine(string.Join(Environment.NewLine, guests));
+                foreach (var item in guests)
+                {
+                    Console.WriteLine(item);
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ namespace _10_RadioactiveBunnies
     {
         static void Main(string[] args)
         {
-            int[] matrixSize = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int[] matrixSize = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
             int rows = matrixSize[0];
             int cols = matrixSize[1];
@@ -83,7 +83,7 @@ namespace _10_RadioactiveBunnies
                         break;
 
                     case 'D':
-                        if (playerRow > matrix.GetLength(0) - 1)
+                        if (playerRow + 1 > matrix.GetLength(0) - 1)
                         {
                             matrix[playerRow, playerCol] = '.';
                             bunniesCoordinates = ExpandBunnies(rows, cols, matrix, playerRow, playerCol, bunniesCoordinates);

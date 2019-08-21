@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace _08_TheV_Logger
+namespace _07_TheV_Logger
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var vloggers = new Dictionary<string, List<Vlogeers>>();
+            var vloggers = new Dictionary<string, Vlogeers>();
 
             while (true)
             {
@@ -24,7 +24,7 @@ namespace _08_TheV_Logger
 
                     if (!vloggers.ContainsKey(vloggerName))
                     {
-                        vloggers[vloggerName] = new List<Vlogeers>();
+                        vloggers[vloggerName] = new Vlogeers();
                     }
                 }
                 else if (currentInfo.Length == 3 && currentInfo[1] == "followed")
@@ -34,17 +34,50 @@ namespace _08_TheV_Logger
 
                     if (vloggers.ContainsKey(follower) && vloggers.ContainsKey(followed))
                     {
-                        vloggers[follower].Add(new Vlogeers { Following = followed });
-                        vloggers[followed].Add(new Vlogeers { Followers = follower });
+                        if (follower != followed && !vloggers[follower].Following.Contains(followed))
+                        {
+                            vloggers[follower].Following.Add(followed);
+                            vloggers[followed].Followers.Add(follower);
+                        }
                     }
                 }
+            }
+
+            Console.WriteLine($"The V-Logger has a total of {vloggers.Keys.Count} vloggers in its logs.");
+
+            vloggers = vloggers.OrderByDescending(x => x.Value.Followers.Count)
+                .ThenBy(x => x.Value.Following.Count).ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (var vlogger in vloggers.Take(1))
+            {
+                Console.WriteLine($"1. {vlogger.Key} : {vlogger.Value.Followers.Count} followers, {vlogger.Value.Following.Count} following");
+
+                if (vlogger.Value.Followers.Count > 0)
+                {
+                    Console.WriteLine($"{string.Join(Environment.NewLine, vlogger.Value.Followers.OrderBy(x => x).Select(x => $"*  {x}"))}");
+                }
+            }
+
+            int counter = 2;
+
+            foreach (var vlogger in vloggers.TakeLast(vloggers.Count - 1)
+                .OrderByDescending(x => x.Value.Followers.Count)
+                .ThenBy(x => x.Value.Following.Count))
+            {
+                Console.WriteLine($"{counter++}. {vlogger.Key} : {vlogger.Value.Followers.Count} followers, {vlogger.Value.Following.Count} following");
             }
         }
     }
 
     class Vlogeers
     {
-        public string Followers { get; set; }
-        public string Following { get; set; }
+        public List<string> Followers { get; set; }
+        public List<string> Following { get; set; }
+
+        public Vlogeers()
+        {
+            Followers = new List<string>();
+            Following = new List<string>();
+        }
     }
 }

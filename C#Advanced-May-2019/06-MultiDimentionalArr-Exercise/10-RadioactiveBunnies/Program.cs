@@ -64,8 +64,8 @@ namespace _10_RadioactiveBunnies
 
                         if (matrix[playerRow - 1, playerCol] == 'B')
                         {
-                            playerRow = playerRow - 1;
                             matrix[playerRow, playerCol] = '.';
+                            playerRow = playerRow - 1;
                             bunniesCoordinates = ExpandBunnies(rows, cols, matrix, playerRow, playerCol, bunniesCoordinates);
                             PrintMatrix(rows, cols, matrix);
                             Console.WriteLine($"dead: {playerRow} {playerCol}");
@@ -95,8 +95,8 @@ namespace _10_RadioactiveBunnies
 
                         if (matrix[playerRow + 1, playerCol] == 'B')
                         {
-                            playerRow = playerRow + 1;
                             matrix[playerRow, playerCol] = '.';
+                            playerRow = playerRow + 1;
                             bunniesCoordinates = ExpandBunnies(rows, cols, matrix, playerRow, playerCol, bunniesCoordinates);
                             PrintMatrix(rows, cols, matrix);
                             Console.WriteLine($"dead: {playerRow} {playerCol}");
@@ -126,8 +126,8 @@ namespace _10_RadioactiveBunnies
 
                         if (matrix[playerRow, playerCol-1] == 'B')
                         {
-                            playerCol = playerCol - 1;
                             matrix[playerRow, playerCol] = '.';
+                            playerCol = playerCol - 1;
                             bunniesCoordinates = ExpandBunnies(rows, cols, matrix, playerRow, playerCol, bunniesCoordinates);
                             PrintMatrix(rows, cols, matrix);
                             Console.WriteLine($"dead: {playerRow} {playerCol}");
@@ -157,8 +157,8 @@ namespace _10_RadioactiveBunnies
 
                         if (matrix[playerRow, playerCol + 1] == 'B')
                         {
-                            playerCol = playerCol + 1;
                             matrix[playerRow, playerCol] = '.';
+                            playerCol = playerCol + 1;
                             bunniesCoordinates = ExpandBunnies(rows, cols, matrix, playerRow, playerCol, bunniesCoordinates);
                             PrintMatrix(rows, cols, matrix);
                             Console.WriteLine($"dead: {playerRow} {playerCol}");
@@ -194,6 +194,8 @@ namespace _10_RadioactiveBunnies
 
         private static List<BunniesCoordinates> ExpandBunnies(int rows, int cols, char[,] matrix, int playerRow, int playerCol, List<BunniesCoordinates> bunniesCoordinates)
         {
+            bool isBunnyFoundPlayer = false;
+
             foreach (var bunnie in bunniesCoordinates)
             {
                 if (matrix[bunnie.BunnieRow, bunnie.BunnieCol] == 'B')
@@ -203,11 +205,8 @@ namespace _10_RadioactiveBunnies
                         if (matrix[bunnie.BunnieRow - 1, bunnie.BunnieCol] == 'P')
                         {
                             matrix[bunnie.BunnieRow - 1, bunnie.BunnieCol] = 'B';
-                            playerRow = bunnie.BunnieRow - 1;
-                            matrix[bunnie.BunnieRow - 1, bunnie.BunnieCol] = '.';
-                            PrintMatrix(rows, cols, matrix);
-                            Console.WriteLine($"dead: {playerRow} {playerCol}");
-                            //System.Environment.Exit(1);
+
+                            isBunnyFoundPlayer = true;
                         }
                         else
                         {
@@ -223,11 +222,7 @@ namespace _10_RadioactiveBunnies
                         if (matrix[bunnie.BunnieRow, bunnie.BunnieCol - 1] == 'P')
                         {
                             matrix[bunnie.BunnieRow, bunnie.BunnieCol - 1] = 'B';
-                            playerCol = bunnie.BunnieCol - 1;
-                            matrix[bunnie.BunnieRow, bunnie.BunnieCol - 1] = '.';
-                            PrintMatrix(rows, cols, matrix);
-                            Console.WriteLine($"dead: {playerRow} {playerCol}");
-                            //System.Environment.Exit(1);
+                            isBunnyFoundPlayer = true;
                         }
                         else
                         {
@@ -243,11 +238,7 @@ namespace _10_RadioactiveBunnies
                         if (matrix[bunnie.BunnieRow, bunnie.BunnieCol + 1] == 'P')
                         {
                             matrix[bunnie.BunnieRow, bunnie.BunnieCol + 1] = 'B';
-                            playerCol = bunnie.BunnieCol + 1;
-                            matrix[bunnie.BunnieRow, bunnie.BunnieCol + 1] = '.';
-                            PrintMatrix(rows, cols, matrix);
-                            Console.WriteLine($"dead: {playerRow} {playerCol}");
-                            //System.Environment.Exit(1);
+                            isBunnyFoundPlayer = true;
                         }
                         else
                         {
@@ -263,10 +254,11 @@ namespace _10_RadioactiveBunnies
                         if (matrix[bunnie.BunnieRow + 1, bunnie.BunnieCol] == 'P')
                         {
                             matrix[bunnie.BunnieRow + 1, bunnie.BunnieCol] = 'B';
-                            playerRow = bunnie.BunnieRow + 1;
-                            matrix[bunnie.BunnieRow + 1, bunnie.BunnieCol] = '.';
-                            PrintMatrix(rows, cols, matrix);
-                            Console.WriteLine($"dead: {playerRow} {playerCol}");
+                            isBunnyFoundPlayer = true;
+
+                            
+                            //PrintMatrix(rows, cols, matrix);
+                            //Console.WriteLine($"dead: {playerRow} {playerCol}");
                             //System.Environment.Exit(1);
                         }
                         else
@@ -278,6 +270,13 @@ namespace _10_RadioactiveBunnies
                         }
                     }
                 }
+            }
+
+            if (isBunnyFoundPlayer)
+            {
+                PrintMatrix(rows, cols, matrix);
+                Console.WriteLine($"dead: {playerRow} {playerCol}");
+                System.Environment.Exit(1);
             }
 
             bunniesCoordinates = new List<BunniesCoordinates>();

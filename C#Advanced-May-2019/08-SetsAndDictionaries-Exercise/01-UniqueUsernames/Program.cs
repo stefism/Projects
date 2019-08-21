@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace _01_UniqueUsernames
 {
@@ -6,7 +8,18 @@ namespace _01_UniqueUsernames
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int numberOfNames = int.Parse(Console.ReadLine());
+
+            HashSet<string> names = new HashSet<string>();
+
+            for (int i = 0; i < numberOfNames; i++)
+            {
+                string name = Console.ReadLine();
+
+                names.Add(name);
+            }
+
+            Console.WriteLine(string.Join(Environment.NewLine, names));
         }
     }
 }

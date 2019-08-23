@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace _03_WordCount
 {
@@ -9,25 +10,17 @@ namespace _03_WordCount
     {
         static void Main(string[] args)
         {
-            string[] words;
+            string words = File.ReadAllText("words.txt");
+            string[] splitedWords = words.Split();
 
-            using (var reader = new StreamReader("words.txt"))
+            string inputFile = File.ReadAllText("text.txt");
+
+            foreach (var word in splitedWords)
             {
-                words = reader.ReadLine().Split();
-            }
+                Regex regex = new Regex(word);
 
-            string inputText;
-
-            using (var reader = new StreamReader("text.txt"))
-            {
-                inputText = reader.ReadToEnd();
-            }
-
-            string[] splittedInput = inputText.Split();
-
-            foreach (var word in words)
-            {
-
+                int currentWordCount = regex.Matches(inputFile).Count();
+                Console.WriteLine($"{word} - {currentWordCount}");
             }
         }
     }

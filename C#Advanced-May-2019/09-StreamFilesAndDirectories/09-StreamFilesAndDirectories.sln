@@ -9,11 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-LineNumbers", "02-LineNu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-WordCount", "03-WordCount\03-WordCount.csproj", "{118A6F07-C441-4C56-AC23-30C4C52EFC77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-SliceAFile", "05-SliceAFile\05-SliceAFile.csproj", "{716A0A2A-3E58-4894-BCD8-CDAFE8E871D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-SliceAFile", "05-SliceAFile\05-SliceAFile.csproj", "{716A0A2A-3E58-4894-BCD8-CDAFE8E871D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-MergeFiles", "04-MergeFiles\04-MergeFiles.csproj", "{E0C2C26B-188C-4AC5-94C2-D67181571226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-MergeFiles", "04-MergeFiles\04-MergeFiles.csproj", "{E0C2C26B-188C-4AC5-94C2-D67181571226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-FolderSize", "06-FolderSize\06-FolderSize.csproj", "{E8EBD1EF-96E9-4306-A8C6-E6D122AF1E7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-FolderSize", "06-FolderSize\06-FolderSize.csproj", "{E8EBD1EF-96E9-4306-A8C6-E6D122AF1E7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-E-EvenLine", "01-E-EvenLine\01-E-EvenLine.csproj", "{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-E-LineNumbers", "02-E-LineNumbers\02-E-LineNumbers.csproj", "{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-E-WordCount", "03-E-WordCount\03-E-WordCount.csproj", "{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-E-CopyBinaryFile", "04-E-CopyBinaryFile\04-E-CopyBinaryFile.csproj", "{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-E-DirectoryTraversal", "05-E-DirectoryTraversal\05-E-DirectoryTraversal.csproj", "{EAA3F24A-0225-4384-823B-C39ADEF2528E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +55,26 @@ Global
 		{E8EBD1EF-96E9-4306-A8C6-E6D122AF1E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8EBD1EF-96E9-4306-A8C6-E6D122AF1E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8EBD1EF-96E9-4306-A8C6-E6D122AF1E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

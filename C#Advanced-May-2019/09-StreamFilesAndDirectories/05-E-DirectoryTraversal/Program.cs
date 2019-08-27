@@ -46,8 +46,24 @@ namespace _05_E_DirectoryTraversal
 
             filesNameAndSize = filesNameAndSize
                 .OrderByDescending(x => x.Value.FilesDictionary.Values.Count())
+                .ThenBy(x => x.Key)
                 .ToDictionary(x => x.Key, x => x.Value);
-            ;
+
+            string folderPath = @"E:\SoftUni\C#Advanced-May-2019\09-StreamFilesAndDirectories\05-E-DirectoryTraversal\output.txt";
+
+            //string path = Directory.GetParent(Environment.GetFolderPath("05-E-DirectoryTraversal")).FullName;
+
+            foreach (var extension in filesNameAndSize)
+            {
+                Console.WriteLine(extension.Key);
+                File.AppendAllText(folderPath, extension.Key + Environment.NewLine);
+
+                foreach (var file in extension.Value.FilesDictionary.OrderBy(x => x.Value))
+                {
+                    Console.WriteLine($"--{file.Key} - {file.Value:F3}kb");
+                    File.AppendAllText(folderPath, $"--{file.Key} - {file.Value:F3}kb{Environment.NewLine}");
+                }
+            }
         }
     }
 }

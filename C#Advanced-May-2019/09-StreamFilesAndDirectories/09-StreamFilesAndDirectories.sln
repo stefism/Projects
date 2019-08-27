@@ -17,13 +17,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-FolderSize", "06-FolderS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-E-EvenLine", "01-E-EvenLine\01-E-EvenLine.csproj", "{A7C0CB59-033A-4D97-9B86-9EBBA1355A1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-E-LineNumbers", "02-E-LineNumbers\02-E-LineNumbers.csproj", "{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-E-LineNumbers", "02-E-LineNumbers\02-E-LineNumbers.csproj", "{A83D77AC-3E41-405D-8B63-1F6D8F99A8D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-E-WordCount", "03-E-WordCount\03-E-WordCount.csproj", "{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-E-WordCount", "03-E-WordCount\03-E-WordCount.csproj", "{401DBD8B-00CF-4B00-9DDF-C8668C0DF293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-E-CopyBinaryFile", "04-E-CopyBinaryFile\04-E-CopyBinaryFile.csproj", "{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-E-CopyBinaryFile", "04-E-CopyBinaryFile\04-E-CopyBinaryFile.csproj", "{385C09E5-F5E0-4F61-AA5D-41EC63B4A234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-E-DirectoryTraversal", "05-E-DirectoryTraversal\05-E-DirectoryTraversal.csproj", "{EAA3F24A-0225-4384-823B-C39ADEF2528E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-E-DirectoryTraversal", "05-E-DirectoryTraversal\05-E-DirectoryTraversal.csproj", "{EAA3F24A-0225-4384-823B-C39ADEF2528E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-E-ZipAndExtract", "07-E-ZipAndExtract\06-E-ZipAndExtract.csproj", "{0DC4650E-1A73-49D8-BDD7-FB08FFDBFF89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-ZipAndExtractFile", "06-ZipAndExtractFile\06-ZipAndExtractFile.csproj", "{BEA40285-4A2A-46EE-BEDB-AA43B3A0BFC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAA3F24A-0225-4384-823B-C39ADEF2528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC4650E-1A73-49D8-BDD7-FB08FFDBFF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC4650E-1A73-49D8-BDD7-FB08FFDBFF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC4650E-1A73-49D8-BDD7-FB08FFDBFF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC4650E-1A73-49D8-BDD7-FB08FFDBFF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA40285-4A2A-46EE-BEDB-AA43B3A0BFC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA40285-4A2A-46EE-BEDB-AA43B3A0BFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA40285-4A2A-46EE-BEDB-AA43B3A0BFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA40285-4A2A-46EE-BEDB-AA43B3A0BFC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

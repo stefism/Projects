@@ -1,0 +1,14 @@
+.txt
+--A1.txt - 0.120kb
+--b.txt - 0.120kb
+--c.txt - 0.120kb
+--text – Копие.txt - 0.120kb
+--text.txt - 0.120kb
+.json
+--05-E-DirectoryTraversal.runtimeconfig.json - 0.150kb
+--05-E-DirectoryTraversal.runtimeconfig.dev.json - 0.271kb
+--05-E-DirectoryTraversal.deps.json - 0.489kb
+.dll
+--05-E-DirectoryTraversal.dll - 7.500kb
+.pdb
+--05-E-DirectoryTraversal.pdb - 1.355kb

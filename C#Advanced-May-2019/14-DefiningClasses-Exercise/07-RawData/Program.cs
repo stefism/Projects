@@ -65,9 +65,9 @@ namespace _07_RawData
                 {
                     if (currentCar.Cargo.CargoType == cargoModel)
                     {
-                        double pressure = GetTipePressure(currentCar.Tires);
+                        bool isLowPressure = GetTipePressure(currentCar.Tires);
 
-                        if (pressure < 1)
+                        if (isLowPressure)
                         {
                             Console.WriteLine(currentCar.Model);
                         }
@@ -86,15 +86,17 @@ namespace _07_RawData
             }
         }
 
-        static double GetTipePressure(Tire[] tires)
+        static bool GetTipePressure(Tire[] tires)
         {
-            double pressure = 0;
             foreach (var tire in tires)
             {
-                pressure += tire.TirePressure;
+                if (tire.TirePressure < 1)
+                {
+                    return true;
+                }
             }
 
-            return pressure / 4.0;
+            return false;
         }
     }
 }

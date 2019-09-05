@@ -79,34 +79,58 @@ namespace _09_PokemonTrainer
             List<Pokemon>> trainersAndPokemons, 
             Dictionary<string, Trainer> trainersAndBadgets, string element)
         {
-            bool isElementExist = false;
+            bool isElementExist = IsElementExist(trainersAndPokemons, element);
 
-            foreach (var trainer in trainersAndPokemons)
+            string trainer = trainersAndPokemons
+                    .FirstOrDefault(x => x.Value.Any(y => y.Element == element)).Key;
+
+            if (isElementExist)
             {
-                foreach (var pokemon in trainer.Value)
-                {
-                    if (pokemon.Element == element)
-                    {
-                        trainersAndBadgets[trainer.Key].Badges++;
-                        isElementExist = true;
-                        break;
-                    }
-                }
+                trainersAndBadgets[trainer].Badges++;
+            }
 
-                if (!isElementExist)
-                {
-                    for (int pokemon = 0; pokemon < trainer.Value.Count; pokemon++)
-                    {
-                        trainer.Value[pokemon].Health -= 10;
+            else
+            {
+                RemoveHealthAndPokemons(trainersAndPokemons, trainer, trainersAndBadgets);
+            }
+        }
 
-                        if (trainer.Value[pokemon].Health <= 0)
+        private static void RemoveHealthAndPokemons(Dictionary<string, 
+            List<Pokemon>> trainersAndPokemons, 
+            string trainer, Dictionary<string, Trainer> trainersAndBadgets)
+        {
+            foreach (var currentTrainer in trainersAndPokemons)
+            {
+                if (currentTrainer.Key == trainer)
+                {
+                    foreach (var pokemon in currentTrainer.Value)
+                    {
+                        pokemon.Health -= 10;
+
+                        if (pokemon.Health <= 0)
                         {
-                            trainersAndPokemons[trainer.Key].Remove(trainer.Value[pokemon]);
-                            trainersAndBadgets[trainer.Key].Pokemons--;
+                            trainersAndPokemons[trainer].Remove(pokemon);
+                            trainersAndBadgets[trainer].Pokemons--;
                         }
                     }
                 }
             }
+        }
+
+        public static bool IsElementExist(Dictionary<string, List<Pokemon>> pokemons, string element)
+        {
+            foreach (var pokemon in pokemons)
+            {
+                foreach (var pokemonItem in pokemon.Value)
+                {
+                    if (pokemonItem.Element == element)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-PokemonTrainer", "09-Pok
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Pokemon-Pr", "09-Pokemon-Pr\09-Pokemon-Pr.csproj", "{175136AE-00F8-43C9-886B-01EABE4725E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-DateModifier", "05-DateModifier\05-DateModifier.csproj", "{80F7BAD9-C859-4180-8BB7-75BAD0FB6C3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-OpinionPool", "04-OpinionPool\04-OpinionPool.csproj", "{DD7CB0E4-9AE5-4AF3-8A73-C2272B48E573}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{175136AE-00F8-43C9-886B-01EABE4725E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175136AE-00F8-43C9-886B-01EABE4725E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{175136AE-00F8-43C9-886B-01EABE4725E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F7BAD9-C859-4180-8BB7-75BAD0FB6C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F7BAD9-C859-4180-8BB7-75BAD0FB6C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F7BAD9-C859-4180-8BB7-75BAD0FB6C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F7BAD9-C859-4180-8BB7-75BAD0FB6C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD7CB0E4-9AE5-4AF3-8A73-C2272B48E573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD7CB0E4-9AE5-4AF3-8A73-C2272B48E573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD7CB0E4-9AE5-4AF3-8A73-C2272B48E573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD7CB0E4-9AE5-4AF3-8A73-C2272B48E573}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ namespace SoftUniParking
 {
     public class Parking
     {
-        private int capacity { get; set; }
+        private int capacity;
         public int Count { get; set; }
 
         //public int Count

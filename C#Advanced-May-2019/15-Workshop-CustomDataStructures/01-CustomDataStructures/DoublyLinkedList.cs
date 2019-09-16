@@ -10,7 +10,7 @@ namespace CustomClass
         private LinkNode head;
         private LinkNode tail;
 
-        public void AddFirst(int value)
+        public void AddFirst(object value)
         {
             LinkNode newHead = new LinkNode(value);
 
@@ -29,7 +29,7 @@ namespace CustomClass
             Count++;
         }
 
-        public void AddLast(int value)
+        public void AddLast(object value)
         {
             LinkNode newTail = new LinkNode(value);
 
@@ -48,7 +48,7 @@ namespace CustomClass
             Count++;
         }
 
-        public void Print(Action<int> action)
+        public void Print(Action<object> action)
         {
             LinkNode currentNode = head;
 
@@ -59,11 +59,11 @@ namespace CustomClass
             }
         }
 
-        public int RemoveFirst()
+        public object RemoveFirst()
         {
             CheckIfEmptyThrowException();
 
-            int firstElement = head.Value;
+            object firstElement = head.Value;
             head = head.NextNode;
 
             if (head == null)
@@ -80,11 +80,11 @@ namespace CustomClass
             return firstElement;
         }
 
-        public int RemoveLast()
+        public object RemoveLast()
         {
             CheckIfEmptyThrowException();
 
-            int lastElement = tail.Value;
+            object lastElement = tail.Value;
             tail = tail.PreviousNode;
 
             if (tail == null)
@@ -101,9 +101,9 @@ namespace CustomClass
             return lastElement;
         }
 
-        public int[] ToArray()
+        public object[] ToArray()
         {
-            int[] array = new int[Count];
+            object[] array = new object[Count];
 
             LinkNode currentNode = head;
             int counter = 0;
@@ -117,7 +117,7 @@ namespace CustomClass
             return array;
         }
 
-        public bool Contains(int value)
+        public bool Contains(object value)
         {
             LinkNode currentNode = head;
 
@@ -146,11 +146,11 @@ namespace CustomClass
 
         private class LinkNode
         {
-            public int Value { get; private set; }
+            public object Value { get; private set; }
             public LinkNode NextNode { get; set; }
             public LinkNode PreviousNode { get; set; }
 
-            public LinkNode(int value)
+            public LinkNode(object value)
             {
                 Value = value;
             }

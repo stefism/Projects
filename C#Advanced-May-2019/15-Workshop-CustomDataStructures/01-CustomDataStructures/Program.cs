@@ -6,6 +6,13 @@ namespace CustomClass
     {
         static void Main(string[] args)
         {
+
+            var doubly = new Doubly.Nodes();
+
+            doubly.AddFirst(2);
+            doubly.AddFirst(6);
+            doubly.AddFirst(16);
+
             var doublyLinkedList = new DoublyLinkedList();
 
             doublyLinkedList.AddFirst(1);

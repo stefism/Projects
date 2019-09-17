@@ -28,8 +28,18 @@ namespace _02_CarExtension
 
         public string WhoAmI()
         {
-            string output = $"Make: {Make}{Environment.NewLine}Model: {Model}{Environment.NewLine}Year: {Year}{Environment.NewLine}Fuel: {FuelQuantity:F2}L";
-            return output;
+            var result = new StringBuilder();
+
+            result.AppendLine($"Make: {this.Make}");
+
+            result.AppendLine($"Model: {this.Model}");
+
+            result.AppendLine($"Year: {this.Year}");
+
+            result.Append($"Fuel: {this.FuelQuantity:F2}L");
+
+            return result.ToString();
+
         }
     }
 }

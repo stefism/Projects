@@ -15,7 +15,7 @@ namespace CustomClass
 
             var doublyLinkedList = new DoublyLinkedList();
 
-            doublyLinkedList.AddFirst(1);
+            doublyLinkedList.AddFirst("prob");
             doublyLinkedList.AddFirst(2);
             doublyLinkedList.AddFirst(3);
 

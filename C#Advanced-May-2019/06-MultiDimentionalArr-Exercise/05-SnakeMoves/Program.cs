@@ -17,11 +17,15 @@ namespace _05_SnakeMoves
 
             int charCount = 0;
 
+            //bool isLast = false;
+            //bool isFirst = false;
+
             for (int row = 0; row < rows; row++)
             {
                 for (int col = 0; col < cols; col++)
                 {
                     matrix[row, col] = inputString[charCount];
+
                     charCount++;
 
                     if (charCount == inputString.Length)

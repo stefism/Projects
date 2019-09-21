@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-Miner", "09-Miner\09-Min
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-RadioactiveBunnies", "10-RadioactiveBunnies\10-RadioactiveBunnies.csproj", "{4A74DFCD-4196-437D-8305-EDBBF79E3F98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-Radioactive-Proba", "10-Radioactive-Proba\10-Radioactive-Proba.csproj", "{B99E910D-90A3-4CC8-90B9-22AC80628650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-Radioactive-Proba", "10-Radioactive-Proba\10-Radioactive-Proba.csproj", "{B99E910D-90A3-4CC8-90B9-22AC80628650}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-JaggedArrayManipulator", "06-JaggedArrayManipulator\06-JaggedArrayManipulator.csproj", "{866E4429-157C-46F1-BAEA-B07F688B7F62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{B99E910D-90A3-4CC8-90B9-22AC80628650}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99E910D-90A3-4CC8-90B9-22AC80628650}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99E910D-90A3-4CC8-90B9-22AC80628650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866E4429-157C-46F1-BAEA-B07F688B7F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866E4429-157C-46F1-BAEA-B07F688B7F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866E4429-157C-46F1-BAEA-B07F688B7F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866E4429-157C-46F1-BAEA-B07F688B7F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

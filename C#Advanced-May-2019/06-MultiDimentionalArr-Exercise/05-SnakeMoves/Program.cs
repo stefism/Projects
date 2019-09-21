@@ -5,7 +5,7 @@ namespace _05_SnakeMoves
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             int[] matrixSize = Console.ReadLine().Split().Select(int.Parse).ToArray();
             char[] inputString = Console.ReadLine().ToCharArray();

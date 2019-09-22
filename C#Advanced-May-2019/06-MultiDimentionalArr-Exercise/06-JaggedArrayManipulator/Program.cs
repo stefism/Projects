@@ -12,7 +12,7 @@ namespace _06_JaggedArrayManipulator
 
             for (int i = 0; i < rowInMatrix; i++)
             {
-                int[] currentRowValue = Console.ReadLine().Split().Select(int.Parse).ToArray();
+                int[] currentRowValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
                 matrix[i] = currentRowValue;
             }
@@ -33,7 +33,7 @@ namespace _06_JaggedArrayManipulator
 
             while (true)
             {
-                string[] command = Console.ReadLine().Split();
+                string[] command = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 string operand = command[0];
 

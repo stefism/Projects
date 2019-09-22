@@ -14,7 +14,7 @@ namespace _02_CarExtension
 
         public void Drive(double distance)
         {
-            double expenceFuel = FuelConsumption * distance;
+            double expenceFuel = FuelConsumption * distance / 100;
 
             if (expenceFuel > FuelQuantity)
             {
@@ -22,7 +22,7 @@ namespace _02_CarExtension
             }
             else
             {
-                FuelQuantity -= distance * FuelConsumption;
+                FuelQuantity -= distance / 100 * FuelConsumption;
             }
         }
 

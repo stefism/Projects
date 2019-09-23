@@ -8,11 +8,11 @@ namespace _06_JaggedArrayManipulator
         static void Main(string[] args)
         {
             int rowInMatrix = int.Parse(Console.ReadLine());
-            int[][] matrix = new int[rowInMatrix][];
+            double[][] matrix = new double[rowInMatrix][];
 
             for (int i = 0; i < rowInMatrix; i++)
             {
-                int[] currentRowValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                double[] currentRowValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(double.Parse).ToArray();
 
                 matrix[i] = currentRowValue;
             }
@@ -44,7 +44,7 @@ namespace _06_JaggedArrayManipulator
 
                 int row = int.Parse(command[1]);
                 int column = int.Parse(command[2]);
-                int value = int.Parse(command[3]);
+                double value = double.Parse(command[3]);
 
                 if (!IsCoordinatesValid(matrix, row, column))
                 {
@@ -68,7 +68,7 @@ namespace _06_JaggedArrayManipulator
             }
         }
 
-        private static bool IsCoordinatesValid(int[][] matrix, int row, int column)
+        private static bool IsCoordinatesValid(double[][] matrix, int row, int column)
         {
             if (row >= 0 && row < matrix.Length)
             {

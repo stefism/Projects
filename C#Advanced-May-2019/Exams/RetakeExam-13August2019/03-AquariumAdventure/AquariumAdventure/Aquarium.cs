@@ -82,7 +82,7 @@ namespace AquariumAdventure
                 aquarium.AppendLine(currentFish.ToString());
             }
 
-            return aquarium.ToString();
+            return aquarium.ToString().Trim(); // Trim - маха сичко празно!
         }
     }
 }

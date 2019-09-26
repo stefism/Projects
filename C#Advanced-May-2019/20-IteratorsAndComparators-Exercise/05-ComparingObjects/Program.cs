@@ -12,7 +12,7 @@ namespace _05_ComparingObjects
 
             while (true)
             {
-                string[] currrentPerson = Console.ReadLine().Split();
+                string[] currrentPerson = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 if (currrentPerson[0] == "END")
                 {
@@ -28,10 +28,38 @@ namespace _05_ComparingObjects
                 personList.Add(person);
             }
 
-            int peopleToCompare = int.Parse(Console.ReadLine());
+            int numberOfPersonToCompare = int.Parse(Console.ReadLine());
 
-            int matchesCount = 0;
+            var personToCompare = personList[numberOfPersonToCompare - 1];
 
+            int matchesCount = 1;
+            int differentPeopleCount = 0;
+
+            foreach (var person in personList)
+            {
+                if (personToCompare == person)
+                {
+                    continue;
+                }
+
+                if (person.CompareTo(personToCompare) != 0)
+                {
+                    differentPeopleCount++;
+                }
+                else
+                {
+                    matchesCount++;
+                }
+            }
+
+            if (matchesCount == 1)
+            {
+                Console.WriteLine("No matches");
+            }
+            else
+            {
+                Console.WriteLine($"{matchesCount} {differentPeopleCount} {personList.Count}");
+            }
         }
     }
 }

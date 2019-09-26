@@ -49,6 +49,7 @@ namespace AquariumAdventure
 
                 {
                     fishInPool.Add(fish);
+                    Capacity--;
                 }
             }
         }
@@ -60,6 +61,7 @@ namespace AquariumAdventure
             if (currentFish != null)
             {
                 fishInPool.Remove(currentFish);
+                Capacity++;
                 return true;
             }
 

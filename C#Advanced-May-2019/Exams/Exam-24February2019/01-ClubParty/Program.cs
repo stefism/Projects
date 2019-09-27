@@ -9,7 +9,8 @@ namespace _01_ClubParty
         static void Main(string[] args)
         {
             int hallCapacity = int.Parse(Console.ReadLine());
-            Stack<string> hall = new Stack<string>(Console.ReadLine().Split());
+
+            Stack<string> hall = new Stack<string>(Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries));
 
             var halls = new Dictionary<string, List<int>>();
 

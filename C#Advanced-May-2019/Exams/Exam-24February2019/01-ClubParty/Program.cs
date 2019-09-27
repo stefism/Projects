@@ -17,11 +17,15 @@ namespace _01_ClubParty
 
             bool isOpenHall = false;
 
-
-            while (hall != null)
+            while (true)
             {
+                if (hall.Count == 0)
+                {
+                    break;
+                }
+
                 string currentItem = hall.Pop();
-                
+
                 bool isNumber = int.TryParse(currentItem, out int peopleNumber);
 
                 if (isNumber && !isOpenHall)
@@ -45,7 +49,7 @@ namespace _01_ClubParty
 
                 if (isNumber && isOpenHall)
                 {
-                    if (peopleNumber <= hallCapacity 
+                    if (peopleNumber <= hallCapacity
                         && (halls[currentOpenHall].Sum() + peopleNumber <= hallCapacity))
                     {
                         halls[currentOpenHall].Add(peopleNumber);
@@ -56,28 +60,26 @@ namespace _01_ClubParty
 
                         Console.WriteLine($"{closedHall.Key} -> {string.Join(", ", closedHall.Value)}");
 
-                        //currentOpenHall = closedHall.Key;
                         halls.Remove(closedHall.Key);
+
+                        if (halls.Count > 0)
+                        {
+                            var newOpenHall = halls.First();
+
+                            currentOpenHall = newOpenHall.Key;
+
+                            if (peopleNumber <= hallCapacity
+                            && halls[currentOpenHall].Sum() + peopleNumber <= hallCapacity)
+                            {
+                                halls[currentOpenHall].Add(peopleNumber);
+                            }
+                        }
+                        else
+                        {
+                            isOpenHall = false;
+                        }
                     }
                 }
-
-                if (halls.Count > 1)
-                {
-                    var newOpenHall = halls.First();
-
-                    currentOpenHall = newOpenHall.Key;
-
-                    if (peopleNumber <= hallCapacity
-                    && halls[currentOpenHall].Sum() + peopleNumber <= hallCapacity)
-                    {
-                        halls[currentOpenHall].Add(peopleNumber);
-                    }
-                }
-                //else
-                //{
-                //    halls.Remove(currentOpenHall);
-                //    isOpenHall = false;
-                //}
             }
         }
     }

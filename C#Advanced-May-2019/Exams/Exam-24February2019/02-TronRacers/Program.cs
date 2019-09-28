@@ -55,22 +55,25 @@ namespace _02_TronRacers
                     }
                     else
                     {
-                        firstPlayerRow = matrixSize;
+                        firstPlayerRow = matrixSize-1;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                 }
 
                 else if (firstPlayerMove == "down")
                 {
-                    if (firstPlayerRow > matrixSize)
+                    if (firstPlayerRow < matrixSize-1)
                     {
                         firstPlayerRow++;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                     else
                     {
                         firstPlayerRow = 0;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                 }
 
@@ -83,41 +86,109 @@ namespace _02_TronRacers
                     }
                     else
                     {
-                        firstPlayerCol = matrixSize;
+                        firstPlayerCol = matrixSize-1;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                 }
 
                 else if (firstPlayerMove == "right")
                 {
-                    if (firstPlayerCol < matrixSize)
+                    if (firstPlayerCol < matrixSize-1)
                     {
                         firstPlayerCol++;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                     else
                     {
                         firstPlayerCol = 0;
                         IsFirstPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                 }
 
                 #endregion
+
+                #region secondPlayerMove
 
                 if (secondPlayerMove == "up")
                 {
                     if (secondPlayerRow > 0)
                     {
                         secondPlayerRow -= 1;
-                        IsSecondPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
                     }
                     else
                     {
-                        secondPlayerRow = matrixSize;
-                        IsSecondPlayerDeadEndProgramOrContinue(matrix, firstPlayerRow, firstPlayerCol);
+                        secondPlayerRow = matrixSize-1;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                        //PrintMatrix(matrix);
                     }
                 }
+
+                else if (secondPlayerMove == "down")
+                {
+                    if (secondPlayerRow < matrixSize-1)
+                    {
+                        secondPlayerRow++;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                        //PrintMatrix(matrix);
+                    }
+                    else
+                    {
+                        secondPlayerRow = 0;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                        //PrintMatrix(matrix);
+                    }
+                }
+
+                else if (secondPlayerMove == "left")
+                {
+                    if (secondPlayerCol > 0)
+                    {
+                        secondPlayerCol--;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                    }
+                    else
+                    {
+                        secondPlayerCol = matrixSize-1;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                        //PrintMatrix(matrix);
+                    }
+                }
+
+                else if (secondPlayerMove == "right")
+                {
+                    if (secondPlayerCol < matrixSize-1)
+                    {
+                        secondPlayerCol++;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                    }
+                    else
+                    {
+                        secondPlayerCol = 0;
+                        IsSecondPlayerDeadEndProgramOrContinue(matrix, secondPlayerRow, secondPlayerCol);
+                        //PrintMatrix(matrix);
+                    }
+                }
+
+                #endregion
             }
+        }
+
+        private static void PrintMatrix(char[,] matrix)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    Console.Write(matrix[row,col]);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
         }
 
         private static void IsFirstPlayerDeadEndProgramOrContinue(char[,] matrix, int firstPlayerRow, int firstPlayerCol)
@@ -125,6 +196,8 @@ namespace _02_TronRacers
             if (matrix[firstPlayerRow, firstPlayerCol] == 's')
             {
                 matrix[firstPlayerRow, firstPlayerCol] = 'x';
+
+                PrintMatrix(matrix);
 
                 Environment.Exit(1);
             }
@@ -137,6 +210,8 @@ namespace _02_TronRacers
             if (matrix[secondPlayerRow, secondPlayerCol] == 'f')
             {
                 matrix[secondPlayerRow, secondPlayerCol] = 'x';
+
+                PrintMatrix(matrix);
 
                 Environment.Exit(1);
             }

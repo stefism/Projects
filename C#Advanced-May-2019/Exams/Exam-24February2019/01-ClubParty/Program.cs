@@ -59,7 +59,10 @@ namespace _01_ClubParty
                     {
                         var closedHall = halls.FirstOrDefault(x => x.Key == currentOpenHall);
 
-                        Console.WriteLine($"{closedHall.Key} -> {string.Join(", ", closedHall.Value)}");
+                        if (closedHall.Value.Count > 0)
+                        {
+                            Console.WriteLine($"{closedHall.Key} -> {string.Join(", ", closedHall.Value)}");
+                        }
 
                         halls.Remove(closedHall.Key);
 

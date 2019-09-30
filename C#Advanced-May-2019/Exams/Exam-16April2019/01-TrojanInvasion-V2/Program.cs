@@ -15,9 +15,9 @@ namespace _01_TrojanInvasion_V2
 
             List<int> trojanWarriorPowers = new List<int>();
 
-            int extraLine = wavesTrojanWarriors / 3;
+            //int extraLine = wavesTrojanWarriors / 3;
 
-            for (int i = 1; i <= wavesTrojanWarriors + extraLine; i++)
+            for (int i = 1; i <= wavesTrojanWarriors; i++)
             {
                 trojanWarriorPowers = Console.ReadLine()
                     .Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
@@ -27,7 +27,7 @@ namespace _01_TrojanInvasion_V2
                     int extraPlate = int.Parse(Console.ReadLine());
                     platesOfTheSpartanDefence.Add(extraPlate);
 
-                    i++;
+                    //i++;
                 }
 
                 while (true)

@@ -30,6 +30,10 @@ namespace Heroes
         {
             heroes = heroes.OrderByDescending(x => x.Item.Strength).ToList();
             Hero heroWithHighestStrength = heroes.First();
+
+            //Hero heroWithHighestStrength = heroes.OrderByDescending(x => x.Item.Strength).FirstOrDefault();
+            // Може и само така - на един ред.
+
             return heroWithHighestStrength;
         }
 
@@ -56,7 +60,7 @@ namespace Heroes
                 sb.AppendLine(hero.ToString());
             }
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }

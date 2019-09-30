@@ -27,7 +27,7 @@ namespace Heroes
             sb.AppendLine($"  * Ability: {Item.Ability}");
             sb.Append($"  * Intelligence: {Item.Intelligence}");
 
-            return sb.ToString();
+            return sb.ToString(); // sb.ToString().TrimEnd(); Маха последния празен ред ако има такъв.
         }
     }
 }

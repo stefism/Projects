@@ -5,9 +5,15 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion", "01-TrojanInvasion\01-TrojanInvasion.csproj", "{58D2DF0E-8B75-4D81-B5FB-F33870C1CAC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-TrojanInvasion-V2", "01-TrojanInvasion-V2\01-TrojanInvasion-V2.csproj", "{21932803-70F7-48DF-8D56-2FEFD3F2C2A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion-V2", "01-TrojanInvasion-V2\01-TrojanInvasion-V2.csproj", "{21932803-70F7-48DF-8D56-2FEFD3F2C2A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-TrojanInvasion-V3", "01-TrojanInvasion-V3\01-TrojanInvasion-V3.csproj", "{44FD8B40-B675-46D9-AC87-CAA78ED8C4F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion-V3", "01-TrojanInvasion-V3\01-TrojanInvasion-V3.csproj", "{44FD8B40-B675-46D9-AC87-CAA78ED8C4F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion-Daskal", "01-TrojanInvasion-Daskal\01-TrojanInvasion-Daskal.csproj", "{CF107526-9F0D-413C-B346-47A148EC3354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Hellen'sAbduction", "02-Hellen'sAbduction\02-Hellen'sAbduction.csproj", "{C449D5BA-5C31-47E7-9946-58EF33FD390C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proba", "Proba\Proba.csproj", "{10D22178-9FBB-43C9-829D-C56C8A1AD272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{44FD8B40-B675-46D9-AC87-CAA78ED8C4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44FD8B40-B675-46D9-AC87-CAA78ED8C4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44FD8B40-B675-46D9-AC87-CAA78ED8C4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF107526-9F0D-413C-B346-47A148EC3354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF107526-9F0D-413C-B346-47A148EC3354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF107526-9F0D-413C-B346-47A148EC3354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF107526-9F0D-413C-B346-47A148EC3354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C449D5BA-5C31-47E7-9946-58EF33FD390C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C449D5BA-5C31-47E7-9946-58EF33FD390C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C449D5BA-5C31-47E7-9946-58EF33FD390C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C449D5BA-5C31-47E7-9946-58EF33FD390C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

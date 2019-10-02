@@ -1,46 +1,42 @@
 ﻿using System;
 using System.Linq;
 
-namespace _02_Hellen_sAbduction
+namespace _02_Helen_V2
 {
     class Program
     {
         static int ParisHealth;
-        static char[,] Matrix;
+        static char[][] Matrix;
         static int ParisRow;
         static int ParisCol;
 
-        static void Main()
+        static void Main(string[] args)
         {
             ParisHealth = int.Parse(Console.ReadLine());
-            int matrixSize = int.Parse(Console.ReadLine());
+            int matrixRow = int.Parse(Console.ReadLine());
 
-            Matrix = new char[matrixSize, matrixSize];
+            Matrix = new char[matrixRow][];
 
-            ParisRow = -1;
-            ParisCol = -1;
-
-            for (int row = 0; row < matrixSize; row++)
+            for (int row = 0; row < matrixRow; row++)
             {
                 char[] input = Console.ReadLine().ToCharArray();
-                //char[] input = Console.ReadLine().Split().Select(char.Parse).ToArray();
 
-                for (int col = 0; col < input.Length; col++)
+                Matrix[row] = input;
+
+                if (input.Contains('P'))
                 {
-                    Matrix[row, col] = input[col];
+                    ParisRow = row;
 
-                    if (input[col] == 'P')
+                    for (int i = 0; i < input.Length; i++)
                     {
-                        ParisRow = row;
-                        ParisCol = col;
-
-                        Matrix[ParisRow, ParisCol] = '-';
+                        if (input[i] == 'P')
+                        {
+                            ParisCol = i;
+                            Matrix[row][i] = '-';
+                        }
                     }
                 }
             }
-
-            //Console.WriteLine();
-            //PrintMatrix();
 
             while (true)
             {
@@ -50,7 +46,7 @@ namespace _02_Hellen_sAbduction
                 int spawnRow = int.Parse(commands[1]);
                 int spawnCol = int.Parse(commands[2]);
 
-                Matrix[spawnRow, spawnCol] = 'S';
+                Matrix[spawnRow][spawnCol] = 'S';
 
                 switch (direction)
                 {
@@ -81,7 +77,7 @@ namespace _02_Hellen_sAbduction
                         break;
 
                     case "down":
-                        if (ParisRow == matrixSize - 1)
+                        if (ParisRow == Matrix.Length-1)
                         {
                             ParisHealth--;
 
@@ -133,7 +129,7 @@ namespace _02_Hellen_sAbduction
                         break;
 
                     case "right":
-                        if (ParisCol == matrixSize - 1)
+                        if (ParisCol == Matrix[ParisRow].Length-1)
                         {
                             ParisHealth--;
 
@@ -159,13 +155,14 @@ namespace _02_Hellen_sAbduction
                         break;
                 }
             }
-        }
 
-        private static void IfFindHelenProgramEnd()
+            //PrintMatrix();
+        }
+        static void IfFindHelenProgramEnd()
         {
-            if (Matrix[ParisRow, ParisCol] == 'H')
+            if (Matrix[ParisRow][ParisCol] == 'H')
             {
-                Matrix[ParisRow, ParisCol] = '-';
+                Matrix[ParisRow][ParisCol] = '-';
 
                 Console.WriteLine($"Paris has successfully abducted Helen! Energy left: {ParisHealth}");
                 PrintMatrix();
@@ -173,41 +170,37 @@ namespace _02_Hellen_sAbduction
             }
         }
 
-        private static void IfFindSpartanEnergyDecreaseBy2()
+        static void IfFindSpartanEnergyDecreaseBy2()
         {
-            if (Matrix[ParisRow, ParisCol] == 'S')
+            if (Matrix[ParisRow][ParisCol] == 'S')
             {
                 ParisHealth -= 2;
 
-                Matrix[ParisRow, ParisCol] = '-';
+                Matrix[ParisRow][ParisCol] = '-';
             }
         }
 
-        private static void IfHealthBelowZeroProgramEnd()
+        static void IfHealthBelowZeroProgramEnd()
         {
             if (ParisHealth <= 0)
             {
-                Matrix[ParisRow, ParisCol] = 'X';
+                Matrix[ParisRow][ParisCol] = 'X';
                 Console.WriteLine($"Paris died at {ParisRow};{ParisCol}.");
                 PrintMatrix();
                 End();
             }
         }
 
-        private static void End()
+        static void End()
         {
             Environment.Exit(1);
         }
 
         static void PrintMatrix()
         {
-            for (int row = 0; row < Matrix.GetLength(0); row++)
+            for (int row = 0; row < Matrix.Length; row++)
             {
-                for (int col = 0; col < Matrix.GetLength(1); col++)
-                {
-                    Console.Write(Matrix[row, col]);
-                }
-                Console.WriteLine();
+                Console.WriteLine(Matrix[row]);
             }
         }
     }

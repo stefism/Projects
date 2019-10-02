@@ -11,9 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion-V3", "01-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-TrojanInvasion-Daskal", "01-TrojanInvasion-Daskal\01-TrojanInvasion-Daskal.csproj", "{CF107526-9F0D-413C-B346-47A148EC3354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Hellen'sAbduction", "02-Hellen'sAbduction\02-Hellen'sAbduction.csproj", "{C449D5BA-5C31-47E7-9946-58EF33FD390C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Hellen'sAbduction", "02-Hellen'sAbduction\02-Hellen'sAbduction.csproj", "{C449D5BA-5C31-47E7-9946-58EF33FD390C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proba", "Proba\Proba.csproj", "{10D22178-9FBB-43C9-829D-C56C8A1AD272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proba", "Proba\Proba.csproj", "{10D22178-9FBB-43C9-829D-C56C8A1AD272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Helen-Daskal", "02-Helen-Daskal\02-Helen-Daskal.csproj", "{AAE3598D-8760-460D-928E-31E9204FBACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Helen-V2", "02-Helen-V2\02-Helen-V2.csproj", "{0742C131-7E75-4C8F-9FCB-55322F2C104B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FightingArena", "03-FightingArena\FightingArena\FightingArena.csproj", "{8682D228-809A-4B2B-9ADA-8ACFED723108}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10D22178-9FBB-43C9-829D-C56C8A1AD272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE3598D-8760-460D-928E-31E9204FBACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE3598D-8760-460D-928E-31E9204FBACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE3598D-8760-460D-928E-31E9204FBACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE3598D-8760-460D-928E-31E9204FBACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0742C131-7E75-4C8F-9FCB-55322F2C104B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0742C131-7E75-4C8F-9FCB-55322F2C104B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0742C131-7E75-4C8F-9FCB-55322F2C104B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0742C131-7E75-4C8F-9FCB-55322F2C104B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8682D228-809A-4B2B-9ADA-8ACFED723108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8682D228-809A-4B2B-9ADA-8ACFED723108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8682D228-809A-4B2B-9ADA-8ACFED723108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8682D228-809A-4B2B-9ADA-8ACFED723108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

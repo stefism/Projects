@@ -23,15 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-CustomComparator", "08-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12-TriFunction", "12-TriFunction\12-TriFunction.csproj", "{BA7C03BE-ED6E-4989-B7C1-A7A918D55CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Applied-v2", "05-Applied-v2\05-Applied-v2.csproj", "{8DE3EC17-CF18-4266-9480-6E9E6A47D9E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-Applied-v2", "05-Applied-v2\05-Applied-v2.csproj", "{8DE3EC17-CF18-4266-9480-6E9E6A47D9E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11-PartyReservation-v2", "11-PartyReservation-v2\11-PartyReservation-v2.csproj", "{467E70D8-772B-4336-B79A-F076AB109359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11-PartyReservation-v2", "11-PartyReservation-v2\11-PartyReservation-v2.csproj", "{467E70D8-772B-4336-B79A-F076AB109359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-ListOfPredicates", "09-ListOfPredicates\09-ListOfPredicates.csproj", "{612021C1-E797-438A-955B-AEEED55831C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-ListOfPredicates", "09-ListOfPredicates\09-ListOfPredicates.csproj", "{612021C1-E797-438A-955B-AEEED55831C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-ListOfPredicates-v2", "09-ListOfPredicates-v2\09-ListOfPredicates-v2.csproj", "{329F73F9-4C7E-4C5E-AEC6-CEAE687D20C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-ListOfPredicates-v2", "09-ListOfPredicates-v2\09-ListOfPredicates-v2.csproj", "{329F73F9-4C7E-4C5E-AEC6-CEAE687D20C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-Predicates-v3", "09-Predicates-v3\09-Predicates-v3.csproj", "{9C77FC57-6596-4880-ACE2-DD47799799B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-Predicates-v3", "09-Predicates-v3\09-Predicates-v3.csproj", "{9C77FC57-6596-4880-ACE2-DD47799799B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-PredicateParty", "01-PredicateParty\10-PredicateParty.csproj", "{ECA73931-3079-4E80-B56C-A6889E502B6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{9C77FC57-6596-4880-ACE2-DD47799799B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C77FC57-6596-4880-ACE2-DD47799799B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C77FC57-6596-4880-ACE2-DD47799799B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA73931-3079-4E80-B56C-A6889E502B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA73931-3079-4E80-B56C-A6889E502B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA73931-3079-4E80-B56C-A6889E502B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA73931-3079-4E80-B56C-A6889E502B6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,13 +24,23 @@ namespace P04_Hospital
             }
         }
 
-        public void AddPatient(string doctorName, string patientName)
+        public void AddDepartment(string name)
+        {
+            if (!Departments.Any(x => x.Name == name))
+            {
+                Department department = new Department(name);
+                Departments.Add(department);
+            }
+        }
+
+        public void AddPatient(string doctorName, string departmentName, string patientName)
         {
             Doctor doctor = Doctors.FirstOrDefault(x => x.FullName == doctorName);
+            Department department = Departments.FirstOrDefault(x => x.Name == departmentName);
 
             Patient patient = new Patient(patientName);
-
             doctor.Patients.Add(patient);
+            department.AddPatientInRoom(patient);
         }
     }
 }

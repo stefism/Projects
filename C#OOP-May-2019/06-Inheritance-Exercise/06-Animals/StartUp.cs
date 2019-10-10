@@ -27,24 +27,52 @@ namespace Animals
                 string[] animalProperties = Console.ReadLine()
                     .Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-                if (animalProperties.Length != 3)
-                {
-                    Console.WriteLine("Invalid input!");
-                    continue;
-                }
+                //if (animalProperties.Length != 3)
+                //{
+                //    Console.WriteLine("Invalid input!");
+                //    continue;
+                //}
 
                 animalName = animalProperties[0];
                 bool isAge = int.TryParse(animalProperties[1], out int animalAge);
 
-                if (!isAge)
+                List<string> validAnimals = new List<string>
+                {
+                    "Dog",
+                    "Frog",
+                    "Cat",
+                    "Kitten",
+                    "Tomcat"
+                };
+
+                if (!isAge || animalAge <= 0 || !validAnimals.Contains(animalType))
                 {
                     Console.WriteLine("Invalid input!");
                     continue;
                 }
 
-                animalGender = animalProperties[2];
+                if (animalProperties.Length == 3)
+                {
+                    animalGender = animalProperties[2];
+
+                    if (animalGender != "Male" && animalGender != "Female")
+                    {
+                        Console.WriteLine("Invalid input!");
+                        continue;
+                    }
+                }
                 
+
                 AddAnimalToList(animalAge);
+            }
+
+            foreach (var animal in animals)
+            {
+                string[] type = animal.GetType().ToString().Split(".");
+
+                Console.WriteLine(type[1]);
+                Console.WriteLine(animal);
+                animal.ProduceSound();
             }
         }
 
@@ -67,12 +95,16 @@ namespace Animals
             }
             else if (animalType == "Kitten")
             {
-                Kitten kitten = new Kitten(animalName, animalAge);
+                animalGender = "Female";
+
+                Kitten kitten = new Kitten(animalName, animalAge, animalGender);
                 animals.Add(kitten);
             }
             else if (animalType == "Tomcat")
             {
-                Tomcat tomcat = new Tomcat(animalName, animalAge);
+                animalGender = "Male";
+
+                Tomcat tomcat = new Tomcat(animalName, animalAge, animalGender);
                 animals.Add(tomcat);
             }
         }

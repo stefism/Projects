@@ -11,5 +11,10 @@ namespace Animals
         {
 
         }
+
+        public override void ProduceSound()
+        {
+            Console.WriteLine("Meow meow");
+        }
     }
 }

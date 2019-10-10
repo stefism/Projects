@@ -16,5 +16,15 @@ namespace Animals
         public string Name { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
+
+        public virtual void ProduceSound()
+        {
+            Console.WriteLine("");
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} {Age} {Gender}";
+        }
     }
 }

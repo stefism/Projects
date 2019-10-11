@@ -6,10 +6,12 @@ namespace Restaurant
 {
     public class Fish : MainDish
     {
-        public Fish(string name, decimal price, double grams)
+        public Fish(string name, decimal price)
             :base(name, price, grams)
         {
-            Grams = 22;
+            
         }
+
+        private const double grams = 22;
     }
 }

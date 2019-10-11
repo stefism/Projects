@@ -6,12 +6,15 @@ namespace Restaurant
 {
     public class Cake : Dessert
     {
-        public Cake(string name, decimal price = 5, double grams = 250, double calories = 1000)
+        public Cake(string name)
             :base(name, price, grams, calories)
         {
-            Grams = 250;
-            Calories = 1000;
-            Price = 5;
+            
         }
+
+        private const double grams = 250;
+        private const double calories = 1000;
+        private const decimal price = 5m;
+
     }
 }

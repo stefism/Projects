@@ -27,12 +27,6 @@ namespace Animals
                 string[] animalProperties = Console.ReadLine()
                     .Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-                //if (animalProperties.Length != 3)
-                //{
-                //    Console.WriteLine("Invalid input!");
-                //    continue;
-                //}
-
                 animalName = animalProperties[0];
                 bool isAge = int.TryParse(animalProperties[1], out int animalAge);
 
@@ -62,15 +56,14 @@ namespace Animals
                     }
                 }
                 
-
                 AddAnimalToList(animalAge);
             }
 
             foreach (var animal in animals)
             {
-                string[] type = animal.GetType().ToString().Split(".");
+                //string[] type = animal.GetType().ToString().Split(".");
 
-                Console.WriteLine(type[1]);
+                Console.WriteLine(animal.GetType().Name);
                 Console.WriteLine(animal);
                 animal.ProduceSound();
             }
@@ -95,16 +88,12 @@ namespace Animals
             }
             else if (animalType == "Kitten")
             {
-                animalGender = "Female";
-
-                Kitten kitten = new Kitten(animalName, animalAge, animalGender);
+                Kitten kitten = new Kitten(animalName, animalAge);
                 animals.Add(kitten);
             }
             else if (animalType == "Tomcat")
             {
-                animalGender = "Male";
-
-                Tomcat tomcat = new Tomcat(animalName, animalAge, animalGender);
+                Tomcat tomcat = new Tomcat(animalName, animalAge);
                 animals.Add(tomcat);
             }
         }

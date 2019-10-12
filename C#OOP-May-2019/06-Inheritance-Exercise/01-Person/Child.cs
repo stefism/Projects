@@ -14,7 +14,7 @@ namespace Person
 
         public override int Age 
         { 
-            get => base.Age;
+            get => base.age;
 
             protected set 
             {
@@ -23,7 +23,7 @@ namespace Person
                     throw new ArgumentException("");
                 }
 
-                base.Age = value;
+                base.age = value;
             } 
         }
     }

@@ -5,8 +5,6 @@ namespace Person
 {
     public class Person
     {
-        protected int age;
-
         public Person(string name, int age)
         {
             Name = name;
@@ -15,20 +13,7 @@ namespace Person
 
         public string Name { get; set; }
 
-        public virtual int Age 
-        { 
-            get => this.age;
-
-            protected set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Age must be positive!");
-                }
-
-                this.age = value;
-            } 
-        }
+        public int Age { get; set; }
 
         public override string ToString()
         {

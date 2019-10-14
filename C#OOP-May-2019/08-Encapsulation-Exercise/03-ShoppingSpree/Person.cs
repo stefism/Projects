@@ -21,9 +21,9 @@ namespace ShoppingSpree
         {
             get => name;
 
-            set
+            private set
             {
-                if (value == string.Empty || value == " ")
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name cannot be empty");
                 }
@@ -36,7 +36,7 @@ namespace ShoppingSpree
         {
             get => money;
 
-            set
+            private set
             {
                 if (value < 0)
                 {

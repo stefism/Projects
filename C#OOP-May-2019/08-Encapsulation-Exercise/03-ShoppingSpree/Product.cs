@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShoppingSpree
 {
@@ -19,9 +17,9 @@ namespace ShoppingSpree
         {
             get => name;
 
-            set 
+            private set 
             {
-                if (value == string.Empty || value == " ")
+                if (value == string.Empty || value == " ") // string.IsNullOrWhiteSpace(value)
                 {
                     throw new ArgumentException("Name cannot be empty");
                 }
@@ -34,7 +32,7 @@ namespace ShoppingSpree
         {
             get => cost;
 
-            set 
+            private set 
             {
                 if (value < 0)
                 {

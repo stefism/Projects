@@ -18,7 +18,6 @@ namespace ClassBoxData
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
 

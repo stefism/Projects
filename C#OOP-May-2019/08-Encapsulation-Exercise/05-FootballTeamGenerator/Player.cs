@@ -8,6 +8,7 @@ namespace FootballTeamGenerator
     {
         private string name;
         private Stats stats;
+        private int status;
 
         public Player(string name, Stats stats)
         {
@@ -28,6 +29,13 @@ namespace FootballTeamGenerator
 
                 name = value;
             }
+        }
+
+        public int CalculateStat()
+        {
+            int stat = stats.CalculateStatsValue();
+
+            return stat;
         }
     }
 }

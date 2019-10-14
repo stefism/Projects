@@ -9,6 +9,20 @@ namespace FootballTeamGenerator
     {
         private List<Team> teams;
 
+        public TeamRepository()
+        {
+            teams = new List<Team>();
+        }
+
+        public IReadOnlyCollection<Team> Teams 
+        {
+            get 
+            {
+                return teams.AsReadOnly();
+            }
+            
+        }
+
         public void AddTeam(string teamName)
         {
             Team team = new Team(teamName);
@@ -45,12 +59,39 @@ namespace FootballTeamGenerator
                 {
                     team.RemovePlayer(player);
                 }
+                else
+                {
+                    throw new ArgumentException($"Player {playerName} is not in {team} team.");
+                }
             }
 
             else
             {
                 throw new ArgumentException($"Team {teamName} does not exist.");
             }
+        }
+
+        public double CalculateTeamRating(string teamName)
+        {
+            int teamRating = 0;
+
+            foreach (var currentTeam in teams)
+            {
+                if (currentTeam.Name == teamName)
+                {
+                    if (currentTeam.TeamCount != 0)
+                    {
+                        foreach (var currPlayer in currentTeam.Players)
+                        {
+                            int currentRating = currPlayer.CalculateStat();
+
+                            teamRating += currentRating;
+                        }
+                    }
+                }
+            }
+
+            return teamRating;
         }
     }
 }

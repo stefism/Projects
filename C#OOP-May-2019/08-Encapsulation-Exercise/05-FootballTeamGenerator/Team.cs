@@ -10,17 +10,27 @@ namespace FootballTeamGenerator
         private string name;
         private List<Player> players;
 
+        public int TeamCount => players.Count;
+
+        public IReadOnlyCollection<Player> Players
+        {
+            get
+            {
+                return players.AsReadOnly();
+            }
+        }
+
         public Team(string name)
         {
             Name = name;
             players = new List<Player>();
         }
 
-        public string Name 
+        public string Name
         {
             get => name;
 
-            private set 
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -46,6 +56,26 @@ namespace FootballTeamGenerator
             Player player = players.FirstOrDefault(x => x.Name == name);
 
             return player;
+        }
+
+        public double CalculateSkillLevel()
+        {
+            double totalSkill = 0;
+
+            foreach (var player in players)
+            {
+                double currentSkill = player.CalculateStat();
+                totalSkill += currentSkill;
+            }
+
+            double averageSkill = Math.Ceiling(totalSkill / players.Count);
+
+            return averageSkill;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

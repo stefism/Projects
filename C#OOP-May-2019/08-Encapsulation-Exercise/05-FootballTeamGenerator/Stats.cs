@@ -82,6 +82,13 @@ namespace FootballTeamGenerator
 
         #endregion
 
+        public int CalculateStatsValue()
+        {
+            int value = (Endurance + Sprint + Dribble + Passing + Shooting) / 5;
+
+            return value;
+        }
+
         private void ValidateStatRange(int value, string statName)
         {
             if (value < 0 || value > 100)

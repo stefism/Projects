@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FootballTeamGenerator
 {
@@ -8,7 +6,6 @@ namespace FootballTeamGenerator
     {
         private string name;
         private Stats stats;
-        private int status;
 
         public Player(string name, Stats stats)
         {
@@ -31,9 +28,9 @@ namespace FootballTeamGenerator
             }
         }
 
-        public int CalculateStat()
+        public double CalculateStat()
         {
-            int stat = stats.CalculateStatsValue();
+            double stat = stats.CalculateStatsValue();
 
             return stat;
         }

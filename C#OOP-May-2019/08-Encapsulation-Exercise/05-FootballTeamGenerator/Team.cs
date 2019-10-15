@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace FootballTeamGenerator
@@ -56,21 +55,6 @@ namespace FootballTeamGenerator
             Player player = players.FirstOrDefault(x => x.Name == name);
 
             return player;
-        }
-
-        public double CalculateSkillLevel()
-        {
-            double totalSkill = 0;
-
-            foreach (var player in players)
-            {
-                double currentSkill = player.CalculateStat();
-                totalSkill += currentSkill;
-            }
-
-            double averageSkill = Math.Ceiling(totalSkill / players.Count);
-
-            return averageSkill;
         }
 
         public override string ToString()

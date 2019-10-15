@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace FootballTeamGenerator
@@ -27,7 +26,10 @@ namespace FootballTeamGenerator
         {
             Team team = new Team(teamName);
 
-            teams.Add(team);
+            if (!teams.Contains(team))
+            {
+                teams.Add(team);
+            }
         }
 
         public void AddPlayerToTheTeam(string teamName, Player player)
@@ -73,7 +75,7 @@ namespace FootballTeamGenerator
 
         public double CalculateTeamRating(string teamName)
         {
-            int teamRating = 0;
+            double teamRating = 0;
 
             foreach (var currentTeam in teams)
             {
@@ -83,7 +85,7 @@ namespace FootballTeamGenerator
                     {
                         foreach (var currPlayer in currentTeam.Players)
                         {
-                            int currentRating = currPlayer.CalculateStat();
+                            double currentRating = currPlayer.CalculateStat();
 
                             teamRating += currentRating;
                         }
@@ -91,7 +93,7 @@ namespace FootballTeamGenerator
                 }
             }
 
-            return teamRating;
+            return Math.Round(teamRating, 0);
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace FootballTeamGenerator
@@ -13,7 +11,8 @@ namespace FootballTeamGenerator
 
             while (true)
             {
-                string[] inputArgs = Console.ReadLine().Split(";");
+                string[] inputArgs = Console.ReadLine()
+                    .Split(";", StringSplitOptions.RemoveEmptyEntries);
 
                 try
                 {

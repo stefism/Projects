@@ -1,17 +1,23 @@
 ﻿using System;
 
-namespace FootballTeamGenerator
+using _05_FootballTeam_Daskal.Exceptions;
+using System.Collections.Generic;
+using System.Text;
+
+namespace _05_FootballTeam_Daskal
 {
-    public class Stats
+    public class Stat
     {
+        private const int MIN_STAT_VALUE = 0;
+        private const int MAX_STAT_VALUE = 100;
+
         private int endurance;
         private int sprint;
         private int dribble;
         private int passing;
         private int shooting;
 
-        public Stats(int endurance, int sprint, 
-            int dribble, int passing, int shooting)
+        public Stat(int endurance, int sprint, int dribble, int passing, int shooting)
         {
             Endurance = endurance;
             Sprint = sprint;
@@ -20,15 +26,14 @@ namespace FootballTeamGenerator
             Shooting = shooting;
         }
 
-        #region SetProp
-
         public int Endurance
         {
             get => endurance;
 
             private set
             {
-                ValidateStatRange(value, "Endurance");
+                ValidateStat(value, nameof(Endurance));
+
                 endurance = value;
             }
         }
@@ -39,7 +44,8 @@ namespace FootballTeamGenerator
 
             private set
             {
-                ValidateStatRange(value, "Sprint");
+                ValidateStat(value, nameof(Sprint));
+
                 sprint = value;
             }
         }
@@ -50,7 +56,8 @@ namespace FootballTeamGenerator
 
             private set
             {
-                ValidateStatRange(value, "Dribble");
+                ValidateStat(value, nameof(Dribble));
+
                 dribble = value;
             }
         }
@@ -61,7 +68,8 @@ namespace FootballTeamGenerator
 
             private set
             {
-                ValidateStatRange(value, "Passing");
+                ValidateStat(value, nameof(Passing));
+
                 passing = value;
             }
         }
@@ -72,25 +80,22 @@ namespace FootballTeamGenerator
 
             private set
             {
-                ValidateStatRange(value, "Shooting");
+                ValidateStat(value, nameof(Shooting));
+
                 shooting = value;
             }
         }
 
-        #endregion
+        public double OverallStat => (Endurance + Sprint
+            + Dribble + Passing + Shooting) / 5.0;
 
-        public double CalculateStatsValue()
+        private void ValidateStat(int value, string name)
         {
-            double value = (Endurance + Sprint + Dribble + Passing + Shooting) / 5.0;
-
-            return value;
-        }
-
-        private void ValidateStatRange(int value, string statName)
-        {
-            if (value < 0 || value > 100)
+            if (value < MIN_STAT_VALUE || value > MAX_STAT_VALUE)
             {
-                throw new ArgumentException($"{statName} should be between 0 and 100.");
+                throw new ArgumentException
+                    (string.Format(ExceptionMessages
+                    .InvalidStatException, name, MIN_STAT_VALUE, MAX_STAT_VALUE));
             }
         }
     }

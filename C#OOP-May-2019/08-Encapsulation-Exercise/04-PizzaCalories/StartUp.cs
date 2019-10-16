@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace _04_PizzaCalories
+﻿namespace _04_PizzaCalories
 {
     public class StartUp
     {

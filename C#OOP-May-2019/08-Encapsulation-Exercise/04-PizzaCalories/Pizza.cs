@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _04_PizzaCalories
 {
     public class Pizza
     {
         private const int MAX_NAME_LENGHT = 15;
-        private const int MIN_NAME_LENGHT = 15;
+        private const int MIN_NAME_LENGHT = 1;
 
-        private Dough dough;
-        private Topping toppings;
         private string name;
 
         public Pizza(string name)
@@ -42,6 +38,7 @@ namespace _04_PizzaCalories
 
             TotalCalories += dough.CalulateCalories();
         }
+
 
         public void CalculateToppingsCalories(string type, double grams)
         {

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace _04_PizzaCalories
 {
@@ -12,13 +9,14 @@ namespace _04_PizzaCalories
         {
             try
             {
-                string[] pizzaArgs = Console.ReadLine().ToLower().Split();
+                string[] pizzaArgs = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 string pizzaName = pizzaArgs[1];
+                string pizzaToLower = pizzaName.ToLower();
 
-                Pizza pizza = new Pizza(pizzaName);
+                Pizza pizza = new Pizza(pizzaToLower);
 
-                string[] doughArgs = Console.ReadLine().ToLower().Split();
+                string[] doughArgs = Console.ReadLine().ToLower().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 string doughType = doughArgs[1];
                 string doughBakingTechnics = doughArgs[2];
@@ -28,7 +26,7 @@ namespace _04_PizzaCalories
 
                 while (true)
                 {
-                    string[] toppingArgs = Console.ReadLine().ToLower().Split();
+                    string[] toppingArgs = Console.ReadLine().ToLower().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                     if (toppingArgs[0] == "end")
                     {
@@ -41,13 +39,19 @@ namespace _04_PizzaCalories
                     pizza.CalculateToppingsCalories(toppingType, toppingGrams);
                 }
 
-                Console.WriteLine(pizza.Name);
+                pizzaToLower = pizzaToLower.Substring(0, 1).ToUpper() + pizzaToLower.Substring(1);
+
+                Console.WriteLine($"{pizzaToLower} - {pizza.TotalCalories:F2} Calories.");
             }
 
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
-
                 Console.WriteLine(ex.Message);
+            }
+
+            catch (ArgumentException arEx)
+            {
+                Console.WriteLine(arEx.Message);
             }
         }
     }

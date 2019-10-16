@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _04_PizzaCalories
 {
@@ -36,7 +34,7 @@ namespace _04_PizzaCalories
 
             set
             {
-                if (value != "white" || value != "wholegrain")
+                if (value != "white" && value != "wholegrain")
                 {
                     throw new InvalidOperationException("Invalid type of dough.");
                 }
@@ -51,7 +49,7 @@ namespace _04_PizzaCalories
 
             set
             {
-                if (value != "crispy" || value != "chewy" || value != "homemade")
+                if (value != "crispy" && value != "chewy" && value != "homemade")
                 {
                     throw new InvalidOperationException("Invalid type of dough.");
                 }
@@ -70,7 +68,7 @@ namespace _04_PizzaCalories
                     || value > MAX_WEIGHT_IN_GRAMS)
                 {
                     throw new InvalidOperationException
-                        ($"Dough weight should be in the range [{MIN_WEIGHT_IN_GRAMS}.{MAX_WEIGHT_IN_GRAMS}].");
+                        ($"Dough weight should be in the range [{MIN_WEIGHT_IN_GRAMS}..{MAX_WEIGHT_IN_GRAMS}].");
                 }
 
                 weightGrams = value;

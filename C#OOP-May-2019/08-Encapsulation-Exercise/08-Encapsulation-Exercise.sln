@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-FootballTeamGenerator", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-FootballTeam-Daskal", "05-FootballTeam-Daskal\05-FootballTeam-Daskal.csproj", "{C30F93DF-2B60-427E-927D-2E252063BD6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-PizzaCalories", "04-PizzaCalories\04-PizzaCalories.csproj", "{201A6408-2336-4C41-BA3B-D69B954CBAAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C30F93DF-2B60-427E-927D-2E252063BD6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C30F93DF-2B60-427E-927D-2E252063BD6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C30F93DF-2B60-427E-927D-2E252063BD6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201A6408-2336-4C41-BA3B-D69B954CBAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201A6408-2336-4C41-BA3B-D69B954CBAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201A6408-2336-4C41-BA3B-D69B954CBAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201A6408-2336-4C41-BA3B-D69B954CBAAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

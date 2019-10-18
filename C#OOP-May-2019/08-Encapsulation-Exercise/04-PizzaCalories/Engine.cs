@@ -9,7 +9,7 @@ namespace _04_PizzaCalories
         {
             try
             {
-                string[] pizzaArgs = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string[] pizzaArgs = Console.ReadLine().Split(" ");
 
                 string pizzaName = pizzaArgs[1];
                 string pizzaToLower = pizzaName.ToLower();

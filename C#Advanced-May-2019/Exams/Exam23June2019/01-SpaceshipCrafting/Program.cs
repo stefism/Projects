@@ -68,7 +68,8 @@ namespace _01_SpaceshipCrafting
                 }
             }
 
-            if (advancedMaterials.Values.Sum() >= 4)
+            if (advancedMaterials["Aluminium"] >= 1 && advancedMaterials["Carbon fiber"] >= 1
+                && advancedMaterials["Glass"] >= 1 && advancedMaterials["Lithium"] >= 1)
             {
                 Console.WriteLine("Wohoo! You succeeded in building the spaceship!");
             }

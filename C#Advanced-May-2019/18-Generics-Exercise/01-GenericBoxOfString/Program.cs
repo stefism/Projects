@@ -8,16 +8,16 @@ namespace _01_GenericBoxOfString
         {
             int numberOfInput = int.Parse(Console.ReadLine());
 
-            var box = new Box<string>();
+            var box = new Box<double>();
 
             for (int i = 0; i < numberOfInput; i++)
             {
-                var input =Console.ReadLine();
+                double input = double.Parse(Console.ReadLine());
 
                 box.Add(input);
             }
 
-            var stringToCompare = Console.ReadLine();
+            double stringToCompare = double.Parse(Console.ReadLine());
 
             int count = box.CountThatGreaterByValue(stringToCompare);
 

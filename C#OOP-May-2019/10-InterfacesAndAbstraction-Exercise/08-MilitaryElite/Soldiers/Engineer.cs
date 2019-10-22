@@ -35,7 +35,7 @@ namespace _08_MilitaryElite
 
             foreach (var repair in Repairs)
             {
-                sb.AppendLine(repair.ToString());
+                sb.AppendLine($"  {repair.ToString()}");
             }
 
             return sb.ToString().TrimEnd();

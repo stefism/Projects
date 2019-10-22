@@ -35,7 +35,7 @@ namespace _08_MilitaryElite
 
             foreach (var mission in missions)
             {
-                Console.WriteLine(mission.ToString());
+                sb.AppendLine($"  {mission.ToString()}");
             }
 
             return sb.ToString().TrimEnd();

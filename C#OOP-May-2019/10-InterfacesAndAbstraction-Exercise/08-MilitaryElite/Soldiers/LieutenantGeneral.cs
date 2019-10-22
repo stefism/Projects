@@ -31,7 +31,7 @@ namespace _08_MilitaryElite
 
             foreach (var privat in privates)
             {
-                sb.AppendLine(privat.ToString());
+                sb.AppendLine($"  {privat.ToString()}");
             }
             return sb.ToString().TrimEnd();
         }

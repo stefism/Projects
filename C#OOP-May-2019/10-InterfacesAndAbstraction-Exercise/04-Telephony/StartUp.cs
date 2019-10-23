@@ -32,7 +32,7 @@ namespace _04_Telephony
                 {
                     Console.WriteLine(browse.Browsing(webAddress));
                 }
-                catch (ArgumentException ex)
+                catch (InvalidURLException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -47,7 +47,7 @@ namespace _04_Telephony
                 {
                     Console.WriteLine(call.Calling(number));
                 }
-                catch (ArgumentException ex)
+                catch (InvalidPhoneNumberException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }

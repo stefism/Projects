@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace _04_Telephony
 {
@@ -10,9 +11,12 @@ namespace _04_Telephony
         
         public string Browsing(string webAddress)
         {
-            if (!IsWebAddressIsNotValid(webAddress))
+            if (webAddress.Any(x => char.IsDigit(x))) // Замества метода, който написах.
+                // Ако някой от чаровете в стринга е цифра, връща false.
+
+                //!IsWebAddressIsNotValid(webAddress)
             {
-                throw new ArgumentException("Invalid URL!");
+                throw new InvalidURLException();
             }
 
             return $"Browsing: {webAddress}!";
@@ -20,9 +24,12 @@ namespace _04_Telephony
 
         public string Calling(string number)
         {
-            if (!IsNumberIsNotValid(number))
+            if (!number.All(x => char.IsDigit(x))) // По същия начин като горното.
+                // Връща true ако всичките са цифри.
+
+                //!IsNumberIsNotValid(number)
             {
-                throw new ArgumentException("Invalid number!");
+                throw new InvalidPhoneNumberException();
             }
 
             return $"Calling... {number}";

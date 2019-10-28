@@ -42,7 +42,7 @@ namespace HealthyHeaven
 
             Console.WriteLine(restaurant.GetHealthiestSalad()); // Tomatoes with cucumbers
 
-            //Console.WriteLine(restaurant.GenerateMenu());
+            Console.WriteLine(restaurant.GenerateMenu());
             // Casa Domingo have 2 salads:
             // * Salad Tomatoes with cucumbers is 35 calories and have 2 products:
             //  - Tomato have 20 calories

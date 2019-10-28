@@ -41,11 +41,11 @@ namespace HealthyHeaven
 
             int calories = GetTotalCalories();
 
-            sb.AppendLine($"* Salad {Name} is {calories} calories and have {calories} products:");
+            sb.AppendLine($"* Salad {Name} is {calories} calories and have {GetProductCount()} products:");
 
             foreach (var veg in vegetables)
             {
-                sb.AppendLine(veg.ToString());
+                sb.AppendLine(veg.ToString().TrimEnd());
             }
 
             return sb.ToString().TrimEnd();

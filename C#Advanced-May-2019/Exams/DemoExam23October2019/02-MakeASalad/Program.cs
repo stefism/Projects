@@ -46,17 +46,23 @@ namespace _02_MakeASalad
                 if (currentCalories > 0)
                 {
                     calories.Push(currentCalories);
+                   
+                    if (vegetables.Count == 0)
+                    {
+                        makedCaloriesList.Add(makedCalories.Pop());
+                        calories.Pop();
+                    }
                 }
                 else
                 {
                     makedCaloriesList.Add(makedCalories.Pop());
                 }
 
-                if (vegetables.Count == 0 && calories.Count > 0 && calories.Peek() > 0)
-                {
-                    makedCaloriesList.Add(makedCalories.Pop());
-                    calories.Pop();
-                }
+                //if (vegetables.Count == 0 && calories.Count > 0)
+                //{
+                //    makedCaloriesList.Add(makedCalories.Pop());
+                //    calories.Pop();
+                //}
             }
 
             Console.WriteLine(string.Join(" ", makedCaloriesList));

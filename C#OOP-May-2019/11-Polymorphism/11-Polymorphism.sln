@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-MathOperations", "01-Mat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Animals", "02-Animals\02-Animals.csproj", "{8F2AEB56-FBA0-4CC5-8528-28DEF1FAF571}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Shapes", "03-Shapes\03-Shapes.csproj", "{0A8D9EDE-925C-44AC-A0EB-87B08B3F414D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Shapes", "03-Shapes\03-Shapes.csproj", "{0A8D9EDE-925C-44AC-A0EB-87B08B3F414D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01E-Vehicles", "01E-Vehicles\01E-Vehicles.csproj", "{E7018C26-CAC2-41DC-8B48-C646522BF487}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02E-VehiclesExtension", "02E-VehiclesExtension\02E-VehiclesExtension.csproj", "{F613D4A4-DBCE-4345-980F-D0E58E322C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03E-AnimalFarm", "03E-AnimalFarm\03E-AnimalFarm.csproj", "{E646F067-C866-4843-ACAF-9A199E663EB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{0A8D9EDE-925C-44AC-A0EB-87B08B3F414D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A8D9EDE-925C-44AC-A0EB-87B08B3F414D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A8D9EDE-925C-44AC-A0EB-87B08B3F414D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7018C26-CAC2-41DC-8B48-C646522BF487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7018C26-CAC2-41DC-8B48-C646522BF487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7018C26-CAC2-41DC-8B48-C646522BF487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7018C26-CAC2-41DC-8B48-C646522BF487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F613D4A4-DBCE-4345-980F-D0E58E322C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F613D4A4-DBCE-4345-980F-D0E58E322C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F613D4A4-DBCE-4345-980F-D0E58E322C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F613D4A4-DBCE-4345-980F-D0E58E322C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E646F067-C866-4843-ACAF-9A199E663EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E646F067-C866-4843-ACAF-9A199E663EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E646F067-C866-4843-ACAF-9A199E663EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E646F067-C866-4843-ACAF-9A199E663EB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

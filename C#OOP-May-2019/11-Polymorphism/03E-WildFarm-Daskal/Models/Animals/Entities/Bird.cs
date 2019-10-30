@@ -13,5 +13,10 @@ namespace _03E_WildFarm_Daskal.Models.Animals.Entities
         }
 
         public double WingSize { get; private set; }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"{WingSize}, {Weight}, {FoodEaten}]";
+        }
     }
 }

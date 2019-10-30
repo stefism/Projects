@@ -34,5 +34,10 @@ namespace _03E_WildFarm_Daskal.Models.Animals.Entities
             Weight += food.Quantity * WeightMultiplier;
             FoodEaten += food.Quantity;
         }
+
+        public override string ToString()
+        {
+            return $"{ GetType().Name} [{Name}, ";
+        }
     }
 }

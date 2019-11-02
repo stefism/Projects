@@ -57,7 +57,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02. Worker-Before", "05. D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03. Database-Before", "05. DIP\P03. Database-Before\P03. Database-Before.csproj", "{B402B26A-737E-413B-B500-908B2651AEFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-SRP-BooksAfter", "02-SRP-BooksAfter\01-SRP-BooksAfter.csproj", "{FF0553A8-33FE-4357-95E3-C020A4B75F08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-SRP-BooksAfter", "02-SRP-BooksAfter\01-SRP-BooksAfter.csproj", "{FF0553A8-33FE-4357-95E3-C020A4B75F08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter", "Sorter\Sorter.csproj", "{EE3918C5-1B7C-42EE-A030-4E9FAD974E91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +115,10 @@ Global
 		{FF0553A8-33FE-4357-95E3-C020A4B75F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF0553A8-33FE-4357-95E3-C020A4B75F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF0553A8-33FE-4357-95E3-C020A4B75F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3918C5-1B7C-42EE-A030-4E9FAD974E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3918C5-1B7C-42EE-A030-4E9FAD974E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3918C5-1B7C-42EE-A030-4E9FAD974E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3918C5-1B7C-42EE-A030-4E9FAD974E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

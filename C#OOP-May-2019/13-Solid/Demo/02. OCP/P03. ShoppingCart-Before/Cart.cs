@@ -1,19 +1,32 @@
 ﻿namespace P03._ShoppingCart
 {
+    using P03._ShoppingCart_Before;
+    using P03._ShoppingCart_Before.Contracts;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Cart
     {
         private readonly List<OrderItem> items;
 
+        private readonly List<IPriceCalculationStrategy> calculationStrategies;
+
         public Cart()
         {
             this.items = new List<OrderItem>();
+            calculationStrategies = new List<IPriceCalculationStrategy>()
+            {
+                new SpecialCalculationStrategy(),
+                new WeightCalculationStrategy(),
+            };
         }
 
         public IEnumerable<OrderItem> Items
         {
-            get { return new List<OrderItem>(this.items); }
+            get 
+            { 
+                return new List<OrderItem>(this.items); 
+            }
         }
 
         public string CustmerEmail { get; set; }
@@ -29,21 +42,9 @@
 
             foreach (var item in this.items)
             {
-                if (item.Sku.StartsWith("EACH"))
+                foreach (var strategy in calculationStrategies)
                 {
-                    total += item.Quantity * 5m;
-                }
-                else if (item.Sku.StartsWith("WEIGHT"))
-                {
-                    // quantity is in grams, price is per kg
-                    total += item.Quantity * 4m / 1000;
-                }
-                else if (item.Sku.StartsWith("SPECIAL"))
-                {
-                    // $0.40 each; 3 for $1.00
-                    total += item.Quantity * .4m;
-                    int setsOfThree = item.Quantity / 3;
-                    total -= setsOfThree * .2m;
+                    total += strategy.Calculate(item);
                 }
 
                 // more rules are coming!

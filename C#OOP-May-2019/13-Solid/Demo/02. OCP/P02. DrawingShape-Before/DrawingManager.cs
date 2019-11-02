@@ -1,29 +1,20 @@
 ﻿namespace P02._DrawingShape_Before
 {
     using Contracts;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    class DrawingManager : IDrawingManager
+    class DrawingManager
     {
         public void Draw(IShape shape)
         {
-            if (shape is Circle)
-            {
-                this.DrawCircle(shape as Circle);
-            }
-            else if (shape is Rectangle)
-            {
-                this.DrawRectangle(shape as Rectangle);
-            }
-        }
+            var drawers = new List<IDrawingManager>()
+            { 
+                new CircleDrawer(),
+                new RectangleDrawer(),
+            };
 
-        public void DrawCircle(Circle circle)
-        {
-            // Draw Circle
-        }
-
-        public void DrawRectangle(Rectangle rectangle)
-        {
-            // Draw Rectangle
+            drawers.First(x => x.IsMatch(shape)).Draw(shape);
         }
     }
 }

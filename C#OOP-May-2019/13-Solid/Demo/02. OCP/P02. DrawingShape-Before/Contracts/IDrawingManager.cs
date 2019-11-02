@@ -3,5 +3,7 @@
     interface IDrawingManager
     {
         void Draw(IShape shape);
+
+        bool IsMatch(IShape shape);
     }
 }

@@ -23,10 +23,15 @@ namespace Logger
 
         public void Append(IError error)
         {
-            string formattedMessage = File.Write(Layout, error);
+            string formattedMessage = File.Write(Layout, error) + Environment.NewLine;
 
             System.IO.File.AppendAllText(File.Path, formattedMessage);
             messagesAppended++;
+        }
+
+        public override string ToString()
+        {
+            return $"Appender type: {GetType().Name}, Layout type: {Layout.GetType().Name}, Report level: {Level.ToString()}, Messages appended: {messagesAppended}, File size: {File.Size}";
         }
     }
 }

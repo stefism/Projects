@@ -15,8 +15,8 @@ namespace Logger
             sb.AppendLine("<log>")
                 .AppendLine("\t<date>{0}</date>")
                 .AppendLine("\t<level>{1}</level>")
-                .AppendLine("\t<message>{2}t</message>")
-                .AppendLine("</log>");
+                .AppendLine("\t<message>{2}</message>")
+                .Append("</log>");
 
             return sb.ToString().TrimEnd();
         }

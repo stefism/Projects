@@ -9,7 +9,7 @@ namespace Logger
 {
     public class LogFile : IFile
     {
-        private const string dateFormat = "M/dd/yyyy H:mm:ss tt";
+        private const string dateFormat = "M/dd/yyyy h:mm:ss tt";
 
         private const string currentDirectory = "\\logs\\";
         private const string currentFile = "log.txt";
@@ -20,11 +20,12 @@ namespace Logger
         public LogFile()
         {
             IOManager = new IOManager(currentDirectory, currentFile);
-            currentPath = IOManager.CurrentFilePath;
+            currentPath = IOManager.GetCurrentPath();
             IOManager.EnsureDirectoryAndFileExist();
+            Path = currentPath + currentDirectory + currentFile;
         }
 
-        public string Path => currentPath;
+        public string Path { get; private set; }
 
         public ulong Size => GetFileSize();
 
@@ -50,7 +51,7 @@ namespace Logger
             string text = File.ReadAllText(Path);
 
             ulong size = (ulong)text.ToCharArray()
-                .Where(x => Char.IsLetter(x))
+                .Where(x => char.IsLetter(x))
                 .Sum(x => x);
 
             return size;

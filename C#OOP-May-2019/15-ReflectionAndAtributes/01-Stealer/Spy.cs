@@ -12,7 +12,7 @@ namespace Spy
         {
             var sb = new StringBuilder();
 
-            Type findingClass = Type.GetType($"_01_Stealer.{inputClassName}");
+            Type findingClass = Type.GetType($"Spy.{inputClassName}");
             FieldInfo[] classFields = findingClass.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
 
             sb.AppendLine($"Class under investigation: {findingClass.Name}");

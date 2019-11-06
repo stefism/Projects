@@ -4,15 +4,14 @@ using System.Text;
 using System.Reflection;
 using System.Linq;
 
-namespace Spy
-{
+
     public class Spy
     {
         public string StealFieldInfo(string inputClassName, params string[] fields)
         {
             var sb = new StringBuilder();
 
-            Type findingClass = Type.GetType($"Spy.{inputClassName}");
+            Type findingClass = Type.GetType($"Stealer.{inputClassName}");
             FieldInfo[] classFields = findingClass.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
 
             sb.AppendLine($"Class under investigation: {findingClass.Name}");
@@ -29,4 +28,4 @@ namespace Spy
             return sb.ToString().TrimEnd();
         }
     }
-}
+

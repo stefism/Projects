@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-
+namespace Spy
+{
     public class Hacker
     {
         public string username = "securityGod82";
@@ -22,4 +23,4 @@ using System.Text;
         {
         }
     }
-
+}

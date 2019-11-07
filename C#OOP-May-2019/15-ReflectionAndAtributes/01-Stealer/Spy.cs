@@ -11,7 +11,7 @@ using System.Linq;
         {
             var sb = new StringBuilder();
 
-            Type findingClass = Type.GetType($"Stealer.{inputClassName}");
+            Type findingClass = Type.GetType($"{inputClassName}");
             FieldInfo[] classFields = findingClass.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
 
             sb.AppendLine($"Class under investigation: {findingClass.Name}");

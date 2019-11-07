@@ -10,6 +10,25 @@ namespace Spy
     {
         StringBuilder sb = new StringBuilder();
 
+        public string CollectGettersAndSetters(string inputClassName)
+        {
+            Type findingClass = Type.GetType($"Spy.{inputClassName}");
+
+            MethodInfo[] classMethods = findingClass.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+            foreach (var method in classMethods.Where(m => m.Name.StartsWith("get")))
+            {
+                sb.AppendLine($"{method.Name} will return {method.ReturnType}");
+            }
+
+            foreach (var method in classMethods.Where(m => m.Name.StartsWith("set")))
+            {
+                sb.AppendLine($"{method.Name} will set field of {method.GetParameters().First().ParameterType}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
         public string RevealPrivateMethods(string inputClassName)
         {
             Type findingClass = Type.GetType($"Spy.{inputClassName}");

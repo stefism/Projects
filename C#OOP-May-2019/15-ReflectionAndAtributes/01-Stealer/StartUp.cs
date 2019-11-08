@@ -7,7 +7,7 @@
         {
             Spy spy = new Spy();
 
-            string result = spy.StealFieldInfo("Hacker", "username", "password");
+            string result = spy.StealFieldInfo("Hacker", "password", "username");
 
             Console.WriteLine(result);
         }

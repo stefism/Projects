@@ -50,5 +50,26 @@ namespace UnitTesting.Tests
                 .With.Message
                 .EqualTo("Sum must be bigger than zero."));
         }
+
+        [Test]
+        public void TestWithdraw()
+        {
+            decimal currentBankBalance = bankAccount.Balance;
+            decimal withdrawSum = 43m;
+
+            decimal ballanceAfterWithdraw = currentBankBalance - withdrawSum;
+
+            bankAccount.Withdraw(withdrawSum);
+
+            Assert.That(bankAccount.Balance, Is.EqualTo(ballanceAfterWithdraw));
+        }
+
+        [Test]
+        public void TestWithdawMoreThanBalance()
+        {
+            Assert.That(() => bankAccount.Withdraw(500), Throws
+                .ArgumentException.With.Message
+                .EqualTo("Balance cannot be negative."));
+        }
     }
 }

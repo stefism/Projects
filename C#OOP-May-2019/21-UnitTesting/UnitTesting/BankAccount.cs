@@ -35,11 +35,13 @@ namespace UnitTesting
             Balance += sum;
         }
 
-        public void Withdraw(decimal sum)
+        public decimal Withdraw(decimal sum)
         {
             CheckSumIsPositive(sum);
 
             Balance -= sum;
+
+            return Balance;
         }
 
         private static void CheckSumIsPositive(decimal sum)

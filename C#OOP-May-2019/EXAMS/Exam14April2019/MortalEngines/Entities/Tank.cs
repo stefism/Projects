@@ -9,10 +9,10 @@ namespace MortalEngines.Entities
     {
         private bool defenceMode = true;
         public Tank(string name, double attackPoints, 
-            double defensePoints, double healthPoints) 
-            : base(name, attackPoints, defensePoints, healthPoints)
+            double defensePoints, double healthPoints = 100) 
+            : base(name, attackPoints, defensePoints)
         {
-
+            HealthPoints = 100;
         }
 
         public bool DefenseMode => defenceMode;

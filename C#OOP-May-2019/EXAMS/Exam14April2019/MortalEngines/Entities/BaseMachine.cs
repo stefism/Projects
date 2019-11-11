@@ -11,7 +11,7 @@ namespace MortalEngines.Entities
         private IPilot pilot;
 
         protected BaseMachine(string name, double attackPoints, 
-            double defensePoints, double healthPoints)
+            double defensePoints, double healthPoints = 0)
         {
             Name = name;
             AttackPoints = attackPoints;
@@ -48,7 +48,7 @@ namespace MortalEngines.Entities
                 pilot = value;
             }
         }
-        public double HealthPoints { get; set; }
+        public double HealthPoints  { get; set; }
 
         public double AttackPoints { get; protected set; }
 

@@ -8,6 +8,7 @@ namespace MortalEngines.Entities
     public class Pilot : IPilot
     {
         private string name;
+
         private List<IMachine> machines;
 
         public Pilot(string name)

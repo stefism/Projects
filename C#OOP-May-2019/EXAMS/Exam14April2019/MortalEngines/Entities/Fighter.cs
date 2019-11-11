@@ -9,8 +9,8 @@ namespace MortalEngines.Entities
     {
         private bool agressiveMode = true;
         public Fighter(string name, double attackPoints, 
-            double defensePoints, double healthPoints) 
-            : base(name, attackPoints, defensePoints, healthPoints)
+            double defensePoints, double healthPoints = 200) 
+            : base(name, attackPoints, defensePoints)
         {
             HealthPoints = 200;
         }

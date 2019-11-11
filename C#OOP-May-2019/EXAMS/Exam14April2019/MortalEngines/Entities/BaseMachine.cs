@@ -17,6 +17,8 @@ namespace MortalEngines.Entities
             AttackPoints = attackPoints;
             DefensePoints = defensePoints;
             HealthPoints = healthPoints;
+
+            Targets = new List<string>();
         }
 
         public string Name 
@@ -79,21 +81,25 @@ namespace MortalEngines.Entities
         {
             StringBuilder sb = new StringBuilder();
 
+            string targetOutput = Targets.Count > 0
+                ? string.Join(",", Targets) 
+                : "None";
+
             sb.AppendLine($"- {Name}");
             sb.AppendLine($" *Type: {GetType().Name}");
-            sb.AppendLine($" *Health: {HealthPoints}");
-            sb.AppendLine($" *Attack: {AttackPoints}");
-            sb.AppendLine($" *Defense: {DefensePoints}");
-            sb.Append($" *Targets: ");
+            sb.AppendLine($" *Health: {HealthPoints:F2}");
+            sb.AppendLine($" *Attack: {AttackPoints:F2}");
+            sb.AppendLine($" *Defense: {DefensePoints:F2}");
+            sb.AppendLine($" *Targets: {targetOutput}");
 
-            if (Targets.Count == 0)
-            {
-                sb.AppendLine("None");
-            }
-            else
-            {
-                sb.AppendLine(string.Join(",", Targets));
-            }
+            //if (Targets.Count == 0)
+            //{
+            //    sb.AppendLine("None");
+            //}
+            //else
+            //{
+            //    sb.AppendLine(string.Join(",", Targets));
+            //}
 
             return sb.ToString().TrimEnd();
         }

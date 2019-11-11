@@ -7,12 +7,13 @@ namespace MortalEngines.Entities
 {
     public class Tank : BaseMachine, ITank
     {
-        private bool defenceMode = true;
+        private bool defenceMode = false;
         public Tank(string name, double attackPoints, 
             double defensePoints, double healthPoints = 100) 
             : base(name, attackPoints, defensePoints)
         {
             HealthPoints = 100;
+            ToggleDefenseMode();
         }
 
         public bool DefenseMode => defenceMode;
@@ -44,10 +45,10 @@ namespace MortalEngines.Entities
         {
             if (defenceMode)
             {
-                return base.ToString() + " *Defense: ON";
+                return base.ToString() + Environment.NewLine + " *Defense: ON";
             }
 
-            return base.ToString() + " *Defense: OFF";
+            return base.ToString() + Environment.NewLine + " *Defense: OFF";
         }
     }
 }

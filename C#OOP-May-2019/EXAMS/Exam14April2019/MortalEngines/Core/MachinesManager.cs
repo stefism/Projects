@@ -12,7 +12,7 @@
         private List<IPilot> pilots;
         private List<IMachine> machines;
 
-        private MachinesManager()
+        public MachinesManager()
         {
             pilots = new List<IPilot>();
             machines = new List<IMachine>();
@@ -42,7 +42,7 @@
             ITank tank = new Tank(name, attackPoints, defensePoints);
             machines.Add(tank);
 
-            return $"Tank {name} manufactured - attack: {attackPoints}; defense: {defensePoints}";
+            return $"Tank {name} manufactured - attack: {attackPoints:F2}; defense: {defensePoints:F2}";
         }
 
         public string ManufactureFighter(string name, double attackPoints, double defensePoints)
@@ -58,7 +58,7 @@
             machines.Add(fighter);
 
            
-            return $"Fighter {name} manufactured - attack: {attackPoints}; defense: {defensePoints}; aggressive: {fighter.AggressiveMode}";
+            return $"Fighter {name} manufactured - attack: {attackPoints:F2}; defense: {defensePoints:F2}; aggressive: {fighter.AggressiveMode}";
         }
 
         public string EngageMachine(string selectedPilotName, string selectedMachineName)
@@ -83,7 +83,13 @@
                 return $"Machine {selectedMachineName} is already occupied";
             }
 
+            //if (machine.Pilot != null)
+            //{
+            //    return $"Machine {selectedMachineName} is already occupied";
+            //}
+
             pilot.AddMachine(machine);
+            //machine.Pilot = pilot;
 
             return $"Pilot {selectedPilotName} engaged machine {selectedMachineName}";
         }
@@ -115,7 +121,7 @@
 
             attackingMachine.Attack(deffendingMachine);
 
-            return $"Machine {defendingMachineName} was attacked by machine {attackingMachineName} - current health: {deffendingMachine.HealthPoints}";
+            return $"Machine {defendingMachineName} was attacked by machine {attackingMachineName} - current health: {deffendingMachine.HealthPoints:F2}";
         }
 
         public string PilotReport(string pilotReporting)

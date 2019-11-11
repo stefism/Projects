@@ -7,12 +7,13 @@ namespace MortalEngines.Entities
 {
     public class Fighter : BaseMachine, IFighter
     {
-        private bool agressiveMode = true;
+        private bool agressiveMode = false;
         public Fighter(string name, double attackPoints, 
             double defensePoints, double healthPoints = 200) 
             : base(name, attackPoints, defensePoints)
         {
             HealthPoints = 200;
+            ToggleAggressiveMode();
         }
 
         public bool AggressiveMode => agressiveMode;
@@ -44,10 +45,10 @@ namespace MortalEngines.Entities
         {
             if (agressiveMode)
             {
-                return base.ToString() + " *Aggressive: ON";
+                return base.ToString() + Environment.NewLine +  " *Aggressive: ON";
             }
 
-            return base.ToString() + " *Aggressive: OFF";
+            return base.ToString() + Environment.NewLine + " *Aggressive: OFF";
         }
     }
 }

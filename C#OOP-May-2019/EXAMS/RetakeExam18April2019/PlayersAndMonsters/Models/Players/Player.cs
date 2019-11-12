@@ -61,6 +61,7 @@ namespace PlayersAndMonsters.Models.Players
             }
 
             Health -= damagePoints;
+            DeadPlayer();
         }
 
         private void DeadPlayer()

@@ -6,6 +6,7 @@ using PlayersAndMonsters.Models.Players.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace PlayersAndMonsters.Models.BattleFields
 {
@@ -15,7 +16,7 @@ namespace PlayersAndMonsters.Models.BattleFields
         private const int BONUS_DAMAGE_POINTS = 30;
         public void Fight(IPlayer attackPlayer, IPlayer enemyPlayer)
         {
-            CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
+            //CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
 
             if (attackPlayer is Beginner)
             {
@@ -37,24 +38,37 @@ namespace PlayersAndMonsters.Models.BattleFields
                 }
             }
 
-            Queue<ICard> attackPlayerCard = new Queue<ICard>(attackPlayer.CardRepository.Cards);
+            int attackPlayerCardHealthSum = attackPlayer.CardRepository.Cards
+                .Select(x => x.HealthPoints).Sum();
+            int enemyPlayerCardHealthSum = enemyPlayer.CardRepository.Cards
+                .Select(x => x.HealthPoints).Sum();
 
-            Queue<ICard> enemyPlayerCard = new Queue<ICard>(enemyPlayer.CardRepository.Cards);
+            attackPlayer.Health += attackPlayerCardHealthSum;
+            enemyPlayer.Health += enemyPlayerCardHealthSum;
 
-            while (attackPlayer.IsDead == true || enemyPlayer.IsDead == true)
+            int attackPlayerCardDamageSum = attackPlayer.CardRepository.Cards
+                .Select(x => x.DamagePoints).Sum();
+            int enemyPlayerCardDamageSum = enemyPlayer.CardRepository.Cards
+                .Select(x => x.DamagePoints).Sum();
+
+            while (attackPlayer.IsDead != true && enemyPlayer.IsDead != true)
             {
-                ICard currAttackPlayerCard = attackPlayerCard.Dequeue();
+                enemyPlayer.TakeDamage(attackPlayerCardDamageSum);
+
+                //CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
+
+                attackPlayer.TakeDamage(enemyPlayerCardDamageSum);
             }
 
-            CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
+            //CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
         }
 
-        private static void CheckIfOneOfPlayersDead(IPlayer attackPlayer, IPlayer enemyPlayer)
-        {
-            if (attackPlayer.IsDead == true || enemyPlayer.IsDead == true)
-            {
-                throw new ArgumentException("Player is dead!");
-            }
-        }
+        //private static void CheckIfOneOfPlayersDead(IPlayer attackPlayer, IPlayer enemyPlayer)
+        //{
+        //    if (attackPlayer.IsDead == true || enemyPlayer.IsDead == true)
+        //    {
+        //        throw new ArgumentException("Player is dead!");
+        //    }
+        //}
     }
 }

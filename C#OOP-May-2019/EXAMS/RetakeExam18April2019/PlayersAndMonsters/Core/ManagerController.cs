@@ -18,6 +18,8 @@
         private List<ICard> cards;
         public ManagerController()
         {
+            players = new List<IPlayer>();
+            cards = new List<ICard>();
         }
 
         public string AddPlayer(string type, string username)

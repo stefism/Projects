@@ -9,6 +9,12 @@ namespace PlayersAndMonsters.Repositories.Contracts
     public class CardRepository : ICardRepository
     {
         private readonly List<ICard> cards;
+
+        public CardRepository()
+        {
+            cards = new List<ICard>();
+        }
+        
         public int Count => cards.Count;
 
         public IReadOnlyCollection<ICard> Cards

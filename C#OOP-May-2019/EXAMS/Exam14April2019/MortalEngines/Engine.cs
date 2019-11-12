@@ -80,7 +80,7 @@ namespace MortalEngines
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Error:" + ex.Message);
                 }
             }
         }

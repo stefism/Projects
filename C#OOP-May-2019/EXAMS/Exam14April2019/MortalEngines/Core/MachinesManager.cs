@@ -42,7 +42,7 @@
             ITank tank = new Tank(name, attackPoints, defensePoints);
             machines.Add(tank);
 
-            return $"Tank {name} manufactured - attack: {attackPoints:F2}; defense: {defensePoints:F2}";
+            return $"Tank {name} manufactured - attack: {tank.AttackPoints:F2}; defense: {tank.DefensePoints:F2}";
         }
 
         public string ManufactureFighter(string name, double attackPoints, double defensePoints)
@@ -57,8 +57,9 @@
             IFighter fighter = new Fighter(name, attackPoints, defensePoints);
             machines.Add(fighter);
 
+            string aggresiveMode = fighter.AggressiveMode ? "ON" : "OFF";
            
-            return $"Fighter {name} manufactured - attack: {attackPoints:F2}; defense: {defensePoints:F2}; aggressive: {fighter.AggressiveMode}";
+            return $"Fighter {name} manufactured - attack: {fighter.AttackPoints:F2}; defense: {fighter.DefensePoints:F2}; aggressive: {aggresiveMode}";
         }
 
         public string EngageMachine(string selectedPilotName, string selectedMachineName)
@@ -76,11 +77,15 @@
                 return $"Machine {selectedMachineName} could not be found";
             }
 
-            string pilotMachines = pilot.Report();
 
-            if (pilotMachines.Contains(selectedMachineName))
+            foreach (var currPilot in pilots)
             {
-                return $"Machine {selectedMachineName} is already occupied";
+                string currentReport = currPilot.Report();
+
+                if (currentReport.Contains(selectedMachineName))
+                {
+                    return $"Machine {selectedMachineName} is already occupied";
+                }
             }
 
             //if (machine.Pilot != null)

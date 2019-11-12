@@ -11,7 +11,7 @@ namespace MortalEngines.Entities
         private IPilot pilot;
 
         protected BaseMachine(string name, double attackPoints, 
-            double defensePoints, double healthPoints = 0)
+            double defensePoints, double healthPoints)
         {
             Name = name;
             AttackPoints = attackPoints;
@@ -65,7 +65,8 @@ namespace MortalEngines.Entities
                 throw new NullReferenceException("Target cannot be null");
             }
 
-            double decreaseHealth = AttackPoints - DefensePoints;
+            double decreaseHealth = AttackPoints - target.DefensePoints;
+            // Е ТУКА АКО Е САМО DefensePoints НЕ РАБОТИ!
 
             target.HealthPoints -= decreaseHealth;
 

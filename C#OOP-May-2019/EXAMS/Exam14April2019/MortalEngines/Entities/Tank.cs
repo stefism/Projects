@@ -8,11 +8,10 @@ namespace MortalEngines.Entities
     public class Tank : BaseMachine, ITank
     {
         private bool defenceMode = false;
-        public Tank(string name, double attackPoints, 
-            double defensePoints, double healthPoints = 100) 
-            : base(name, attackPoints, defensePoints)
+        public Tank(string name, double attackPoints,  double defensePoints) 
+            : base(name, attackPoints, defensePoints, 100)
+            // НА БЕЙС КОНСТРУКТОРА СЕ ПОДАВАТ ДЕФОЛТНИТЕ СТОЙНОСТИ, А ГОРЕ НА ТЕКУЩИЯ СЕ МАХАТ! ИНАЧЕ НЕ РАБОТИ!
         {
-            HealthPoints = 100;
             ToggleDefenseMode();
         }
 

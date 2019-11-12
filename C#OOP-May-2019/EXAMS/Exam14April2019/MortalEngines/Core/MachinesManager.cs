@@ -9,8 +9,8 @@
 
     public class MachinesManager : IMachinesManager
     {
-        private List<IPilot> pilots;
-        private List<IMachine> machines;
+        private IList<IPilot> pilots;
+        private IList<IMachine> machines;
 
         public MachinesManager()
         {
@@ -20,6 +20,15 @@
 
         public string HirePilot(string name)
         {
+            //if (pilots.Any(p => p?.Name == name))
+            //{
+            //    return $"Pilot {name} is hired already";
+            //}
+
+            //IPilot pilot = new Pilot(name);
+            //pilots.Add(pilot);
+            //return $"Pilot {name} hired";
+
             if (pilots.Any(p => p?.Name == name) == false)
             {
                 IPilot pilot = new Pilot(name);
@@ -32,6 +41,17 @@
 
         public string ManufactureTank(string name, double attackPoints, double defensePoints)
         {
+            //if (machines.Any(m => m.Name == name))
+            //{
+            //    return $"Machine {name} is manufactured already";
+            //}
+
+            //IMachine tank = new Tank(name, attackPoints, defensePoints);
+
+            //machines.Add(tank);
+
+            //return $"Tank {name} manufactured - attack: {tank.AttackPoints:F2}; defense: {tank.DefensePoints:F2}";
+
             IMachine machine = machines.FirstOrDefault(m => m.Name == name);
 
             if (machine != null && machine is Tank)
@@ -47,19 +67,30 @@
 
         public string ManufactureFighter(string name, double attackPoints, double defensePoints)
         {
-            IMachine machine = machines.FirstOrDefault(m => m.Name == name);
-
-            if (machine != null && machine is Fighter)
+            if (machines.Any(f => f.Name == name))
             {
                 return $"Machine {name} is manufactured already";
             }
 
-            IFighter fighter = new Fighter(name, attackPoints, defensePoints);
+            IMachine fighter = new Fighter(name, attackPoints, defensePoints);
+
             machines.Add(fighter);
 
-            string aggresiveMode = fighter.AggressiveMode ? "ON" : "OFF";
-           
-            return $"Fighter {name} manufactured - attack: {fighter.AttackPoints:F2}; defense: {fighter.DefensePoints:F2}; aggressive: {aggresiveMode}";
+            return $"Fighter {name} manufactured - attack: {fighter.AttackPoints:F2}; defense: {fighter.DefensePoints:F2}; aggressive: ON";
+
+            //IMachine machine = machines.FirstOrDefault(m => m.Name == name);
+
+            //if (machine != null && machine is Fighter)
+            //{
+            //    return $"Machine {name} is manufactured already";
+            //}
+
+            //IFighter fighter = new Fighter(name, attackPoints, defensePoints);
+            //machines.Add(fighter);
+
+            //string aggresiveMode = fighter.AggressiveMode ? "ON" : "OFF";
+
+            //return $"Fighter {name} manufactured - attack: {fighter.AttackPoints:F2}; defense: {fighter.DefensePoints:F2}; aggressive: {aggresiveMode}";
         }
 
         public string EngageMachine(string selectedPilotName, string selectedMachineName)
@@ -77,24 +108,23 @@
                 return $"Machine {selectedMachineName} could not be found";
             }
 
-
-            foreach (var currPilot in pilots)
-            {
-                string currentReport = currPilot.Report();
-
-                if (currentReport.Contains(selectedMachineName))
-                {
-                    return $"Machine {selectedMachineName} is already occupied";
-                }
-            }
-
-            //if (machine.Pilot != null)
+            //foreach (var currPilot in pilots)
             //{
-            //    return $"Machine {selectedMachineName} is already occupied";
+            //    string currentReport = currPilot.Report();
+
+            //    if (currentReport.Contains(selectedMachineName))
+            //    {
+            //        return $"Machine {selectedMachineName} is already occupied";
+            //    }
             //}
 
+            if (machine.Pilot != null)
+            {
+                return $"Machine {selectedMachineName} is already occupied";
+            }
+
             pilot.AddMachine(machine);
-            //machine.Pilot = pilot;
+            machine.Pilot = pilot;
 
             return $"Pilot {selectedPilotName} engaged machine {selectedMachineName}";
         }
@@ -133,6 +163,11 @@
         {
             IPilot pilot = pilots.FirstOrDefault(p => p.Name == pilotReporting);
 
+            //if (pilot == null)
+            //{
+            //    return $"Pilot {pilotReporting} could not be found";
+            //}
+
             return pilot.Report();
         }
 
@@ -140,27 +175,60 @@
         {
             IMachine machine = machines.FirstOrDefault(m => m.Name == machineName);
 
+            //if (machine == null)
+            //{
+            //    return $"Machine {machineName} could not be found";
+            //}
+
             return machine.ToString();
         }
 
         public string ToggleFighterAggressiveMode(string fighterName)
         {
-            foreach (var machine  in machines)
-            {
-                if (machine is Fighter && machine.Name == fighterName)
-                {
-                    IFighter fighter = (Fighter)machines.FirstOrDefault(m => m.Name == fighterName);
-                    fighter.ToggleAggressiveMode();
+            IMachine machine = machines
+                .FirstOrDefault(m => m.Name == fighterName);
 
-                    return $"Fighter {fighterName} toggled aggressive mode";
-                }
+            if (machine == null)
+            {
+                return $"Machine {fighterName} could not be found";
             }
 
-            return $"Machine {fighterName} could not be found";
+            IFighter fighter = (IFighter)machine;
+
+            fighter.ToggleAggressiveMode();
+
+            return $"Fighter {fighterName} toggled aggressive mode";
+
+            //foreach (var machine  in machines)
+            //{
+            //    if (machine is Fighter && machine.Name == fighterName)
+            //    {
+            //        IFighter fighter = (Fighter)machines.FirstOrDefault(m => m.Name == fighterName);
+            //        fighter.ToggleAggressiveMode();
+
+            //        return $"Fighter {fighterName} toggled aggressive mode";
+            //    }
+            //}
+
+            //return $"Machine {fighterName} could not be found";
         }
 
         public string ToggleTankDefenseMode(string tankName)
         {
+            //IMachine machine = machines
+            //    .FirstOrDefault(t => t.Name == tankName);
+
+            //if (machine == null)
+            //{
+            //    return $"Machine {tankName} could not be found";
+            //}
+
+            //ITank tank = (ITank)machine;
+
+            //tank.ToggleDefenseMode();
+
+            //return $"Tank {tankName} toggled defense mode";
+
             foreach (var machine in machines)
             {
                 if (machine is Tank && machine.Name == tankName)

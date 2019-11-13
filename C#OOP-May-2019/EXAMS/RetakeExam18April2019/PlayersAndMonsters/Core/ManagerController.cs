@@ -11,33 +11,44 @@
     using System.Linq;
     using PlayersAndMonsters.Models.BattleFields;
     using System.Text;
+    using PlayersAndMonsters.Repositories;
 
     public class ManagerController : IManagerController
     {
-        private List<IPlayer> players;
-        private List<ICard> cards;
+        private IPlayerRepository playerRepository;
+        private ICardRepository playerCardRepository;
+        private ICardRepository totalCardRepository;
+
+        //private List<IPlayer> players;
+        //private List<ICard> cards;
+
         public ManagerController()
         {
-            players = new List<IPlayer>();
-            cards = new List<ICard>();
+            playerRepository = new PlayerRepository();
+            totalCardRepository = new CardRepository();
+
+            //players = new List<IPlayer>();
+            //cards = new List<ICard>();
         }
 
         public string AddPlayer(string type, string username)
         {
-            CardRepository cardRepository = new CardRepository();
-
             IPlayer player = null;
 
             if (type == "Beginner")
             {
-                player = new Beginner(cardRepository, username);
+                playerCardRepository = new CardRepository();
+                player = new Beginner(playerCardRepository, username);
             }
             else if (type == "Advanced")
             {
-                player = new Advanced(cardRepository, username);
+                playerCardRepository = new CardRepository();
+                player = new Advanced(playerCardRepository, username);
             }
 
-            players.Add(player);
+            playerRepository.Add(player);
+
+            //players.Add(player);
 
             return $"Successfully added player of type {type} with username: {username}";
         }
@@ -55,15 +66,19 @@
                 card = new TrapCard(name);
             }
 
-            cards.Add(card);
+            totalCardRepository.Add(card);
+            //cards.Add(card);
 
             return $"Successfully added card of type {type}Card with name: {name}";
         }
 
         public string AddPlayerCard(string username, string cardName)
         {
-            IPlayer player = players.FirstOrDefault(p => p.Username == username);
-            ICard card = cards.FirstOrDefault(c => c.Name == cardName);
+            IPlayer player = playerRepository.Find(username);
+            ICard card = totalCardRepository.Find(cardName);
+
+            //IPlayer player = players.FirstOrDefault(p => p.Username == username);
+            //ICard card = cards.FirstOrDefault(c => c.Name == cardName);
 
             player.CardRepository.Add(card);
 
@@ -72,8 +87,11 @@
 
         public string Fight(string attackUser, string enemyUser)
         {
-            IPlayer attackPlayer = players.FirstOrDefault(p => p.Username == attackUser);
-            IPlayer attackedPlayer = players.FirstOrDefault(p => p.Username == enemyUser);
+            IPlayer attackPlayer = playerRepository.Find(attackUser);
+            IPlayer attackedPlayer = playerRepository.Find(enemyUser);
+
+            //IPlayer attackPlayer = players.FirstOrDefault(p => p.Username == attackUser);
+            //IPlayer attackedPlayer = players.FirstOrDefault(p => p.Username == enemyUser);
 
             BattleField bf = new BattleField();
 
@@ -86,7 +104,7 @@
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var player in players)
+            foreach (var player in playerRepository.Players)
             {
                 sb.AppendLine($"Username: {player.Username} - Health: {player.Health} – Cards {player.CardRepository.Count}");
 

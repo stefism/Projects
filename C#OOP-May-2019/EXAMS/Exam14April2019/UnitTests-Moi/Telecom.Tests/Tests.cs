@@ -49,16 +49,14 @@ namespace Telecom.Tests
         public void TestAddContactIfPersonAlreadyExist()
         {
             Assert.That(() => phone.AddContact("Pesho", "4676567"),
-            Throws.InvalidOperationException
-            .With.Message.EqualTo("Person already exists!"));
+            Throws.InvalidOperationException);
         }
 
         [Test]
         public void TestCallIfContactMissing()
         {
             Assert.That(() => phone.Call("Lelka"), 
-                Throws.InvalidOperationException
-                .With.Message.EqualTo("Person doesn't exists!"));
+                Throws.InvalidOperationException);
         }
 
         [Test]

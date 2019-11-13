@@ -29,7 +29,7 @@ namespace PlayersAndMonsters.Models.Players
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Player's username cannot be null or an empty string. ");
+                    throw new ArgumentException("Player's username cannot be null or an empty string.");
                 }
 
                 username = value;
@@ -42,9 +42,19 @@ namespace PlayersAndMonsters.Models.Players
 
             set 
             {
+                if (value <= 0)
+                {
+                    isDead = true;
+                }
+
                 if (value < 0)
                 {
-                    throw new ArgumentException("Player's health bonus cannot be less than zero. ");
+                    value = 0;
+                }
+
+                if (value < 0)
+                {
+                    throw new ArgumentException("Player's health bonus cannot be less than zero.");
                 }
 
                 health = value;
@@ -61,15 +71,15 @@ namespace PlayersAndMonsters.Models.Players
             }
 
             Health -= damagePoints;
-            DeadPlayer();
+            //DeadPlayer();
         }
 
-        private void DeadPlayer()
-        {
-            if (Health == 0)
-            {
-                isDead = true;
-            }
-        }
+        //private void DeadPlayer() // Евентуално да го махна! Сетнах го в сетъра.
+        //{
+        //    if (Health == 0)
+        //    {
+        //        isDead = true;
+        //    }
+        //}
     }
 }

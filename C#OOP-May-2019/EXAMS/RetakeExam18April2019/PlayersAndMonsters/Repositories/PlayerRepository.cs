@@ -12,6 +12,11 @@ namespace PlayersAndMonsters.Repositories
         private readonly List<IPlayer> players;
         public int Count => players.Count;
 
+        public PlayerRepository()
+        {
+            players = new List<IPlayer>();
+        }
+
         public IReadOnlyCollection<IPlayer> Players 
         {
             get 

@@ -1,61 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using PlayersAndMonsters.Common;
 using PlayersAndMonsters.Models.Cards.Contracts;
 
 namespace PlayersAndMonsters.Repositories.Contracts
 {
     public class CardRepository : ICardRepository
     {
-        private readonly List<ICard> cards;
+        private IDictionary<string, ICard> cardsByName;
+
+        //private readonly List<ICard> cards;
 
         public CardRepository()
         {
-            cards = new List<ICard>();
+            cardsByName = new Dictionary<string, ICard>();
+
+            //cards = new List<ICard>();
         }
         
-        public int Count => cards.Count;
+        public int Count => cardsByName.Count;
 
-        public IReadOnlyCollection<ICard> Cards
-        {
-            get
-            {
-                return cards.AsReadOnly();
-            }
-        }
+        public IReadOnlyCollection<ICard> Cards 
+            => cardsByName.Values.ToList();
+        //{
+        //    get
+        //    {
+        //        return cards.AsReadOnly();
+        //    }
+        //}
 
         public void Add(ICard card)
         {
-            if (card == null)
+            Validator.ThrowObjectCannotBeNull(card, ExceptionMessages
+                .CardCannotBeNull);
+
+            if (cardsByName.ContainsKey(card.Name))
             {
-                throw new ArgumentException("Card cannot be null!");
+                throw new ArgumentException(string.Format(ExceptionMessages
+                    .CardNameExist, card.Name));
             }
 
-            if (cards.Any(c => c.Name == card.Name))
-            {
-                throw new ArgumentException($"Card {card.Name} already exists!");
-            }
-
-            cards.Add(card);
+            cardsByName[card.Name] = card;
+            //cards.Add(card);
         }
 
         public ICard Find(string name)
         {
-            ICard card = cards.FirstOrDefault(c => c.Name == name);
+            //ICard card = cards.FirstOrDefault(c => c.Name == name);
+
+            //return card;
+
+            ICard card = null;
+
+            if (cardsByName.ContainsKey(name))
+            {
+                card = cardsByName[name];
+            }
 
             return card;
         }
 
         public bool Remove(ICard card)
         {
-            if (card == null)
-            {
-                throw new ArgumentException("Card cannot be null!");
-            }
+            Validator.ThrowObjectCannotBeNull(card, ExceptionMessages
+                .CardCannotBeNull);
 
-            cards.Remove(card);
-            return true;
+            bool hasRemoved = cardsByName.Remove(card.Name);
+            //cards.Remove(card);
+            return hasRemoved;
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿using PlayersAndMonsters.Models.BattleFields.Contracts;
-using PlayersAndMonsters.Models.Cards;
-using PlayersAndMonsters.Models.Cards.Contracts;
+﻿using PlayersAndMonsters.Common;
+using PlayersAndMonsters.Models.BattleFields.Contracts;
 using PlayersAndMonsters.Models.Players;
 using PlayersAndMonsters.Models.Players.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace PlayersAndMonsters.Models.BattleFields
@@ -18,51 +15,9 @@ namespace PlayersAndMonsters.Models.BattleFields
         {
             CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
 
-            if (attackPlayer is Beginner)
-            {
-                attackPlayer.Health += BONUS_HEALTH;
+            AddBonusToBeginnerPlayer(attackPlayer);
 
-                foreach (var card in attackPlayer.CardRepository.Cards)
-                {
-                    card.DamagePoints += BONUS_DAMAGE_POINTS;
-                }
-            }
-
-            if (enemyPlayer is Beginner)
-            {
-                enemyPlayer.Health += BONUS_HEALTH;
-
-                foreach (var card in enemyPlayer.CardRepository.Cards)
-                {
-                    card.DamagePoints += BONUS_DAMAGE_POINTS;
-                }
-            }
-
-            //Queue<ICard> attackPlayerCard = new Queue<ICard>(attackPlayer.CardRepository.Cards);
-
-            //Queue<ICard> enemyPlayerCard = new Queue<ICard>(enemyPlayer.CardRepository.Cards);
-
-            //while (attackPlayer.IsDead != true && enemyPlayer.IsDead != true)
-            //{
-            //    CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
-
-            //    ICard currAttackPlayerCard = attackPlayerCard.Dequeue();
-
-            //    attackPlayer.Health += currAttackPlayerCard.HealthPoints;
-            //    enemyPlayer.TakeDamage(currAttackPlayerCard.DamagePoints);
-
-            //    if (enemyPlayer.IsDead == true)
-            //    {
-            //        break;
-            //    }
-
-            //    ICard currEnemyPlayerCard = enemyPlayerCard.Dequeue();
-
-            //    enemyPlayer.Health += currEnemyPlayerCard.HealthPoints;
-            //    attackPlayer.TakeDamage(currEnemyPlayerCard.DamagePoints);
-            //}
-
-            CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
+            AddBonusToBeginnerPlayer(enemyPlayer);
 
             int attackPlayerCardHealthSum = attackPlayer.CardRepository.Cards
                 .Select(x => x.HealthPoints).Sum();
@@ -77,11 +32,9 @@ namespace PlayersAndMonsters.Models.BattleFields
             int enemyPlayerCardDamageSum = enemyPlayer.CardRepository.Cards
                 .Select(x => x.DamagePoints).Sum();
 
-            while (attackPlayer.IsDead != true && enemyPlayer.IsDead != true)
+            while (true)
             {
                 enemyPlayer.TakeDamage(attackPlayerCardDamageSum);
-
-                //CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
 
                 if (enemyPlayer.IsDead == true)
                 {
@@ -89,16 +42,32 @@ namespace PlayersAndMonsters.Models.BattleFields
                 }
 
                 attackPlayer.TakeDamage(enemyPlayerCardDamageSum);
-            }
 
-            //CheckIfOneOfPlayersDead(attackPlayer, enemyPlayer);
+                if (attackPlayer.IsDead == true)
+                {
+                    break;
+                }
+            }
+        }
+
+        private static void AddBonusToBeginnerPlayer(IPlayer player)
+        {
+            if (player is Beginner)
+            {
+                player.Health += BONUS_HEALTH;
+
+                foreach (var card in player.CardRepository.Cards)
+                {
+                    card.DamagePoints += BONUS_DAMAGE_POINTS;
+                }
+            }
         }
 
         private static void CheckIfOneOfPlayersDead(IPlayer attackPlayer, IPlayer enemyPlayer)
         {
             if (attackPlayer.IsDead == true || enemyPlayer.IsDead == true)
             {
-                throw new ArgumentException("Player is dead!");
+                throw new ArgumentException(ExceptionMessages.DeadPlayer);
             }
         }
     }

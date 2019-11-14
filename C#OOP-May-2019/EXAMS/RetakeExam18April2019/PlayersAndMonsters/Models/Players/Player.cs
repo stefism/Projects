@@ -1,4 +1,5 @@
-﻿using PlayersAndMonsters.Models.Players.Contracts;
+﻿using PlayersAndMonsters.Common;
+using PlayersAndMonsters.Models.Players.Contracts;
 using PlayersAndMonsters.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace PlayersAndMonsters.Models.Players
     {
         private string username;
         private int health;
-        private bool isDead;
+        //private bool isDead;
 
         protected Player(ICardRepository cardRepository, string username, int health)
         {
@@ -25,12 +26,10 @@ namespace PlayersAndMonsters.Models.Players
         {
             get => username;
 
-            set 
+            private set // Внимавай за сетерите! Трябва да са private там където трябва - задължително! Иначе гърми! От интерфейсите гледай за това и внимавай много!
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Player's username cannot be null or an empty string.");
-                }
+                Validator.ThrowIfStringIsNullOrEmpty(value, ExceptionMessages
+                    .PlayerUserNameCannotBeNull);
 
                 username = value;
             }
@@ -42,44 +41,46 @@ namespace PlayersAndMonsters.Models.Players
 
             set 
             {
-                if (value <= 0)
-                {
-                    isDead = true;
-                }
+                //if (value <= 0)
+                //{
+                //    isDead = true;
+                //}
 
-                if (value < 0)
-                {
-                    value = 0;
-                }
+                //if (value < 0)
+                //{
+                //    value = 0;
+                //}
 
-                if (value < 0)
-                {
-                    throw new ArgumentException("Player's health bonus cannot be less than zero.");
-                }
+                Validator.ThrowIfIntegerBelowZero(value, ExceptionMessages
+                    .PlayersHealthBelowZero);
 
                 health = value;
             }
         }
 
-        public bool IsDead => isDead; // Евентуално тука да направим ако здравето падне до нула да превключва на true;
+        public bool IsDead => health <= 0;
 
         public void TakeDamage(int damagePoints)
         {
-            if (damagePoints < 0)
+            Validator.ThrowIfIntegerBelowZero(damagePoints, ExceptionMessages
+                .DamagePointsCannotBeLessThanZero);
+
+            int newHealth = Health - damagePoints;
+
+            if (newHealth < 0)
             {
-                throw new ArgumentException("Damage points cannot be less than zero.");
+                Health = 0;
+            }
+            else
+            {
+                Health = newHealth;
             }
 
-            Health -= damagePoints;
-            //DeadPlayer();
-        }
+            // Или! Разписано на 1 ред:
+            // Health = Math.Max(Health - damagePoints, 0);
+            // Ако разликата от Health - damagePoints е отрицателно число, дава нула, защото нулата е по-гоямо или в случая нулата е Max-a.
 
-        //private void DeadPlayer() // Евентуално да го махна! Сетнах го в сетъра.
-        //{
-        //    if (Health == 0)
-        //    {
-        //        isDead = true;
-        //    }
-        //}
+            // Ето това ^ е фитката към това да не дава онази грешка, когато не трябва!
+        }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PlayersAndMonsters.Models.Players.Contracts;
 using PlayersAndMonsters.Repositories.Contracts;
 
 namespace PlayersAndMonsters.Models.Players
 {
-    public class Advanced : Player
+    public class Advanced : Player, IPlayer
     {
         private const int INITIAL_HEALTH_POINTS = 250;
 

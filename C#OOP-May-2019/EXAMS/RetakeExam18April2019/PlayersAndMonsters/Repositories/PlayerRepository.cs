@@ -2,60 +2,71 @@
 using PlayersAndMonsters.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using PlayersAndMonsters.Common;
 
 namespace PlayersAndMonsters.Repositories
 {
     public class PlayerRepository : IPlayerRepository
     {
-        private readonly List<IPlayer> players;
-        public int Count => players.Count;
+        private IDictionary<string, IPlayer> playersByName;
+
+        //private readonly List<IPlayer> players;
+        public int Count => playersByName.Count;
 
         public PlayerRepository()
         {
-            players = new List<IPlayer>();
+            playersByName = new Dictionary<string, IPlayer>();
+            //players = new List<IPlayer>();
         }
 
         public IReadOnlyCollection<IPlayer> Players 
-        {
-            get 
-            {
-                return players.AsReadOnly();
-            }
-        }
+            => playersByName.Values.ToList();
+        //{
+        //    get 
+        //    {
+        //        return players.AsReadOnly();
+        //    }
+        //}
 
         public void Add(IPlayer player)
         {
-            if (player == null)
+            Validator.ThrowObjectCannotBeNull(player, ExceptionMessages
+                .PlayerCannotBeNull);
+
+            if (playersByName.ContainsKey(player.Username))
             {
-                throw new ArgumentException("Player cannot be null");
+                throw new ArgumentException(string.Format(ExceptionMessages
+                    .PlayerAllreadyExist, player.Username));
             }
 
-            if (players.Any(p => p.Username == player.Username))
-            {
-                throw new ArgumentException($"Player {player.Username} already exists!");
-            }
-
-            players.Add(player);
+            playersByName[player.Username] = player;
+            //players.Add(player);
         }
 
         public IPlayer Find(string username)
         {
-            IPlayer player = players.FirstOrDefault(p => p.Username == username);
+            //IPlayer player = players.FirstOrDefault(p => p.Username == username);
+            //return player;
+
+            IPlayer player = null;
+
+            if (playersByName.ContainsKey(username))
+            {
+                player = playersByName[username];
+            }
 
             return player;
         }
 
         public bool Remove(IPlayer player)
         {
-            if (player == null)
-            {
-                throw new ArgumentException("Player cannot be null"); // Е тука нещо с ретърна?
-            }
+            Validator.ThrowObjectCannotBeNull(player, ExceptionMessages
+                .PlayerCannotBeNull);
 
-            players.Remove(player);
-            return true;
+            bool hasRemoved = playersByName.Remove(player.Username);
+            //players.Remove(player);
+            return hasRemoved;
         }
     }
 }

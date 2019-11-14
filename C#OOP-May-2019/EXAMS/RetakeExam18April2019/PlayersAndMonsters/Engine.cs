@@ -1,4 +1,5 @@
 ﻿using PlayersAndMonsters.Core;
+using PlayersAndMonsters.Core.Contracts;
 using PlayersAndMonsters.IO;
 using PlayersAndMonsters.IO.Contracts;
 using System;
@@ -7,23 +8,27 @@ using System.Text;
 
 namespace PlayersAndMonsters
 {
-    public class Engine
+    public class Engine : IEngine
     {
-        IReader reader;
-        IWriter writer;
+        private IReader reader;
+        private IWriter writer;
+        private IManagerController managerController;
 
-        public Engine()
-        {
-            reader = new Reader();
-            writer = new Writer();
-        }
-        public Engine(IReader reader, IWriter writer) : base ()
+        //public Engine()
+        //{
+        //    reader = new Reader();
+        //    writer = new Writer();
+        //}
+        public Engine(IReader reader, IWriter writer, 
+            IManagerController managerController)
         {
             this.reader = reader;
             this.writer = writer;
+            this.managerController = managerController;
+            // Когато му кажеш така в констуктора явно това замества NEW и NEW не е необходимо да се инициализира с new.
         }
 
-        ManagerController manager = new ManagerController();
+        //ManagerController manager = new ManagerController(); НЕ НЮ ТУКА !!!
         public void Run()
         {
             while (true)

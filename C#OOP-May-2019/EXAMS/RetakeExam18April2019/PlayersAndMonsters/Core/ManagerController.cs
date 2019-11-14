@@ -12,20 +12,28 @@
     using PlayersAndMonsters.Models.BattleFields;
     using System.Text;
     using PlayersAndMonsters.Repositories;
+    using PlayersAndMonsters.Core.Factories.Contracts;
+    using PlayersAndMonsters.Common;
 
     public class ManagerController : IManagerController
     {
+        private IPlayerFactory playerFactory;
+
         private IPlayerRepository playerRepository;
-        private ICardRepository playerCardRepository;
-        private ICardRepository totalCardRepository;
+        //private ICardRepository playerCardRepository;
+        //private ICardRepository totalCardRepository;
 
         //private List<IPlayer> players;
         //private List<ICard> cards;
 
-        public ManagerController()
+        public ManagerController(IPlayerFactory playerFactory, 
+            IPlayerRepository playerRepository)
         {
-            playerRepository = new PlayerRepository();
-            totalCardRepository = new CardRepository();
+            this.playerFactory = playerFactory;
+            this.playerRepository = playerRepository;
+
+            //playerRepository = new PlayerRepository(); // ТАКА НЕ! Инджектване през конструктова! НЮ  (NEW) не трябва да има!
+            //totalCardRepository = new CardRepository();
 
             //players = new List<IPlayer>();
             //cards = new List<ICard>();
@@ -33,24 +41,29 @@
 
         public string AddPlayer(string type, string username)
         {
-            IPlayer player = null;
+            IPlayer player = playerFactory.CreatePlayer(type, username);
 
-            if (type == "Beginner")
-            {
-                playerCardRepository = new CardRepository();
-                player = new Beginner(playerCardRepository, username);
-            }
-            else if (type == "Advanced")
-            {
-                playerCardRepository = new CardRepository();
-                player = new Advanced(playerCardRepository, username);
-            }
+            //IPlayer player = null;
+
+            //if (type == "Beginner")
+            //{
+            //    playerCardRepository = new CardRepository();
+            //    player = new Beginner(playerCardRepository, username);
+            //}
+            //else if (type == "Advanced")
+            //{
+            //    playerCardRepository = new CardRepository();
+            //    player = new Advanced(playerCardRepository, username);
+            //}
 
             playerRepository.Add(player);
 
             //players.Add(player);
 
-            return $"Successfully added player of type {type} with username: {username}";
+            string result = string.Format(ConstantMessages
+                .SuccessfullyAddedPlayer, type, username);
+
+            return result;
         }
 
         public string AddCard(string type, string name)

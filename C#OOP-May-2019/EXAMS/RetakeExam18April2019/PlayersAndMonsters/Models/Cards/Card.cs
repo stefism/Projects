@@ -1,7 +1,6 @@
-﻿using PlayersAndMonsters.Models.Cards.Contracts;
+﻿using PlayersAndMonsters.Common;
+using PlayersAndMonsters.Models.Cards.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PlayersAndMonsters.Models.Cards
 {
@@ -22,12 +21,10 @@ namespace PlayersAndMonsters.Models.Cards
         {
             get => name;
 
-            set 
+            private set 
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Card's name cannot be null or an empty string.");
-                }
+                Validator.ThrowIfStringIsNullOrEmpty(value, ExceptionMessages
+                    .CardNameCaanotBeNullOrEmpty);
 
                 name = value;
             }
@@ -39,10 +36,8 @@ namespace PlayersAndMonsters.Models.Cards
 
             set 
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Card's damage points cannot be less than zero.");
-                }
+                Validator.ThrowIfIntegerBelowZero(value, ExceptionMessages
+                    .CardDamagePointsCannotBeLessThanZero);
 
                 damagePoints = value;
             }
@@ -52,12 +47,11 @@ namespace PlayersAndMonsters.Models.Cards
         {
             get => healthPoints;
 
-            set 
+            private set 
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Card's HP cannot be less than zero.");
-                }
+                Validator.ThrowIfIntegerBelowZero(value, ExceptionMessages
+                    .CardHpCannotBeLessThanZero);
+
                 healthPoints = value;
             }
         }

@@ -1,9 +1,6 @@
 ﻿using PlayersAndMonsters.Common;
 using PlayersAndMonsters.Models.Players.Contracts;
 using PlayersAndMonsters.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PlayersAndMonsters.Models.Players
 {
@@ -81,6 +78,12 @@ namespace PlayersAndMonsters.Models.Players
             // Ако разликата от Health - damagePoints е отрицателно число, дава нула, защото нулата е по-гоямо или в случая нулата е Max-a.
 
             // Ето това ^ е фитката към това да не дава онази грешка, когато не трябва!
+        }
+
+        public override string ToString()
+        {
+            return string.Format(ConstantMessages
+                .PlayerReportInfo, Username, Health, CardRepository.Count);
         }
     }
 }

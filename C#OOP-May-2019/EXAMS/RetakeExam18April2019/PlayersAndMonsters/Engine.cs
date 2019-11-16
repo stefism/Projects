@@ -1,10 +1,6 @@
-﻿using PlayersAndMonsters.Core;
-using PlayersAndMonsters.Core.Contracts;
-using PlayersAndMonsters.IO;
+﻿using PlayersAndMonsters.Core.Contracts;
 using PlayersAndMonsters.IO.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PlayersAndMonsters
 {
@@ -46,40 +42,55 @@ namespace PlayersAndMonsters
 
                 try
                 {
+                    string result = string.Empty;
+
                     switch (command)
                     {
                         case "AddPlayer":
                             string playerType = inputArgs[1];
                             string playerUserName = inputArgs[2];
 
-                            writer.WriteLine(manager.AddPlayer(playerType, playerUserName));
+                            result = managerController.AddPlayer(playerType, playerUserName);
+                            
+                            //writer.WriteLine(managerController.AddPlayer(playerType, playerUserName));
                             break;
 
                         case "AddCard":
                             string cardType = inputArgs[1];
                             string cardName = inputArgs[2];
 
-                            writer.WriteLine(manager.AddCard(cardType, cardName));
+                            result = managerController.AddCard(cardType, cardName);
+                            
+                            //writer.WriteLine(managerController.AddCard(cardType, cardName));
                             break;
 
                         case "AddPlayerCard":
                             string userName = inputArgs[1];
                             cardName = inputArgs[2];
 
-                            writer.WriteLine(manager.AddPlayerCard(userName, cardName));
+                            result = managerController.AddPlayerCard(userName, cardName);
+
+                            //writer.WriteLine(managerController.AddPlayerCard(userName, cardName));
                             break;
 
                         case "Fight":
                             string attackUser = inputArgs[1];
                             string enemyUser = inputArgs[2];
 
-                            writer.WriteLine(manager.Fight(attackUser, enemyUser));
+                            result = managerController.Fight(attackUser, enemyUser);
+
+                            //writer.WriteLine(managerController.Fight(attackUser, enemyUser));
                             break;
 
                         case "Report":
-                            writer.WriteLine(manager.Report());
+
+                            result = managerController.Report();
+
+                            //writer.WriteLine(managerController.Report());
                             break;
                     }
+
+                    writer.WriteLine(result);
                 }
                 catch (ArgumentException ex)
                 {

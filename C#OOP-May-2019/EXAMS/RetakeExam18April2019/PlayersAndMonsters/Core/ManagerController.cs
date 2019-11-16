@@ -1,38 +1,41 @@
 ﻿namespace PlayersAndMonsters.Core
 {
-    using System;
-    using System.Collections.Generic;
     using Contracts;
-    using PlayersAndMonsters.Models.Cards;
     using PlayersAndMonsters.Models.Cards.Contracts;
-    using PlayersAndMonsters.Models.Players;
     using PlayersAndMonsters.Models.Players.Contracts;
     using PlayersAndMonsters.Repositories.Contracts;
-    using System.Linq;
-    using PlayersAndMonsters.Models.BattleFields;
     using System.Text;
-    using PlayersAndMonsters.Repositories;
     using PlayersAndMonsters.Core.Factories.Contracts;
     using PlayersAndMonsters.Common;
+    using PlayersAndMonsters.Models.BattleFields.Contracts;
 
     public class ManagerController : IManagerController
     {
         private IPlayerFactory playerFactory;
+        private ICardFactory cardFactory;
 
         private IPlayerRepository playerRepository;
-        //private ICardRepository playerCardRepository;
+        private ICardRepository cardRepository;
+
+        private IBattleField battleField;
+
+        private string result;
         //private ICardRepository totalCardRepository;
 
         //private List<IPlayer> players;
         //private List<ICard> cards;
 
         public ManagerController(IPlayerFactory playerFactory, 
-            IPlayerRepository playerRepository)
+            IPlayerRepository playerRepository, ICardFactory cardFactory,
+            ICardRepository cardRepository, IBattleField battleField)
         {
             this.playerFactory = playerFactory;
             this.playerRepository = playerRepository;
+            this.cardFactory = cardFactory;
+            this.cardRepository = cardRepository;
+            this.battleField = battleField;
 
-            //playerRepository = new PlayerRepository(); // ТАКА НЕ! Инджектване през конструктова! НЮ  (NEW) не трябва да има!
+            //playerRepository = new PlayerRepository(); // ТАКА НЕ! Инджектване през конструктова! НЮ  (NEW) не трябва да има! Инициализират се като NEW в StartUp класа в случая.
             //totalCardRepository = new CardRepository();
 
             //players = new List<IPlayer>();
@@ -42,6 +45,13 @@
         public string AddPlayer(string type, string username)
         {
             IPlayer player = playerFactory.CreatePlayer(type, username);
+
+            playerRepository.Add(player);
+
+            result = string.Format(ConstantMessages
+                .SuccessfullyAddedPlayer, type, username);
+
+            return result;
 
             //IPlayer player = null;
 
@@ -56,46 +66,48 @@
             //    player = new Advanced(playerCardRepository, username);
             //}
 
-            playerRepository.Add(player);
-
             //players.Add(player);
-
-            string result = string.Format(ConstantMessages
-                .SuccessfullyAddedPlayer, type, username);
-
-            return result;
         }
 
         public string AddCard(string type, string name)
         {
-            ICard card = null;
+            ICard card = cardFactory.CreateCard(type, name);
+            
+            cardRepository.Add(card);
 
-            if (type == "Magic")
-            {
-                card = new MagicCard(name);
-            }
-            else if (type == "Trap")
-            {
-                card = new TrapCard(name);
-            }
+            result = string.Format(ConstantMessages
+                .SuccessfullyAddedCard, type, name);
 
-            totalCardRepository.Add(card);
+            return result;
+
+            //ICard card = null;
+
+            //if (type == "Magic")
+            //{
+            //    card = new MagicCard(name);
+            //}
+            //else if (type == "Trap")
+            //{
+            //    card = new TrapCard(name);
+            //}
+
             //cards.Add(card);
-
-            return $"Successfully added card of type {type}Card with name: {name}";
         }
 
         public string AddPlayerCard(string username, string cardName)
         {
             IPlayer player = playerRepository.Find(username);
-            ICard card = totalCardRepository.Find(cardName);
+            ICard card = cardRepository.Find(cardName);
 
             //IPlayer player = players.FirstOrDefault(p => p.Username == username);
             //ICard card = cards.FirstOrDefault(c => c.Name == cardName);
 
             player.CardRepository.Add(card);
 
-            return $"Successfully added card: {cardName} to user: {username}";
+            result = string.Format(ConstantMessages
+                .SuccessfullyAddedPlayerWithCards, cardName, username);
+
+            return result;
         }
 
         public string Fight(string attackUser, string enemyUser)
@@ -106,11 +118,11 @@
             //IPlayer attackPlayer = players.FirstOrDefault(p => p.Username == attackUser);
             //IPlayer attackedPlayer = players.FirstOrDefault(p => p.Username == enemyUser);
 
-            BattleField bf = new BattleField();
+            battleField.Fight(attackPlayer, attackedPlayer);
 
-            bf.Fight(attackPlayer, attackedPlayer);
+            result = string.Format(ConstantMessages.FightInfo, attackPlayer.Health, attackedPlayer.Health);
 
-            return $"Attack user health {attackPlayer.Health} - Enemy user health {attackedPlayer.Health}";
+            return result;
         }
 
         public string Report()
@@ -119,13 +131,13 @@
 
             foreach (var player in playerRepository.Players)
             {
-                sb.AppendLine($"Username: {player.Username} - Health: {player.Health} – Cards {player.CardRepository.Count}");
+                sb.AppendLine(player.ToString());
 
                 foreach (var card in player.CardRepository.Cards)
                 {
-                    sb.AppendLine($"Card: {card.Name} - Damage: {card.DamagePoints}");
+                    sb.AppendLine(card.ToString());
                 }
-                sb.AppendLine("###");
+                sb.AppendLine(ConstantMessages.DefaultReportSeparator);
             }
 
             return sb.ToString().TrimEnd();

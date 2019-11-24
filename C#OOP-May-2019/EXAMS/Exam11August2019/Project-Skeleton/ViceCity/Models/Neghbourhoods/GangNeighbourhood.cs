@@ -90,7 +90,7 @@ namespace ViceCity.Models.Neghbourhoods
                                 return;
                             }
 
-                            if (currGun.CanFire)
+                            if (currGun.CanFire) 
                             {
                                 civilPlayer.GunRepository.Remove(currGun);
                                 currGun = civilPlayer.GunRepository.Models.First();

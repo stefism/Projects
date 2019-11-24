@@ -10,7 +10,7 @@ namespace ViceCity.Common
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentNullException(ExceptionMessages.InvalidPlayerName);
+                throw new ArgumentNullException(nameof(value), excMessage);
             }
         }
 
@@ -18,7 +18,7 @@ namespace ViceCity.Common
         {
             if (points < 0)
             {
-                throw new ArgumentException(ExceptionMessages.PlayerLivePointsBelowZero);
+                throw new ArgumentException(excMessage);
             }
         }
 
@@ -26,7 +26,7 @@ namespace ViceCity.Common
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException(ExceptionMessages.InvalidGunName);
+                throw new ArgumentException(excMessage);
             }
         }
 
@@ -34,7 +34,7 @@ namespace ViceCity.Common
         {
             if (type != "Pistol" && type != "Rifle")
             {
-                throw new ArgumentException(ExceptionMessages.InvalidGunType);
+                throw new ArgumentException(excMessage);
             }
         }
     }

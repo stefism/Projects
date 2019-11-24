@@ -9,7 +9,7 @@ namespace ViceCity.Repositories
 {
     public class GunRepository : IRepository<IGun>
     {
-        private IList<IGun> listOfGuns;
+        private readonly List<IGun> listOfGuns;
 
         public GunRepository()
         {
@@ -17,7 +17,7 @@ namespace ViceCity.Repositories
         }
 
         public IReadOnlyCollection<IGun> Models 
-            => (List<IGun>)listOfGuns;
+            => listOfGuns.AsReadOnly();
 
         public void Add(IGun model)
         {

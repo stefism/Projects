@@ -26,14 +26,17 @@ namespace ViceCity.Models.Players
             get => name;
             private set 
             {
-                Validator.ThrowIfStringIsNullOrWhitespace
-                    (value, ExceptionMessages.InvalidPlayerName);
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException
+                        (Name, ExceptionMessages.InvalidPlayerName);
+                }
 
                 name = value;
             }
         }
 
-        public bool IsAlive => livePoints <= 0;
+        public bool IsAlive => livePoints > 0;
 
         public IRepository<IGun> GunRepository { get; private set; }
 
@@ -41,10 +44,13 @@ namespace ViceCity.Models.Players
         {
             get => livePoints;
 
-            protected set
+            private set
             {
-                Validator.ThrowsIfIntBelowZero
-                    (value, ExceptionMessages.PlayerLivePointsBelowZero);
+                if (LifePoints < 0)
+                {
+                    throw new ArgumentException
+                        (ExceptionMessages.PlayerLivePointsBelowZero);
+                }
 
                 livePoints = value;
             }

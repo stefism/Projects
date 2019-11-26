@@ -27,6 +27,11 @@ namespace SpaceStation.Models.Mission
 
                     astronaut.Breath();
 
+                    if (astronaut.Oxygen <= 0)
+                    {
+                        astronaut.Bag.Items.Clear();
+                    }
+
                     if (planetItems.Count == 0)
                     {
                         return;

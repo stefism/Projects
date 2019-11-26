@@ -16,7 +16,7 @@ namespace SpaceStation.Models.Planets
             Items = new List<string>();
         }
 
-        public ICollection<string> Items { get; protected set; }
+        public ICollection<string> Items { get; private set; }
 
         public string Name
         {

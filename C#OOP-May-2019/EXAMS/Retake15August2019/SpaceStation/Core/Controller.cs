@@ -19,8 +19,8 @@ namespace SpaceStation.Core
         private readonly IRepository<IAstronaut> astronauts;
         private readonly IRepository<IPlanet> planets;
 
-        private IAstronautFactory astronautFactory;
-        private IMission mission;
+        private readonly IAstronautFactory astronautFactory;
+        private readonly IMission mission;
         private int exploredPlanetCount;
 
         public Controller()

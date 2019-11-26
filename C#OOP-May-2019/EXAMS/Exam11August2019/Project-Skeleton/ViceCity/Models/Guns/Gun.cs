@@ -1,5 +1,6 @@
 ﻿using ViceCity.Common;
 using ViceCity.Models.Guns.Contracts;
+using System;
 
 namespace ViceCity.Models.Guns
 {
@@ -22,8 +23,11 @@ namespace ViceCity.Models.Guns
 
             private set
             {
-                Validator.ThrowIfStringIsNullOrEmpty
-                    (value, ExceptionMessages.InvalidGunName);
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException
+                        (ExceptionMessages.InvalidGunName);
+                }
 
                 name = value;
             }
@@ -35,8 +39,11 @@ namespace ViceCity.Models.Guns
 
             protected set
             {
-                Validator.ThrowsIfIntBelowZero
-                    (value, ExceptionMessages.BulletsCannotBelowZero);
+                if (value < 0)
+                {
+                    throw new ArgumentException
+                        (ExceptionMessages.BulletsCannotBelowZero);
+                }
 
                 bulletsPerBarrel = value;
             }
@@ -48,18 +55,18 @@ namespace ViceCity.Models.Guns
 
             protected set
             {
-                Validator.ThrowsIfIntBelowZero
-                    (value, ExceptionMessages.TotalBulletCannotBelowZero);
+                if (value < 0)
+                {
+                    throw new ArgumentException
+                        (ExceptionMessages.TotalBulletCannotBelowZero);
+                }
 
                 totalBullets = value;
             }
         }
 
-        public bool CanFire => TotalBullets == 0; // TotalBullets == 0
+        public bool CanFire => TotalBullets != 0;
 
-        public virtual int Fire()
-        {
-            return 0;
-        }
+        public abstract int Fire();
     }
 }

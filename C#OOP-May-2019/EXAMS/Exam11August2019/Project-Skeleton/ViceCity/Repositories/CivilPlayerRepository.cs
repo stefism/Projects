@@ -10,6 +10,11 @@ namespace ViceCity.Repositories
     {
         private IList<IPlayer> civilPlayers;
 
+        public CivilPlayerRepository()
+        {
+            civilPlayers = new List<IPlayer>();
+        }
+
         public IReadOnlyCollection<IPlayer> CivilPlayers 
             => (List<IPlayer>)civilPlayers;
 

@@ -29,7 +29,7 @@ namespace SpaceStation.Models.Astronauts
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException
-                        ("Name", ExceptionMessages.InvalidAstronautName);
+                        (Name, ExceptionMessages.InvalidAstronautName);
                 }
 
                 name = value;

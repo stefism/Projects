@@ -6,7 +6,7 @@ namespace SpaceStation.Models.Bags
 {
     public class Backpack : IBag
     {
-        public ICollection<string> Items { get; protected set; }
+        public ICollection<string> Items { get; private set; }
 
         public Backpack()
         {

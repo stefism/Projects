@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using System.Linq;
+using SpaceStation.Models.Astronauts;
 
 namespace SpaceStation.Factories
 {
@@ -12,16 +13,31 @@ namespace SpaceStation.Factories
     {
         public IAstronaut CreateAstronaut(string type, string astronautName)
         {
-            Type astronautType = Assembly.GetCallingAssembly().GetTypes()
-                .FirstOrDefault(a => a?.Name == type);
+            IAstronaut astronaut = null;
 
-            if (astronautType == null)
+            if (type == "Biologist")
             {
-                return null;
+                astronaut = new Biologist(astronautName);
+            }
+            else if (type == "Geodesist")
+            {
+                astronaut = new Geodesist(astronautName);
+            }
+            else if (type == "Meteorologist")
+            {
+                astronaut = new Meteorologist(astronautName);
             }
 
-            IAstronaut astronaut = (IAstronaut)Activator
-                .CreateInstance(astronautType, astronautName);
+            //Type astronautType = Assembly.GetCallingAssembly().GetTypes()
+            //    .FirstOrDefault(a => a?.Name == type);
+
+            //if (astronautType == null)
+            //{
+            //    return null;
+            //}
+
+            //IAstronaut astronaut = (IAstronaut)Activator
+            //    .CreateInstance(astronautType, astronautName);
 
             return astronaut;
         }

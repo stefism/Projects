@@ -18,6 +18,7 @@ namespace ViceCity.Models.Players
         {
             Name = name;
             LifePoints = lifePoints;
+            IsAlive = true; // Другото.
             GunRepository = new GunRepository();
         }
 
@@ -29,14 +30,16 @@ namespace ViceCity.Models.Players
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException
-                        (Name, ExceptionMessages.InvalidPlayerName);
+                        (ExceptionMessages.InvalidPlayerName);
                 }
 
                 name = value;
             }
         }
 
-        public bool IsAlive => livePoints > 0;
+        //public bool IsAlive => livePoints > 0; // Мое.
+        public bool IsAlive { get; private set; } // Другото.
+        // Була се сетва в конструктора на true.
 
         public IRepository<IGun> GunRepository { get; private set; }
 
@@ -58,7 +61,18 @@ namespace ViceCity.Models.Players
 
         public void TakeLifePoints(int points)
         {
-            LifePoints = Math.Max(LifePoints-points, 0);
+            // Разлика тука. IsAlive го дава на false ако LifePoints = 0.
+            if (LifePoints - points <= 0)
+            {
+                LifePoints = 0;
+                IsAlive = false;
+            }
+            else
+            {
+                LifePoints -= points;
+            }
+
+            //LifePoints = Math.Max(LifePoints-points, 0); // Моето.
         }
     }
 }

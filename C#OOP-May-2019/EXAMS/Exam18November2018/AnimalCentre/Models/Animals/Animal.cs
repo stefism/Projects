@@ -22,9 +22,14 @@ namespace AnimalCentre.Models.Animals
             Energy = energy;
             Happiness = happiness;
             ProcedureTime = procedureTime;
+
+            Owner = "Centre";
+            IsAdopt = false;
+            IsChipped = false;
+            IsVaccinated = false;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
         
 
         public int Happiness 
@@ -46,7 +51,7 @@ namespace AnimalCentre.Models.Animals
         {
             get => energy;
 
-            set 
+            private set 
             {
                 if (value < MinEnergy && value > MaxEnergy)
                 {
@@ -59,7 +64,7 @@ namespace AnimalCentre.Models.Animals
 
         public int ProcedureTime { get; set; }
 
-        public string Owner { get; set; } = "Centre";
+        public string Owner { get; set; }
 
         public bool IsAdopt { get; set; }
 

@@ -4,8 +4,8 @@
 
     public interface IHotel
     {
-        int Capacity { get; }
-        IDictionary<string, IAnimal> Animals { get; }
+        //int Capacity { get; }
+        //IDictionary<string, IAnimal> Animals { get; }
 
         void Accommodate(IAnimal animal);
 

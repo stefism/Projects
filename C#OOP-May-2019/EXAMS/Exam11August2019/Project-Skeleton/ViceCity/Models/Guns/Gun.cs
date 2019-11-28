@@ -65,7 +65,9 @@ namespace ViceCity.Models.Guns
             }
         }
 
-        public bool CanFire => TotalBullets != 0;
+        //public bool CanFire => TotalBullets != 0; // Мое.
+        public bool CanFire => BulletsPerBarrel > 0;
+        // Тука е направено ако BulletsPerBarrel > 0, а не както при мене TotalBullets != 0.
 
         public abstract int Fire();
     }

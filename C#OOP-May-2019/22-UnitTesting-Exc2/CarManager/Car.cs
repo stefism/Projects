@@ -79,14 +79,14 @@ namespace CarManager
         }
 
         public double FuelAmount
-        { 
+        {
             get
             {
                 return this.fuelAmount;
             }
             private set
             {
-                if (value < 0) //TODO Е това.
+                if (value < 0)
                 {
                     throw new ArgumentException("Fuel amount cannot be negative!");
                 }

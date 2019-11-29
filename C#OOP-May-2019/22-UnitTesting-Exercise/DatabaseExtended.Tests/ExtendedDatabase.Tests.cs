@@ -29,8 +29,7 @@ namespace Tests
             Person[] personList = new Person[17];
 
             Assert.That(() => new ExtendedDatabase.ExtendedDatabase(personList),
-                Throws.ArgumentException.With.Message
-                .EqualTo("Provided data length should be in range [0..16]!"));
+                Throws.ArgumentException);
         }
 
         [Test]
@@ -44,16 +43,14 @@ namespace Tests
 
             Person pepi = new Person(67676, "Pepi");
 
-            Assert.That(() => extDatabase.Add(pepi), Throws.InvalidOperationException.With.Message
-                .EqualTo("Array's capacity must be exactly 16 integers!"));
+            Assert.That(() => extDatabase.Add(pepi), Throws.InvalidOperationException);
         }
 
         [Test]
         public void TestAddUserWithSameName()
         {
             Assert.That(() => extDatabase.Add(person1), Throws
-                .InvalidOperationException.With.Message
-                .EqualTo("There is already user with this username!"));
+                .InvalidOperationException);
         }
 
         [Test]
@@ -62,8 +59,7 @@ namespace Tests
             Person mimeto = new Person(7898905, "Mimeto");
 
             Assert.That(() => extDatabase.Add(mimeto), Throws
-                .InvalidOperationException.With.Message
-                .EqualTo("There is already user with this Id!"));
+                .InvalidOperationException);
         }
 
         [Test]
@@ -81,16 +77,14 @@ namespace Tests
         public void TestFindByUserNameIfStringIsNullOrEmpty()
         {
             Assert.That(() => extDatabase.FindByUsername(string.Empty), Throws
-                .ArgumentNullException.With.Message
-                .Contains("Username parameter is null!"));
+                .ArgumentNullException);
         }
 
         [Test]
         public void TestIfUserNameNotExist()
         {
             Assert.That(() => extDatabase.FindByUsername("Draganka"), Throws
-                .InvalidOperationException.With.Message
-                .Contains("No user is present by this username!"));
+                .InvalidOperationException);
         }
 
         [Test]
@@ -105,16 +99,14 @@ namespace Tests
         public void TestFindPersonByIdAndIdIsNegative()
         {
             Assert.That(() => extDatabase.FindById(-34), Throws
-                .Exception.TypeOf<ArgumentOutOfRangeException>()
-                .With.Message.Contains("Id should be a positive number!"));
+                .Exception.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
         public void TestIfPersonIdIsNotExist()
         {
             Assert.That(() => extDatabase.FindById(641), Throws
-                .InvalidOperationException
-                .With.Message.EqualTo("No user is present by this ID!"));
+                .InvalidOperationException);
         }
 
         [Test]

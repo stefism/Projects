@@ -17,7 +17,7 @@ namespace StorageMaster.Factories
 
             if (productType == null)
             {
-                throw new InvalidOperationException("Invalid product type!");
+                throw new InvalidOperationException("Error: Invalid product type!");
             }
 
             return (IProduct)Activator.CreateInstance(productType, price);

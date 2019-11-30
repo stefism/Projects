@@ -121,6 +121,21 @@ namespace Tests
         }
 
         [Test]
+        public void Refuel3()
+        {
+            string make = "VW";
+            string model = "Golf";
+            double fuelConsumption = 2;
+            double fuelCapacity = 100;
+
+            Car car = new Car(make, model, fuelConsumption, fuelCapacity);
+
+            car.Refuel(150);
+
+            Assert.AreEqual(100, car.FuelAmount);
+        }
+
+        [Test]
         [TestCase(-10)]
         [TestCase(0)]
         public void Refuel2(double inputAmount)
@@ -148,7 +163,7 @@ namespace Tests
             car.Refuel(20);
             car.Drive(20);
 
-            Assert.AreEqual(19, 6, car.FuelAmount);
+            Assert.AreEqual(19.6, car.FuelAmount);
         }
 
         [Test]

@@ -17,7 +17,7 @@ namespace StorageMaster.Factories
 
             if (storageType == null)
             {
-                throw new InvalidOperationException("Invalid storage type!");
+                throw new InvalidOperationException("Error: Invalid storage type!");
             }
 
             return (IStorage)Activator.CreateInstance(storageType, name);

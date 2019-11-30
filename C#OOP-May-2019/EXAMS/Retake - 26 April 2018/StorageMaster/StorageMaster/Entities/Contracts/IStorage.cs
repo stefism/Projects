@@ -15,7 +15,7 @@ namespace StorageMaster.Entities.Contracts
         IReadOnlyDictionary<int, IVehicle> Garage { get; }
         IReadOnlyCollection<IProduct> Products { get; }
         Vehicle GetVehicle(int garageSlot);
-        int SendVehicleTo(int garageSlot, Storage deliveryLocation); //TODO Евентуално IStorage
+        int SendVehicleTo(int garageSlot, Storage deliveryLocation); 
         int UnloadVehicle(int garageSlot);
     }
 }

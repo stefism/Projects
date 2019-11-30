@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StorageMaster.Core;
+using System;
 
 namespace StorageMaster
 {
@@ -6,7 +7,9 @@ namespace StorageMaster
     {
         static void Main()
         {
-            
+            Engine engine = new Engine();
+
+            engine.Run();
         }
     }
 }

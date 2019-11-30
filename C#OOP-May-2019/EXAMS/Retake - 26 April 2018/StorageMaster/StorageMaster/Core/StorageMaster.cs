@@ -21,6 +21,8 @@ namespace StorageMaster.Core
 
         private IVehicle currentVehicle;
 
+        private Dictionary<string, int> productInCurrentStorage;
+
         public StorageMaster()
         {
             storages = new List<IStorage>();
@@ -28,6 +30,8 @@ namespace StorageMaster.Core
 
             productFactory = new ProductFactory();
             storageFactory = new StorageFactory();
+
+            productInCurrentStorage = new Dictionary<string, int>();
         }
 
         public string AddProduct(string type, double price)
@@ -41,16 +45,71 @@ namespace StorageMaster.Core
 
         public string GetStorageStatus(string storageName)
         {
-            throw new NotImplementedException();
+            IStorage storage = storages.FirstOrDefault(s => s.Name == storageName);
+
+            foreach (var product in storage.Products)
+            {
+                if (!productInCurrentStorage.ContainsKey(product.GetType().Name))
+                {
+                    productInCurrentStorage[product.GetType().Name] = 0;
+                }
+
+                productInCurrentStorage[product.GetType().Name]++;
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            double totalProductWeight = storage.Products.Select(x => x.Weight).Sum();
+            int storageCapacity = storage.Capacity;
+
+            productInCurrentStorage = productInCurrentStorage
+                .OrderByDescending(p => p.Value)
+                .ToDictionary(x => x.Key, y => y.Value);
+
+            sb.Append($"Stock ({totalProductWeight}/{storageCapacity}): [");
+
+            foreach (var currProduct in productInCurrentStorage)
+            {
+                sb.Append($"{currProduct.Key} ({currProduct.Value}), ");
+            }
+
+            sb.Remove(sb.Length-2, 2);
+            sb.AppendLine("]");
+
+            sb.Append("Garage: [");
+
+            foreach (var vehicle in storage.Garage)
+            {
+                string result = vehicle.Value != null
+                    ? $"{vehicle.Value.GetType().Name}"
+                    : "empty";
+
+                sb.Append($"{result}|");
+            }
+
+            sb.Remove(sb.Length - 1, 1);
+            sb.AppendLine("]");
+
+            return sb.ToString().TrimEnd();
         }
 
         public string GetSummary()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var storage in storages.OrderByDescending(s => s.Products.Select(p => p.Price).Sum()))
+            {
+                sb.AppendLine($"{storage.Name}:");
+
+                double storageSum = storage.Products.Select(p => p.Price).Sum();
+                sb.AppendLine($"Storage worth: ${storageSum:F2}");
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public string LoadVehicle(IEnumerable<string> productNames)
-        { //TODO Евентуално да промениме този метод. Не съм сигурен как работи правилно.
+        { 
             IProduct product = null;
 
             foreach (var currentProduct in productNames)
@@ -60,7 +119,7 @@ namespace StorageMaster.Core
 
                 if (product == null)
                 {
-                    throw new InvalidOperationException($"{productNames} is out of stock!");
+                    throw new InvalidOperationException($"Error: {currentProduct} is out of stock!");
                 }
             }
 
@@ -69,11 +128,15 @@ namespace StorageMaster.Core
             foreach (var currentProduct in productNames)
             {
                 product = productPool.Last(p => p.GetType().Name == currentProduct);
+
+                double freeVehicleCapacity = currentVehicle.Capacity;
                 
-                if (currentVehicle.Capacity >= product.Weight)
+                if (freeVehicleCapacity >= product.Weight)
                 {
                     currentVehicle.LoadProduct((Product)product);
                     productPool.Remove(product);
+                    loadedProductCount++;
+                    freeVehicleCapacity -= product.Weight;
                 }
             }
 
@@ -103,18 +166,18 @@ namespace StorageMaster.Core
         {
             if (!storages.Any(s => s.Name == sourceName))
             {
-                throw new InvalidOperationException("Invalid source storage!");
+                throw new InvalidOperationException("Error: Invalid source storage!");
             }
 
             if (!storages.Any(s => s.Name == destinationName))
             {
-                throw new InvalidOperationException("Invalid destination storage!");
+                throw new InvalidOperationException("Error: Invalid destination storage!");
             }
 
             IStorage sourceStorage = storages.First(s => s.Name == sourceName);
             Storage destinationStorage = (Storage)storages.First(s => s.Name == destinationName);
 
-            var vehicle = sourceStorage.Garage[sourceGarageSlot];
+            var vehicle = sourceStorage.GetVehicle(sourceGarageSlot);
             string vehicleType = vehicle.GetType().Name;
 
             int destinationSlot = sourceStorage.SendVehicleTo(sourceGarageSlot, destinationStorage);
@@ -127,10 +190,11 @@ namespace StorageMaster.Core
             IStorage storage = storages.First(s => s.Name == storageName);
 
             var vehicle = storage.Garage[garageSlot];
+            int initialVehicleTrunkCount = vehicle.Trunk.Count;
 
             int unloadedProducts = storage.UnloadVehicle(garageSlot);
 
-            return $"Unloaded {unloadedProducts}/{vehicle.Trunk.Count} products at {storageName}";
+            return $"Unloaded {unloadedProducts}/{initialVehicleTrunkCount} products at {storageName}";
         }
     }
 }

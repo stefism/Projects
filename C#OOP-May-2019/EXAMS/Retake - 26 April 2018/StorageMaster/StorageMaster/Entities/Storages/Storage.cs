@@ -39,14 +39,14 @@ namespace StorageMaster.Entities.Storages
 
         public  Vehicle GetVehicle(int garageSlot)
         {
-            if (vehicles.Count >= garageSlot)
+            if (garageSlot >= GarageSlots)
             {
-                throw new InvalidOperationException("Invalid garage slot!");
+                throw new InvalidOperationException("Error: Invalid garage slot!");
             }
 
             if (vehicles[garageSlot] == null)
             {
-                throw new InvalidOperationException("No vehicle in this garage slot!");
+                throw new InvalidOperationException("Error: No vehicle in this garage slot!");
             }
 
             return (Vehicle)vehicles[garageSlot];
@@ -58,14 +58,16 @@ namespace StorageMaster.Entities.Storages
 
             if (deliveryLocation.Garage.Any(x => x.Value == null) == false) // TODO И това да се провери дали работи правилно
             {
-                throw new InvalidOperationException("No room in garage!");
+                throw new InvalidOperationException("Error: No room in garage!");
             }
 
             vehicles[garageSlot] = null;
 
             int firstFreeGarageSlotInDeliveryLocation = deliveryLocation.Garage.First(x => x.Value == null).Key;
 
-            deliveryLocation.UnloadVehicle(firstFreeGarageSlotInDeliveryLocation);
+            deliveryLocation.vehicles[firstFreeGarageSlotInDeliveryLocation] = vehilcle;
+
+            //deliveryLocation.UnloadVehicle(firstFreeGarageSlotInDeliveryLocation);
 
             return firstFreeGarageSlotInDeliveryLocation;
         }
@@ -74,17 +76,18 @@ namespace StorageMaster.Entities.Storages
         {
             if (IsFull)
             {
-                throw new InvalidOperationException("Storage is full!");
+                throw new InvalidOperationException("Error: Storage is full!");
             }
 
             IVehicle vehilcle = GetVehicle(garageSlot);
 
             int productCount = 0;
 
-            foreach (var item in vehilcle.Trunk)
+            for (int i = 0; i < vehilcle.Trunk.Count; i++)
             {
                 products.Add(vehilcle.Unload());
                 productCount++;
+                i--;
             }
 
             return productCount;
@@ -95,9 +98,9 @@ namespace StorageMaster.Entities.Storages
         {
             vehicles = new Dictionary<int, IVehicle>();
 
-            for (int i = 0; i < garageSlots; i++) //TODO Това да го провериме дали работи
+            for (int i = 0; i < garageSlots; i++)
             {
-                if (i < garageSlots)
+                if (i < currVehicles.Count())
                 {
                     vehicles[i] = currVehicles.ToList()[i];
                 }

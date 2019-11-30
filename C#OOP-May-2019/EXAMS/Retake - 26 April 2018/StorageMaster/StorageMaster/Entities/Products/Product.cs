@@ -15,7 +15,7 @@ namespace StorageMaster.Entities.Products
             {
                 if (value < 0)
                 {
-                    throw new InvalidOperationException("Price cannot be negative!");
+                    throw new InvalidOperationException("Error: Price cannot be negative!");
                 }
 
                 price = value;

@@ -12,7 +12,7 @@ namespace StorageMaster.Entities.Contracts
         int Capacity { get; }
         int GarageSlots { get; }
         bool IsFull { get; }
-        IReadOnlyCollection<IVehicle> Garage { get; }
+        IReadOnlyDictionary<int, IVehicle> Garage { get; }
         IReadOnlyCollection<IProduct> Products { get; }
         Vehicle GetVehicle(int garageSlot);
         int SendVehicleTo(int garageSlot, Storage deliveryLocation); //TODO Евентуално IStorage

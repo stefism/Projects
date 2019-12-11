@@ -37,7 +37,7 @@ namespace ViceCity.Models.Guns
         {
             get => bulletsPerBarrel;
 
-            private set
+            protected set
             {
                 if (value < 0)
                 {
@@ -52,7 +52,7 @@ namespace ViceCity.Models.Guns
         {
             get => totalBullets;
 
-            private set
+            protected set
             {
                 if (value < 0)
                 {

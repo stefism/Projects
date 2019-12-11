@@ -12,91 +12,47 @@ namespace ViceCity.Models.Neghbourhoods
 {
     public class GangNeighbourhood : INeighbourhood
     {
-        private Queue<IGun> mainPlayerGuns;
-
-        private int civilPlayersCount;
-        private int livePoints;
-        private IGun currGun;
-        private IGun mainPlayerCurrentGun;
-        private int currGunLivePoints;
-        
         public void Action(IPlayer mainPlayer, ICollection<IPlayer> civilPlayers)
         {
-            int civilPlayersGunsCount = civilPlayers.Select(p => p.GunRepository.Models.Count).Sum();
-
-            if (mainPlayer.GunRepository.Models.Count == 0 
-                && civilPlayersGunsCount == 0)
+            foreach (var currentGun in mainPlayer.GunRepository.Models)
             {
-                return;
-            }
-
-            civilPlayersCount = civilPlayers.Count;
-
-            mainPlayerGuns = new Queue<IGun>(mainPlayer.GunRepository.Models);
-            
-            //mainPlayerCurrentGun = mainPlayerGuns.Dequeue();
-
-            while (mainPlayerGuns.Count != 0 && civilPlayersCount != 0)
-            {
-                mainPlayerCurrentGun = mainPlayerGuns.Dequeue();
-                foreach (var civilPlayer in civilPlayers)
+                foreach (var currentCivilPlayer in civilPlayers)
                 {
-                    while (true)
+                    while (currentCivilPlayer.IsAlive && currentGun.CanFire)
                     {
-                        livePoints = mainPlayerCurrentGun.Fire();
-                        civilPlayer.TakeLifePoints(livePoints);
+                        currentCivilPlayer.TakeLifePoints(currentGun.Fire());
+                    }
 
-                        if (mainPlayerCurrentGun.CanFire)
-                        {
-                            mainPlayer.GunRepository.Remove(mainPlayerCurrentGun);
-
-                            if (mainPlayer.GunRepository.Models.Count == 0)
-                            {
-                                break;
-                            }
-
-                            mainPlayerCurrentGun = mainPlayerGuns.Dequeue();
-                        }
-
-                        if (civilPlayer.IsAlive)
-                        {
-                            civilPlayersCount--;
-                            break;
-                        }
+                    if (!currentGun.CanFire)
+                    {
+                        break;
                     }
                 }
             }
 
-            if (civilPlayersGunsCount == 0)
+            foreach (var currentCivilPlayer in civilPlayers)
             {
-                return;
-            }
-
-            if (civilPlayers.Any(p => p.IsAlive) == true)
-            {
-                while (mainPlayer.IsAlive == false)
+                if (!currentCivilPlayer.IsAlive)
                 {
-                    foreach (var civilPlayer in civilPlayers)
+                    continue;
+                }
+
+                foreach (var currentGun in currentCivilPlayer.GunRepository.Models)
+                {
+                    while (mainPlayer.IsAlive && currentGun.CanFire)
                     {
-                        currGun = civilPlayer.GunRepository.Models.First();
-                        
-                        while (civilPlayer.GunRepository.Models.Count != 0)
-                        {
-                            currGunLivePoints = currGun.Fire();
-                            mainPlayer.TakeLifePoints(currGunLivePoints);
-
-                            if (mainPlayer.IsAlive)
-                            {
-                                return;
-                            }
-
-                            if (currGun.CanFire) 
-                            {
-                                civilPlayer.GunRepository.Remove(currGun);
-                                currGun = civilPlayer.GunRepository.Models.First();
-                            }
-                        }
+                        mainPlayer.TakeLifePoints(currentGun.Fire());
                     }
+
+                    if (!mainPlayer.IsAlive)
+                    {
+                        break;
+                    }
+                }
+
+                if (!mainPlayer.IsAlive)
+                {
+                    break;
                 }
             }
         }

@@ -14,20 +14,26 @@ namespace ViceCity.Models.Guns
 
         public override int Fire()
         {
-            if (BulletsPerBarrel == 0 && TotalBullets >= BulletsPerBarrel)
+            if (BulletsPerBarrel > 0)
             {
-                BulletsPerBarrel = PistolBulletsPerBarrel;
-                TotalBullets -= PistolBulletsPerBarrel;
+                BulletsPerBarrel -= PistolShootBullets;
+                
+                return PistolShootBullets;
+            }
+            else
+            {
+                if (TotalBullets >= PistolBulletsPerBarrel)
+                {
+                    BulletsPerBarrel = PistolBulletsPerBarrel;
+                    TotalBullets -= PistolBulletsPerBarrel;
+
+                    BulletsPerBarrel -= PistolShootBullets;
+
+                    return PistolShootBullets;
+                }
             }
 
-            BulletsPerBarrel -= PistolShootBullets;
-
-            if (TotalBullets < BulletsPerBarrel)
-            {
-                TotalBullets = 0;
-            }
-
-            return PistolShootBullets;
+            return 0;
         }
     }
 }

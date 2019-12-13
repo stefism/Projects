@@ -15,7 +15,7 @@ namespace DungeonsAndCodeWizards.Core.Contracts
         string GetStats();
         string Attack(string[] args);
         string Heal(string[] args);
-        string EndTurn(string[] args);
+        string EndTurn();
         bool IsGameOver();
     }
 }

@@ -14,13 +14,18 @@ namespace DungeonsAndCodeWizards.Models.Characters
             double abilityPoints, IBag bag, Faction faction)
         {
             Name = name;
+
             Health = health;
+            BaseHealth = health;
+
             Armor = armor;
+            BaseArmor = armor;
+
             AbilityPoints = abilityPoints;
             Bag = bag;
             Faction = faction;
 
-            IsAlive = true;
+            //IsAlive = true;
             RestHealMultiplier = 0.2;
         }
 
@@ -53,18 +58,8 @@ namespace DungeonsAndCodeWizards.Models.Characters
 
         public Faction Faction { get; private set; }
 
-        public bool IsAlive
-        {
-            get 
-            {
-                return Health != 0;
-            }
-
-            private set 
-            {
-
-            }
-        }
+        public bool IsAlive => Health > 0;
+        
 
         public double RestHealMultiplier { get; private set; }
 
@@ -90,25 +85,35 @@ namespace DungeonsAndCodeWizards.Models.Characters
             CheckIfPlayerAlive();
 
             double restHealth = BaseHealth * RestHealMultiplier;
-            Health += restHealth;
+
+            if (Health + restHealth > BaseHealth)
+            {
+                Health = BaseHealth;
+            }
+            else
+            {
+                Health += restHealth;
+            }
         }
 
         public void TakeDamage(double hitPoints)
         {
             CheckIfPlayerAlive();
 
-            double armorDamage = Armor - hitPoints;
-            double overDamage = 0;
-
-            if (armorDamage > Armor)
+            if (hitPoints <= Armor)
             {
-                overDamage = armorDamage - Armor;
-                Armor = 0;
-                Health = -overDamage;
+                Armor -= hitPoints;
             }
             else
             {
-                Armor -= armorDamage;
+                double over = hitPoints - Armor;
+                Armor = 0;
+                Health -= over;
+
+                if (Health < 0)
+                {
+                    Health = 0;
+                }
             }
         }
 
@@ -128,6 +133,13 @@ namespace DungeonsAndCodeWizards.Models.Characters
             {
                 throw new InvalidOperationException("Must be alive to perform this action!");
             }
+        }
+
+        public override string ToString()
+        {
+            string status = IsAlive ? "Alive" : "Dead";
+
+            return $"{Name} - HP: {Health}/{BaseHealth}, AP: {Armor}/{BaseArmor}, Status: {status}";
         }
     }
 }

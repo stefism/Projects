@@ -11,7 +11,7 @@ namespace DungeonsAndCodeWizards.Models.Characters
     public class Cleric : Character, IHealable
     {
         private const double DefaultBaseHealth = 50;
-        private const double DefaultBaseArmor = 20;
+        private const double DefaultBaseArmor = 25;
         private const double DefaultAbilityPoints = 40;
         private static IBag defaulBag = new Backpack();
 

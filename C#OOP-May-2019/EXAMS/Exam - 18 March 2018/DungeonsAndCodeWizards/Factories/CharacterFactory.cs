@@ -12,7 +12,7 @@ namespace DungeonsAndCodeWizards.Factories
     {
         public ICharacter CreateCharacter(string type, string name, string faction)
         {
-            if (faction != Faction.CSharp.ToString() || faction != Faction.Java.ToString())
+            if (faction != Faction.CSharp.ToString() && faction != Faction.Java.ToString())
             {
                 throw new ArgumentException($"Parameter Error: Invalid faction \"{faction}\"!");
             }

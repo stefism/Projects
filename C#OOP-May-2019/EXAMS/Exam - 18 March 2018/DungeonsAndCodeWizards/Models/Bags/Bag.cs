@@ -43,7 +43,7 @@ namespace DungeonsAndCodeWizards.Models.Bags
             
             if (item == null)
             {
-                throw new ArgumentException($"No item with name {name} in bag!");
+                throw new ArgumentException($"Invalid Operation: No item with name {name} in bag!");
             }
 
             items.Remove(item);

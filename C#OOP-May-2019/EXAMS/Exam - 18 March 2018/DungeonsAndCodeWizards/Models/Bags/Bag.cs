@@ -36,7 +36,7 @@ namespace DungeonsAndCodeWizards.Models.Bags
         {
             if (items.Count == 0)
             {
-                throw new InvalidOperationException("Bag is empty!");
+                throw new InvalidOperationException("Invalid Operation: Bag is empty!");
             }
 
             IItem item = items.FirstOrDefault(i => i.GetType().Name == name);  // TODO Да не върне нул?

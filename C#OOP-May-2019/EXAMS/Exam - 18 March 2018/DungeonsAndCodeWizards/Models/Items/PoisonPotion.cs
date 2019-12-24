@@ -18,6 +18,11 @@ namespace DungeonsAndCodeWizards.Models.Items
             base.AffectCharacter(character);
 
             character.Health -= 20;
+
+            if (character.Health < 0)
+            {
+                character.Health = 0;
+            }
         }
     }
 }

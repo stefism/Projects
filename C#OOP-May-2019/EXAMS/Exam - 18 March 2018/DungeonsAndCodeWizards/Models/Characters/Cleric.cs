@@ -13,11 +13,10 @@ namespace DungeonsAndCodeWizards.Models.Characters
         private const double DefaultBaseHealth = 50;
         private const double DefaultBaseArmor = 25;
         private const double DefaultAbilityPoints = 40;
-        private static IBag defaulBag = new Backpack();
 
         public Cleric(string name, Faction faction) 
             : base(name, DefaultBaseHealth, DefaultBaseArmor, 
-                  DefaultAbilityPoints, defaulBag, faction)
+                  DefaultAbilityPoints, new Backpack(), faction)
         {
         }
 
@@ -34,6 +33,11 @@ namespace DungeonsAndCodeWizards.Models.Characters
             }
 
             character.Health += AbilityPoints;
+
+            if (character.Health > character.BaseHealth)
+            {
+                character.Health = character.BaseHealth;
+            }
         }
     }
 }

@@ -234,7 +234,7 @@ namespace DungeonsAndCodeWizards.Core
         {
             if (character == null)
             {
-                throw new ArgumentException($"Character {characterName} not found!");
+                throw new ArgumentException($"Parameter Error: Character {characterName} not found!");
             }
         }
     }

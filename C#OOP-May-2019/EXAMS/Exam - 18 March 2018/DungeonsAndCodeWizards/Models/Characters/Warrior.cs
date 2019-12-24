@@ -13,11 +13,10 @@ namespace DungeonsAndCodeWizards.Models.Characters
         private const double DefaultBaseHealth = 100;
         private const double DefaultBaseArmor = 50;
         private const double DefaultAbilityPoints = 40;
-        private static IBag defaulBag = new Satchel();
 
         public Warrior(string name,  Faction faction) 
             : base(name, DefaultBaseHealth, DefaultBaseArmor, 
-                  DefaultAbilityPoints, defaulBag, faction)
+                  DefaultAbilityPoints, new Satchel(), faction)
         {
         }
 
@@ -36,7 +35,7 @@ namespace DungeonsAndCodeWizards.Models.Characters
             if (Faction == character.Faction)
             {
                 throw new ArgumentException
-                    ($"Friendly fire! Both characters are from {Faction.GetType().Name} faction!");
+                    ($"Friendly fire! Both characters are from {character.Faction} faction!");
             }
 
             character.TakeDamage(AbilityPoints);

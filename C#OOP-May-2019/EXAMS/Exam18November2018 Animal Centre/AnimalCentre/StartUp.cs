@@ -2,9 +2,9 @@
 using AnimalCentre.Models.Contracts;
 using System;
 
-namespace AnimalCentre
+namespace AnimalCentre  
 {  
-    public class StartUp
+    public class StartUp 
     {
         public static void Main(string[] args)
         {

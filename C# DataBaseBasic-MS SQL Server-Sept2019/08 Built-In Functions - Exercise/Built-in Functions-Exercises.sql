@@ -127,7 +127,7 @@ ORDER BY [Email Provider], Username
 
 -- 16. Get Users with IPAdress Like Pattern
 SELECT Username, IpAddress FROM Users
-WHERE IpAddress LIKE '___.1%.%.___'
+WHERE IpAddress LIKE '___.1%.%.___' -- " _% " - един или повече символа. " % " хваща нула или повече.
 ORDER BY Username
 
 -- 17. Show All Games with Duration and Part of the Day
@@ -149,3 +149,30 @@ ORDER BY Game, Duration, [Part of the Day]
 -- ** Part IV Ц Date Functions Queries
 -- 18. Orders Table
 SELECT * FROM Orders
+
+SELECT ProductName, OrderDate,
+DATEADD(DAY, 3, OrderDate) AS [Pay Due],
+DATEADD(MONTH, 1, OrderDate) AS [Deliver Due]
+FROM Orders
+
+-- 19. People Table
+CREATE TABLE People
+(
+	ID INT NOT NULL UNIQUE IDENTITY(1,1),
+	[Name] NVARCHAR(30) NOT NULL,
+	Birthdate DATETIME
+)
+
+INSERT INTO People([Name], Birthdate) VALUES
+	('Viktor', '2000-12-07'),
+	('Steven', '1992-09-10'),
+	('Stephen', '1910-09-19'),
+	('John', '2010-01-06')
+
+SELECT * FROM People
+--DROP TABLE People
+
+SELECT [Name],
+DATEDIFF(YEAR, Birthdate, GETDATE()) AS [Age in Years],
+DATEDIFF(MONTH, Birthdate, GETDATE()) AS [Age in Months]
+FROM People

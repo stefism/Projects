@@ -14,7 +14,7 @@ CREATE TABLE Students
 --
 CREATE TABLE Payments
 (
-	PaymentID INT NOT NULL PRIMARY KEY,
+	PaymentID INT NOT NULL PRIMARY KEY, -- PRIMARY KEY май дефинира в себе си UNIQUE?
 	PaymentDate DATETIME NOT NULL,
 	PaymentAmount DECIMAL(15, 2) NOT NULL,
 	StudentID INT NOT NULL FOREIGN KEY REFERENCES Students(StudentID)

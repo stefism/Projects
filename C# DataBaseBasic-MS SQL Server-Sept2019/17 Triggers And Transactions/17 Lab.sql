@@ -34,3 +34,15 @@ BEGIN
 		RETURN
 	END
 END
+
+--
+GO
+CREATE TRIGGER tr_SetUpdatedOnDate ON Employees FOR UPDATE
+AS
+BEGIN
+	UPDATE e SET e.UpdateOn = GETDATE()
+	FROM Employees e
+	JOIN inserted i ON i.EmployeeID = e.EmployeeID
+END
+--
+GO

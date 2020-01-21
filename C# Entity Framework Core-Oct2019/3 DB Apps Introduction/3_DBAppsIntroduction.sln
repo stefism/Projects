@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo1", "Demo1\Demo1.csproj", "{5AFDBF79-88DE-4FE8-8AF5-3DE44F6D0598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo2", "Demo2\Demo2.csproj", "{EE280BED-72C0-4590-8FF1-D9FA2505849D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLInjection", "SQLInjection\SQLInjection.csproj", "{486299C2-FC99-4AF6-848F-DD8014AFDD1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AFDBF79-88DE-4FE8-8AF5-3DE44F6D0598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AFDBF79-88DE-4FE8-8AF5-3DE44F6D0598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AFDBF79-88DE-4FE8-8AF5-3DE44F6D0598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AFDBF79-88DE-4FE8-8AF5-3DE44F6D0598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE280BED-72C0-4590-8FF1-D9FA2505849D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE280BED-72C0-4590-8FF1-D9FA2505849D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE280BED-72C0-4590-8FF1-D9FA2505849D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE280BED-72C0-4590-8FF1-D9FA2505849D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{486299C2-FC99-4AF6-848F-DD8014AFDD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{486299C2-FC99-4AF6-848F-DD8014AFDD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{486299C2-FC99-4AF6-848F-DD8014AFDD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{486299C2-FC99-4AF6-848F-DD8014AFDD1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0614CDB-6CB3-43DE-B11A-586CDC376C21}
+	EndGlobalSection
+EndGlobal

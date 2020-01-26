@@ -6,4 +6,8 @@
     <RootNamespace>_02_VillainNames</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
 </Project>

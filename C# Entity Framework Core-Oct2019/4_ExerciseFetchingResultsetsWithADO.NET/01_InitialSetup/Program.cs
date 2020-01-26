@@ -10,6 +10,7 @@ namespace _01_InitialSetup
             @"Server=STEFCHO\SQLEXPRESS;
                 Database={0};
                 Integrated Security=true";
+
         static void Main(string[] args)
         {
             SqlConnection connection = 

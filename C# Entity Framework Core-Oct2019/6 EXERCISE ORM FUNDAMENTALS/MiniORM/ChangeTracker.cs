@@ -45,7 +45,7 @@ namespace MiniORM
 					.ToArray();
 
 				T entity = dbSet.Entities.Single(e => GetPrimaryKeyValues(primaryKeys, e)
-				.SequenceEquals(primaryKeyValues));
+				.SequenceEqual(primaryKeyValues));
 
 				bool isModified = IsModified(proxyEntity, entity);
 
@@ -82,7 +82,7 @@ namespace MiniORM
 			List<T> clonedEntities = new List<T>();
 
 			PropertyInfo[] propertiesToClone = typeof(T).GetProperties()
-				.Where(pi => DbContex.AllowedSqlTypes.Contains(pi.PropertyType))
+				.Where(pi => DbContext.AllowedSqlTypes.Contains(pi.PropertyType))
 				.ToArray();
 
 			foreach (T entity in entities)

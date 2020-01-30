@@ -17,15 +17,15 @@ namespace MiniORM.App
 
             context.Employees.Add(new Employee
             {
-                FirstName = "Baxti",
-                MiddleName = "Toya proekt",
-                LastName = "Det izpisahme",
+                FirstName = "Prekrasen",
+                MiddleName = "Proekt",
+                LastName = "Izpisahme",
                 DepartmentId = context.Departments.First().Id,
                 IsEmployed = true,
             });
 
             Employee employee = context.Employees.Last();
-            employee.FirstName = "Doobre";
+            employee.FirstName = "Strahotno";
 
             context.SaveChanges();
         }

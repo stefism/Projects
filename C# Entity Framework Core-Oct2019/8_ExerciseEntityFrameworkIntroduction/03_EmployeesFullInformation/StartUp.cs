@@ -13,21 +13,77 @@ namespace SoftUni
         {
             using (SoftUniContext db = new SoftUniContext())
             {
-                string result = GetAddressesByTown(db);
+                string result = GetEmployeesInPeriod(db);
                 Console.WriteLine(result);
             }
+        }
+
+        // Task 7
+        public static string GetEmployeesInPeriod(SoftUniContext context)
+        {
+            var employes = context.Employees
+                .Where(p => p.EmployeesProjects
+                .Any(s => s.Project.StartDate.Year >= 2001
+                        && s.Project.StartDate.Year <= 2003))
+                .Select(e => new
+                {
+                    EmployeeFullName = e.FirstName + " " + e.LastName,
+                    ManagerFullName = e.Manager.FirstName + " " + e.Manager.LastName,
+                    Projects = e.EmployeesProjects
+                                    .Select(p => new 
+                                    {
+                                        ProjectName = p.Project.Name,
+                                        ProjectStartDate = p.Project.StartDate,
+                                        ProjectEndDate = p.Project.EndDate
+                                    }).ToList() // Тука пак за да не прави много заявки.
+                }).Take(10).ToList();
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var employee in employes)
+            {
+                sb.AppendLine($"{employee.EmployeeFullName} - Manager: {employee.ManagerFullName}");
+
+                foreach (var project in employee.Projects)
+                {
+                    string startDate = project.ProjectStartDate.ToString("M/d/yyyy h:mm:ss tt");
+
+                    string endDate = project.ProjectEndDate.HasValue
+                        ? project.ProjectEndDate.Value.ToString("M/d/yyyy h:mm:ss tt")
+                        : "not finished";
+
+                    sb.AppendLine($"--{project.ProjectName} - {startDate} - {endDate}");
+                }
+            }
+
+            return sb.ToString().TrimEnd();
+
+            //var result = context.Employees
+            //    .Select(e => new
+            //    {
+            //        FirstName = e.FirstName,
+            //        LastName = e.LastName,
+            //        ManagerId = e.ManagerId,
+            //        ProjectName = e.EmployeesProjects
+            //        .Select(p => p.Project.Name),
+            //        ProjectStartDate = e.EmployeesProjects
+            //        .Select(p => p.Project.StartDate.Year),
+            //        ProjectEndDate = e.EmployeesProjects
+            //        .Select(p => p.Project.EndDate)
+            //    });
         }
 
         // Task 8
         public static string GetAddressesByTown(SoftUniContext context)
         {
-            //var addresses = context.Addresses
+            //var addresses = context.Addresses.Include(a => a.Town)
+            //    .Include(a => a.Employees)
             //    .OrderByDescending(a => a.Employees.Count())
             //    .ThenBy(a => a.Town.Name).ThenBy(a => a.AddressText)
             //    .Take(10).ToList();
 
             var addresses = context.Addresses
-                .Select(a => new 
+                .Select(a => new
                 {
                     AddrText = a.AddressText,
                     TownName = a.Town.Name,
@@ -35,9 +91,14 @@ namespace SoftUni
                 })
                 .OrderByDescending(a => a.EmplCount)
                 .ThenBy(a => a.TownName).ThenBy(a => a.AddrText)
-                .Take(10).ToList();
+                .Take(10).ToList(); // Така е доста по-добре и оптимизирано.
 
             StringBuilder sb = new StringBuilder();
+
+            //foreach (var address in addresses)
+            //{
+            //    sb.AppendLine($"{address.AddressText}, {address.Town.Name} - {address.Employees.Count()} employees");
+            //}
 
             foreach (var address in addresses)
             {

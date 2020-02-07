@@ -12,6 +12,8 @@ namespace P01_HospitalDatabase.Data.Models
 
         public string Specialty { get; set; }
 
+        public int Age { get; set; }
+
         public ICollection<Visitation> Visitations { get; set; }
             = new HashSet<Visitation>();
     }

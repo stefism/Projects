@@ -72,6 +72,9 @@ namespace P01_HospitalDatabase.Data
                   .HasMaxLength(Constraint.DoctorSpecialtyMaxLength)
                   .IsRequired(true)
                   .IsUnicode(true);
+
+                e.Property(d => d.Age)
+                  .IsRequired(true);
             });
 
             modelBuilder.Entity<Medicament>(e => 

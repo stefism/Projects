@@ -21,5 +21,12 @@ namespace MyCoolCarSystem.Data.Models
         [Required]
         [MaxLength(ColorMaxLength)]
         public string Color { get; set; }
+
+        public int ModelId { get; set; }
+
+        public Model Model { get; set; }
+
+        public ICollection<CarPurchase> Owners { get; set; }
+            = new HashSet<CarPurchase>();
     }
 }

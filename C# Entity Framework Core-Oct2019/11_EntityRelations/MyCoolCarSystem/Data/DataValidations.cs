@@ -21,5 +21,16 @@ namespace MyCoolCarSystem.Data
             public const int VinLength = 17;
             public const int ColorMaxLength = 15;
         }
+
+        public static class Customer
+        {
+            public const int MaxNameLength = 30;
+        }
+
+        public static class Address
+        {
+            public const int MaxTextLength = 200;
+            public const int MaxTownLength = 30;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace P01_StudentSystem.Data
     internal static class Connection
     {
         internal const string DefaultConnection =
-            @"Server=STEFCHO\SQLEXPRESS;
+            @"Server=DESKTOP-LNP1A21\SQLEXPRESS;
                 Database=StudentSystem;
                 Integrated Security=True;";
     }

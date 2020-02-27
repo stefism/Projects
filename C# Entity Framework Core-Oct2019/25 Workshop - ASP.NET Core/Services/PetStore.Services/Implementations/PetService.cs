@@ -89,14 +89,12 @@ namespace PetStore.Services.Implementations
         }
 
         public IEnumerable<PetListingServiceModel> All()
+        => data.Pets.Select(p => new PetListingServiceModel
         {
-            return data.Pets.Select(p => new PetListingServiceModel
-            {
-                Id = p.Id,
-                Price = p.Price,
-                Category = p.Category.Name,
-                Breed = p.Breed.Name
-            }).ToList();
-        }
+            Id = p.Id,
+            Price = p.Price,
+            Category = p.Category.Name,
+            Breed = p.Breed.Name
+        }).ToList();
     }
 }

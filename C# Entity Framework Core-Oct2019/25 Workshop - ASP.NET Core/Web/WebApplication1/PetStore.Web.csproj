@@ -9,4 +9,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\PetStore.Data\PetStore.Data.csproj" />
+    <ProjectReference Include="..\..\Services\PetStore.Services\PetStore.Services.csproj" />
+  </ItemGroup>
+
 </Project>

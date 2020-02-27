@@ -2,10 +2,12 @@
 namespace PetStore.Services.Implementations
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Data;
     using Data.Models;
+    using PetStore.Services.Models.Pet;
 
     public class PetService : IPetService
     {
@@ -84,6 +86,17 @@ namespace PetStore.Services.Implementations
         public bool Exists(int petId)
         {
             return this.data.Pets.Any(p => p.Id == petId);
+        }
+
+        public IEnumerable<PetListingServiceModel> All()
+        {
+            return data.Pets.Select(p => new PetListingServiceModel
+            {
+                Id = p.Id,
+                Price = p.Price,
+                Category = p.Category.Name,
+                Breed = p.Breed.Name
+            }).ToList();
         }
     }
 }

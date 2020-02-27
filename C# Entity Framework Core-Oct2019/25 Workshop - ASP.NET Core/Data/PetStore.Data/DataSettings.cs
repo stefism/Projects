@@ -2,8 +2,8 @@
 {
     public class DataSettings
     {
-        public const string Connection = 
-            @"Server=DESKTOP-GJ7U07L\SQLEXPRESS;
+        public const string Connection =
+            @"Server=STEFCHO\SQLEXPRESS;
                 Database=PetStoreCatalog;
                 Integrated Security=True;";
     }

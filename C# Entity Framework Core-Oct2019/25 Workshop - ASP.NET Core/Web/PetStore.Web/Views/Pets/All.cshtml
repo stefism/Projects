@@ -3,8 +3,32 @@
 <h1>All</h1>
 <h2>Мараба от животните.</h2>
 
-@foreach (var pet in Model)
-{
-    <div>@pet.Price, @pet.Breed, @pet.Category</div>
-}
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Breed
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var pet in Model)
+    {
+<tr>
+    <td>
+        @pet.Category;
+    </td>
+    <td>
+        @pet.Breed;
+    </td>
+    <td>
+        $@pet.Price;
+    </td>
+</tr>
+    }
+</table>
+
 

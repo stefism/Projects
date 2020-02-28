@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetStore.Services;
 using PetStore.Services.Models.Pet;
+using PetStore.Web.Models.Pet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,13 @@ namespace PetStore.Web.Controllers
         {
             var allPets = pets.All(page);
 
-            return View(allPets);
+            var model = new AllPetsViewModel
+            {
+                Pets = allPets,
+                CurrentPage = page
+            };
+
+            return View(model);
         }
     }
 }

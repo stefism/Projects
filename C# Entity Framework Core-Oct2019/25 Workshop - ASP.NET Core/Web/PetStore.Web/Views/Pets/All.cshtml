@@ -1,7 +1,12 @@
-﻿@model IEnumerable<PetListingServiceModel>
+﻿@model AllPetsViewModel
 
 <h1>All</h1>
 <h2>Мараба от животните.</h2>
+
+<div>
+    <a href="" class="float-left btn btn-info">Prev</a>
+    <a href="" class="float-right btn btn-info">Next</a>
+</div>
 
 <table class="table table-bordered table-striped">
     <tr>
@@ -15,7 +20,7 @@
             Price
         </th>
     </tr>
-    @foreach (var pet in Model)
+    @foreach (var pet in Model.Pets)
     {
 <tr>
     <td>

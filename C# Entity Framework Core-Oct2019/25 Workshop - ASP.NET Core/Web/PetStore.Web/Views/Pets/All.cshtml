@@ -1,0 +1,10 @@
+﻿@model IEnumerable<PetListingServiceModel>
+
+<h1>All</h1>
+<h2>Мараба от животните.</h2>
+
+@foreach (var pet in Model)
+{
+    <div>@pet.Price, @pet.Breed, @pet.Category</div>
+}
+

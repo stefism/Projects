@@ -4,8 +4,9 @@
 <h2>Мараба от животните.</h2>
 
 <div>
-    <a href="" class="float-left btn btn-info">Prev</a>
-    <a href="" class="float-right btn btn-info">Next</a>
+    <a href="/Pets/All?page=@Model.PreviousPage" class="float-left btn btn-info @(Model.PreviousDisabled ? "disabled" : string.Empty)">Prev</a>
+
+    <a href="/Pets/All?page=@Model.NextPage" class="float-right btn btn-info">Next</a>
 </div>
 
 <table class="table table-bordered table-striped">

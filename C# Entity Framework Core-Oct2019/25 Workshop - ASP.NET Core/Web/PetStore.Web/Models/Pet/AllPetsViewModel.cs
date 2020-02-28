@@ -14,6 +14,8 @@ namespace PetStore.Web.Models.Pet
 
         public int PreviousPage => CurrentPage - 1;
 
-        public int NaxtPage => CurrentPage + 1;
+        public int NextPage => CurrentPage + 1;
+
+        public bool PreviousDisabled => CurrentPage == 1;
     }
 }

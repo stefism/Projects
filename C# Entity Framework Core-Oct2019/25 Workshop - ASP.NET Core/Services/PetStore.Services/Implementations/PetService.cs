@@ -88,8 +88,11 @@ namespace PetStore.Services.Implementations
             return this.data.Pets.Any(p => p.Id == petId);
         }
 
-        public IEnumerable<PetListingServiceModel> All()
-        => data.Pets.Select(p => new PetListingServiceModel
+        public IEnumerable<PetListingServiceModel> All(int page = 1)
+        => data.Pets
+            .Skip((page - 1) * 25) // PetsPageSize = 25
+            .Take(25)
+            .Select(p => new PetListingServiceModel
         {
             Id = p.Id,
             Price = p.Price,

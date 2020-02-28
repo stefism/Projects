@@ -17,9 +17,9 @@ namespace PetStore.Web.Controllers
             this.pets = pets;
         }
 
-        public IActionResult All()
+        public IActionResult All(int page = 1)
         {
-            var allPets = pets.All();
+            var allPets = pets.All(page);
 
             return View(allPets);
         }

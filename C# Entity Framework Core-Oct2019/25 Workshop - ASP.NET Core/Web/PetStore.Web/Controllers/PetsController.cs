@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetStore.Services;
+using PetStore.Services.Models.Pet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,16 @@ namespace PetStore.Web.Controllers
 {
     public class PetsController : Controller
     {
-        public string[] All()
+        private readonly IPetService pets;
+
+        public PetsController(IPetService pets)
         {
-            return new[] { "Pesho", "Gosho" };
+            this.pets = pets;
+        }
+
+        public IEnumerable<PetListingServiceModel> All()
+        {
+            return pets.All();
         }
     }
 }

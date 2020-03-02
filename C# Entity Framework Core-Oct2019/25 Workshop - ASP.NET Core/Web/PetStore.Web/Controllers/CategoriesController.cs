@@ -16,6 +16,12 @@ namespace PetStore.Web.Controllers
         {
             this.categoryService = categoryService;
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
         public IActionResult All()
         {
             var categories = categoryService.All()

@@ -34,6 +34,11 @@ namespace PetStore.Web.Controllers
                 Description = category.Description
             };
 
+            if (viewModel.Description == null)
+            {
+                viewModel.Description = "No description.";
+            }
+
             return View(viewModel);
         }
 

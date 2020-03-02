@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PetStore.Services;
+using PetStore.Services.Models.Category;
 using PetStore.Web.Models.Categories;
 
 namespace PetStore.Web.Controllers
@@ -24,8 +25,21 @@ namespace PetStore.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCategoryInputModel model)
+        public IActionResult Create(CreateCategoryInputModel inputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var serviceModel = new CreateCategoryServiceModel()
+            {
+                Name = inputModel.Name,
+                Description = inputModel.Description
+            };
+
+            categoryService.Create(serviceModel);
+
             return RedirectToAction("All", "Categories");
         }
 

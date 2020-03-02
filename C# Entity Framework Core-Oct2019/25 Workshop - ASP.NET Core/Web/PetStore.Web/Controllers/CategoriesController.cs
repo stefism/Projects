@@ -22,6 +22,13 @@ namespace PetStore.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(CreateCategoryInputModel model)
+        {
+            return RedirectToAction("All", "Categories");
+        }
+
         public IActionResult All()
         {
             var categories = categoryService.All()

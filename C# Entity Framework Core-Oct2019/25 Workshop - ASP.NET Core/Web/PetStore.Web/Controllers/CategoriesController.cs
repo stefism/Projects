@@ -19,6 +19,25 @@ namespace PetStore.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult Details( int id)
+        {
+            DetailsCategoryServiceModel category = categoryService.GetById(id);
+
+            if (category.Name == null)
+            {
+                return BadRequest();
+            }
+
+            CategoryDetailsViewModel viewModel = new CategoryDetailsViewModel()
+            {
+                Name = category.Name,
+                Description = category.Description
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();

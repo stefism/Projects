@@ -46,7 +46,7 @@
 
         public void Edit(EditCategoryServiceModel model)
         {
-            var category = this.data
+            Category category = this.data
                 .Categories
                 .Find(model.Id);
 

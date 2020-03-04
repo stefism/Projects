@@ -18,6 +18,7 @@ namespace PetStore.Web.Controllers
             this.categoryService = categoryService;
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             DetailsCategoryServiceModel category = categoryService.GetById(id);
@@ -35,6 +36,31 @@ namespace PetStore.Web.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CategoryEditInputModel catEditInputModel)
+        {
+            if (!categoryService.Exists(catEditInputModel.Id))
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var editCatServModel = new EditCategoryServiceModel()
+            {
+                Id = catEditInputModel.Id,
+                Name = catEditInputModel.Name,
+                Description = catEditInputModel.Description
+            };
+
+            categoryService.Edit(editCatServModel);
+
+            return RedirectToAction("Details", "Categories", new { id=editCatServModel.Id });
         }
 
         [HttpGet]

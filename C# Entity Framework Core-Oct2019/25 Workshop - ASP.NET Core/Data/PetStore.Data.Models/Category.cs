@@ -8,7 +8,7 @@
     // Each category is for each animal.
     public class Category
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(NameMaxLength)]

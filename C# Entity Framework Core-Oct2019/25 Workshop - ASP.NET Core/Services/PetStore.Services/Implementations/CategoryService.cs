@@ -84,7 +84,7 @@
                 .Categories
                 .Select(c => new AllCategoriesServiceModel()
                 {
-                    Id = c.Id,
+                    Id = (int)c.Id,
                     Name = c.Name,
                     Description = c.Description
                 })

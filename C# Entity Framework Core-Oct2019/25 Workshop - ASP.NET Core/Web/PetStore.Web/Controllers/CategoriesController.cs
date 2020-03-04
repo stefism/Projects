@@ -27,7 +27,14 @@ namespace PetStore.Web.Controllers
                 return BadRequest();
             }
 
-            var viewModel = 
+            var viewModel = new CategoryDetailsViewModel()
+            {
+                Id = category.Id.Value,
+                Name = category.Name,
+                Description = category.Description
+            };
+
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -42,6 +49,7 @@ namespace PetStore.Web.Controllers
 
             CategoryDetailsViewModel viewModel = new CategoryDetailsViewModel()
             {
+                Id = category.Id.Value,
                 Name = category.Name,
                 Description = category.Description
             };

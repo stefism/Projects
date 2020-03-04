@@ -25,6 +25,5 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="All">Back to List</a>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id } , new { @class = "btn btn-warning btn-sm" }) | <a class="btn btn-info btn-sm" asp-action="All">Back to List</a>
 </div>

@@ -4,11 +4,8 @@
     ViewData["Title"] = "All";
 }
 
-<h1>All</h1>
+<h2>All</h2> 
 
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -18,7 +15,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th></th>
+            <th>
+                <a class="btn btn-primary float-sm-right" asp-action="Create">Create New</a>
+            </th>
         </tr>
     </thead>
     <tbody>

@@ -24,5 +24,17 @@ function inverseSum(arr){
     return result;
 }
 
+function concat(arr){
+    let result = '';
+
+    for (let index = 0; index < arr.length; index++) {
+        const element =  arr[index];
+        result += element;
+    }
+
+    return result;
+}
+
 console.log(aggregate([1, 4, 7], sum));
 console.log(aggregate([1, 2, 4], inverseSum));
+console.log(aggregate([1, 2, 4], concat));

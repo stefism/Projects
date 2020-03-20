@@ -1,5 +1,5 @@
 function rotateArray(array) {
-    let rotates = Number(array.pop())
+    let rotates = Number(array.pop()) % array.length
 
     for (let i = 0; i < rotates; i++) {
         let element = array.pop()

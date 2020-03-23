@@ -3,14 +3,13 @@ function  cityMarkets(input) {
 
     for (let i = 0; i < input.length; i++) {
         let obj = {}
-        let data = input[i].split(' -> ')
+        let [city, product, numbers] = input[i].split(' -> ')
+        product = Number(product)
 
-        let city = data[0]
-        let product = '$$$'+data[1]
+        let [price, quantity] = numbers.split(':')
+        price = Number(price)
+        quantity = Number(quantity)
 
-        let numbers = data[2].split(':')
-        let price = +numbers[0]
-        let quantity = +numbers[1]
         let totalPrice = price * quantity
 
         let townElement = `${product}:${totalPrice}`

@@ -1,4 +1,5 @@
 function storeCatalogue(input) {
+    const alphaSort = (a, b) => a.localeCompare(b)
     let catalogue ={}
 
     for(let line of input){
@@ -17,6 +18,24 @@ function storeCatalogue(input) {
             products[name] = price
         }
     }
+
+    let sortedInitials = Object.keys(catalogue)
+        .sort(alphaSort)
+
+    let output =''
+
+    for(let initial of sortedInitials){
+        output += `${initial}\n`
+
+        let products = catalogue[initial]
+        let sortedProducts = Object.keys(products).sort(alphaSort)
+
+        for(let p of sortedProducts){
+            output += `  ${p}: ${products[p]}\n`
+        }
+    }
+
+    return output
 }
 
 console.log(storeCatalogue(['Appricot : 20.4',

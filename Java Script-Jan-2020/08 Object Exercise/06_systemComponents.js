@@ -23,11 +23,9 @@ function systemComponents(input) {
 
     let output = ''
 
-    let entries = Object.entries(catalogue)
 
-    for(object in catalogue){
 
-    }
+    let catalogueKeys = Object.keys(catalogue)
 
     console.log(catalogue)
 }

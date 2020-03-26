@@ -23,7 +23,7 @@ function systemComponents(input) {
 
     let output = ''
 
-    let sortedSystemNames = Object.keys(catalogue)
+    console.log(catalogue)
 }
 
 console.log(systemComponents(['SULS | Main Site | Home Page',

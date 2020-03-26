@@ -23,6 +23,19 @@ function systemComponents(input) {
 
     let output = ''
 
+    let sortedSystemNames = Object.keys(catalogue)
+        .sort((a, b) => Object.keys(catalogue[b]).length - Object.keys(catalogue[a]).length || a.localeCompare(b))
+
+    for(let systemName in sortedSystemNames){
+        output += `${sortedSystemNames[systemName]}\n`
+
+        let sortedComponents = Object.keys(catalogue[sortedSystemNames[systemName]])
+            .sort((a, b) => b.length - a.length)
+
+
+        debugger
+    }
+
     console.log(catalogue)
 }
 

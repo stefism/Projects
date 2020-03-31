@@ -1,5 +1,29 @@
-function filterEmployees(input) {
+function filterEmployees(data, criteria) {
+    let parsedData = JSON.parse(data)
+    let [criteriaKey, criteriaValue] = criteria.split('-')
 
+    let outputData = []
+    let objId = 0
+
+    for(let obj of parsedData){
+        if(obj[criteriaKey] === criteriaValue){
+            let person = {
+                id: objId++,
+                fullName: obj.first_name + ' ' + obj.last_name,
+                email: obj.email
+            }
+
+            outputData.push(person)
+        }
+    }
+
+    let outputString = ''
+
+    for(let person of outputData){
+        outputString += `${person.id}. ${person.fullName} - ${person.email}\n`
+    }
+
+    return outputString.trim()
 }
 
 console.log(filterEmployees(`[{

@@ -124,5 +124,9 @@ function solution(){
 }
 
 let manager = solution()
-manager('restock flavour 50')
-manager('prepare lemonade 4')
+manager('restock carbohydrate 10')
+manager('restock flavour 10')
+manager('prepare apple 1')
+manager('restock fat 10')
+manager('prepare burger 1')
+manager('report')

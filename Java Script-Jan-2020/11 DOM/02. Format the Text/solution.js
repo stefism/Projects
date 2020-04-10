@@ -4,7 +4,6 @@ function solve() {
 
     let output = document.getElementById('output')
 
-
     let paragraph = ''
     paragraph += text[0] + '. '
 
@@ -24,5 +23,4 @@ function solve() {
             output.appendChild(p)
         }
     }
-        //debugger
 }

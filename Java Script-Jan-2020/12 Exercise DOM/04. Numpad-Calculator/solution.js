@@ -50,7 +50,6 @@ function solve() {
                 numbers.push(+number)
             }
 
-
             if(numbers.length === 2){
                 resultOutput.innerText = 'NaN'
             } else {

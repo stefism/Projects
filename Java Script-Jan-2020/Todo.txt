@@ -1,0 +1,8 @@
+Задачи, които не минават в judge и да се пита:
+
+Exercise: DOM 
+- 07. Shopping Cart
+- 08. Furniture
+
+Lab: DOM Manipulations
+- 02. Add / Delete

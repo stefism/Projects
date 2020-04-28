@@ -1,8 +1,3 @@
 Задачи, които не минават в judge и да се пита:
 
-Exercise: DOM 
-- 07. Shopping Cart
-- 08. Furniture
-
-Lab: DOM Manipulations
-- 02. Add / Delete
+гледай zero test inputs, ползвай селектори които той ползва, не ползвай най-нови методи от ДОМ-а (append, remove, ..), придържай се към класики appendChild, removeChild,.. прочети за разликата между innerHTML, innerText и textContent (кое създава вътрешни нодове, кое не), правиш много проби грешки и ще ги уцелиш накрая :)

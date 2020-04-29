@@ -21,13 +21,13 @@ function stopwatch() {
     }
 
     function timer() {
+        watch.textContent = "00:00"
         startBtn.disabled = true
         stopBtn.disabled = false
         timeout = setInterval(add, 1000)
     }
 
     function clearTimer(){
-        watch.textContent = "00:00"
         startBtn.disabled = false
         stopBtn.disabled = true
         clearInterval(timeout)

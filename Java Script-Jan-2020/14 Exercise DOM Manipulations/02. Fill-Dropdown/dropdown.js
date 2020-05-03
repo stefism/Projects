@@ -1,3 +1,4 @@
 function addItem() {
-    console.log('TODO:...');
+    let newItemText = document.getElementById('newItemText')
+    let newItemValue = document.getElementById('newItemValue')
 }

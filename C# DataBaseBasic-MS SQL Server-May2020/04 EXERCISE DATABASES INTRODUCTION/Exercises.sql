@@ -117,5 +117,37 @@ ALTER TABLE Users
 ADD CONSTRAINT CK_Users_UsernameLength
 CHECK(LEN(Username) >= 3)
 
+
 GO
--- 16 Create SoftUni Database
+-- 19 Basic Select All Fields
+SELECT * FROM Towns
+SELECT * FROM Departments
+SELECT * FROM Employees
+
+-- 20 Basic Select All Fields and Order Them
+SELECT * FROM Towns
+ORDER BY [Name]
+
+SELECT * FROM Departments
+ORDER BY [Name]
+
+SELECT * FROM Employees
+ORDER BY Salary DESC
+
+-- 21 Basic Select Some Fields
+SELECT [Name] FROM Towns
+ORDER BY [Name]
+
+SELECT [Name] FROM Departments
+ORDER BY [Name]
+
+SELECT FirstName, LastName, JobTitle, Salary FROM Employees
+ORDER BY Salary DESC
+
+-- 22 Increase Employees Salary
+UPDATE Employees SET Salary = Salary * 1.10
+SELECT Salary FROM Employees
+
+SELECT * FROM Employees
+
+-- 23 Decrease Tax Rate

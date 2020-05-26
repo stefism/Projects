@@ -150,4 +150,9 @@ SELECT Salary FROM Employees
 
 SELECT * FROM Employees
 
--- 23 Decrease Tax Rate
+-- 23 Decrease Tax Rate Hotel database 
+UPDATE Payments SET TaxRate = TaxRate * 0.87
+SELECT TaxRate FROM Payments
+
+-- 24 Delete All Records Hotel database
+TRUNCATE TABLE Occupancies

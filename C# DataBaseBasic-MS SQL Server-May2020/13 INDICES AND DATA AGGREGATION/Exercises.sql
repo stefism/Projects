@@ -123,8 +123,7 @@ FROM Employees) AS tmp
 WHERE SalaryRank = 3
 
 -- 19. **Salary Challenge
-SELECT FirstName, LastName, e.DepartmentID, 
-Salary, AvgSalary
+SELECT TOP 10 FirstName, LastName, e.DepartmentID
 FROM Employees AS e
 JOIN (SELECT DepartmentID,
 AVG(Salary) AS AvgSalary

@@ -8,6 +8,9 @@ class Stringer{
     decrease(newLength){
         this.innerLength = this.initialLength - newLength
 
+        //this.innerLength = Math.max(0, this.initialLength - newLength)
+        // Икономисва иф проверката долу.
+
         if(this.innerLength < 0){
             this.innerLength = 0
         }

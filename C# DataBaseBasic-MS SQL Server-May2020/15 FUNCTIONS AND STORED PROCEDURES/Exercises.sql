@@ -1,81 +1,64 @@
--- 01. Employees with Salary Above 35000
-CREATE PROC usp_GetEmployeesSalaryAbove35000
+-- Part 2. Queries for Bank Database
+-- 09. Find Full Name
+CREATE PROC usp_GetHoldersFullName
 AS
-	SELECT FirstName, LastName
-	FROM Employees
-	WHERE Salary > 35000
+	SELECT CONCAT(FirstName, ' ', LastName) AS [Full Name]
+	FROM AccountHolders
 GO
 
--- 02. Employees with Salary Above Number
-CREATE PROC usp_GetEmployeesSalaryAboveNumber(@Salary DECIMAL(18,4))
-AS
-	SELECT FirstName, LastName
-	FROM Employees
-	WHERE Salary >= @Salary
+EXEC usp_GetHoldersFullName
+
+-- 10. People with Balance Higher Than
 GO
 
--- 03. Town Names Starting With
-CREATE PROC usp_GetTownsStartingWith(@StartString NVARCHAR(50))
-AS
-	SELECT [Name]
-	FROM Towns
-	WHERE [Name] LIKE @StartString + '%'
-GO
-
-EXEC usp_GetTownsStartingWith 'b'
-
--- 04. Employees from Town
-GO
-CREATE PROC usp_GetEmployeesFromTown (@Town NVARCHAR(50))
-AS
-	SELECT FirstName, LastName
-	FROM Employees AS e
-	JOIN Addresses AS a ON e.AddressID = a.AddressID
-	JOIN Towns AS t ON a.TownID = t.TownID
-	WHERE t.[Name] = @Town
-GO
-
--- 06. Employees by Salary Level
-CREATE PROC usp_EmployeesBySalaryLevel(@SalaryLevel NVARCHAR(10))
+CREATE PROC usp_GetHoldersWithBalanceHigherThan(@TotalMoney MONEY)
 AS
 	SELECT FirstName, LastName
 	FROM
-	(SELECT FirstName, LastName,
-	dbo.ufn_GetSalaryLevel(Salary) AS SalaryLevel
-	FROM Employees) AS tmp
-	WHERE SalaryLevel = @SalaryLevel
+	(SELECT AccountHolderId, 
+		ac.FirstName, ac.LastName,
+		SUM(Balance) AS [Total Balance]
+		FROM Accounts AS a
+		JOIN AccountHolders AS ac ON a.AccountHolderId = ac.Id
+		GROUP BY a.AccountHolderId, ac.FirstName, ac.LastName) AS tmp
+	WHERE [Total Balance] > @TotalMoney
+	ORDER BY FirstName, LastName
 GO
 
-EXEC usp_EmployeesBySalaryLevel 'High'
-
--- 07. Define Function
-GO
-
-CREATE FUNCTION ufn_IsWordComprised(@SetOfLetters NVARCHAR(MAX), @Word NVARCHAR(MAX))
-RETURNS SMALLINT
+-- 11. Future Value Function
+CREATE FUNCTION ufn_CalculateFutureValue(@InitialSum decimal(18, 4), @YearlyInterestRate float, @Years int)
+RETURNS decimal(18, 4)
 AS
 BEGIN
-	DECLARE @index INT 
-	SET @index = LEN(@Word)
-	
-	WHILE(@index > 0)
-	BEGIN
-		DECLARE @currChar NCHAR(1) = SUBSTRING(@Word, @index, 1)
-
-		IF(CHARINDEX(@currChar, @SetOfLetters) > 0)
-		BEGIN
-			SET @index -= 1
-			CONTINUE
-		END
-		ELSE RETURN 0
-	END
-
-	RETURN 1
+	RETURN @InitialSum * (POWER(1 + @YearlyInterestRate, @Years))
 END
 
 GO
-SELECT LEN('Proba')
+SELECT dbo.ufn_CalculateFutureValue(1000, 0.1, 5)
 
-SELECT dbo.ufn_IsWordComprised('bobr', 'Rob')
+-- Õ≈ ¡¿÷¿ *** 12. Calculating Interest
+GO
 
--- 08. * Delete Employees and Departments
+CREATE PROC usp_CalculateFutureValueForAccount(@AccountId int, @InterestRate float)
+AS
+	SELECT ac.Id, ac.FirstName, ac.LastName,
+	a.Balance AS [Current Balance],
+	dbo.ufn_CalculateFutureValue(a.Balance, @InterestRate, 5)
+	AS [Balance in 5 years]
+	FROM AccountHolders AS ac
+	JOIN Accounts AS a ON a.AccountHolderId = ac.Id
+	WHERE a.Id = @AccountId
+GO
+
+SELECT * FROM Accounts
+
+EXEC usp_CalculateFutureValueForAccount 1, 0.1
+
+-- 13. *Scalar Function: Cash in User Games Odd Rows
+SELECT *
+FROM
+(SELECT g.Id, ug.Cash, g.[Name],
+ROW_NUMBER() OVER(ORDER BY ug.Cash DESC) AS [Row Number]
+FROM UsersGames AS ug
+JOIN Games AS g ON ug.GameId = g.Id) AS tmp
+WHERE [Row Number] % 2 = 1

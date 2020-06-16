@@ -36,7 +36,7 @@ END
 GO
 SELECT dbo.ufn_CalculateFutureValue(1000, 0.1, 5)
 
--- Õ≈ ¡¿÷¿ *** 12. Calculating Interest
+-- 12. Calculating Interest
 GO
 
 CREATE PROC usp_CalculateFutureValueForAccount(@AccountId int, @InterestRate float)
@@ -55,10 +55,36 @@ SELECT * FROM Accounts
 EXEC usp_CalculateFutureValueForAccount 1, 0.1
 
 -- 13. *Scalar Function: Cash in User Games Odd Rows
-SELECT *
-FROM
-(SELECT g.Id, ug.Cash, g.[Name],
-ROW_NUMBER() OVER(ORDER BY ug.Cash DESC) AS [Row Number]
-FROM UsersGames AS ug
-JOIN Games AS g ON ug.GameId = g.Id) AS tmp
+GO
+
+CREATE FUNCTION ufn_CashInUsersGames(@GameName NVARCHAR(MAX))
+RETURNS TABLE AS
+RETURN
+(
+	SELECT SUM(Cash) AS SumCash FROM
+	(SELECT *,
+	ROW_NUMBER() OVER(ORDER BY Cash DESC) AS [Row Number]
+	FROM
+	(SELECT g.Id, ug.Cash, g.[Name]
+	FROM UsersGames AS ug
+	JOIN Games AS g ON ug.GameId = g.Id
+	WHERE [Name] = @GameName) AS tmp) AS fdfd2
+	WHERE [Row Number] % 2 = 1
+)
+
+GO
+
+SELECT * FROM dbo.ufn_CashInUsersGames('Love in a mist')
+
+---
+
+SELECT SUM(Cash) AS SumCash FROM
+	(SELECT *,
+	ROW_NUMBER() OVER(ORDER BY Cash DESC) AS [Row Number]
+	FROM
+		(SELECT g.Id, ug.Cash, g.[Name]
+		FROM UsersGames AS ug
+		JOIN Games AS g ON ug.GameId = g.Id
+		WHERE [Name] = 'Love in a mist') AS tmp) AS fdfd2
 WHERE [Row Number] % 2 = 1
+

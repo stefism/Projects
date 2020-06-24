@@ -23,5 +23,7 @@ namespace _04_Add_Minion
         public static string GetVillainId = "SELECT Id FROM Villains WHERE [Name] = @VillainName";
 
         public static string GetMinionId = "SELECT Id FROM Minions WHERE [Name] = @MinionName";
+
+        public static string GetTownId = "SELECT Id FROM Towns WHERE [Name] = @TownName";
     }
 }

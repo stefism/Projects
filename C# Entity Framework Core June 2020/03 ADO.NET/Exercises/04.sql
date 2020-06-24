@@ -9,4 +9,10 @@ SELECT [Name]
 FROM Villains
 WHERE [Name] = 'Gru'
 
-SELECT * FROM EvilnessFactors
+SELECT * FROM MinionsVillains
+
+SELECT * FROM Villains
+
+SELECT * FROM Minions
+
+SELECT * FROM Towns

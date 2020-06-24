@@ -47,24 +47,33 @@ namespace _04_Add_Minion
                 Console.WriteLine($"Villain {villainName} was added to the database.");
             }
 
-            string getTownIdQuery = "";
+            int townId = GetTownId(minionTown, minionsDB);
 
-            AddNewMinionToDb(minionName, minionAge, minionTown, minionsDB);
+            AddNewMinionToDb(minionName, minionAge, townId, minionsDB);
 
             int minionIdToAdd = GetMinionId(minionName, minionsDB);
-            int villainIdToAdd = GetVillainId(minionsDB, villain);
+            int villainIdToAdd = GetVillainId(minionsDB, villainName);
 
             SetMinionToVillain(minionsDB, minionIdToAdd, villainIdToAdd);
-            Console.WriteLine($"Successfully added {minionName} to be minion of {villain}.");
+            Console.WriteLine($"Successfully added {minionName} to be minion of {villainName}.");
         }
 
-        private static void AddNewMinionToDb(string minionName, int minionAge, string minionTown, SqlConnection minionsDB)
+        private static int GetTownId(string minionTown, SqlConnection minionsDB)
+        {
+            string getTownIdQuery = TextQueries.GetTownId;
+            var getTownIdCommand = new SqlCommand(getTownIdQuery, minionsDB);
+            getTownIdCommand.Parameters.AddWithValue("@TownName", minionTown);
+            int townId = (int)getTownIdCommand.ExecuteScalar();
+            return townId;
+        }
+
+        private static void AddNewMinionToDb(string minionName, int minionAge, int townId, SqlConnection minionsDB)
         {
             string addNewMinionToDb = TextQueries.AddNewMinionToDb;
             var addMinionToDb = new SqlCommand(addNewMinionToDb, minionsDB);
             addMinionToDb.Parameters.AddWithValue("@Name", minionName);
             addMinionToDb.Parameters.AddWithValue("@Age", minionAge);
-            addMinionToDb.Parameters.AddWithValue("@TownId", minionTown);//***TownId!!!!
+            addMinionToDb.Parameters.AddWithValue("@TownId", townId);
             addMinionToDb.ExecuteNonQuery();
         }
 

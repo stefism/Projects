@@ -20,7 +20,7 @@ namespace _06_Remove_Villain
 
             SqlCommand getName = new SqlCommand(getVillainName, minionsDB);
             getName.Parameters.AddWithValue("@Id", villainId);
-            
+
             string nameVillain = getName.ExecuteScalar() as string;
 
             if (nameVillain == null)
@@ -43,23 +43,48 @@ namespace _06_Remove_Villain
 
             int minionCount = (int)getMinionCountCmd.ExecuteScalar();
 
-            if (minionCount > 0)
+            using SqlTransaction sqlTransaction = minionsDB.BeginTransaction();
+
+            try
             {
-                string delVillainsFromMapingTableQuerty = "DELETE FROM MinionsVillains WHERE VillainId = @VillainId";
-                
-                SqlCommand delVillainsFromMapingCmd = new SqlCommand(delVillainsFromMapingTableQuerty, minionsDB);
-                delVillainsFromMapingCmd
-                    .Parameters.AddWithValue("@VillainId", villainId);
-                delVillainsFromMapingCmd.ExecuteNonQuery();
+                if (minionCount > 0)
+                {
+                    string delVillainsFromMapingTableQuerty = "DELETE FROM MinionsVillains WHERE VillainId = @VillainId";
+
+                    SqlCommand delVillainsFromMapingCmd = new SqlCommand(delVillainsFromMapingTableQuerty, minionsDB);
+                    delVillainsFromMapingCmd
+                        .Parameters.AddWithValue("@VillainId", villainId);
+
+                    delVillainsFromMapingCmd.Transaction = sqlTransaction;
+                    delVillainsFromMapingCmd.ExecuteNonQuery();
+                }
+
+                string deleteVillainsFromDbQuery = "DELETE FROM Villains WHERE Id = @VillainId";
+
+                SqlCommand delVillainFromDb = new SqlCommand(deleteVillainsFromDbQuery, minionsDB);
+                delVillainFromDb.Parameters.AddWithValue("@VillainId", villainId);
+
+                delVillainFromDb.Transaction = sqlTransaction;
+                delVillainFromDb.ExecuteNonQuery();
+
+                sqlTransaction.Commit();
+
+                Console.WriteLine($"{nameVillain} was deleted.");
+                Console.WriteLine($"{minionCount} minions were released.");
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
 
-            string deleteVillainsFromDbQuery = "DELETE FROM Villains WHERE Id = @VillainId";
-
-            SqlCommand delVillainFromDb = new SqlCommand(deleteVillainsFromDbQuery, minionsDB);
-            delVillainFromDb.Parameters.AddWithValue("@VillainId", villainId);
-
-            Console.WriteLine($"{nameVillain} was deleted.");
-            Console.WriteLine($"{minionCount} minions were released.");
+                try
+                {
+                    sqlTransaction.Rollback();
+                }
+                catch (Exception trEx)
+                {
+                    Console.WriteLine(trEx.Message);
+                }
+            }
         }
     }
 }

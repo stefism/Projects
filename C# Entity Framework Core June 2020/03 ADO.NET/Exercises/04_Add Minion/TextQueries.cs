@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _04_Add_Minion
 {
-    public static class TextQueries
+    internal static class TextQueries
     {
         public const string ConnsectionString = @"Server = DESKTOP-LNP1A21\SQLEXPRESS;Database=MinionsDB;Integrated Security=true";
 

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Initial Setup", "01_Initial Setup\01_Initial Setup.csproj", "{FF59D3A8-541C-4E11-8C0E-6E88D57FC1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Initial Setup", "01_Initial Setup\01_Initial Setup.csproj", "{FF59D3A8-541C-4E11-8C0E-6E88D57FC1F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Villain Names", "02_Villain Names\02_Villain Names.csproj", "{3CB46B3A-051D-403E-A74E-69635E4E5A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_Villain Names", "02_Villain Names\02_Villain Names.csproj", "{3CB46B3A-051D-403E-A74E-69635E4E5A46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Minion Names", "03_Minion Names\03_Minion Names.csproj", "{C03DDDEB-4ABB-48DD-BB69-2DCF58D3B86E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_Minion Names", "03_Minion Names\03_Minion Names.csproj", "{C03DDDEB-4ABB-48DD-BB69-2DCF58D3B86E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_Add Minion", "04_Add Minion\04_Add Minion.csproj", "{DC3F98A1-29D0-4FEE-8B30-88419E262EB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_Add Minion", "04_Add Minion\04_Add Minion.csproj", "{DC3F98A1-29D0-4FEE-8B30-88419E262EB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_Remove Villain", "06_Remove Villain\06_Remove Villain.csproj", "{68EA707D-0647-471F-9C7B-6254567B0E2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DC3F98A1-29D0-4FEE-8B30-88419E262EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC3F98A1-29D0-4FEE-8B30-88419E262EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC3F98A1-29D0-4FEE-8B30-88419E262EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68EA707D-0647-471F-9C7B-6254567B0E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68EA707D-0647-471F-9C7B-6254567B0E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68EA707D-0647-471F-9C7B-6254567B0E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68EA707D-0647-471F-9C7B-6254567B0E2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

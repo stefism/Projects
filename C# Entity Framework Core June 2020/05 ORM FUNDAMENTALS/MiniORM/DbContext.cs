@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
@@ -51,7 +52,7 @@ namespace MiniORM
             {
                 using (SqlTransaction transaction = connection.StartTransaction())
                 {
-                    foreach (IEnumerable<object> dbSet in dbSets) //TODO: В документа е само IEnumerable тука. Да се види ако нещо не работи.
+                    foreach (IEnumerable dbSet in dbSets)
                     {
                         Type dbSetType = dbSet.GetType().GetGenericArguments().First();
 
@@ -87,6 +88,36 @@ namespace MiniORM
             }
         }
 
+        private void Persist<TEntity>(DbSet<TEntity> dbSet)
+            where TEntity: class, new()
+        {
+            var tableName = GetTableName(typeof(TEntity));
+
+            string[] columns = connection.FetchColumnNames(tableName).ToArray();
+
+            if (dbSet.ChangeTracker.Added.Any())
+            {
+                connection.InsertEntities(dbSet.ChangeTracker.Added, tableName, columns);
+            }
+
+            var modifiedEntities = dbSet.ChangeTracker.GetModifiedEntities(dbSet).ToArray();
+
+            if (modifiedEntities.Any())
+            {
+                connection.UpdateEntities(modifiedEntities, tableName, columns);
+            }
+
+            if (dbSet.ChangeTracker.Removed.Any())
+            {
+                connection.DeleteEntities(dbSet.ChangeTracker.Removed, tableName, columns);
+            }
+        }
+
+        private string GetTableName(Type tableType)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool IsObjectValid(object e)
         {
             var validationContext = new ValidationContext(e);
@@ -104,7 +135,22 @@ namespace MiniORM
 
         private void InitializeDbSets()
         {
-            throw new NotImplementedException();
+            foreach (var dbSet in dbSetProperties)
+            {
+                Type dbSetType = dbSet.Key;
+                PropertyInfo dbSetProperty = dbSet.Value;
+
+                var populateDbSetGeneric = typeof(DbContext)
+                    .GetMethod("PolulateDbSet", BindingFlags.Instance | BindingFlags.NonPublic).MakeGenericMethod(dbSetType);
+
+                populateDbSetGeneric.Invoke(this, new object[](dbSetProperty));
+            }
+        }
+
+        private void PopulateDbSet<TEntity>(PropertyInfo dbSet)
+            where TEntity : class, new()
+        {
+
         }
 
         private Dictionary<Type, PropertyInfo> DiscoverDbSets()

@@ -51,7 +51,7 @@ namespace MiniORM
             return modifiedEntities;
         }
 
-        private static bool IsModified(T proxyEntity, T entity) //TODO: В документа са разменени тези двете в конструктора! Да се види дали е така ако не работи!
+        private static bool IsModified(T entity, T proxyEntity) //TODO: В документа са разменени тези двете в конструктора! Да се види дали е така ако не работи!
         {
             var monitoredProperties = typeof(T).GetProperties()
                 .Where(pi => DbContext.AllowedSqlTypes.Contains(pi.PropertyType));

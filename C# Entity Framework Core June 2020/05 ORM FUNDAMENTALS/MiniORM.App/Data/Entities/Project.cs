@@ -13,6 +13,6 @@ namespace MiniORM.App.Data.Entities
         [Required]
         public string Name { get; set; }
 
-        public ICollection<EmployeeProject> EmployeeProjects { get; }
+        public ICollection<EmployeeProject> EmployeesProjects { get; }
     }
 }

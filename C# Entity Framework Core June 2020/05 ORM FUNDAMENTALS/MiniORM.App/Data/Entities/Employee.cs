@@ -26,6 +26,6 @@ namespace MiniORM.App.Data.Entities
 
         public Department Department { get; set; }
 
-        public ICollection<EmployeeProject> EmployeeProjects { get; }
+        public ICollection<EmployeeProject> EmployeesProjects { get; }
     }
 }

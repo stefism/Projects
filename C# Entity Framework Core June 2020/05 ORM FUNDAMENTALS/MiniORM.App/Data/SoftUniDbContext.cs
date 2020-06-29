@@ -18,6 +18,6 @@ namespace MiniORM.App.Data
 
         public DbSet<Project> Projects { get; }
 
-        public DbSet<EmployeeProject> EmployeeProjects { get; }
+        public DbSet<EmployeeProject> EmployeesProjects { get; }
     }
 }

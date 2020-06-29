@@ -243,8 +243,8 @@ namespace MiniORM
                 Type dbSetType = dbSet.Key;
                 PropertyInfo dbSetProperty = dbSet.Value;
 
-                MethodInfo populateDbSetGeneric = typeof(DbContext)
-                    .GetMethod("PolulateDbSet", BindingFlags.Instance | BindingFlags.NonPublic).MakeGenericMethod(dbSetType);
+                var populateDbSetGeneric = typeof(DbContext)
+                    .GetMethod("PopulateDbSet", BindingFlags.Instance | BindingFlags.NonPublic).MakeGenericMethod(dbSetType);
 
                 populateDbSetGeneric.Invoke(this, new object[] { dbSetProperty });
             }
@@ -277,8 +277,8 @@ namespace MiniORM
         private string GetTableName(Type tableType)
         {
             //TODO: tableName да се види дали е така ако не работи.
-            string tableName = ((TableAttribute) Attribute
-                .GetCustomAttribute(tableType, typeof(TableAttribute))).Name;
+            
+            string tableName = ((TableAttribute)Attribute.GetCustomAttribute(tableType, typeof(TableAttribute)))?.Name;
 
             if (tableName == null)
             {

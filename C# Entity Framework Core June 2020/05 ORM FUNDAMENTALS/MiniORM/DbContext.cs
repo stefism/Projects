@@ -151,7 +151,7 @@ namespace MiniORM
             MapNavigationProperties(dbSet);
 
             PropertyInfo[] collections = entityType.GetProperties()
-                .Where(pi =>
+                .Where(pi => 
                                pi.PropertyType.IsGenericType &&
                                pi.PropertyType
                                .GetGenericTypeDefinition() == typeof(ICollection<>))

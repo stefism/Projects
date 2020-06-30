@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SoftUni.Data
 {
+    using SoftUni.Models;
     public partial class SoftUniContext : DbContext
     {
         public SoftUniContext()

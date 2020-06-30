@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MiniOrm-Proba\MiniORM\MiniORM.csproj" />
     <ProjectReference Include="..\MiniORM\MiniORM.csproj" />
   </ItemGroup>
 

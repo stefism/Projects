@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using P01_StudentSystem.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace P01_StudentSystem.Data
 {
@@ -46,7 +43,7 @@ namespace P01_StudentSystem.Data
 
         public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Homework> Homeworks { get; set; }
+        public DbSet<Homework> HomeworkSubmissions { get; set; }
 
         public DbSet<Resource> Resources { get; set; }
 

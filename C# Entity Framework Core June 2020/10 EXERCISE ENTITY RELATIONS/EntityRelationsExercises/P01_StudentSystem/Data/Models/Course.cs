@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace P01_StudentSystem.Data.Models
 {
@@ -9,9 +8,9 @@ namespace P01_StudentSystem.Data.Models
     {
         public Course()
         {
-            Homeworks = new HashSet<Homework>();
+            HomeworkSubmissions = new HashSet<Homework>();
 
-            StudentCourses = new HashSet<StudentCourse>();
+            StudentsEnrolled = new HashSet<StudentCourse>();
 
             Resources = new HashSet<Resource>();
         }
@@ -32,9 +31,9 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         public decimal Price { get; set; }
 
-        public ICollection<Homework> Homeworks { get; set; }
+        public ICollection<Homework> HomeworkSubmissions { get; set; }
 
-        public ICollection<StudentCourse> StudentCourses { get; set; }
+        public ICollection<StudentCourse> StudentsEnrolled { get; set; }
 
         public ICollection<Resource> Resources { get; set; }
     }

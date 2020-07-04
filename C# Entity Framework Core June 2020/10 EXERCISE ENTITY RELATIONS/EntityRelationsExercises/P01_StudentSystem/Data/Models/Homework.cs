@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Mime;
-using System.Text;
 
 namespace P01_StudentSystem.Data.Models
 {
-    [Table("HomeworkSubmissions")]
     public class Homework
     {
         public int HomeworkId { get; set; }
@@ -16,14 +11,17 @@ namespace P01_StudentSystem.Data.Models
         public string Content { get; set; }
 
         [Required]
-        public ContentType ContentType { get; set; }
+        public int ContentType { get; set; }
 
+        [Required]
         public DateTime SubmissionTime { get; set; }
 
+        [Required]
         public int StudentId { get; set; }
 
         public Student Students { get; set; }
 
+        [Required]
         public int CourseId { get; set; }
 
         public Course Courses { get; set; }

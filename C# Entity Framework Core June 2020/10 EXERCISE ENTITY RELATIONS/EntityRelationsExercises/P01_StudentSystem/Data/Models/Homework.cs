@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P01_StudentSystem.Data.Models.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace P01_StudentSystem.Data.Models
@@ -11,7 +12,7 @@ namespace P01_StudentSystem.Data.Models
         public string Content { get; set; }
 
         [Required]
-        public int ContentType { get; set; }
+        public ContentType ContentType { get; set; }
 
         [Required]
         public DateTime SubmissionTime { get; set; }
@@ -19,11 +20,11 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         public int StudentId { get; set; }
 
-        public Student Students { get; set; }
+        public Student Student { get; set; }
 
         [Required]
         public int CourseId { get; set; }
 
-        public Course Courses { get; set; }
+        public Course Course { get; set; }
     }
 }

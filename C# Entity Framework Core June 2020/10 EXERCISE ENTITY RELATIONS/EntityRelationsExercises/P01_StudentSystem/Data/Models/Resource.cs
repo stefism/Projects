@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using P01_StudentSystem.Data.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace P01_StudentSystem.Data.Models
 {
@@ -13,11 +14,11 @@ namespace P01_StudentSystem.Data.Models
         public string Url { get; set; }
 
         [Required]
-        public int ResourceType { get; set; }
+        public ResourceType ResourceType { get; set; }
 
         [Required]
         public int CourseId { get; set; }
 
-        public Course Courses { get; set; }
+        public Course Course { get; set; }
     }
 }

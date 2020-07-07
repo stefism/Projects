@@ -13,6 +13,8 @@ namespace P01_StudentSystem.Data.Models
             StudentsEnrolled = new HashSet<StudentCourse>();
 
             Resources = new HashSet<Resource>();
+
+            
         }
 
         public int CourseId { get; set; }
@@ -31,10 +33,10 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         public decimal Price { get; set; }
 
-        public ICollection<Homework> HomeworkSubmissions { get; set; }
+        public virtual ICollection<Homework> HomeworkSubmissions { get; set; }
+        // Колекциите се правят виртуални за да се помогне на EF в зареждането им после. Виртуалните методи могат да се override-ват.
+        public virtual ICollection<StudentCourse> StudentsEnrolled { get; set; }
 
-        public ICollection<StudentCourse> StudentsEnrolled { get; set; }
-
-        public ICollection<Resource> Resources { get; set; }
+        public virtual ICollection<Resource> Resources { get; set; }        
     }
 }

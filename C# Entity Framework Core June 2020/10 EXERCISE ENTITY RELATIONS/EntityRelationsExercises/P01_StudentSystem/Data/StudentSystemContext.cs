@@ -30,8 +30,7 @@ namespace P01_StudentSystem.Data
                 .HasKey(sc => new { sc.CourseId, sc.StudentId });
 
             mb.Entity<Student>()
-                .Property(s => s.PhoneNumber)
-                .HasColumnType("char(10)")
+                .Property(s => s.PhoneNumber)               
                 .IsUnicode(false);
 
             mb.Entity<Resource>()

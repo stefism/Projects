@@ -18,6 +18,7 @@ namespace P01_StudentSystem.Data.Models
         [MaxLength(100), Required]
         public string Name { get; set; }
 
+        [MaxLength(10)]
         public string PhoneNumber { get; set; }
 
         [Required]

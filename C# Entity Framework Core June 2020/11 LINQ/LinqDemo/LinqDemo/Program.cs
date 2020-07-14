@@ -3,17 +3,35 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Z.EntityFramework.Plus;
 
 namespace LinqDemo
 {
     class Program
     {
+        // Z.EntityFramework.Plus.EFCore - за групово триене или ъпдейтване.
+        // context.Employees
+        //.Where(u => u.FirstName == "Pesho")
+        //.Delete();
         static void Main(string[] args)
         {
             using var dbContext = new MusicXContext();
 
             //Song1Demo(dbContext);
 
+            //BachUpdateAndDelete(dbContext);
+
+            //ExplicitLoading(dbContext);
+
+            // Eager loading
+            var song = dbContext.Songs
+                .Include(x => x.Source)
+                .Include(x => x.SongArtists)
+                .ThenInclude(sa => sa.Artist) // Добавя още едно ниво навътре на свързване. Зарежда пропертито на пропертито.
+                .Where(s => s.Name.StartsWith("Осъдени души"))
+                .FirstOrDefault();
+
+            //---
             var songs2 = dbContext.Songs
                 .Where(s => s.SongArtists.Count > 2)
                 .Select(s => new
@@ -23,12 +41,12 @@ namespace LinqDemo
                 }).Take(10).ToList();
 
 
-            
+
             //CustomJoin(dbContext);
 
-            foreach (var song in songs2)
+            foreach (var s in songs2)
             {
-                Console.WriteLine(string.Join(", ", song.Artists) + " - " + song.Name);
+                Console.WriteLine(string.Join(", ", s.Artists) + " - " + song.Name);
 
                 /* - Output:
                 C.Aguilera, Mya, Pink - Lady Marmalade
@@ -43,6 +61,24 @@ namespace LinqDemo
                 Mariah Carey, Joe, 98 Degrees - Thank God I Foound You
                 */
             }
+        }
+
+        private static void ExplicitLoading(MusicXContext dbContext)
+        {
+            //Explicit Loading
+            var song = dbContext.Songs
+                .Where(s => s.Name.StartsWith("Осъдени души"))
+                .FirstOrDefault();
+            dbContext.Entry(song).Reference(s => s.Source).Load(); // Зарежда експлицитно и Source към Songs. Това е когато е проперти. Когато е ICollection се използва .Collection за да го зареди:
+            dbContext.Entry(song).Collection(s => s.SongMetadata).Load(); // Ето така.
+                                                                          // Explicit Loading работи само върху едно ентити. (Върху един обект). (var song). Не работи върху колекция от песни (обекти). Примерно (songs).
+        }
+
+        private static void BachUpdateAndDelete(MusicXContext dbContext)
+        {
+            dbContext.SongMetadata.Where(x => x.SongId >= 10).Delete();
+
+            dbContext.Songs.Where(s => s.Name.Contains("а") || s.Name.Contains("е")).Update(song => new Songs { Name = song.Name + " (BG)" });
         }
 
         private static void CustomJoin(MusicXContext dbContext)

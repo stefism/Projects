@@ -27,7 +27,7 @@ namespace LinqDemo
             var song = dbContext.Songs
                 .Include(x => x.Source)
                 .Include(x => x.SongArtists)
-                .ThenInclude(sa => sa.Artist) // Добавя още едно ниво навътре на свързване. Зарежда пропертито на пропертито.
+                .ThenInclude(sa => sa.Artist) // Добавя още едно ниво навътре на свързване. Зарежда пропертито на пропертито. Могат няколко броя .ThenInclude да се добавят.
                 .Where(s => s.Name.StartsWith("Осъдени души"))
                 .FirstOrDefault();
 

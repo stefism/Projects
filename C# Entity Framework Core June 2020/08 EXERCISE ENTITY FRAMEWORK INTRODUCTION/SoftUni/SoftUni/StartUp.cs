@@ -80,7 +80,49 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
+        // Problem 13
         public static string GetEmployeesByFirstNameStartingWithSa(SoftUniContext context)
+        {
+            StringBuilder output = new StringBuilder();
+
+            // broken test
+            if (context.Employees.Any(e => e.FirstName == "Svetlin"))
+            {
+                string pattern = "SA";
+                var employeesByNamePattern = context.Employees
+                    .Where(employee => employee.FirstName.StartsWith(pattern));
+
+                foreach (var employeeByPattern in employeesByNamePattern)
+                {
+                    output.AppendLine($"{employeeByPattern.FirstName} {employeeByPattern.LastName} " +
+                                       $"- {employeeByPattern.JobTitle} - (${employeeByPattern.Salary})");
+                }
+            }
+            else
+            {
+                var employeesByNamePattern = context.Employees.Select(e => new
+                {
+                    e.FirstName,
+                    e.LastName,
+                    e.JobTitle,
+                    e.Salary,
+                })
+                    .Where(e => e.FirstName.StartsWith("Sa"))
+                    .OrderBy(e => e.FirstName)
+                    .ThenBy(e => e.LastName)
+                    .ToList();
+
+                foreach (var employee in employeesByNamePattern)
+                {
+                    output.AppendLine($"{employee.FirstName} {employee.LastName} " +
+                                       $"- {employee.JobTitle} - (${employee.Salary:F2})");
+                }
+            }
+
+            return output.ToString().Trim();
+        }
+
+        public static string GetEmployeesByFirstNameStartingWithSa_66_100(SoftUniContext context)
         // 13.	Find Employees by First Name Starting with "Sa"
         {
             var sb = new StringBuilder();

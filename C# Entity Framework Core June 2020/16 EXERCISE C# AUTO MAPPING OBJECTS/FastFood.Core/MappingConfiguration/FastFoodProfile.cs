@@ -80,8 +80,13 @@
                 vm => vm.ItemName,
                 opt => opt.MapFrom(item => item.Name));
 
-
-
+            CreateMap<Employee, CreateOrderEmployeeViewModel>()
+                .ForMember(
+                vm => vm.EmployeeId,
+                opt => opt.MapFrom(em => em.Id))
+                .ForMember(
+                vm => vm.EmployeeName,
+                opt => opt.MapFrom(em => em.Name));
 
 
             CreateMap<CreateOrderInputModel, Order>()
@@ -107,7 +112,10 @@
                 .ForMember(
                 oavm => oavm.DateTime,
                 opt => opt.MapFrom(o => o.DateTime
-                .ToString("D", CultureInfo.InvariantCulture)));
+                .ToString("D", CultureInfo.InvariantCulture)))
+                .ForMember(
+                vm => vm.OrderId,
+                opt => opt.MapFrom(o => o.Id));
         }
     }
 }

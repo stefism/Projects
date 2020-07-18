@@ -15,7 +15,7 @@
         <select id="employee" class="form-control" name="EmployeeId">
             @foreach (var employee in Model.Employees)
             {
-                <option value="@employee">@employee</option>
+                <option value="@employee.EmployeeId">@employee.EmployeeName</option>
             }
         </select>
     </div>
@@ -24,7 +24,7 @@
         <select id="item" class="form-control" name="ItemId">
             @foreach (var item in Model.Items)
             {
-                <option value="@item">@item</option>
+                <option value="@item.ItemId">@item.ItemName</option>
             }
         </select>
     </div>
@@ -35,5 +35,7 @@
     <hr class="bg-secondary half-width" />
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn ">Create</button>
+
+        <a asp-controller="Orders" asp-action="All" class="btn btn-default">Back</a>        
     </div>
 </form>

@@ -25,8 +25,12 @@
         {
             var viewOrder = new CreateOrderViewModel
             {
-                Items = this.context.Items.Select(x => x.Name).ToList(),
-                Employees = this.context.Employees.Select(x => x.Name).ToList(),
+                Items = context.Items
+                .ProjectTo<CreateOrderItemViewModel>(mapper.ConfigurationProvider)
+                .ToList(),
+                Employees = context.Employees
+                .ProjectTo<CreateOrderEmployeeViewModel>(mapper.ConfigurationProvider)
+                .ToList(),
             };
 
             return this.View(viewOrder);

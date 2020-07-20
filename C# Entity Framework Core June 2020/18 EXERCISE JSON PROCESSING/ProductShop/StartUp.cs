@@ -29,6 +29,51 @@ namespace ProductShop
         }
 
         public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var users = context.Users
+                .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                .Select(u => new
+                {
+                    u.LastName,
+                    u.Age,
+                    SoldProducts = new
+                    {
+                        Count = u.ProductsSold.Count(p => p.Buyer != null),
+                        Products = u.ProductsSold
+                        .Where(p => p.Buyer != null)
+                        .Select(p => new
+                        {
+                            p.Name,
+                            p.Price
+                        }).ToArray()
+                    }
+                }).OrderByDescending(u => u.SoldProducts.Count)
+                .ToArray();
+
+            var resultObj = new
+            {
+                UsersCount = users.Length,
+                Users = users
+            };
+
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+
+                NullValueHandling = NullValueHandling.Ignore,
+
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                }
+            };
+
+            string json = JsonConvert.SerializeObject(resultObj, settings);
+
+            return json;
+        }
+
+        public static string GetUsersWithProducts_me(ProductShopContext context)
         //Query 08.	  Export Users and Products
         {
             var users = context.Users
@@ -37,11 +82,13 @@ namespace ProductShop
                 .Select(u => new
                 {
                     UsersCount = context.Users.Count(),
-                    Users = new 
+                    Users = new
                     {
                         u.LastName,
-                        u.Age,
-                        SoldProducts = u.ProductsSold.Select(ps => new
+                        Age = u.Age,
+                        SoldProducts = u.ProductsSold
+                        .Where(p => p.Buyer != null)
+                        .Select(ps => new
                         {
                             Count = u.ProductsSold.Count(),
                             Products = u.ProductsSold.Select(pss => new
@@ -50,7 +97,7 @@ namespace ProductShop
                                 pss.Price
                             })
                         })
-                    }                    
+                    }
                 }).ToList();
                 
             var settings = new JsonSerializerSettings

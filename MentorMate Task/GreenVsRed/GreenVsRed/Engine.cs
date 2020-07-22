@@ -13,11 +13,13 @@ namespace GreenVsRed
 
         private int matrixCol;
 
-        private int[,] trackCell;
+        private int[] trackCell;
 
         private int rotation;
 
-        private List<int [,]> cellToChange = new List<int[,]>();
+        private int trackCellCounter = 0;
+
+        private List<int []> cellToChange = new List<int[]>();
 
         public void Run()
         {
@@ -36,7 +38,12 @@ namespace GreenVsRed
 
             int[] cellAndGeneration = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
 
-            trackCell = new int[cellAndGeneration[0], cellAndGeneration[1]];
+            trackCell = new int[]{ cellAndGeneration[0], cellAndGeneration[1]};
+
+            if (matrix[trackCell[0], trackCell[1]] == 1)
+            {
+                trackCellCounter++;
+            }
 
             rotation = cellAndGeneration[2];
 
@@ -44,8 +51,32 @@ namespace GreenVsRed
             {
                 PrepareCellToChange();
 
+                int currentTrackCellState = matrix[trackCell[0], trackCell[1]];
+
+                foreach (var cell in cellToChange)
+                {
+                    if (matrix[cell[0], cell[1]] == 0)
+                    {
+                        matrix[cell[0], cell[1]] = 1;
+                    }
+
+                    if (matrix[cell[0], cell[1]] == 1)
+                    {
+                        matrix[cell[0], cell[1]] = 0;
+                    }
+
+                    int cellStateAfterChange = matrix[trackCell[0], trackCell[1]];
+
+                    if (cellStateAfterChange == 1)
+                    {
+                        trackCellCounter++;
+                    }
+                }
+
                 rotation--;
             }
+
+            Console.WriteLine($"# expected result: {trackCellCounter}");
 
             //Green - 1, Red - 0            
         }
@@ -70,7 +101,7 @@ namespace GreenVsRed
                         if (numberToChange.Contains(greenCounter))
                         // Change if green = 0, 1, 4, 5, 7 or 8
                         {
-                            cellToChange.Add(new int[row, col]);
+                            cellToChange.Add(new int[] { row, col });
                         }
                     }
                     else //Red
@@ -78,7 +109,7 @@ namespace GreenVsRed
                         if (greenCounter == 3 || greenCounter == 6)
                         // Change if green = 3 or 6
                         {
-                            cellToChange.Add(new int[row, col]);
+                            cellToChange.Add(new int[] { row, col });
                         }
                     }
                 }

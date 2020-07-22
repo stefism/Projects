@@ -24,10 +24,10 @@ namespace GreenVsRed
         public void Run()
         {
             Console.Write("Matrix size: ");
-            int[] matrixSize = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
+            int[] matrixSize = Console.ReadLine().Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
-            matrixRow = matrixSize[0];
-            matrixCol = matrixSize[1];
+            matrixRow = matrixSize[1];
+            matrixCol = matrixSize[0];
 
             matrix = new int[matrixRow, matrixCol];
 
@@ -38,7 +38,7 @@ namespace GreenVsRed
 
             int[] cellAndGeneration = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
 
-            trackCell = new int[]{ cellAndGeneration[0], cellAndGeneration[1]};
+            trackCell = new int[]{ cellAndGeneration[1], cellAndGeneration[0]};
 
             if (matrix[trackCell[0], trackCell[1]] == 1)
             {
@@ -47,11 +47,20 @@ namespace GreenVsRed
 
             rotation = cellAndGeneration[2];
 
-            while (rotation != 0)
+            while (rotation >= 0)
             {
+                cellToChange = new List<int[]>();
+                
                 PrepareCellToChange();
 
                 int currentTrackCellState = matrix[trackCell[0], trackCell[1]];
+
+                int cellStateAfterChange = matrix[trackCell[0], trackCell[1]];
+
+                if (cellStateAfterChange == 1)
+                {
+                    trackCellCounter++;
+                }
 
                 foreach (var cell in cellToChange)
                 {
@@ -60,17 +69,10 @@ namespace GreenVsRed
                         matrix[cell[0], cell[1]] = 1;
                     }
 
-                    if (matrix[cell[0], cell[1]] == 1)
+                    else
                     {
                         matrix[cell[0], cell[1]] = 0;
-                    }
-
-                    int cellStateAfterChange = matrix[trackCell[0], trackCell[1]];
-
-                    if (cellStateAfterChange == 1)
-                    {
-                        trackCellCounter++;
-                    }
+                    }                    
                 }
 
                 rotation--;

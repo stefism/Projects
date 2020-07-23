@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="BgWiki.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Planes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,4 +1,6 @@
-﻿using ProductShop.Data;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using ProductShop.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ namespace ProductShop
         {
             var db = new ProductShopContext();
         }
-        
+
         public static string GetUsersWithProducts_me(ProductShopContext context)
         //Query 08.	  Export Users and Products
         {
@@ -56,4 +58,5 @@ namespace ProductShop
 
             return json;
         }
+    }
 }

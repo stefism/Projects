@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -6,7 +7,20 @@ using System.Xml.Serialization;
 
 namespace XmlDemo
 {
-    public class doc
+    [XmlType("doc")] // Казва какъв е root-а във .Xml файла.
+    public class Article// Class with Xml attributes
+    {
+        [XmlElement("title")]
+        public string Title { get; set; }
+
+        [XmlElement("abstract")]
+        public string Description { get; set; }
+
+        [XmlIgnore]
+        public string Url { get; set; }
+    }
+
+    public class doc // Class without Xml attributes
     {
         public string title { get; set; }
 
@@ -31,7 +45,22 @@ namespace XmlDemo
 
             //CreateXmlWithSelect();
 
-            //SerializeFromXml();
+            SerializeFromXml();
+
+            //DeserializeXml();
+        }
+
+        private static void DeserializeXml()
+        {
+            //DeserializeXml
+            List<doc> docs = new List<doc>
+            {
+                new doc {title = "Каф сам убавец", @abstract = "Бла бла бла бла", url = "https://nestosi.com"},
+                new doc {title = "Верно си е", @abstract = "Тра ла ла ла ла", url = "https://nestosi2.com"}
+            };
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<doc>), new XmlRootAttribute("feed"));// Пак можем да му зададем като опция как да се казва root атрибута.
+            serializer.Serialize(File.OpenWrite("myDocs.xml"), docs);
         }
 
         private static void SerializeFromXml()
@@ -47,6 +76,22 @@ namespace XmlDemo
             foreach (var article in articles)
             {
                 Console.WriteLine(article.title);
+            }
+        }
+
+        private static void SerializeFromXmlWithAttribute()
+        {
+            //CreateEntitiesFromXml -> Deserialize Xml (Class):
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Article[]), new XmlRootAttribute("feed")); // Указва се типа към който ще десериализира, в случая масив от Doc и му се подава като втори параметър Root атрибута, който да търси, в случая той е "feed".
+
+            Article[] docs = (Article[])xmlSerializer
+                .Deserialize(File.OpenRead("BgWiki.xml")); // Връща object и затова трябва да се кастне.
+            var articles = docs.Where(x => x.Title.Contains("Уикипедия"))
+                .OrderBy(x => x.Title);
+
+            foreach (var article in articles)
+            {
+                Console.WriteLine(article.Title);
             }
         }
 

@@ -29,6 +29,50 @@ namespace ProductShop
         }
 
         public static string GetUsersWithProducts(ProductShopContext context)
+        {//users-and-products.json
+            var users = context
+                .Users
+                .AsEnumerable()
+                .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                .Select(u => new
+                {
+                    lastName = u.LastName,
+                    age = u.Age,
+                    soldProducts = new
+                    {
+                        count = u.ProductsSold.Count(p => p.Buyer != null),
+                        products = u.ProductsSold.Where(p => p.Buyer != null)
+                            .Select(p => new
+                            {
+                                name = p.Name,
+                                price = p.Price
+                            })
+                            .ToArray()
+                    }
+                })
+                .OrderByDescending(u => u.soldProducts.count)
+                .ToArray();
+
+            int usersCount = users.Length;
+
+            var restultObj = new
+            {
+                usersCount,
+                users = users,
+            };
+
+            JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.Indented
+            };
+
+            string json = JsonConvert.SerializeObject(restultObj, settings);
+
+            return json;
+        }
+
+        public static string GetUsersWithProducts_daskal(ProductShopContext context)
         {
             var users = context.Users
                 .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
@@ -62,10 +106,7 @@ namespace ProductShop
 
                 NullValueHandling = NullValueHandling.Ignore,
 
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new CamelCaseNamingStrategy()
-                }
+            
             };
 
             string json = JsonConvert.SerializeObject(resultObj, settings);

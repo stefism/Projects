@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ProductShop.Data;
+using ProductShop.Dtos.Export;
 using ProductShop.Dtos.Import;
 using ProductShop.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -35,13 +38,48 @@ namespace ProductShop
 
         public static string GetProductsInRange(ProductShopContext context)
         {
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Product, ProductsInRangeDTO>()
+                .ForMember(
+                    pir => pir.Name,
+                    opt => opt.MapFrom(p => p.Name))
+                .ForMember(
+                    pir => pir.Price,
+                    opt => opt.MapFrom(p => p.Price))
+                .ForMember(
+                    pir => pir.Buyer,
+                    opt => opt.MapFrom(p => p.Buyer.FirstName + " " + p.Buyer.LastName));
+            });
 
+            var productsInRange = context.Products
+                .Where(p => p.Price >= 500 && p.Price <= 1000)
+                .OrderBy(p => p.Price)
+                .Take(10)
+                .ProjectTo<ProductsInRangeDTO>(config).ToList();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<ProductsInRangeDTO>), new XmlRootAttribute("Products"));
+
+            StringWriter swr = new StringWriter();
+
+            serializer.Serialize(swr, productsInRange);
+
+            string output = swr.ToString();
+
+            //MemoryStream ms = new MemoryStream();
+            //serializer.Serialize(ms, productsInRange);
+            //ms.Position = 0;
+
+            //StreamReader sr = new StreamReader(ms);
+            //string output = sr.ReadToEnd();
+
+            return output;
         }
 
         public static string ImportCategoryProducts(ProductShopContext context, string inputXml)
         //Query 04. Import Categories and Products
         {
-            MapperConfiguration config = new MapperConfiguration(cfg => 
+            MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CategoryProductDTO, CategoryProduct>();
             });
@@ -66,7 +104,7 @@ namespace ProductShop
         public static string ImportCategories(ProductShopContext context, string inputXml)
         //Query 03. Import Categories
         {
-            MapperConfiguration config = new MapperConfiguration(cfg => 
+            MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CategoryDTO, Category>();
             });
@@ -116,7 +154,7 @@ namespace ProductShop
         public static string ImportUsers(ProductShopContext context, string inputXml)
         //Query 01. Import Users
         {
-            MapperConfiguration config = new MapperConfiguration(cfg => 
+            MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<UserDTO, User>();
             });

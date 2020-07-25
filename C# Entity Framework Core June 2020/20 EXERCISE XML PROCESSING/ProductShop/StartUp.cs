@@ -31,12 +31,57 @@ namespace ProductShop
             //string q02 = ImportProducts(db, products);
             //string q03 = ImportCategories(db, categories);
             //string q04 = ImportCategoryProducts(db, categoryProducts);
-            string q05 = GetProductsInRange(db);
+            //string q05 = GetProductsInRange(db);
+            string q06 = GetSoldProducts(db);
 
-            System.Console.WriteLine(q05);
+            System.Console.WriteLine(q06);
+        }
+
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        //Query 07. Categories By Products Count
+        {
+            var config = new MapperConfiguration(cfg => 
+            {
+
+            });
+        }
+
+        public static string GetSoldProducts(ProductShopContext context)
+        //Query 06. Sold Products
+        {
+            var config = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<Product, GetSoldProductsProductDTO>();
+                cfg.CreateMap<User, GetSoldProductsUserDTO>()
+                .ForMember(
+                    dto => dto.SoldProducts,
+                    opt => opt.MapFrom(u => u.ProductsSold));
+            });
+
+            var soldProducts = context.Users
+                .Where(u => u.ProductsSold.Any(sp => sp.BuyerId != null))
+                .OrderBy(u => u.LastName).ThenBy(u => u.FirstName)
+                .Take(5)
+                .ProjectTo<GetSoldProductsUserDTO>(config)
+                .ToList();               
+
+            var serializer = new XmlSerializer(typeof(List<GetSoldProductsUserDTO>), new XmlRootAttribute("Users"));
+
+            var sb = new StringBuilder();
+
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+
+            using (StringWriter sr = new StringWriter(sb))
+            {
+                serializer.Serialize(sr, soldProducts, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string GetProductsInRange(ProductShopContext context)
+        //Query 05. Products In Range
         {
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
@@ -60,11 +105,15 @@ namespace ProductShop
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<ProductsInRangeDTO>), new XmlRootAttribute("Products"));
 
-            StringWriter swr = new StringWriter();
+            var sb = new StringBuilder();
 
-            serializer.Serialize(swr, productsInRange);
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
 
-            string output = swr.ToString();
+            using (StringWriter swr = new StringWriter(sb))
+            {
+                serializer.Serialize(swr, productsInRange, nameSpaces);
+            }
 
             //MemoryStream ms = new MemoryStream();
             //serializer.Serialize(ms, productsInRange);
@@ -73,7 +122,7 @@ namespace ProductShop
             //StreamReader sr = new StreamReader(ms);
             //string output = sr.ReadToEnd();
 
-            return output;
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportCategoryProducts(ProductShopContext context, string inputXml)

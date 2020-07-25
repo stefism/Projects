@@ -4,6 +4,7 @@ using ProductShop.Data;
 using ProductShop.Dtos.Export;
 using ProductShop.Dtos.Import;
 using ProductShop.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,9 +33,17 @@ namespace ProductShop
             //string q03 = ImportCategories(db, categories);
             //string q04 = ImportCategoryProducts(db, categoryProducts);
             //string q05 = GetProductsInRange(db);
-            string q06 = GetSoldProducts(db);
+            //string q06 = GetSoldProducts(db);
+            //string q07 = GetCategoriesByProductsCount(db);
+            string q08 = GetUsersWithProducts(db);
 
-            System.Console.WriteLine(q06);
+            Console.WriteLine(q08);
+        }
+
+        public static string GetUsersWithProducts(ProductShopContext context)
+        //Query 08. Users and Products
+        {
+
         }
 
         public static string GetCategoriesByProductsCount(ProductShopContext context)
@@ -42,14 +51,49 @@ namespace ProductShop
         {
             var config = new MapperConfiguration(cfg => 
             {
-
+                cfg.CreateMap<Category, GetCategoriesDTO>()
+                .ForMember(
+                    dto => dto.Name,
+                    opt => opt.MapFrom(c => c.Name))
+                .ForMember(
+                    dto => dto.Count,
+                    opt => opt.MapFrom(c => c.CategoryProducts
+                    .Select(cp => cp.Product).Count()))
+                .ForMember(
+                    dto => dto.AveragePrice,
+                    opt => opt.MapFrom(c => c.CategoryProducts
+                    .Select(cp => cp.Product.Price).Average()))
+                .ForMember(
+                    dto => dto.TotalRevenue,
+                    opt => opt.MapFrom(c => c.CategoryProducts
+                    .Select(cp => cp.Product.Price).Sum()));
             });
+
+            var categories = context.Categories
+                .ProjectTo<GetCategoriesDTO>(config)
+                .OrderByDescending(c => c.Count)
+                .ThenBy(c => c.TotalRevenue)
+                .ToList();
+
+            var serializer = new XmlSerializer(typeof(List<GetCategoriesDTO>), new XmlRootAttribute("Categories"));
+
+            var sb = new StringBuilder();
+
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+
+            using (var sw = new StringWriter(sb))
+            {
+                serializer.Serialize(sw, categories, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string GetSoldProducts(ProductShopContext context)
         //Query 06. Sold Products
         {
-            var config = new MapperConfiguration(cfg => 
+            var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Product, GetSoldProductsProductDTO>();
                 cfg.CreateMap<User, GetSoldProductsUserDTO>()
@@ -63,7 +107,7 @@ namespace ProductShop
                 .OrderBy(u => u.LastName).ThenBy(u => u.FirstName)
                 .Take(5)
                 .ProjectTo<GetSoldProductsUserDTO>(config)
-                .ToList();               
+                .ToList();
 
             var serializer = new XmlSerializer(typeof(List<GetSoldProductsUserDTO>), new XmlRootAttribute("Users"));
 

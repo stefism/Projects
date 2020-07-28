@@ -26,25 +26,27 @@ namespace RealEstates.Services
             {
                 Size = size,
                 Price = price,
-                Year = year,
-                Floor = floor,
-                TotalNumberOfFloors = maxFloors
+                Year = year < 1800 ? null : year,
+                Floor = floor <= 0 ? null : floor,
+                TotalNumberOfFloors = maxFloors <= 0 ? null : maxFloors
             };
 
-            if (property.Year < 1800)
-            {
-                property.Year = null;
-            }
+            // Където може ползвай тернарни. Спестяват код и някой път правят кода по-четим. По-долу е същото без тернарни.
 
-            if (property.Floor <= 0)
-            {
-                property.Floor = null;
-            }
+            //if (property.Year < 1800)
+            //{
+            //    property.Year = null;
+            //} // Прави същото като горе тернарния оператор.
 
-            if (property.TotalNumberOfFloors <= 0)
-            {
-                property.TotalNumberOfFloors = null;
-            }
+            //if (property.Floor <= 0)
+            //{
+            //    property.Floor = null;
+            //}
+
+            //if (property.TotalNumberOfFloors <= 0)
+            //{
+            //    property.TotalNumberOfFloors = null;
+            //}
 
             var districtEntity = dbContext.Districts
                 .FirstOrDefault(d => d.Name.Trim() == district.Trim());
@@ -115,7 +117,72 @@ namespace RealEstates.Services
 
         public void UpdateTags(int propertyId)
         {
-            throw new NotImplementedException();
+            var property = dbContext.RealEstateProperties
+                .FirstOrDefault(p => p.Id == propertyId);
+            property.Tags.Clear();
+
+            if (property.Year.HasValue && property.Year < 1990)
+            {
+                property.Tags.Add(new RealEstatePropertyTag 
+                {
+                    Tag = GetOrCreateTag("Стара сграда")
+                });
+            }
+
+            if (property.Size > 120)
+            {
+                property.Tags.Add(new RealEstatePropertyTag
+                {
+                    Tag = GetOrCreateTag("Голям")
+                });
+            }
+
+            if (property.Year > 2018 && property.TotalNumberOfFloors > 5)
+            {
+                property.Tags.Add(new RealEstatePropertyTag
+                {
+                    Tag = GetOrCreateTag("Има гаражи")
+                });
+            }
+
+            if (property.Floor == property.TotalNumberOfFloors)
+            {
+                property.Tags.Add(new RealEstatePropertyTag
+                {
+                    Tag = GetOrCreateTag("Последен етаж")
+                });
+            }
+
+            if (((double)property.Price / property.Size) < 800)
+            {
+                property.Tags.Add(new RealEstatePropertyTag
+                {
+                    Tag = GetOrCreateTag("Супер евтин")
+                });
+            }
+
+            if (((double)property.Price / property.Size) > 2000)
+            {
+                property.Tags.Add(new RealEstatePropertyTag
+                {
+                    Tag = GetOrCreateTag("Бахти скъпото")
+                });
+            }
+
+            dbContext.SaveChanges();
+        }
+
+        private Tag GetOrCreateTag(string tag)
+        {
+            Tag tagDb = dbContext.Tags
+                .FirstOrDefault(t => t.Name == tag);
+
+            if (tagDb == null)
+            {
+                tagDb = new Tag { Name = tag };
+            }
+
+            return tagDb;
         }
 
         private static Expression<Func<RealEstateProperty, PropertyViewModel>> MapToPropertyViewModel()

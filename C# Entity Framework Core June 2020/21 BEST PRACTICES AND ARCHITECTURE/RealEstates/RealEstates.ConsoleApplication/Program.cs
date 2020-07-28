@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstates.Data;
+using System;
 
 namespace RealEstates.ConsoleApplication
 {
@@ -6,7 +7,9 @@ namespace RealEstates.ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var db = new RealEstateDbContext();
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
         }
     }
 }

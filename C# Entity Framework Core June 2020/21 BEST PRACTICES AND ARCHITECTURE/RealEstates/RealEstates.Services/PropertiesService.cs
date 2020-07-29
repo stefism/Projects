@@ -190,7 +190,7 @@ namespace RealEstates.Services
             return p => new PropertyViewModel
             {
                 Price = p.Price,
-                Floor = (p.Floor ?? 0) + "/" + (p.TotalNumberOfFloors ?? 0), // (p.Floor ?? 0) -> ако етажа е null, слага стойност нула, ако не е null му взима стойността.
+                Floor = (p.Floor ?? 0).ToString() + "/" + (p.TotalNumberOfFloors ?? 0).ToString(), // (p.Floor ?? 0) -> ако етажа е null, слага стойност нула, ако не е null му взима стойността. Ако няма .ToString() гърми с грешка странна.
                 Size = p.Size,
                 Year = p.Year,
                 BuildingType = p.BuildingType.Name,

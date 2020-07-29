@@ -14,6 +14,10 @@ namespace PetStore.Models
 
         public virtual Product Product { get; set; }
 
+        public string OrderId { get; set; }
+
+        public virtual Order Order { get; set; }
+
         public int Quantity { get; set; }
     }
 }

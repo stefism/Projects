@@ -18,6 +18,18 @@ namespace PetStore.Data
 
         }
 
+        public DbSet<Breed> Breeds { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<ClientProduct> ClientProducts { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Pet> Pets { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -30,6 +42,9 @@ namespace PetStore.Data
         {
             modelBuilder.Entity<ClientProduct>()
                 .HasKey(cp => new { cp.ClientID, cp.ProductId });
+
+            modelBuilder.Entity<Product>()
+                .HasAlternateKey(p => p.Name);
         }
     }
 }

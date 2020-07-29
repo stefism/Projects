@@ -9,8 +9,8 @@ using PetStore.Data;
 namespace PetStore.Data.Migrations
 {
     [DbContext(typeof(PetStoreDbContext))]
-    [Migration("20200729115657_Initial")]
-    partial class Initial
+    [Migration("20200729143819_AddIsRemoveToProduct")]
+    partial class AddIsRemoveToProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace PetStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Breed");
+                    b.ToTable("Breeds");
                 });
 
             modelBuilder.Entity("PetStore.Models.Client", b =>
@@ -63,7 +63,7 @@ namespace PetStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Client");
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("PetStore.Models.ClientProduct", b =>
@@ -74,14 +74,42 @@ namespace PetStore.Data.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("ClientID", "ProductId");
 
+                    b.HasIndex("OrderId");
+
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ClientProduct");
+                    b.ToTable("ClientProducts");
+                });
+
+            modelBuilder.Entity("PetStore.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Town")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("PetStore.Models.Pet", b =>
@@ -121,7 +149,7 @@ namespace PetStore.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Pet");
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("PetStore.Models.Product", b =>
@@ -129,9 +157,12 @@ namespace PetStore.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -141,7 +172,9 @@ namespace PetStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.HasAlternateKey("Name");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("PetStore.Models.ClientProduct", b =>
@@ -151,6 +184,10 @@ namespace PetStore.Data.Migrations
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PetStore.Models.Order", "Order")
+                        .WithMany("ClientProducts")
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("PetStore.Models.Product", "Product")
                         .WithMany()

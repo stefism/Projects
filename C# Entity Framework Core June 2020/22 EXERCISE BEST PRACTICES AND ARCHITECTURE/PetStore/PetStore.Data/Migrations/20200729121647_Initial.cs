@@ -7,7 +7,7 @@ namespace PetStore.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Breed",
+                name: "Breeds",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -16,11 +16,11 @@ namespace PetStore.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Breed", x => x.Id);
+                    table.PrimaryKey("PK_Breeds", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Client",
+                name: "Clients",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -32,11 +32,25 @@ namespace PetStore.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Client", x => x.Id);
+                    table.PrimaryKey("PK_Clients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Town = table.Column<string>(maxLength: 100, nullable: false),
+                    Address = table.Column<string>(maxLength: 300, nullable: false),
+                    Notes = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -46,11 +60,11 @@ namespace PetStore.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pet",
+                name: "Pets",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -65,78 +79,93 @@ namespace PetStore.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pet", x => x.Id);
+                    table.PrimaryKey("PK_Pets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pet_Breed_BreedId",
+                        name: "FK_Pets_Breeds_BreedId",
                         column: x => x.BreedId,
-                        principalTable: "Breed",
+                        principalTable: "Breeds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pet_Client_ClientId",
+                        name: "FK_Pets_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Client",
+                        principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientProduct",
+                name: "ClientProducts",
                 columns: table => new
                 {
                     ClientID = table.Column<string>(nullable: false),
                     ProductId = table.Column<string>(nullable: false),
+                    OrderId = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientProduct", x => new { x.ClientID, x.ProductId });
+                    table.PrimaryKey("PK_ClientProducts", x => new { x.ClientID, x.ProductId });
                     table.ForeignKey(
-                        name: "FK_ClientProduct_Client_ClientID",
+                        name: "FK_ClientProducts_Clients_ClientID",
                         column: x => x.ClientID,
-                        principalTable: "Client",
+                        principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClientProduct_Product_ProductId",
+                        name: "FK_ClientProducts_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ClientProducts_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientProduct_ProductId",
-                table: "ClientProduct",
+                name: "IX_ClientProducts_OrderId",
+                table: "ClientProducts",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClientProducts_ProductId",
+                table: "ClientProducts",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pet_BreedId",
-                table: "Pet",
+                name: "IX_Pets_BreedId",
+                table: "Pets",
                 column: "BreedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pet_ClientId",
-                table: "Pet",
+                name: "IX_Pets_ClientId",
+                table: "Pets",
                 column: "ClientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ClientProduct");
+                name: "ClientProducts");
 
             migrationBuilder.DropTable(
-                name: "Pet");
+                name: "Pets");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Breed");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Client");
+                name: "Breeds");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
         }
     }
 }

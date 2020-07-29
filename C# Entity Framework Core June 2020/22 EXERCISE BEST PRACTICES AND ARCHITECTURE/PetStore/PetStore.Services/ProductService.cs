@@ -3,15 +3,15 @@ using AutoMapper.QueryableExtensions;
 using PetStore.Data;
 using PetStore.Models;
 using PetStore.Models.Enums;
+using PetStore.Services.Contracts;
 using PetStore.Services.ViewModels;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PetStore.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly PetStoreDbContext dbContext;
         private readonly IMapper mapper;

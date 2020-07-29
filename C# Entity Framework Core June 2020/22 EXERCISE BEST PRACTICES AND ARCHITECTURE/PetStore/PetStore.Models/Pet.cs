@@ -32,7 +32,7 @@ namespace PetStore.Models
 
         public virtual Breed Breed { get; set; }
 
-        public int MyProperty { get; set; }
+        public bool IsDeleted { get; set; }
 
         public string ClientId { get; set; }
 

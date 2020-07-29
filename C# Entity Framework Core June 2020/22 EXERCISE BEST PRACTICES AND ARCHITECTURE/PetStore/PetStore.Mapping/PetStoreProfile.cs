@@ -8,6 +8,7 @@ namespace PetStore.Mapping
     {
         public PetStoreProfile()
         {
+            //Products
             CreateMap<AddProductViewModel, Product>();
 
             CreateMap<Product, ListAllProductByTypeViewModel>();
@@ -16,6 +17,18 @@ namespace PetStore.Mapping
                 .ForMember(
                 vm => vm.ProductType,
                 opt => opt.MapFrom(p => p.ProductType.ToString()));
+
+            //Pets
+            CreateMap<PetViewModel, Pet>()
+                .ForMember(
+                pet => pet.Breed,
+                vm => vm.MapFrom(p => p.Breed.ToString()))
+                .ReverseMap();
+
+            //Clients
+            CreateMap<AddClientViewModel, Client>();
+
+            CreateMap<Client, GetAllClientViewModel>();
         }
     }
 }

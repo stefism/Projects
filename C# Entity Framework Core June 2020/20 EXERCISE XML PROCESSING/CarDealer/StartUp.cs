@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using AutoMapper.QueryableExtensions.Impl;
 using CarDealer.Data;
 using CarDealer.Dtos.Export;
@@ -35,12 +36,14 @@ namespace CarDealer
             //string q11 = ImportCars(db, cars);
             //string q12 = ImportCustomers(db, customers);
             //string q13 = ImportSales(db, sales);
+            //string q14 = GetCarsWithDistance(db);
+            string q15 = GetCarsFromMakeBmw(db);
             //string q17 = GetCarsWithTheirListOfParts(db);
-            string q18 = GetTotalSalesByCustomer(db);
+            //string q18 = GetTotalSalesByCustomer(db);
             //string q19 = GetSalesWithAppliedDiscount(db);
 
 
-            System.Console.WriteLine(q18);
+            System.Console.WriteLine(q15);
         }
 
         public static string GetSalesWithAppliedDiscount(CarDealerContext context)
@@ -163,6 +166,67 @@ namespace CarDealer
             #endregion
 
             var serializer = new XmlSerializer(typeof(List<CarWithpartsCarDto>), new XmlRootAttribute("cars"));
+
+            var sb = new StringBuilder();
+
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+
+            using (var sw = new StringWriter(sb))
+            {
+                serializer.Serialize(sw, cars, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        //Query 15. Cars from make BMW
+        {
+            var cfg = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<Car, CarMakeBmwDto>();
+            });
+
+            var cars = context.Cars
+                .Where(c => c.Make == "BMW")
+                .ProjectTo<CarMakeBmwDto>(cfg)
+                .AsEnumerable()
+                .OrderBy(c => c.Model).ThenByDescending(c => c.TravelledDistance)
+                .ToList();
+
+            var serializer = new XmlSerializer(typeof(List<CarMakeBmwDto>), new XmlRootAttribute("cars"));
+
+            var sb = new StringBuilder();
+
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+
+            using (var sw = new StringWriter(sb))
+            {
+                serializer.Serialize(sw, cars, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetCarsWithDistance(CarDealerContext context)
+        //Query 14. Cars With Distance
+        {
+            var config = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<Car, GetCarWithDistanceDto>();
+            });
+
+            var mapper = config.CreateMapper();
+
+            var cars = context.Cars
+                .ProjectTo<GetCarWithDistanceDto>(config)
+                .Where(c => c.TravelledDistance > 2000000)
+                .OrderBy(c =>c.Make).ThenBy(c => c.Model)
+                .Take(10).ToList();
+
+            var serializer = new XmlSerializer(typeof(List<GetCarWithDistanceDto>), new XmlRootAttribute("cars"));
 
             var sb = new StringBuilder();
 

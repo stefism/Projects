@@ -29,6 +29,7 @@ namespace ProductShop
         }
 
         public static string GetUsersWithProducts(ProductShopContext context)
+        //Query 08.	  Export Users and Products
         {//users-and-products.json
             var users = context
                 .Users
@@ -53,7 +54,7 @@ namespace ProductShop
                 .OrderByDescending(u => u.soldProducts.count)
                 .ToArray();
 
-            int usersCount = users.Length;
+            int usersCount = context.Users.Count(u => u.ProductsSold.Any());
 
             var restultObj = new
             {
@@ -73,6 +74,7 @@ namespace ProductShop
         }
 
         public static string GetUsersWithProducts_daskal(ProductShopContext context)
+        ////Query 08.	  Export Users and Products
         {
             var users = context.Users
                 .Where(u => u.ProductsSold.Any(p => p.Buyer != null))

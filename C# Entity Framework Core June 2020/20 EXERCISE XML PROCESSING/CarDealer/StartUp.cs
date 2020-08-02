@@ -37,13 +37,14 @@ namespace CarDealer
             //string q12 = ImportCustomers(db, customers);
             //string q13 = ImportSales(db, sales);
             //string q14 = GetCarsWithDistance(db);
-            string q15 = GetCarsFromMakeBmw(db);
+            //string q15 = GetCarsFromMakeBmw(db);
+            string q16 = GetLocalSuppliers(db);
             //string q17 = GetCarsWithTheirListOfParts(db);
             //string q18 = GetTotalSalesByCustomer(db);
             //string q19 = GetSalesWithAppliedDiscount(db);
 
 
-            System.Console.WriteLine(q15);
+            System.Console.WriteLine(q16);
         }
 
         public static string GetSalesWithAppliedDiscount(CarDealerContext context)
@@ -175,6 +176,33 @@ namespace CarDealer
             using (var sw = new StringWriter(sb))
             {
                 serializer.Serialize(sw, cars, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetLocalSuppliers(CarDealerContext context)
+        //Query 16. Local Suppliers
+        {
+            var suppliers = context.Suppliers
+                .Where(s => s.IsImporter == false)
+                .Select(s => new LocalSuppliersDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    PartsCount = s.Parts.Count()
+                }).ToList();
+
+            var serializer = new XmlSerializer(typeof(List<LocalSuppliersDto>), new XmlRootAttribute("suppliers"));
+
+            var sb = new StringBuilder();
+
+            var nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+
+            using (var sw = new StringWriter(sb))
+            {
+                serializer.Serialize(sw, suppliers, nameSpaces);
             }
 
             return sb.ToString().TrimEnd();

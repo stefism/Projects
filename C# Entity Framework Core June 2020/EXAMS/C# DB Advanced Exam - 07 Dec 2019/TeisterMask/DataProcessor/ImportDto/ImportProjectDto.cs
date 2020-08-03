@@ -20,7 +20,7 @@ namespace TeisterMask.DataProcessor.ImportDto
         [XmlElement("DueDate")]
         public string DueDate { get; set; }
 
-        [XmlElement("Tasks")]
+        [XmlArray("Tasks")]
         public ImportTasksDto[] Tasks { get; set; }
     }
 }

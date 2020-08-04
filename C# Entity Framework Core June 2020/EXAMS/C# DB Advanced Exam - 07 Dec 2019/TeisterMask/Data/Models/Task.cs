@@ -29,13 +29,13 @@ namespace TeisterMask.Data.Models
         public ExecutionType ExecutionType { get; set; }
         //•	ExecutionType - enumeration of type ExecutionType, with possible values (ProductBacklog, SprintBacklog, InProgress, Finished) (required)
 
-        public LabelType LabelType { get; set; }
+        public virtual LabelType LabelType { get; set; }
         //•	LabelType - enumeration of type LabelType, with possible values (Priority, CSharpAdvanced, JavaAdvanced, EntityFramework, Hibernate) (required)
 
         public int ProjectId { get; set; }
         //•	ProjectId - integer, foreign key (required)
 
-        public Project Project { get; set; }
+        public virtual Project Project { get; set; }
         //•	Project - Project 
 
         public virtual ICollection<EmployeeTask> EmployeesTasks { get; set; }

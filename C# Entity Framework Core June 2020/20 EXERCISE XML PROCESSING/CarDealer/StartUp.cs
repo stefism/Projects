@@ -5,6 +5,8 @@ using CarDealer.Data;
 using CarDealer.Dtos.Export;
 using CarDealer.Dtos.Import;
 using CarDealer.Models;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -138,6 +140,35 @@ namespace CarDealer
         }
 
         public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+
+            var cars = context.Cars
+                .Include(c => c.PartCars)
+                .ThenInclude(c => c.Part)
+                .Select(c => new
+                {
+                    car = new
+                    {
+                        Make = c.Make,
+                        Model = c.Model,
+                        TravelledDistance = c.TravelledDistance
+                    },
+
+                    parts = c.PartCars
+                        .Select(p => new
+                        {
+                            Name = p.Part.Name,
+                            Price = $"{p.Part.Price:F2}"
+                        })
+                        .ToList()
+                })
+                .ToList();
+
+            string json = JsonConvert.SerializeObject(cars, Formatting.Indented);
+            return json;
+        }
+
+        public static string GetCarsWithTheirListOfParts_me(CarDealerContext context)
         //Query 17. Cars with Their List of Parts
         {
             #region cars

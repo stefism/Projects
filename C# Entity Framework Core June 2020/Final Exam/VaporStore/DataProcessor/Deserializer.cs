@@ -19,96 +19,140 @@
         public static string ImportGames(VaporStoreDbContext context, string jsonString)
         {
 
-            //var sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            //var gamesDtos = JsonConvert
-            //	.DeserializeObject<ImportGamesDto[]>(jsonString);
+            var gamesDtos = JsonConvert
+                .DeserializeObject<ImportGamesDto[]>(jsonString);
 
-            //var validGames = new List<Game>();
+            var validGames = new List<Game>();
 
-            //var validDev = new List<Developer>();
-            //var validGenres = new List<Genre>();
-            //var validTags = new List<Tag>();
+            var validDev = new List<Developer>();
+            var validGenres = new List<Genre>();
+            var validTags = new List<Tag>();
+            
+            var validGameTags = new List<GameTag>();
 
-            //         foreach (var gameDto in gamesDtos)
-            //         {
-            //             if (!IsValid(gameDto))
-            //             {
-            //		sb.AppendLine("Invalid Data");
-            //		continue;
-            //             }
+            foreach (var gameDto in gamesDtos)
+            {
+                if (!IsValid(gameDto))
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
 
-            //             if (gameDto.Tags.Count() == 0)
-            //             {
-            //		sb.AppendLine("Invalid Data");
-            //		continue;
-            //	}
+                if (gameDto.Tags.Count() == 0)
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
 
+                var game = new Game
+                {
+                    Name = gameDto.Name,
+                    Price = gameDto.Price,
+                    ReleaseDate = DateTime
+                        .ParseExact(gameDto.ReleaseDate,
+                        "yyyy-MM-dd", CultureInfo.InvariantCulture,
+                        DateTimeStyles.None)
+                };
 
+                //Developer add
+                if (!validDev.Any(d => d.Name == gameDto.Developer))
+                {
+                    var dev = new Developer
+                    {
+                        Name = gameDto.Developer
+                    };
 
-            //	var game = new Game
-            //	{
-            //		Name = gameDto.Name,
-            //		Price = gameDto.Price,
-            //		ReleaseDate = DateTime
-            //			.ParseExact(gameDto.ReleaseDate,
-            //			"yyyy-MM-dd", CultureInfo.InvariantCulture,
-            //			DateTimeStyles.None)
-            //	};
+                    validDev.Add(dev);
 
-            //	//Developer add
-            //             if (!validDev.Any(d => d.Name == gameDto.Developer))
-            //             {
-            //                 var dev = new Developer
-            //                 {
-            //                     Name = gameDto.Developer
-            //                 };
+                    game.Developer = new Developer
+                    {
+                        Name = gameDto.Name
+                    };
+                }
+                else
+                {
+                    var dev = validDev.FirstOrDefault(d => d.Name == gameDto.Developer);
 
-            //                 validDev.Add(dev);
+                    game.Developer = new Developer
+                    {
+                        Name = dev.Name
+                    };
+                }
 
-            //                 game.Developer.Name = gameDto.Developer;
-            //             }
-            //             else
-            //             {
-            //		var dev = validDev.FirstOrDefault(d => d.Name == gameDto.Developer);
-            //		game.Developer.Name = dev.Name;
-            //	}
+                //Genres add
+                if (!validGenres.Any(g => g.Name == gameDto.Genre))
+                {
+                    var genre = new Genre
+                    {
+                        Name = gameDto.Genre
+                    };
 
-            //             //Genres add
-            //             if (!validGenres.Any(g => g.Name == gameDto.Genre))
-            //             {
-            //		var genre = new Genre
-            //		{
-            //			Name = gameDto.Genre
-            //		};
+                    validGenres.Add(genre);
+                    
+                    game.Genre = new Genre
+                    {
+                        Name = gameDto.Genre
+                    };
+                }
+                else
+                {
+                    var genre = validGenres.FirstOrDefault(g => g.Name == gameDto.Genre);
 
-            //		validGenres.Add(genre);
-            //		game.Genre.Name = genre.Name;
-            //             }
-            //             else
-            //             {
-            //		var genre = validGenres.FirstOrDefault(g => g.Name == gameDto.Genre);
-            //		game.Genre.Name = genre.Name;
-            //             }
+                    game.Genre = new Genre
+                    {
+                        Name = genre.Name
+                    };
+                }
 
-            //             //Tags add
-            //             foreach (var tagDto in gameDto.Tags)
-            //             {
-            //                 if (!validTags.Any(t => t.Name == tagDto.Name))
-            //                 {
-            //			var tag = new Tag
-            //			{
-            //				Name = tagDto.Name
-            //			};
+                //Tags add
+                foreach (var tagDto in gameDto.Tags)
+                {
+                    if (!validTags.Any(t => t.Name == tagDto))
+                    {
+                        var tag = new Tag
+                        {
+                            Name = tagDto
+                        };
 
-            //			validTags.Add(tag);
+                        validTags.Add(tag);
 
-            //			////// TODO: .....
-            //                 }
-            //             }
-            //         }
+                        var gametag = new GameTag
+                        {
+                            Game = game,
+                            Tag = tag
+                        };
 
-            return "123";
+                        validGameTags.Add(gametag);
+
+                        game.GameTags.Add(gametag);
+                    }
+                    else
+                    {
+                        var tag = validTags.FirstOrDefault(t => t.Name == tagDto);
+
+                        var gametag = new GameTag
+                        {
+                            Game = game,
+                            Tag = tag
+                        };
+
+                        validGameTags.Add(gametag);
+
+                        game.GameTags.Add(gametag);
+                    }
+                }
+
+                validGames.Add(game);
+
+                sb.AppendLine($"Added {game.Name} ({game.Genre.Name}) with {game.GameTags.Count} tags");
+            }
+
+            context.Games.AddRange(validGames);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportUsers(VaporStoreDbContext context, string jsonString)

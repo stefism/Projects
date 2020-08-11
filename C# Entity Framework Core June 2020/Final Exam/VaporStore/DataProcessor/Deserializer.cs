@@ -17,6 +17,7 @@
     public static class Deserializer
     {
         public static string ImportGames(VaporStoreDbContext context, string jsonString)
+            // Identical!
         {
 
             var sb = new StringBuilder();
@@ -30,7 +31,7 @@
             var validGenres = new List<Genre>();
             var validTags = new List<Tag>();
             
-            var validGameTags = new List<GameTag>();
+            //var validGameTags = new List<GameTag>();
 
             foreach (var gameDto in gamesDtos)
             {
@@ -66,19 +67,13 @@
 
                     validDev.Add(dev);
 
-                    game.Developer = new Developer
-                    {
-                        Name = gameDto.Name
-                    };
+                    game.Developer = dev;
                 }
                 else
                 {
                     var dev = validDev.FirstOrDefault(d => d.Name == gameDto.Developer);
 
-                    game.Developer = new Developer
-                    {
-                        Name = dev.Name
-                    };
+                    game.Developer = dev;
                 }
 
                 //Genres add
@@ -90,20 +85,14 @@
                     };
 
                     validGenres.Add(genre);
-                    
-                    game.Genre = new Genre
-                    {
-                        Name = gameDto.Genre
-                    };
+
+                    game.Genre = genre;
                 }
                 else
                 {
                     var genre = validGenres.FirstOrDefault(g => g.Name == gameDto.Genre);
 
-                    game.Genre = new Genre
-                    {
-                        Name = genre.Name
-                    };
+                    game.Genre = genre;
                 }
 
                 //Tags add
@@ -124,7 +113,7 @@
                             Tag = tag
                         };
 
-                        validGameTags.Add(gametag);
+                        //validGameTags.Add(gametag);
 
                         game.GameTags.Add(gametag);
                     }
@@ -138,7 +127,7 @@
                             Tag = tag
                         };
 
-                        validGameTags.Add(gametag);
+                        //validGameTags.Add(gametag);
 
                         game.GameTags.Add(gametag);
                     }
@@ -156,6 +145,7 @@
         }
 
         public static string ImportUsers(VaporStoreDbContext context, string jsonString)
+            //Identical!
         {
             var sb = new StringBuilder();
 
@@ -228,26 +218,28 @@
                         continue;
                     }
 
+                    var currentCard = context.Cards.Where(c => c.Number == purch.Card).FirstOrDefault();
+
+                    var currGame = context.Games.Where(g => g.Name == purch.Title).FirstOrDefault();
+
                     var purchace = new Purchase
                     {
-                        Game = new Game 
-                        { 
-                            Name = purch.Title
-                        },
+                        Game = currGame,
                         Type = (PurchaseType)Enum.Parse(typeof(PurchaseType), purch.Type),
                         ProductKey = purch.Key,
                         Date = DateTime
                         .ParseExact(purch.Date,
                         "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture,
                         DateTimeStyles.None),
-                        Card = new Card
-                        {
-                            Number = purch.Card
-                        }
+                        Card = currentCard
                     };
 
+                    //var user = context.Games.Select(g => g.Purchases.Select(p => p.Card.User).FirstOrDefault(u => u.Id == purchace.Card.UserId)).ToArray();
+
+                    var username = context.Cards.Where(c => c.Number == purchace.Card.Number).Select(c => c.User.Username).FirstOrDefault();
+
                     validPurch.Add(purchace);
-                    sb.AppendLine($"Imported {purchace.Game.Name} for {purchace.Card.User.Username}");
+                    sb.AppendLine($"Imported {purchace.Game.Name} for {username}");
                 }
 
                 context.Purchases.AddRange(validPurch);

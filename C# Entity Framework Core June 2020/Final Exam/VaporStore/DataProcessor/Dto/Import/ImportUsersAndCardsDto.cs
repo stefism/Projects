@@ -9,10 +9,10 @@ namespace VaporStore.DataProcessor.Dto.Import
     public class ImportUsersAndCardsDto
     {
         [Required]
-        [RegularExpression("^([A-Z][a-z]+) ([A-Z][a-z]+)$")]
+        [RegularExpression("^[A-Z][a-z]+ [A-Z][a-z]+$")]
         public string FullName { get; set; }
 
-        [Required, Range(3 ,20)]
+        [Required, MinLength(3), MaxLength(20)]
         public string Username { get; set; }
 
         [Required]

@@ -25,6 +25,7 @@
             = "Successfully imported customer {0} {1} with bought tickets: {2}!";
 
         public static string ImportMovies(CinemaContext context, string jsonString)
+            //Ok!
         {
             var sb = new StringBuilder();
 
@@ -67,6 +68,7 @@
         }
 
         public static string ImportHallSeats(CinemaContext context, string jsonString)
+            //Ok!
         {
             var sb = new StringBuilder();
 
@@ -132,6 +134,7 @@
 
         public static string ImportProjections(CinemaContext context, string xmlString)
         {
+
             return "";
         }
 

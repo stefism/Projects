@@ -13,5 +13,8 @@ namespace VaporStore.DataProcessor.Dto.Export
 
         [XmlArray("Purchases")]
         public ExportUserPurchases_PurchaseDto[] Purchases { get; set; }
+
+        [XmlElement("TotalSpent")]
+        public decimal TotalSpent { get; set; }
     }
 }

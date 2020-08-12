@@ -41,31 +41,33 @@
 
 		public static string ExportUserPurchasesByType(VaporStoreDbContext context, string storeType)
 		{
-
-
-			var users = context.Users	
+            #region users
+            var users = context.Users	
 				.ToArray()
 				.Select(u => new ExportUserPurchases_UserDto
 				{
 					Username = u.Username,
-					Purchases = u.Cards.Select(c => new ExportUserPurchases_PurchaseDto 
+					Purchases = u.Cards
+					.SelectMany(c => c.Purchases)
+					.Select(p => new ExportUserPurchases_PurchaseDto 
 					{
-						Card = c.Number,
-						Cvc = c.Cvc,
-						Date = c.Purchases.Select(p => p.Date.ToString("yyyy-MM-dd HH:mm")).FirstOrDefault(),
-						Game = c.Purchases.Select(g => new ExportUserPurchases_GameDto 
-						{
-							Title = g.Game.Name,
-							Genre = g.Game.Genre.Name,
-							Price = g.Game.Price
-						}).FirstOrDefault()
-					}).OrderBy(p => p.Date)
-					.ToArray()
-				})
-				//.OrderByDescending(u => u.Purchases.Select(p => p.Game.Price).Sum()).ThenBy(u => u.Username)
+						Card = p.Card.Number,
+						Cvc = p.Card.Cvc,
+						Date = p.Date.ToString("yyyy-MM-dd HH:mm"),
+						Game = new ExportUserPurchases_GameDto
+                        {
+							Title = p.Game.Name,
+							Genre = p.Game.Genre.Name,
+							Price = p.Game.Price
+                        }}).OrderBy(p => p.Date)
+					.ToArray(),
+					TotalSpent = u.Cards.SelectMany(c => c.Purchases.Select(p => p.Game.Price)).Sum()
+				}).Where(u => u.Purchases.Count() > 0)
+				.OrderByDescending(u => u.TotalSpent).ThenBy(u => u.Username)
 				.ToArray();
+            #endregion
 
-			return "123";
+            return "123";
 		}
 	}
 }

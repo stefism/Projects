@@ -2,7 +2,10 @@
 {
 	using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Text;
+    using System.Xml.Serialization;
     using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
     using Data;
     using Newtonsoft.Json;
@@ -41,33 +44,81 @@
 
 		public static string ExportUserPurchasesByType(VaporStoreDbContext context, string storeType)
 		{
-            #region users
-            var users = context.Users	
+			#region users
+			//        var users = context.Users	
+			//.ToArray()
+			//.Where(u => u.Cards.SelectMany(c => c.Purchases)
+			//.Any(p => p.Type.ToString() == storeType))
+			////.ToArray()
+			//.Select(u => new ExportUserPurchases_UserDto
+			//{
+			//	Username = u.Username,
+			//	Purchases = u.Cards					
+			//	.SelectMany(c => c.Purchases)
+			//	.Where(x => x.Type.ToString() == storeType)
+			//	.Select(p => new ExportUserPurchases_PurchaseDto 
+			//	{
+			//		Card = p.Card.Number,
+			//		Cvc = p.Card.Cvc,
+			//		Date = p.Date.ToString("yyyy-MM-dd HH:mm"),
+			//		Game = new ExportUserPurchases_GameDto
+			//                    {
+			//			Title = p.Game.Name,
+			//			Genre = p.Game.Genre.Name,
+			//			Price = p.Game.Price
+			//                    }}).OrderBy(p => p.Date)
+			//	.ToArray(),
+			//	TotalSpent = u.Cards.SelectMany(c => c.Purchases.Select(p => p.Game.Price)).Sum()
+			//}).Where(u => u.Purchases.Count() > 0)
+			//.OrderByDescending(u => u.TotalSpent).ThenBy(u => u.Username)
+			//.ToArray();
+			#endregion
+
+			#region tisho
+			var users = context.Users
 				.ToArray()
+				.Where(u => u.Cards.SelectMany(c => c.Purchases)
+				.Any(p => p.Type.ToString() == storeType))
+				//.ToArray()
 				.Select(u => new ExportUserPurchases_UserDto
 				{
 					Username = u.Username,
 					Purchases = u.Cards
 					.SelectMany(c => c.Purchases)
-					.Select(p => new ExportUserPurchases_PurchaseDto 
+					.Where(x => x.Type.ToString() == storeType)
+					.Select(p => new ExportUserPurchases_PurchaseDto
 					{
 						Card = p.Card.Number,
 						Cvc = p.Card.Cvc,
 						Date = p.Date.ToString("yyyy-MM-dd HH:mm"),
 						Game = new ExportUserPurchases_GameDto
-                        {
+						{
 							Title = p.Game.Name,
 							Genre = p.Game.Genre.Name,
 							Price = p.Game.Price
-                        }}).OrderBy(p => p.Date)
+						}
+					}).OrderBy(p => p.Date)
 					.ToArray(),
-					TotalSpent = u.Cards.SelectMany(c => c.Purchases.Select(p => p.Game.Price)).Sum()
-				}).Where(u => u.Purchases.Count() > 0)
+					TotalSpent = u.Cards.SelectMany(c => c.Purchases
+					.Where(x => x.Type.ToString() == storeType).Select(p => p.Game.Price)).Sum()
+				})
 				.OrderByDescending(u => u.TotalSpent).ThenBy(u => u.Username)
 				.ToArray();
-            #endregion
+			#endregion
 
-            return "123";
+			var sb = new StringBuilder();
+
+			var serializer = new XmlSerializer(typeof(ExportUserPurchases_UserDto[]), new XmlRootAttribute("Users"));
+
+			var nameSpaces = new XmlSerializerNamespaces();
+			nameSpaces.Add("", "");
+
+            using (var sw = new StringWriter(sb))
+            {
+				serializer.Serialize(sw, users, nameSpaces);
+            }
+
+            return sb.ToString().TrimEnd();
 		}
 	}
 }

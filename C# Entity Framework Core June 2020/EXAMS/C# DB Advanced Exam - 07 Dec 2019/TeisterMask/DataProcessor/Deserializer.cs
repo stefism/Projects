@@ -37,9 +37,8 @@
 
             using (var sr = new StringReader(xmlString))
             {
-                var projectsDtos = (ImportProjectDto[])serializer.Deserialize(sr);
-
-                List<Project> validProjects = new List<Project>();
+                var projectsDtos = (ImportProjectDto[])serializer.Deserialize(sr);              
+                List <Project> validProjects = new List<Project>();
 
                 foreach (var projectDto in projectsDtos)
                 {

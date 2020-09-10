@@ -79,5 +79,14 @@ namespace PetStore.Services
 
             return serviceModel;
         }
+
+        public ICollection<ListAllProductsViewModel> SearchByName(string name)
+        {
+            var allProducts = dbContext.Products
+                .Where(p => p.Name.Contains(name))
+                .ProjectTo<ListAllProductsViewModel>(mapper.ConfigurationProvider).ToList();
+
+            return allProducts;
+        }
     }
 }

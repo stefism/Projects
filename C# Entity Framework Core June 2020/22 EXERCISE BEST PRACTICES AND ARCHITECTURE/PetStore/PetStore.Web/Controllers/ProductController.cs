@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PetStore.Services.Contracts;
 using PetStore.Services.ViewModels;
 using PetStore.Web.Models;
+using System.Collections.Generic;
 
 namespace PetStore.Web.Controllers
 {
@@ -45,7 +46,7 @@ namespace PetStore.Web.Controllers
             {
                 return RedirectToAction("Error", "Home");
             }
-            
+
             productService.AddProduct(model);
 
             return RedirectToAction("All");
@@ -54,10 +55,23 @@ namespace PetStore.Web.Controllers
         [HttpGet]
         public IActionResult Details(string id)
         {
-            ListAllProductsViewModel serviceModel = 
+            ListAllProductsViewModel serviceModel =
                 productService.GetById(id);
 
             return View(serviceModel);
+        }
+
+        [HttpGet]
+        public IActionResult Search(string searchWord)
+        {
+            if (searchWord == null)
+            {
+                return RedirectToAction("All");
+            }
+
+            ICollection<ListAllProductsViewModel> models = productService.SearchByName(searchWord);
+
+            return View("All", models);
         }
     }
 }

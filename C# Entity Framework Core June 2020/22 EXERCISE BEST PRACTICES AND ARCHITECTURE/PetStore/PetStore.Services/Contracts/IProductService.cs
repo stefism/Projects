@@ -15,6 +15,8 @@ namespace PetStore.Services.Contracts
 
         ICollection<ListAllProductsViewModel> GetAllProducts();
 
+        ICollection<ListAllProductsViewModel> SearchByName(string name);
+
         string RemoveProductByName(string name);
     }
 }

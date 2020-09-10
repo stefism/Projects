@@ -69,5 +69,15 @@ namespace PetStore.Services
 
             return $"Product {name} removed successfully.";
         }
+
+        public ListAllProductsViewModel GetById(string id)
+        {
+            Product product = dbContext.Products
+                .FirstOrDefault(p => p.Id == id);
+
+            ListAllProductsViewModel serviceModel = mapper.Map<ListAllProductsViewModel>(product);
+
+            return serviceModel;
+        }
     }
 }

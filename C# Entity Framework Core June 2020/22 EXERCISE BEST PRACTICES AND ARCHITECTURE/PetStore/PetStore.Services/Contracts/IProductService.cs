@@ -9,6 +9,8 @@ namespace PetStore.Services.Contracts
     {
         void AddProduct(AddProductViewModel product);
 
+        ListAllProductsViewModel GetById(string id);
+
         ICollection<ListAllProductByTypeViewModel> ListAllByProductType(string type);
 
         ICollection<ListAllProductsViewModel> GetAllProducts();

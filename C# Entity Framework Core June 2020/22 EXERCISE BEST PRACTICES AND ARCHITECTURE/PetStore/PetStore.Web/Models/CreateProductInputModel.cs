@@ -1,12 +1,9 @@
 ﻿using PetStore.Models.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace PetStore.Services.ViewModels
+namespace PetStore.Web.Models
 {
-    public class AddProductViewModel
+    public class CreateProductInputModel
     {
         [Required]
         public string Name { get; set; }
@@ -14,7 +11,7 @@ namespace PetStore.Services.ViewModels
         public decimal Price { get; set; }
 
         [Required]
-        public int ProductType { get; set; }
         //public int ProductType { get; set; }
+        public ProductType ProductType { get; set; }
     }
 }

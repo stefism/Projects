@@ -2,6 +2,7 @@
 using PetStore.Models;
 using PetStore.Services.ViewModels;
 
+
 namespace PetStore.Mapping
 {
     public class PetStoreProfile : Profile
@@ -28,7 +29,7 @@ namespace PetStore.Mapping
             //Clients
             CreateMap<AddClientViewModel, Client>();
 
-            CreateMap<Client, GetAllClientViewModel>();
+            CreateMap<Client, GetAllClientViewModel>();            
         }
     }
 }

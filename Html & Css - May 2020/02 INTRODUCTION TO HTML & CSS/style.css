@@ -1,0 +1,34 @@
+button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10 px;
+    border-radius: 3px;
+}
+
+.red-button { /* class selector */
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+}
+
+.red-button:hover {
+    box-shadow: 0 0 4px rgb(12, 5, 0);
+}
+
+h1 { /* select all selector */
+    text-align: center;
+    color: rgb(76, 7, 122);
+}
+
+p {
+    margin-top: 40px;
+}
+
+p.right {
+    text-align: right;
+}
+
+#header { /* id selector */
+    color: blue;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Create your account</h1>
+
+        <form action="" method="POST">
+            <label for="first-name">First name: </label>
+            <input autofocus required id="first-name" type="text" placeholder="Enter name (required)" name="FirstName">
+            <br>
+            <br>
+            <label for="last-name">Last Name: </label>
+            <input required id="last-name" type="text" placeholder="Last Name (required)" name="LastName">
+            <br>
+            <br>
+            <label for="age">Age: </label>
+            <input id="age" type="number" name="Age" placeholder="18-100" min="18" max="100">
+            <br>
+            <br>
+            <label for="email">Email: </label>
+            <input id="email" type="email" name="Email">
+            <br>
+            <br>
+            <label for="password">Password: </label>
+            <input id="password" type="password" name="Password">
+            <br>
+            <br>
+            <label for="gender">Gender: </label>
+            <input id="gender-male" type="radio" name="Gender">Male
+            <input id="gender-female" type="radio" name="Gender">Female
+            <input id="gender-trans" type="radio" name="Gender">Trans
+            <input id="gender-other" type="radio" name="Gender">Other
+            <br>
+            <br>
+            <label for="updates">Sing me for updates:</label>
+            <input id="updates" type="checkbox" name="Newsletter">
+            <br>
+            <br>
+            <label for="subscription">Subscription plan:</label>
+            <select id="subscription" name="Subscription">
+                <option value="yearly">Yearly</option>
+                <option value="mountly">Mountly</option>
+                <option value="Week">Week</option>
+            </select>
+            <br>
+            <br>
+            <label for="comment">Additional info:</label>
+            <br>
+            <textarea name="Comment" id="comment" cols="30" rows="10"></textarea>
+            <br>
+            <br>
+            <button>Register</button>
+        </form>
+    </main>
+</body>
+</html>

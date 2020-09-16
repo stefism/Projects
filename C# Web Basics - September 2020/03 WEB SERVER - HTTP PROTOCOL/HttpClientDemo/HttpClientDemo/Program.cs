@@ -31,9 +31,24 @@ namespace HttpClientDemo
                         Encoding.UTF8.GetString(buffer, 0, lenght);
                     Console.WriteLine(requestString);
 
-                    string html = "<h1>Мараба мили, скъпи деца :D</h1>" + NewLine + "<h4>Това е сървъра на Стефчо</h4>" + NewLine + $"<p> Датата в момента е: <strong>{DateTime.Now}</strong>.</p>";
+                    string html = "<h1>Мараба мили, скъпи деца :D</h1>" 
+                        + NewLine 
+                        + "<h4>Това е сървъра на Стефчо</h4>" 
+                        + NewLine 
+                        + $"<p> Датата в момента е: <strong>{DateTime.Now}</strong>.</p>" 
+                        + NewLine 
+                        + "<form method=post><input name=username /><input name=password /><input type=submit /></form>";
 
-                    string response = "HTTP/1.1 200 OK" + NewLine + "Server: StefanServer 2020" + NewLine + "Content-Type: text/html; charset=utf-8" + NewLine + "Content-Lenght: " + html.Length * 2 + NewLine + NewLine + html + NewLine;
+                    string response = 
+                        "HTTP/1.1 200 OK" + NewLine
+                        //+ "HTTP/1.1 307 Redirect" + NewLine
+                        //+ "Location: https://www.google.bg" + NewLine
+                        + "Server: StefanServer 2020" + NewLine                         
+                        + "Content-Type: text/html; charset=utf-8"
+                        //+"Content-Disposition: attachment; filename=stefan.txt" //Кара браузъра да запише това, което му се подава във файл. Тогава горе Content-Type: text/plain трябва да се напише.
+                        + NewLine 
+                        + "Content-Lenght: " + html.Length * 2 
+                        + NewLine + NewLine + html + NewLine;
 
                     byte[] responseBytes = Encoding.UTF8.GetBytes(response);
                     stream.Write(responseBytes);

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Kufam';
+    src: url('./Fonts/Kufam/Kufam-Regular.ttf') format('truetype');
+}
+
+html {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+h1 {
+    font-size: 2.2rem;
+    text-decoration: underline;
+}
+
+button:hover {
+    cursor: pointer;
+    color: cornflowerblue;
+}
+
+p {
+    color: brown;
+    font-family: 'Kufam';
+    font-style: oblique;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: justify;
+    text-indent: 40px;
+}
+
+#p2 {
+    text-transform: uppercase;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} /* Използва се за скриване на част от текста */
+
+.bold {
+    color: chartreuse;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    word-break: break-all; /*Ако е много дълга думата, да пренесе буквите на нов ред без да се спазва някакво правило за пренасяне.*/
+    text-shadow: 2px 2px 2px black;/*<horizontal><vertical><blur><color>*/
+}
+
+.special {
+    border: 2px solid darkgreen;
+    padding: 10px;
+    background-color: lightcyan;
+    max-width: 300px;
+}
+
+.strike {
+    text-decoration: line-through;
+    color: black;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    
+    <style>
+        div {
+            margin-bottom: 10px;            
+            max-width: 400px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            background-color: rgb(223, 217, 217);
+            box-shadow: 2px 2px 2px rgb(183, 183, 184);            
+        }
+        
+        input {
+            border-radius: 10px;
+            border: transparent;
+        }
+    </style>
+
+</head>
+<body>
+    <fieldset>
+        <legend>Customer Details</legend>
+        <form action="" method="POST">
+            <div>
+                <label for="first-Name">First Name </label>
+                <input id="first-Name" type="text" name="FirstName" placeholder="George" autofocus>                           
+            </div>
+            <div>
+                <label for="last-Name">Last Name </label>
+                <input id="last-Name" type="text" name="LastName" placeholder="Devis" autofocus>                
+            </div>
+            <div>
+                <label for="gender"></label>
+                <input id="gender-male" type="radio" name="Gender">Male
+                <input id="gender-female" type="radio" name="Gender">Female
+                <input id="gender-other" type="radio" name="Gender">Other
+                <br><br>
+            </div>
+            <div>
+                <label for="preferred-contact">Preferred contact method: </label>
+                <input id="email" type="radio" name="PrContact">Email
+                <input id="phone" type="radio" name="PrContact">Phone
+                <br><br>
+            </div>
+            <div>
+                <label for="email">Email </label>
+                <input id="email" type="email" name="Email" placeholder="your@email.com">                
+            </div>
+            <div>
+                <label for="phone">Phone </label>
+                <input id="phone" type="tel" name="Phone" placeholder="+359885236225" pattern="[+]359[0-9]{9}" required>             
+            </div>
+            <div>
+                <label for="town">Town </label>
+                <select id="town" name="Town">
+                    <option value="Varna">Varna</option>
+                    <option value="Plovdiv">Plovdiv</option>
+                    <option value="Burgas">Burgas</option>
+                    <option value="Sofia">Sofia</option>
+                    <option value="Pleven">Pleven</option>
+                </select>                
+            </div>
+            <div>
+                <label for="age">Age </label>
+                <input id="age" type="number" name="Age" min="18" max="70">                
+            </div>
+            <div>
+                <label for="pr-languages">Programming language </label>
+                <input id="pr-language" list="pr-languages" name="Pr-language">
+                <datalist id="pr-languages">
+                    <option value="Java"></option>
+                    <option value="PHP"></option>
+                    <option value="C#"></option>
+                    <option value="JavaScript"></option>
+                    <option value="Python"></option>
+                    <option value="Ruby"></option>
+                    <option value="Other"></option>
+                </datalist>                
+            </div>
+            <div>
+                <label for="text-area"></label>
+                <textarea id="text-area" name="TextArea" cols="20" rows="5" placeholder="More information..."></textarea>                
+            </div>
+            <div>
+                <label for="terms">I agree the Terms and Conditions</label>
+                <input id="terms" name="Terms" type="checkbox">                
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
+        </form>        
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); */
+
+#greenButton, #orangeButton {
+    background-color: seagreen;
+    color:  white;
+    padding: 10px 15px;
+    border-radius: 5px;    
+}
+
+#orangeButton {
+    background-color: orange;
+}
+
+a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+p {
+    line-height: 2;
+}

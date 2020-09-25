@@ -1,0 +1,58 @@
+table, 
+th, 
+td {
+    border: 1px solid rgb(221, 221, 221);
+}
+
+body {
+    padding: 50px 50px 0 50 px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: rgb(221, 221, 221);
+    text-align: left;
+}
+
+td, th {
+    padding: 5px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(241, 241, 241);
+}
+
+/* tbody tr:nth-child(odd) td {
+    background: rgb(241, 241, 241);
+} */
+
+tbody tr:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+/* tr:nth-child(odd) {
+    background: rgb(241, 241, 241)
+}
+
+tr:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+}
+
+th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+} */

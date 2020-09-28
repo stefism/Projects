@@ -21,7 +21,7 @@ namespace ChronometerAsync
             }
         }
 
-        private  void GetUserCommand(string command)
+        private void GetUserCommand(string command)
         {
             switch (command)
             {

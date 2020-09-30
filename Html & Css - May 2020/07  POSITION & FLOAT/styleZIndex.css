@@ -1,0 +1,25 @@
+main {
+    max-width: 900px;
+}
+
+section {
+    background-color: lightskyblue;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.picture {
+    position: absolute;
+    bottom: -100px;
+    right: -20px;
+    z-index: 2;
+    /* За да работи z индекса, обектите трябва да имат position. */
+}
+
+p {
+    position: relative;
+    z-index: 3;
+    text-shadow: 1px 1px 0px white;
+}

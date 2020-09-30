@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(238, 238, 238);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+article {    
+    margin-left: 20px;  
+}
+
+.inline {
+    display: inline-block;
+    /* border: 2px solid black; */
+    max-width: 700px;
+    vertical-align: top;
+}
+
+.small {
+    max-width: 400px;
+}
+
+img {
+    width: 400px;
+}
+
+p {
+    color: rgb(51, 51, 51);
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', Times, serif;
+}

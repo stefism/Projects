@@ -1,0 +1,79 @@
+.box {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.box-n1 {
+    background-color: cyan;
+    top: 0px;
+    left: 130px;
+    right: 0px;
+    bottom: 0px;
+    /* За да се отключат тези стойности, position на обекта, трябва да е различен от static. */
+}
+
+.box-n2 {
+    background-color: tomato;
+}
+
+.box-n3 {
+    background-color: violet;
+    left: 20px;
+}
+
+.box-n4 {
+    background-color: rgb(55, 212, 165);
+    width: 50px;
+    height: 50px;
+    left: 10px;
+}
+
+.box-n5 {
+    background-color: rgb(28, 167, 86);
+    top: 20px;
+    right: 20px;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute4 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 0px;
+  bottom: 0px;
+
+  background-color: rgba(255, 196, 0, 0.5);
+}
+
+.absolute {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 0px;
+    bottom: 0px;
+    /* При absolute все едно останалите елементи на страницата незнаят за този елемент. Той се изважда от нормалния float на страницата. Търси parent елемент, който има зададен position и се позиционира абсолютно спрямо него. Ако няма такъв, се позиционира абсолютно спрямо боди тага. Най-често се използва, когато искаме даден елемент да е в границите на друг елемент. */
+}
+
+.form-element {
+    position: relative;
+    display: inline-block;
+}
+
+.form-element .fas {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+}
+
+.form-element input {
+    padding-right: 20px;
+}
+
+.fixed {
+    position: fixed;
+    /* Фиксира елемента спрямо видимото поле от потребителя. Ако има скрол, страницата си се скролва, но елемента винаги се вижда на едно и също място. Мястото на което е зададен да стои с координати от css файла. */
+}

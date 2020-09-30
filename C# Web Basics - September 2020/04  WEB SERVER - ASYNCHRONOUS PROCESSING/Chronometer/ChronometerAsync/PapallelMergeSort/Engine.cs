@@ -61,7 +61,7 @@ namespace PapallelMergeSort
             }            
         }
 
-        private void Sort(List<List<int>> lists)
+        private async Task Sort(List<List<int>> lists)
         {
             foreach (var list in lists)
             {

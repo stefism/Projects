@@ -1,0 +1,13 @@
+body {
+    background-color: lightsteelblue;
+}
+
+li {
+    display: inline-block;
+    border: 0.4rem solid black;
+    padding: 10px;
+    margin: 10px;
+    vertical-align: middle;
+    background-color: white;
+}
+

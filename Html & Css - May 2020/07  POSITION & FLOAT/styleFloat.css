@@ -1,0 +1,25 @@
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid lightblue;
+}
+
+.left {
+    float: right;
+}
+
+.section-left {
+    float: right;
+}
+
+img {
+    display: block;
+}
+
+.i-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}

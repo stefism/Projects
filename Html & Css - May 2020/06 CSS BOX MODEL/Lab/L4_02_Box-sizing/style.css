@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box; /* Смята размера на елементите заедно с бордера и падинга. Общо. */
+}
+
+html {
+    box-sizing: inherit;
+}
+
+section {
+    width: 250px;
+    height: 250px;
+    border: dotted 3px green;
+    text-align: center;    
+}
+
+p {
+    border: 5px solid blue;
+    padding: 20px;
+    width: 100%;
+}

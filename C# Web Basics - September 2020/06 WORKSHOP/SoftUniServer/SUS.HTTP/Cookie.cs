@@ -6,6 +6,12 @@ namespace SUS.HTTP
 {
     public class Cookie
     {
+        public Cookie(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         public Cookie(string cookieAsString)
         {
             string[] cookieParts = cookieAsString.Split(new char[] { '=' }, 2);

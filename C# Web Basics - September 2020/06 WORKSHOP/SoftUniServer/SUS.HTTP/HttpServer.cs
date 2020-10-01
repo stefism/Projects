@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SUS.HTTP
 {
     public class HttpServer : IHttpServer
-    {        
+    {
         IDictionary<string, Func<HttpRequest, HttpResponse>>
             routeTable = new Dictionary<string, Func<HttpRequest, HttpResponse>>();
         public void AddRoute(string path, Func<HttpRequest, HttpResponse> action)
@@ -74,20 +74,33 @@ namespace SUS.HTTP
                     HttpRequest request = new HttpRequest(requestAsString);
 
                     Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count} headers.");
-                    
-                    string responseHtml = "<h1>Welcome</h1>"
-                        + request.Headers.FirstOrDefault(x => x.Name == "User-Agent")?.Value;
 
-                    byte[] responseBodyBytes = Encoding.UTF8.GetBytes(responseHtml);
+                    HttpResponse response;
+                    if (routeTable.ContainsKey(request.Path))
+                    {
+                        var action = routeTable[request.Path];
+                        response = action(request);
+                    }
+                    else
+                    {
+                        response = new HttpResponse("text/html", new byte[0], HttpStatusCode.NotFound);
+                    }
 
-                    var response = new HttpResponse("text/html", responseBodyBytes);
+                    response.Cookies
+                        .Add(new ResponceCookie("sid", Guid.NewGuid()
+                        .ToString())
+                        {
+                            HttpOnly = true,
+                            MaxAge = 60 * 24 * 60 * 60
+                        });
+
                     response.Headers
                         .Add(new Header("Server", "SUS Server 1.0"));
-                    
+
                     var responseHeaderBytes = Encoding.UTF8.GetBytes(response.ToString());
 
                     await stream.WriteAsync(responseHeaderBytes, 0, responseHeaderBytes.Length);
-                    await stream.WriteAsync(responseBodyBytes, 0, responseBodyBytes.Length);
+                    await stream.WriteAsync(response.Body, 0, response.Body.Length);
                 }
 
                 tcpClient.Close();
@@ -95,7 +108,7 @@ namespace SUS.HTTP
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }            
+            }
         }
     }
 }

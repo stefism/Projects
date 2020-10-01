@@ -1,6 +1,7 @@
 ﻿using SUS.HTTP;
-using System;
-using System.Net;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFirstMvcApp
@@ -9,7 +10,7 @@ namespace MyFirstMvcApp
     {
         static async Task Main(string[] args)
         {
-            IHttpServer server = new HttpServer();          
+            IHttpServer server = new HttpServer();
 
             server.AddRoute("/", HomePage);
             server.AddRoute("/favicon.ico", Favicon);
@@ -20,22 +21,45 @@ namespace MyFirstMvcApp
 
         static HttpResponse HomePage(HttpRequest request)
         {
-            throw new NotImplementedException();
+            string responseHtml = "<h1>Welcome</h1>"
+                + request.Headers.FirstOrDefault(x => x.Name == "User-Agent")?.Value;
+
+            byte[] responseBodyBytes = Encoding.UTF8.GetBytes(responseHtml);
+
+            HttpResponse response = new HttpResponse("text/html", responseBodyBytes);
+
+            return response;
         }
 
         static HttpResponse Favicon(HttpRequest request)
         {
-            throw new NotImplementedException();
+            byte[] fileBytes = File.ReadAllBytes("wwwroot/favicon.ico");
+
+            var responce = new HttpResponse("image/vnd.microsoft.icon", fileBytes);
+
+            return responce;
         }
 
         static HttpResponse About(HttpRequest request)
         {
-            throw new NotImplementedException();
+            string responseHtml = "<h1>About ...</h1>";
+
+            byte[] responseBodyBytes = Encoding.UTF8.GetBytes(responseHtml);
+
+            HttpResponse response = new HttpResponse("text/html", responseBodyBytes);
+
+            return response;
         }
 
         static HttpResponse Login(HttpRequest request)
         {
-            throw new NotImplementedException();
+            string responseHtml = "<h1>Login ...</h1>";
+
+            byte[] responseBodyBytes = Encoding.UTF8.GetBytes(responseHtml);
+
+            HttpResponse response = new HttpResponse("text/html", responseBodyBytes);
+
+            return response;
         }
     }
 }

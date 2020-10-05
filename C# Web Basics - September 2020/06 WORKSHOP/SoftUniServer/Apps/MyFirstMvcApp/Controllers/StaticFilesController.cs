@@ -1,5 +1,6 @@
 ﻿using SUS.HTTP;
 using SUS.MvcFramework;
+using System;
 using System.IO;
 
 namespace MyFirstMvcApp.Controllers
@@ -8,11 +9,27 @@ namespace MyFirstMvcApp.Controllers
     {
         public HttpResponse Favicon(HttpRequest request)
         {
-            byte[] fileBytes = File.ReadAllBytes("wwwroot/favicon.ico");
+            return File("wwwroot/favicon.ico", "image/vnd.microsoft.icon");     
+        }
 
-            var responce = new HttpResponse("image/vnd.microsoft.icon", fileBytes);
+        internal HttpResponse BootstrapCss(HttpRequest arg)
+        {
+            return File("wwwroot/css/bootstrap.min.css", "text/css");
+        }
 
-            return responce;
+        internal HttpResponse CustomCss(HttpRequest arg)
+        {
+            return File("wwwroot/css/custom.css", "text/css");
+        }
+
+        internal HttpResponse CustomJs(HttpRequest arg)
+        {
+            return File("wwwroot/js/custom.js", "text/javascript");
+        }
+
+        internal HttpResponse BootstrapJs(HttpRequest arg)
+        {
+            return File("wwwroot/js/bootstrap.bundle.min.js", "text/javascript");
         }
     }
 }

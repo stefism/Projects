@@ -7,17 +7,17 @@ namespace MyFirstMvcApp.Controllers
     {
         public HttpResponse Add(HttpRequest request)
         {
-            return View("Views/Cards/Add.html");
+            return View();
         }
 
         public HttpResponse All(HttpRequest request)
         {
-            return View("Views/Cards/All.html");
+            return View();
         }
 
         public HttpResponse Collection(HttpRequest request)
         {
-            return View("Views/Cards/Collection.html");
+            return View();
         }
     }
 }

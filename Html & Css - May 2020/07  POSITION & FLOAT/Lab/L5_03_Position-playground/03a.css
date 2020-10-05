@@ -1,0 +1,64 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    
+}
+
+body {
+    margin: 0;
+}
+
+.card {
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);       
+}
+
+.card::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    box-shadow: inset 0px 0px 20px 0px black;
+    border-radius: 5px;
+}
+
+.viewport {
+    position: relative;
+}
+
+.first-container {
+    background: linear-gradient(to right, #44a6f7, green);
+    height: 500px;   
+}
+
+.second-container {
+    background: linear-gradient(to right, rgb(247, 68, 202), rgb(238, 133, 14));
+    height: 500px;    
+}
+
+.lake img {
+    width: 300px;
+    border-radius: 5px;
+}
+
+.mountain img {
+    width: 300px;
+    border-radius: 5px;
+}
+
+.lake .fa, .mountain .fa {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+}
+

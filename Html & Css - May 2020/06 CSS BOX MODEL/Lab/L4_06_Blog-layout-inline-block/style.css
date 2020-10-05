@@ -1,6 +1,7 @@
 body {
     background-color: rgb(238, 238, 238);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    margin: 0 auto;
 }
 
 article {    
@@ -10,16 +11,16 @@ article {
 .inline {
     display: inline-block;
     /* border: 2px solid black; */
-    max-width: 700px;
+    max-width: 65%;
     vertical-align: top;
 }
 
 .small {
-    max-width: 400px;
+    max-width: 30%;
 }
 
 img {
-    width: 400px;
+    width: 40%;
 }
 
 p {

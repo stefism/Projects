@@ -1,0 +1,47 @@
+img {
+    width: 30%;
+    position: absolute;
+    top: 5rem;
+    left: 15rem;
+}
+
+#frame1, #frame2 {
+    border: 2px solid black;
+    display: block;
+    width: 90%;
+    height: 20rem;
+    align-content: center;
+    position: relative;
+}
+
+#container1 {
+    position: relative;
+    /* display: inline; */
+    
+}
+
+section {
+    position: relative;
+}
+
+#icon-link {
+    position: relative;
+    color: white;
+    top: 12rem;
+    left: 450px;
+
+}
+
+#frame2 {
+    height: 500px;
+    background-image: linear-gradient(to right, rgb(223, 10, 127) , rgb(255, 196, 0));
+}
+
+#frame1 {
+    background-image: linear-gradient(to right, rgb(10, 127, 223) , rgb(0, 255, 191));
+}
+
+#img1, #img2 {
+    box-shadow: 0 4px 8px 0 rgba(5, 5, 5, 0.383), 0 6px 20px 0 rgba(0, 0, 0, 0.657);
+
+}

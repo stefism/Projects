@@ -1,0 +1,94 @@
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Helvetica, sans-serif;
+    background-color: rgb(238, 238, 238);
+}
+
+body {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+main {
+    max-width: 75%;
+    display: inline-block;
+}
+
+aside {
+    display: inline-block;
+    max-width: 20%;
+    vertical-align: top;
+}
+
+.ul-right a {
+    text-decoration: none;
+    color: green;
+}
+
+h3 {
+    font-family: Georgia, serif;
+    
+    line-height: 1.2;
+    margin-bottom: -5px;
+}
+
+.site-title {
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+header {
+    border-bottom: 2px solid black;
+    font-family: Georgia, serif;
+    
+    line-height: 1.2;
+}
+
+img {
+    display: block;
+    border: 2px solid black;
+    margin: 10px;    
+    padding: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.25);
+}
+
+.heading {
+    font-family: Georgia, serif;
+    
+    line-height: 1.2;
+}
+
+.float-right {   
+    float: right;
+    
+}
+
+p {
+    text-align: justify;
+}
+
+.p-right {
+    float: right;
+    max-width: 40%;
+    border-left:  2px solid black;
+    padding-left: 20px;
+    margin-left: 20px;
+    font-style: oblique;
+    font-family: Georgia, serif;    
+}
+
+.p-right p {
+    text-align: left;
+}
+
+#text-right {
+    text-align: right;
+}
+
+.img-float-left {
+    float: left;
+}

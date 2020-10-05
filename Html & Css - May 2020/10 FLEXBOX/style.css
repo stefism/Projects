@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: flex-start; */
+    justify-content: center;
+    /* align-items: flex-start; */
+    /* Манипулира елементите по противоположната ос.  */
+    align-items: center;
+}
+
+.child {
+    min-height: 100px;
+    min-width: 100px;
+    background: burlywood;
+    margin: 10px;
+}
+
+#i1 {
+    min-height: 150px;
+}
+

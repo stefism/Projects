@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SUS.MvcFramework
+namespace SUS.HTTP
 {
     public class Route
     {

@@ -1,5 +1,7 @@
 ﻿using MyFirstMvcApp.Controllers;
 using SUS.HTTP;
+using SUS.MvcFramework;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyFirstMvcApp
@@ -8,16 +10,23 @@ namespace MyFirstMvcApp
     {
         static async Task Main(string[] args)
         {
-            IHttpServer server = new HttpServer();
+            List<Route> routeTable = new List<Route>();
+            routeTable.Add(new Route
+                ("/", new HomeController().Index));
+            routeTable.Add(new Route
+                ("/favicon.ico", new StaticFilesController().Favicon));
+            routeTable.Add(new Route
+                ("/users/login", new UsersController().Login));
+            routeTable.Add(new Route
+                ("/users/register", new UsersController().Register));
+            routeTable.Add(new Route
+                ("/cards/all", new CardsController().All));
+            routeTable.Add(new Route
+                ("/cards/add", new CardsController().Add));
+            routeTable.Add(new Route
+                ("/cards/collection", new CardsController().Collection));
 
-            server.AddRoute("/", new HomeController().Index);
-            server.AddRoute("/favicon.ico", new StaticFilesController().Favicon);
-            server.AddRoute("/about", new HomeController().About);
-            server.AddRoute("/users/login", new UsersController().Login);
-            server.AddRoute("/users/register", new UsersController().Register);
-
-            //Process.Start(@"C:\Program Files\Opera\launcher.exe", "http://localhost");
-            await server.StartAsync(80);
+            await Host.CreateHostAsync(routeTable, 80);
         }
     }
 }

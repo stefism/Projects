@@ -10,12 +10,12 @@ namespace SUS.MvcFramework
         public HttpResponse View
             ([CallerMemberName]string viewPath = null)
         {
-            var layout = System.IO.File.ReadAllText("Views/Shared/_Layout.html");
+            var layout = System.IO.File.ReadAllText("Views/Shared/_Layout.cshtml");
 
             string viewContent = System.IO.File
                 .ReadAllText("Views/" + 
                 GetType().Name.Replace("Controller", string.Empty) 
-                + "/" + viewPath + ".html");
+                + "/" + viewPath + ".cshtml");
 
             var responseHtml = layout
                 .Replace("@RenderBody()", viewContent);
@@ -34,6 +34,18 @@ namespace SUS.MvcFramework
             var responce = new HttpResponse(contentType, fileBytes);
 
             return responce;
+        }
+
+        public HttpResponse Redirect(string url)
+        {
+            var response = new HttpResponse(HttpStatusCode.Found);
+            //HttpStatusCode.Found = 302. 
+            //При 302: POST -> 302 -> GET
+            //HttpStatusCode.TemporaryRedirect = 307
+            //При 307: POST -> 307 -> POST
+
+            response.Headers.Add(new Header("Location", url));
+            return response;
         }
     }
 }

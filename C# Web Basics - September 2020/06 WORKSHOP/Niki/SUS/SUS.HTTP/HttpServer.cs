@@ -16,19 +16,17 @@ namespace SUS.HTTP
         public HttpServer(List<Route> routeTable)
         {
             this.routeTable = routeTable;
-        }     
+        }
 
-        public async Task StartAsync(int port = 80)
+        public async Task StartAsync(int port)
         {
             TcpListener tcpListener =
                 new TcpListener(IPAddress.Loopback, port);
             tcpListener.Start();
-
             while (true)
             {
                 TcpClient tcpClient = await tcpListener.AcceptTcpClientAsync();
                 ProcessClientAsync(tcpClient);
-
             }
         }
 
@@ -38,20 +36,19 @@ namespace SUS.HTTP
             {
                 using (NetworkStream stream = tcpClient.GetStream())
                 {
+                    // TODO: research if there is faster data structure for array of bytes
                     List<byte> data = new List<byte>();
-
                     int position = 0;
-
-                    byte[] buffer = new byte[HttpConstants.BufferSize];
-
+                    byte[] buffer = new byte[HttpConstants.BufferSize]; // chunk
                     while (true)
                     {
-                        int count = await stream.ReadAsync(buffer, position, buffer.Length);
+                        int count =
+                            await stream.ReadAsync(buffer, position, buffer.Length);
                         position += count;
 
                         if (count < buffer.Length)
                         {
-                            byte[] partialBuffer = new byte[count];
+                            var partialBuffer = new byte[count];
                             Array.Copy(buffer, partialBuffer, count);
                             data.AddRange(partialBuffer);
                             break;
@@ -62,49 +59,36 @@ namespace SUS.HTTP
                         }
                     }
 
-                    string requestAsString = Encoding.UTF8.GetString(data.ToArray());
-
-                    HttpRequest request = new HttpRequest(requestAsString);
-
-                    Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count} headers.");
+                    // byte[] => string (text)
+                    var requestAsString = Encoding.UTF8.GetString(data.ToArray());
+                    var request = new HttpRequest(requestAsString);
+                    Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count} headers");
 
                     HttpResponse response;
-
-                    var route = routeTable
-                        .FirstOrDefault(x => string
-                        .Compare(x.Path, request.Path, true) == 0 
-                        && x.Method == request.Method); 
-                    //Сравняваме без значение дали буквите са малки или големи (true). Понеже метода (IComparable) връща -1 ако е по-малко, +1 ако е по-голямо и 0 ако са равни, затова накрая му даваме 0, защото искаме да съвпадат двата стринга.
-
+                    var route = this.routeTable.FirstOrDefault(
+                        x => string.Compare(x.Path, request.Path, true) == 0
+                            && x.Method == request.Method);
                     if (route != null)
-                    {                       
+                    {
                         response = route.Action(request);
                     }
                     else
                     {
+                        // Not Found 404
                         response = new HttpResponse("text/html", new byte[0], HttpStatusCode.NotFound);
                     }
 
-                    response.Cookies
-                        .Add(new ResponceCookie("sid", Guid.NewGuid()
-                        .ToString())
-                        {
-                            HttpOnly = true,
-                            MaxAge = 60 * 24 * 60 * 60
-                        });
-
-                    response.Headers
-                        .Add(new Header("Server", "SUS Server 1.0"));
-
+                    response.Cookies.Add(new ResponseCookie("sid", Guid.NewGuid().ToString())
+                    { HttpOnly = true, MaxAge = 60 * 24 * 60 * 60 });
+                    response.Headers.Add(new Header("Server", "SUS Server 1.0"));
                     var responseHeaderBytes = Encoding.UTF8.GetBytes(response.ToString());
-
                     await stream.WriteAsync(responseHeaderBytes, 0, responseHeaderBytes.Length);
                     await stream.WriteAsync(response.Body, 0, response.Body.Length);
                 }
 
                 tcpClient.Close();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine(ex);
             }

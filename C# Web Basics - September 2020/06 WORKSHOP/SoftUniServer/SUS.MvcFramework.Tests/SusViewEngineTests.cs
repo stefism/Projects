@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Xunit;
 
 namespace SUS.MvcFramework.Tests
@@ -20,10 +21,13 @@ namespace SUS.MvcFramework.Tests
             };
 
             IViewEngine viewEngine = new SusViewEngine();
-            var result = viewEngine.GetHtml(...., viewModel);
-            Assert.Equal(...., result);
 
-            string view = @"";
+            var view = File.ReadAllText($"ViewTests/{fileName}.html");
+            var result = viewEngine.GetHtml(view, viewModel);
+            var expectedResult = File.ReadAllText($"ViewTests/{fileName}.Result.html");
+            Assert.Equal(expectedResult, result); //view, result???
+
+            //string view = @"";
         }
 
         public class TestViewModel

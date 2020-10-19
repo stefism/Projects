@@ -53,7 +53,7 @@ namespace Suls.Controllers
                 return Error("This username already exist.");
             }
 
-            if (string.IsNullOrEmpty(inputModel.Email) 
+            if (string.IsNullOrEmpty(inputModel.Email)
                 || !new EmailAddressAttribute().IsValid(inputModel.Email))
             {
                 return Error("Invalid email.");

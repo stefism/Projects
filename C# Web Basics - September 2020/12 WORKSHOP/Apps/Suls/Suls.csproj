@@ -23,11 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Submissions\" />
-    <Folder Include="ViewModels\Problems\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Views\Error.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

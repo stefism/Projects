@@ -10,6 +10,8 @@ namespace Suls.Services
     {
         void CreateProblem(string name, ushort points);
 
-        IEnumerable<HomePageProblemViewModel> ListAllProblemsOnHomePage();       
+        IEnumerable<HomePageProblemViewModel> ListAllProblemsOnHomePage();
+
+        IEnumerable<ProblemDetailsViewModel> ProblemDetails(string id);
     }
 }

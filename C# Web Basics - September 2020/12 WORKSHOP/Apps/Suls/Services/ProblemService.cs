@@ -25,7 +25,7 @@ namespace Suls.Services
 
             db.Problems.Add(problem);
             db.SaveChanges();
-        }      
+        }
 
         public IEnumerable<HomePageProblemViewModel> ListAllProblemsOnHomePage()
         {
@@ -35,6 +35,38 @@ namespace Suls.Services
                 Name = x.Name,
                 Count = x.Submissions.Count()
             }).ToList();
+        }
+
+        public IEnumerable<ProblemDetailsViewModel> ProblemDetails(string id)
+        {
+            var problems = db.Submissions
+                .Where(s => s.Problem.Id == id).Select(s => new ProblemDetailsViewModel
+                {
+                    Name = s.Problem.Name,
+                    Username = s.User.Username,
+                    MaxPoints = s.Problem.Points,
+                    AchievedResult = s.AchievedResult,
+                    CreatedOn = s.CreatedOn.ToString("dd/MM/yyyy"),
+                    SubmissionId = s.Id
+                }).ToList();
+
+            if (problems.Count() == 0)
+            {
+                return new List<ProblemDetailsViewModel>
+                {
+                    new ProblemDetailsViewModel
+                    {
+                        Name = "---",
+                        Username = "---",
+                        MaxPoints = 0,
+                        AchievedResult = 0,
+                        CreatedOn = "---",
+                        SubmissionId = "---"
+                    }
+                }.ToList();
+            }
+
+            return problems;
         }
     }
 }

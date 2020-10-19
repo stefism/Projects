@@ -1,9 +1,9 @@
 ﻿using Suls.Services;
+using Suls.ViewModels.Problems;
 using SUS.HTTP;
 using SUS.MvcFramework;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Suls.Controllers
 {
@@ -37,6 +37,13 @@ namespace Suls.Controllers
             problemService.CreateProblem(name, points);
 
             return Redirect("/");
+        }
+
+        public HttpResponse Details(string id)
+        {
+            var problems = problemService.ProblemDetails(id);
+                        
+            return View(problems);
         }
     }
 }

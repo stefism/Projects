@@ -7,6 +7,10 @@ namespace Suls.Services
     {
         Problem GetProblemById(string id);
 
-        void CreateSubmission(string ProblemId, string code, string userId, ushort achievedResult);
+        void CreateSubmission(string ProblemId, string code, string userId, ushort achievedResult); // Me
+
+        void DeleteSubmissions(string id);
+
+        void Create(string problemId, string userId, string code); //Lector
     }
 }

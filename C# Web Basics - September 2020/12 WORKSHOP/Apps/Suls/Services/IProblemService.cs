@@ -13,5 +13,9 @@ namespace Suls.Services
         IEnumerable<HomePageProblemViewModel> ListAllProblemsOnHomePage();
 
         IEnumerable<ProblemDetailsViewModel> ProblemDetails(string id);
+
+        string GetNameById(string id); //Lector sample
+
+        public ProblemViewModel GetById(string id); //Lector sample
     }
 }

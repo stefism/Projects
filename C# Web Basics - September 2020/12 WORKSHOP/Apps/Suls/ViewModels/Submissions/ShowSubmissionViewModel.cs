@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Suls.ViewModels.Submissions
+﻿namespace Suls.ViewModels.Submissions
 {
     public class ShowSubmissionViewModel
     {

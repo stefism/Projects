@@ -2,6 +2,7 @@
 using Suls.ViewModels.Problems;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Suls.Services
 {
@@ -27,6 +28,16 @@ namespace Suls.Services
             db.SaveChanges();
         }
 
+        public string GetNameById(string id) //Lector
+        {
+            return db.Problems
+                .Where(x => x.Id == id).Select(x => x.Name)
+                .FirstOrDefault();            
+
+            //var problem = db.Problems.FirstOrDefault(x => x.Id == id);
+            //return problem?.Name;
+        }
+
         public IEnumerable<HomePageProblemViewModel> ListAllProblemsOnHomePage()
         {
             return db.Problems.Select(x => new HomePageProblemViewModel
@@ -37,7 +48,26 @@ namespace Suls.Services
             }).ToList();
         }
 
-        public IEnumerable<ProblemDetailsViewModel> ProblemDetails(string id)
+        public ProblemViewModel GetById(string id) //Lector
+        {
+            var problem = db.Problems.Where(p => p.Id == id)
+                .Select(p => new ProblemViewModel
+                {
+                    Name = p.Name,
+                    Submissions = p.Submissions.Select(s => new SubmissionViewModel
+                    {
+                        CreatedOn = s.CreatedOn,
+                        SubmissionId = s.Id,
+                        AchievedResult = s.AchievedResult,
+                        Username = s.User.Username,
+                        MaxPoints = p.Points
+                    })
+                }).FirstOrDefault();
+
+            return problem;
+        }
+
+        public IEnumerable<ProblemDetailsViewModel> ProblemDetails(string id) // Me
         {
             var problems = db.Submissions
                 .Where(s => s.Problem.Id == id).Select(s => new ProblemDetailsViewModel

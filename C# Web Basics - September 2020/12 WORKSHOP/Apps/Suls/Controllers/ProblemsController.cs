@@ -18,12 +18,22 @@ namespace Suls.Controllers
 
         public HttpResponse Create()
         {
+            if (!IsUserSignedIn())
+            {
+                return Redirect("/Users/Login");
+            }
+
             return View();
         }
 
         [HttpPost]
         public HttpResponse Create(string name, ushort points)
         {
+            if (!IsUserSignedIn())
+            {
+                return Redirect("/Users/Login");
+            }
+
             if (string.IsNullOrEmpty(name) || name.Length < 5 || name.Length > 20)
             {
                 return Error("Name should be between 5 and 20 characters.");
@@ -39,8 +49,21 @@ namespace Suls.Controllers
             return Redirect("/");
         }
 
+
+        public HttpResponse Details_lector(string id)
+        {
+            var viewModel = problemService.GetById(id);
+
+            return View(viewModel);
+        }
+
         public HttpResponse Details(string id)
         {
+            if (!IsUserSignedIn())
+            {
+                return Redirect("/Users/Login");
+            }
+
             var problems = problemService.ProblemDetails(id);
                         
             return View(problems);

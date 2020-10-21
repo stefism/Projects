@@ -23,7 +23,7 @@ namespace SharedTrip.Data
 
         public DateTime DepartureTime { get; set; } // (use format: "dd.MM.yyyy HH:mm")
 
-        public ushort Seats { get; set; }
+        public ushort Seats { get; set; } //Byte -> 0 - 256
 
         [Required, MaxLength(80)]
         public string Description { get; set; }

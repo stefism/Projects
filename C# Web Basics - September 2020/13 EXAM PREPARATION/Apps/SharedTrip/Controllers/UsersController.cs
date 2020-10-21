@@ -1,10 +1,7 @@
 ﻿using SharedTrip.Services;
 using SUS.HTTP;
 using SUS.MvcFramework;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace SharedTrip.Controllers
 {
@@ -19,12 +16,22 @@ namespace SharedTrip.Controllers
 
         public HttpResponse Login()
         {
+            if (IsUserSignedIn())
+            {
+                return Redirect("/");
+            }
+
             return View();
         }
 
         [HttpPost]
         public HttpResponse Login(string username, string password)
         {
+            if (IsUserSignedIn())
+            {
+                return Redirect("/");
+            }
+
             var userId = userService.GetUserId(username, password);
 
             if (userId == null)
@@ -33,18 +40,28 @@ namespace SharedTrip.Controllers
             }
 
             SignIn(userId);
-            
+
             return Redirect("/Trips/All");
         }
 
         public HttpResponse Register()
         {
+            if (IsUserSignedIn())
+            {
+                return Redirect("/");
+            }
+
             return View();
         }
 
         [HttpPost]
-        public HttpResponse Register(string username, string email, string password,  string confirmPassword)
+        public HttpResponse Register(string username, string email, string password, string confirmPassword)
         {
+            if (IsUserSignedIn())
+            {
+                return Redirect("/");
+            }
+
             if (string.IsNullOrEmpty(username) || username.Length < 5 || username.Length > 20)
             {
                 return Error("Invalid username. Username should be between 5 and 20 characters.");
@@ -78,6 +95,17 @@ namespace SharedTrip.Controllers
             userService.CreateUser(username, password, email);
 
             return Redirect("/Users/Login");
+        }
+
+        public HttpResponse Logout()
+        {
+            if (!IsUserSignedIn())
+            {
+                return Redirect("/");
+            }
+
+            SignOut();
+            return Redirect("/");
         }
     }
 }

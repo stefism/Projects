@@ -56,7 +56,8 @@ namespace SharedTrip.Services
         {
             return db.Users
                 .Where(u => u.Username == username && u.Password == ComputeHash(password))
-                .Select(u => u.Id).FirstOrDefault();            
+                .Select(u => u.Id).FirstOrDefault();
+            //user?.id
         }
     }
 }

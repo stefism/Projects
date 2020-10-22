@@ -2,13 +2,13 @@
 
 namespace SharedTrip.ViewModels
 {
-    public class AddTripViewModel
+    public class AddTripInputModel
     {
         public string StartPoint { get; set; }
 
         public string EndPoint { get; set; }
 
-        public DateTime DepartureTime { get; set; }
+        public string DepartureTime { get; set; }
 
         public string ImagePath { get; set; }
 

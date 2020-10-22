@@ -5,7 +5,7 @@ namespace SharedTrip.Services
 {
     public interface ITripService
     {
-        void AddTrip(AddTripViewModel model);
+        void AddTrip(AddTripInputModel model);
 
         ICollection<AllTripsViewModel> ShowTrips();
 

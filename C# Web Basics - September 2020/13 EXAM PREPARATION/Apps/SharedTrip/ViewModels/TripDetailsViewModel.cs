@@ -14,6 +14,9 @@ namespace SharedTrip.ViewModels
 
         public DateTime DepartureTime { get; set; }
 
+        public string DepartureTimeAsLocal
+            => DepartureTime.ToString("s");
+
         public ushort Seats { get; set; }
 
         public string Description { get; set; }

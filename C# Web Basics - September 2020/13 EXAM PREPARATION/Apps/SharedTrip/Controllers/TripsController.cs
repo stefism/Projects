@@ -2,6 +2,8 @@
 using SharedTrip.ViewModels;
 using SUS.HTTP;
 using SUS.MvcFramework;
+using System;
+using System.Globalization;
 
 namespace SharedTrip.Controllers
 {
@@ -37,7 +39,7 @@ namespace SharedTrip.Controllers
         }
 
         [HttpPost]
-        public HttpResponse Add(AddTripViewModel model)
+        public HttpResponse Add(AddTripInputModel model)
         {
             if (string.IsNullOrEmpty(model.StartPoint))
             {
@@ -49,10 +51,18 @@ namespace SharedTrip.Controllers
                 return Error("End point is required field. Please enter the end point.");
             }
 
-            //if (new DateTimeFormat("dd.MM.yyyy HH:mm").ToString() != model.DepartureTime.ToString())
-            //{
-            //    return Error("Date/Time should be in format dd.MM.yyyy HH:mm");
-            //}
+            if (!DateTime.TryParseExact(model.DepartureTime, 
+                "dd.MM.yyyy HH:mm", 
+                CultureInfo.InvariantCulture, 
+                DateTimeStyles.None, out _))
+            {
+                return Error("Invalid date/time format. Please use ''dd.MM.yyyy HH:mm''");
+            }
+
+            if (!Uri.TryCreate(model.ImagePath, UriKind.Absolute, out _))
+            {
+                return Error("Image Url is not valid. Please enter valid Url.");
+            }
 
             if (model.Seats < 2 || model.Seats > 6)
             {
@@ -90,7 +100,7 @@ namespace SharedTrip.Controllers
 
             if (tripService.IsUserTripExist(tripId, GetUserId()))
             {
-                return Redirect("/Trips/Details");
+                return Redirect($"/Trips/Details?tripId={tripId}"); // /Trips/Details - not work
             }
 
             tripService.AddUserToTrip(tripId, GetUserId());

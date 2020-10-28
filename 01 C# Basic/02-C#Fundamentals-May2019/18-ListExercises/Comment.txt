@@ -1,0 +1,20 @@
+
+-----
+gosho, pesho, ivan, dragan
+Exercise:gosho
+Swap:gosho:dragan
+course start
+
+работи
+----
+gosho, pesho, ivan, dragan
+Exercise:gosho
+Swap:dragan:gosho
+course start
+----
+gosho, pesho, ivan, dragan
+Exercise:pesho
+Insert:Proba:0
+Exercise:ivan
+Swap:pesho:ivan
+course start

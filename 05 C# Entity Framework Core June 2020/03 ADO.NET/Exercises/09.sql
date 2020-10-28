@@ -1,0 +1,20 @@
+SELECT COUNT(*) 
+ FROM MinionsDB.INFORMATION_SCHEMA.ROUTINES
+ WHERE ROUTINE_TYPE = 'PROCEDURE' AND SPECIFIC_NAME = 'usp_GetOlder'
+
+SELECT * FROM Minions
+
+GO
+
+CREATE PROC usp_GetOlder(@MinionId INT)
+AS
+	UPDATE Minions
+	SET Age = Age + 1
+	WHERE Id = @MinionId
+GO
+
+EXEC usp_GetOlder 2
+
+SELECT [Name], Age
+FROM Minions
+WHERE Id = 2

@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Models", "PetStore.Models\PetStore.Models.csproj", "{BE7E08B6-B0C8-4259-ACEB-965C339302EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Data", "PetStore.Data\PetStore.Data.csproj", "{8B631747-E5FF-478C-BA1B-3DFF0BA77766}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Common", "PetStore.Common\PetStore.Common.csproj", "{FFF997C7-EE0C-4FB8-A1D3-202D165BA06E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.ConsoleApp", "PetStore.ConsoleApp\PetStore.ConsoleApp.csproj", "{2C2642DD-5D0B-48EF-842B-C5E38AB61BC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Services", "PetStore.Services\PetStore.Services.csproj", "{414A933B-3CE7-44A6-B947-82872A774098}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Mapping", "PetStore.Mapping\PetStore.Mapping.csproj", "{9A50D8C1-C290-4C1C-AB86-B102E0000956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.Web", "PetStore.Web\PetStore.Web.csproj", "{62B3CD1D-109B-4549-96FA-E4AD83F7D705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE7E08B6-B0C8-4259-ACEB-965C339302EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7E08B6-B0C8-4259-ACEB-965C339302EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7E08B6-B0C8-4259-ACEB-965C339302EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7E08B6-B0C8-4259-ACEB-965C339302EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B631747-E5FF-478C-BA1B-3DFF0BA77766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B631747-E5FF-478C-BA1B-3DFF0BA77766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B631747-E5FF-478C-BA1B-3DFF0BA77766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B631747-E5FF-478C-BA1B-3DFF0BA77766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF997C7-EE0C-4FB8-A1D3-202D165BA06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF997C7-EE0C-4FB8-A1D3-202D165BA06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF997C7-EE0C-4FB8-A1D3-202D165BA06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF997C7-EE0C-4FB8-A1D3-202D165BA06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2642DD-5D0B-48EF-842B-C5E38AB61BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2642DD-5D0B-48EF-842B-C5E38AB61BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2642DD-5D0B-48EF-842B-C5E38AB61BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2642DD-5D0B-48EF-842B-C5E38AB61BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414A933B-3CE7-44A6-B947-82872A774098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414A933B-3CE7-44A6-B947-82872A774098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414A933B-3CE7-44A6-B947-82872A774098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414A933B-3CE7-44A6-B947-82872A774098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A50D8C1-C290-4C1C-AB86-B102E0000956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A50D8C1-C290-4C1C-AB86-B102E0000956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A50D8C1-C290-4C1C-AB86-B102E0000956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A50D8C1-C290-4C1C-AB86-B102E0000956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B3CD1D-109B-4549-96FA-E4AD83F7D705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B3CD1D-109B-4549-96FA-E4AD83F7D705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B3CD1D-109B-4549-96FA-E4AD83F7D705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B3CD1D-109B-4549-96FA-E4AD83F7D705}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0373BAA-E304-4C29-AE9E-98F506C6A287}
+	EndGlobalSection
+EndGlobal

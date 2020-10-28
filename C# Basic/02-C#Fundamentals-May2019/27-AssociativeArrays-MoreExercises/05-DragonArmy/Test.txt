@@ -1,5 +1,0 @@
-5
-Red Bazgargal 100 2500 25
-Red Dargonax 200 3500 18
-Red Bazgargal 220 2200 35
-Black Dargonax 200 3500 18

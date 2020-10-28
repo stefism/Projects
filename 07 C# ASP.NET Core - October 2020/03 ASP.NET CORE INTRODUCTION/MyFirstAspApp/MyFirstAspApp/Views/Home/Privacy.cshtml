@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<table class="table table-hover table-sm">
+    @for (int i = 0; i < 100; i++)
+    {
+        <tr>
+            <th>@i</th>
+            <th>@(i * 2)</th>
+            <th>@(i + "Number") </th>
+        </tr>
+    }
+</table>

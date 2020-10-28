@@ -1,0 +1,5 @@
+﻿1. Stacks and Queues - Exercise 07 TruckTour - да я дебъгна и да разбера как действа. Да си изясня супер добре как действа.
+
+2. Multidimensional Arrays - Exercise 10. Radioactive Mutant Vampire Bunnies - дава 40 от 100. Да видя защо.
+
+3. 10та задача от функционалното програмиране  упражненията да реша.

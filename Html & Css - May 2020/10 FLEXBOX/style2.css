@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+ul a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background-color: lightgray;
+    border-bottom: 2px solid darkblue;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+nav li {
+    margin-right: 15px;
+}
+
+.logo {
+    font-size: 40px;
+}
+
+.login {
+    border-radius: 5px;
+    background: white;
+    border: 0;
+    padding: 10px;
+}
+
+.main-div-aside-container {
+    display: flex;
+    padding: 5px 40px 0 40px;
+
+    align-items: stretch; /*Това е по дефолт. Ако не е написано е така. Така асайд елемента се простира надолу, колкото е дължината на секцията с текста. Ако му дадеме align-items: flex-start ще се простира колкото си е голям самият той.*/
+    align-items: flex-start;
+}
+
+.main-div-aside-container aside {
+    order: -1;
+    flex: 0 1 20%;
+    /* Syntax: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */ /* Да не гроува допълнително, ако няма място да се свие и да започва от 20% */
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.main-div-aside-container main {
+    flex: 1; /*Разшири се колкото можеш в празното пространство, което ти е останало от този .main-div-aside-container. */
+}

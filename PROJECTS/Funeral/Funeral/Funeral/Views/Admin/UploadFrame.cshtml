@@ -1,0 +1,13 @@
+﻿@{ 
+    ViewData["Title"] = "Качване на рамка";
+}
+
+<h1>Качване на нова рамка</h1>
+<hr />
+
+<form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="UploadFrame">
+    <input type="file" name="imgFile" />
+    <input type="submit"  value="Upload image Files" />
+    <hr />
+    <h4>@ViewData["Message"]</h4>
+</form>

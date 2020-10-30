@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Funeral.App.Services;
+using Funeral.App.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,38 +13,31 @@ namespace Funeral.Web.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IWebHostEnvironment webHost;
+        private readonly IFileService fileService;
 
-        public AdminController(IWebHostEnvironment webHost)
+        public AdminController(IFileService fileService)
         {
-            this.webHost = webHost;
+            this.fileService = fileService;
         }
 
         public IActionResult UploadFrame()
         {
-            return View();
+            var model = new UploadFilesViewModel();
+            model.UploadMessage = "Изберете файл за качване.";
+            
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> UploadFrame(IFormFile imgFile)
         {
-            string imagePath = Path.Combine(webHost.WebRootPath, "Pictures/Frames", imgFile.FileName);
+            var filePath = "/Pictures/Frames/" + imgFile.FileName;
 
-            string imageExt = Path.GetExtension(imgFile.FileName);
+            var model = await fileService.UploadFile(imgFile);
 
-            if (imageExt != ".jpg" || imageExt != ".png" || imageExt != ".gif")
-            {
-                ViewData["Message"] = "Невалиден файлов формат. Можете да качвате само .jpg, .png и .gif файлове!";
-            }
+            fileService.SaveFramePathToDb(filePath);
 
-            using (var uploadImage = new FileStream(imagePath, FileMode.Create))
-            {
-                await imgFile.CopyToAsync(uploadImage);
-                
-                ViewData["Message"] = "Рамката " + imgFile.FileName + " е качена успешно.";
-            }
-
-            return View();
+            return RedirectToAction("MakeIt", "MakeIt");           
         }
     }
 }

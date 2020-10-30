@@ -1,13 +1,25 @@
-﻿@{ 
-    ViewData["Title"] = "Качване на рамка";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Направи си</title>
+    <link rel="stylesheet" href="~/css/Upload.css">
+</head>
 
-<h1>Качване на нова рамка</h1>
-<hr />
-
-<form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="UploadFrame">
-    <input type="file" name="imgFile" />
-    <input type="submit"  value="Upload image Files" />
+<body>
+    <h1>Качване на нова рамка</h1>
+    <h4>Можете да качвате само файлове с разширение .jpg, .png и .gif.</h4>
     <hr />
-    <h4>@ViewData["Message"]</h4>
-</form>
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="UploadFrame">
+        <input id="inputBtn" type="file" name="imgFile" />
+        <input id="uploadBtn" type="submit" value="Качи файл." />
+        <hr />
+
+        <h4>@Model.UploadMessage</h4>
+    </form>
+</body>
+</html>
+
+
+
+

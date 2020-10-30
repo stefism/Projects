@@ -10,9 +10,20 @@
     <aside id="menu-items">
 
         <ul>
-            <li><a href="#frames">рамки</a></li>
-            <li><a href="#texts">текстове</a></li>
-            <li><a href="#crosses">кръстове</a></li>
+            <li><a href="#frames">Рамки</a></li>
+            <li><a href="#texts">Текстове</a></li>
+            <li><a href="#crosses">Кръстове</a></li>
+            @if (User.Identity.Name == "stef4otm@gmail.com")
+            {
+                  <div class="dropdown">
+                      <button class="dropbtn">Администрация</button>
+                      <div class="dropdown-content">
+                          <a href="/Admin/UploadFrame">Качване на рамка</a>
+                          <a href="#">Всички рамки</a>
+                          <a href="#">Качване на кръст</a>
+                      </div>
+                  </div>
+            }
         </ul>
 
     </aside>

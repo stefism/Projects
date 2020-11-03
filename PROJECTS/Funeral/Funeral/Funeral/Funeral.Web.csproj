@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Pictures\Frames\" />
     <Folder Include="wwwroot\Pictures\Crosses\" />
   </ItemGroup>
 

@@ -48,7 +48,7 @@ namespace Funeral.Web.Controllers
             var filePath = "/Pictures/Frames/" + imgFile.FileName;
             var targetDirectory = "Pictures/Frames";
 
-            var model = await fileService.UploadFile(imgFile, targetDirectory);
+            await fileService.UploadFile(imgFile, targetDirectory);
 
             fileService.SaveFramePathToDb(filePath);
 
@@ -61,7 +61,7 @@ namespace Funeral.Web.Controllers
             var filePath = "/Pictures/Crosses/" + imgFile.FileName;
             var targetDirectory = "Pictures/Crosses";
 
-            var model = await fileService.UploadFile(imgFile, targetDirectory);
+            await fileService.UploadFile(imgFile, targetDirectory);
 
             fileService.SaveCrossPathToDb(filePath);
 

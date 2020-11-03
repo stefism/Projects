@@ -44,28 +44,22 @@ namespace Funeral.App.Services
             db.SaveChanges();
         }
 
-        public async Task<UploadFrameFilesViewModel>  UploadFile(IFormFile imgFile, string targetDirectory)
-        {
-            var message = new UploadFrameFilesViewModel();
-
+        public async Task UploadFile(IFormFile imgFile, string targetDirectory)
+        {            
             string imagePath = Path.Combine(webHost.WebRootPath, targetDirectory, imgFile.FileName);
             // -> "Pictures/Frames"
 
             string imageExt = Path.GetExtension(imgFile.FileName);
 
-            if (imageExt != ".jpg" || imageExt != ".png" || imageExt != ".gif")
+            if (imageExt != ".jpg" && imageExt != ".png" && imageExt != ".gif")
             {
-                message.UploadMessage = "Невалиден файлов формат. Можете да качвате само .jpg, .png и .gif файлове!";               
+                return; //TOTO: Implement Error message!               
             }
 
             using (var uploadImage = new FileStream(imagePath, FileMode.Create))
             {
-                await imgFile.CopyToAsync(uploadImage);
-
-                message.UploadMessage = $"Рамката {imgFile.FileName} е качена успешно.";
-            }
-
-            return message;
+                await imgFile.CopyToAsync(uploadImage);                
+            }          
         }
     }
 }

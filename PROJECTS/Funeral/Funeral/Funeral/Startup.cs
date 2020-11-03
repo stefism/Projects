@@ -42,6 +42,7 @@ namespace Funeral
 
             services.AddTransient<IFramesService, FramesService>();
             services.AddTransient<IFileService, FileService>();
+            services.AddTransient<ICrossesService, CrossesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

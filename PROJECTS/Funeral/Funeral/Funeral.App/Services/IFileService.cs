@@ -10,8 +10,10 @@ namespace Funeral.App.Services
 {
     public interface IFileService
     {
-        public Task<UploadFilesViewModel> UploadFile(IFormFile imgFile);
+        public Task<UploadFrameFilesViewModel> UploadFile(IFormFile imgFile, string targetDirectory);
 
         public void SaveFramePathToDb(string path);
+
+        void SaveCrossPathToDb(string path);
     }
 }

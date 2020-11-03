@@ -14,17 +14,31 @@ namespace Funeral.Web.Controllers
     public class AdminController : Controller
     {
         private readonly IFileService fileService;
+        private readonly IFramesService framesService;
+        private readonly ICrossesService crossesService;
 
-        public AdminController(IFileService fileService)
+        public AdminController(IFileService fileService, IFramesService framesService, ICrossesService crossesService)
         {
             this.fileService = fileService;
+            this.framesService = framesService;
+            this.crossesService = crossesService;
         }
 
         public IActionResult UploadFrame()
         {
-            var model = new UploadFilesViewModel();
-            model.UploadMessage = "Изберете файл за качване.";
+            var model = new UploadFrameFilesViewModel();
+            model.UploadMessage = "Изберете файл с рамка за качване.";
+            model.AllFrames = framesService.ShowAllFrames();
             
+            return View(model);
+        }
+
+        public IActionResult UploadCross()
+        {
+            var model = new UploadCrossesFilesViewModel();
+            model.UploadMessage = "Изберете файл с кръст за качване.";
+            model.AllCrosses = crossesService.ShowAllCrosses();
+
             return View(model);
         }
 
@@ -32,12 +46,26 @@ namespace Funeral.Web.Controllers
         public async Task<IActionResult> UploadFrame(IFormFile imgFile)
         {
             var filePath = "/Pictures/Frames/" + imgFile.FileName;
+            var targetDirectory = "Pictures/Frames";
 
-            var model = await fileService.UploadFile(imgFile);
+            var model = await fileService.UploadFile(imgFile, targetDirectory);
 
             fileService.SaveFramePathToDb(filePath);
 
-            return RedirectToAction("MakeIt", "MakeIt");           
+            return RedirectToAction("UploadFrame");           
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadCross(IFormFile imgFile)
+        {
+            var filePath = "/Pictures/Crosses/" + imgFile.FileName;
+            var targetDirectory = "Pictures/Crosses";
+
+            var model = await fileService.UploadFile(imgFile, targetDirectory);
+
+            fileService.SaveCrossPathToDb(filePath);
+
+            return RedirectToAction("UploadCross");
         }
     }
 }

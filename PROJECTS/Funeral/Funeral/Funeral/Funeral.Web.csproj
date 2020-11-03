@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Pictures\Frames\1.gif" />
-    <None Include="wwwroot\Pictures\Frames\2.gif" />
-    <None Include="wwwroot\Pictures\Frames\3.gif" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
@@ -24,6 +18,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Funeral.App\Funeral.App.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Pictures\Frames\" />
+    <Folder Include="wwwroot\Pictures\Crosses\" />
   </ItemGroup>
 
 </Project>

@@ -22,6 +22,17 @@ namespace Funeral.App.Services
             this.db = db;
         }
 
+        public void SaveCrossPathToDb(string path)
+        {
+            var cross = new Cross
+            {
+                FilePath = path
+            };
+
+            db.Crosses.Add(cross);
+            db.SaveChanges();
+        }
+
         public void SaveFramePathToDb(string path)
         {
             var frame = new Frame
@@ -33,11 +44,12 @@ namespace Funeral.App.Services
             db.SaveChanges();
         }
 
-        public async Task<UploadFilesViewModel>  UploadFile(IFormFile imgFile)
+        public async Task<UploadFrameFilesViewModel>  UploadFile(IFormFile imgFile, string targetDirectory)
         {
-            var message = new UploadFilesViewModel();
+            var message = new UploadFrameFilesViewModel();
 
-            string imagePath = Path.Combine(webHost.WebRootPath, "Pictures/Frames", imgFile.FileName);
+            string imagePath = Path.Combine(webHost.WebRootPath, targetDirectory, imgFile.FileName);
+            // -> "Pictures/Frames"
 
             string imageExt = Path.GetExtension(imgFile.FileName);
 

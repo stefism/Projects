@@ -8,14 +8,12 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using Funeral.Data;
+using MyFirstAspNetCoreApplication.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Funeral.App.Services;
-using Funeral.App.VirtualDb;
 
-namespace Funeral
+namespace MyFirstAspNetCoreApplication
 {
     public class Startup
     {
@@ -32,16 +30,10 @@ namespace Funeral
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.AddDbContext<VirtualDbContext>(opt => opt.UseInMemoryDatabase("Test"));
-            
             services.AddControllersWithViews();
             services.AddRazorPages();
-
-            services.AddTransient<IFramesService, FramesService>();
-            services.AddTransient<IFileService, FileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

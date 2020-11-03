@@ -1,0 +1,37 @@
+﻿@using MyFirstAspNetCoreApplication.ViewModels.Home
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome, @Model.Name</h1>
+    <h2>It @Model.Year year.</h2>
+    <p>We have @Model.UsersCount users.</p>
+    <p>Този комп има @Model.ProcessorCount ядра.</p>
+    <p>Ай дито е @Model.Id</p>
+</div>
+
+<form>
+    <textarea asp-for="Descripton"></textarea>
+    <input asp-for="Name" />
+    <input asp-for="Year" />
+</form>
+
+<partial name="_HomePageStart" model="Model.Descripton"/>
+
+<table bootstrap-table="" table-name="Таблица с числа:">
+    @for (int i = 0; i < 10; i++)
+    {
+        <tr>
+            <td>@i</td>
+        </tr>
+    }
+</table>
+
+@section Links {
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="https://google.com">Google</a>
+    </li>
+}

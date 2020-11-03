@@ -1,8 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["Title"] = "Качване на рамка";
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Направи си</title>
-    <link rel="stylesheet" href="~/css/Upload.css">
+    @*<link rel="stylesheet" href="~/css/Upload.css">*@
 </head>
 
 <body>
@@ -11,8 +15,8 @@
     <hr />
 
     <form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="UploadFrame">
-        <input id="inputBtn" type="file" name="imgFile" />
-        <input id="uploadBtn" type="submit" value="Качи файл." />
+        <input class="btn btn-info" id="inputBtn" type="file" name="imgFile" />
+        <input class="btn btn-info" id="uploadBtn" type="submit" value="Качи файл." />
         <hr />
 
         <h4>@Model.UploadMessage</h4>

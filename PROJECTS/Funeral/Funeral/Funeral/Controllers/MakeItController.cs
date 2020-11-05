@@ -18,8 +18,9 @@ namespace Funeral.Web.Controllers
             this.framesService = framesService;
         }
 
-        public IActionResult MakeIt()
+        public IActionResult MakeIt(string element)
         {
+
             var model = framesService.ShowAllFrames();
                        
             return View(model);

@@ -15,5 +15,7 @@ namespace Funeral.App.Services
         public void SaveFramePathToDb(string path);
 
         void SaveCrossPathToDb(string path);
+
+        void DeleteFrameFile(string frameId);
     }
 }

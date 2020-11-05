@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MyFirstAspNetCoreApplication.Data;
 using MyFirstAspNetCoreApplication.Models;
@@ -16,8 +17,9 @@ namespace MyFirstAspNetCoreApplication.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext dbContext;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext, IConfiguration configuration)
         {
+            //IConfiguration configuration - използва се за четене на настройките от appsettings.json
             _logger = logger;
             this.dbContext = dbContext;
         }
@@ -39,6 +41,11 @@ namespace MyFirstAspNetCoreApplication.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult StatusCodeError(int errorCode)
         {
             return View();
         }

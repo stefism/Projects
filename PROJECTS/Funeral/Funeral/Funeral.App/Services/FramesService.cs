@@ -17,10 +17,17 @@ namespace Funeral.App.Services
             this.db = db;
         }
 
+        public string GetFramePathById(string frameId)
+        {
+            return db.Frames.Where(f => f.Id == frameId)
+                .Select(f => f.FilePath).FirstOrDefault();
+        }
+
         public ICollection<AllFramesViewModel> ShowAllFrames()
         {
             var frames = db.Frames.Select(f => new AllFramesViewModel 
             { 
+                FrameId = f.Id,
                 FilePath = f.FilePath
             }).ToList();
 

@@ -1,5 +1,7 @@
 ﻿@using MyFirstAspNetCoreApplication.ViewModels.Home
 @model IndexViewModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@* IConfiguration configuration - използва се за четене на настройките от appsettings.json *@
 
 @{
     ViewData["Title"] = "Home Page";
@@ -12,6 +14,9 @@
     <p>Този комп има @Model.ProcessorCount ядра.</p>
     <p>Ай дито е @Model.Id</p>
 </div>
+<h2>@Configuration["HelloMessage"]</h2>
+@* Използваме предимно индексатора на @Configuration. При по-сложните обекти пътя се разделя с ":" *@
+<h2>Log level: @Configuration["Logging:LogLevel:Default"]</h2>
 
 <form>
     <textarea asp-for="Descripton"></textarea>
@@ -19,7 +24,7 @@
     <input asp-for="Year" />
 </form>
 
-<partial name="_HomePageStart" model="Model.Descripton"/>
+<partial name="_HomePageStart" model="Model.Descripton" />
 
 <table bootstrap-table="" table-name="Таблица с числа:">
     @for (int i = 0; i < 10; i++)

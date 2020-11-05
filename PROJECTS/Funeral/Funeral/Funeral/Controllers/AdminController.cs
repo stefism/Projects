@@ -16,12 +16,14 @@ namespace Funeral.Web.Controllers
         private readonly IFileService fileService;
         private readonly IFramesService framesService;
         private readonly ICrossesService crossesService;
+        private readonly ITextsService textService;
 
-        public AdminController(IFileService fileService, IFramesService framesService, ICrossesService crossesService)
+        public AdminController(IFileService fileService, IFramesService framesService, ICrossesService crossesService, ITextsService textService)
         {
             this.fileService = fileService;
             this.framesService = framesService;
             this.crossesService = crossesService;
+            this.textService = textService;
         }
 
         public IActionResult UploadFrame()
@@ -40,6 +42,43 @@ namespace Funeral.Web.Controllers
             model.AllCrosses = crossesService.ShowAllCrosses();
 
             return View(model);
+        }
+
+        public IActionResult UploadText()
+        {
+            var model = textService.ShowAllTexts();
+
+            return View(model);
+        }
+
+        public IActionResult DeleteFrame(string frameId)
+        {
+            string framePath = framesService.GetFramePathById(frameId);
+            var model = new AllFramesViewModel
+            {
+                FilePath = framePath,
+                FrameId = frameId
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult DoDeleteFrame(string frameId)
+        {
+            string framePath = framesService.GetFramePathById(frameId);
+
+            fileService.DeleteFrameFile(framePath);
+
+            return RedirectToAction("UploadFrame");
+        }
+
+        [HttpPost]
+        public IActionResult UploadText(string funeralText)
+        {
+            textService.AddTextToDb(funeralText);
+
+            return RedirectToAction("UploadText");
         }
 
         [HttpPost]

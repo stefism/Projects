@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<Funeral.App.ViewModels.AllFramesViewModel>
+@{
+    ViewData["Title"] = "Направи си";
+}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Направи си</title>
     <script src="https://kit.fontawesome.com/3c54b527d8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/Main.css">
 </head>
@@ -10,19 +12,19 @@
     <aside id="menu-items">
 
         <ul>
-            <li><a href="#frames">Рамки</a></li>
-            <li><a href="#texts">Текстове</a></li>
-            <li><a href="#crosses">Кръстове</a></li>
+            <li><a href="?element=frames">Рамки</a></li>
+            <li><a href="?element=texts">Текстове</a></li>
+            <li><a href="?element=crosses">Кръстове</a></li>
             @if (User.Identity.Name == "stef4otm@gmail.com")
             {
-                  <div class="dropdown">
-                      <button class="dropbtn">Администрация</button>
-                      <div class="dropdown-content">
-                          <a href="/Admin/UploadFrame">Качване на рамка</a>
-                          <a href="/Admin/UploadCross">Качване на кръст</a>
-                          <a href="#">Качване на текст</a>
-                      </div>
-                  </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Администрация</button>
+                    <div class="dropdown-content">
+                        <a href="/Admin/UploadFrame">Качване на рамка</a>
+                        <a href="/Admin/UploadCross">Качване на кръст</a>
+                        <a href="/Admin/UploadText">Качване на текст</a>
+                    </div>
+                </div>
             }
         </ul>
 

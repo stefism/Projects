@@ -12,6 +12,7 @@ using MyFirstAspNetCoreApplication.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyFirstAspNetCoreApplication.Filters;
 
 namespace MyFirstAspNetCoreApplication
 {
@@ -32,7 +33,15 @@ namespace MyFirstAspNetCoreApplication
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            
+            //services.AddControllersWithViews(); //Без регистрация на филтри.
+            
+            services.AddControllersWithViews(configure => 
+            {
+                //configure.Filters.Add(new AddHeaderActionFilter());
+            }); 
+            //Филтрите трябва да се регистрират. Единия от начините е глобално и става тук. Когато са глобални, оказват влияние на всеки един екшън.
+
             services.AddRazorPages();
         }
 

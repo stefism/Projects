@@ -61,7 +61,7 @@ namespace Funeral.App.Services
 
             if (imageExt != ".jpg" && imageExt != ".png" && imageExt != ".gif")
             {
-                return; //TOTO: Implement Error message!               
+                return; //TODO: Implement Error message!
             }
 
             using (var uploadImage = new FileStream(imagePath, FileMode.Create))

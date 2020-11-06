@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Funeral.App.ViewModels.AllFramesViewModel>
+﻿@model Funeral.App.ViewModels.MakeItViewModel
 @{
     ViewData["Title"] = "Направи си";
 }
@@ -32,13 +32,17 @@
 
     <section id="design">
         <div id="main-window">
-            <img id="background" src="~/Pictures/Frames/1.gif" alt="">
+            <img id="background" src="@Model.CurrentFrame" alt="">
+            <img width="70px" id="cross" src="~/Pictures/Crosses/cross1.gif" alt="">
+            <p id="main-text">
+                Пред светлата ти памет, смирено скланяме глави и молим те за всичко ни прости! Липсваш ни до болка! Обичаме те! Почивай в мир!
+            </p>
         </div>
         <div id="items">
 
-            @foreach (var frame in Model)
+            @foreach (var frame in Model.AllFrames)
             {
-                <img class="elements" src="@frame.FilePath" alt="">
+                <a href="/MakeIt/ChangeFrame?frameId=@frame.FrameId"><img class="elements" src="@frame.FilePath" alt=""></a>                
             }
 
         </div>

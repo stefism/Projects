@@ -64,12 +64,41 @@ aside {
 
 #main-window {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-grow: 1;
     height: calc(100vh - 165px);
     align-items: center;
     overflow-y: scroll;
     overflow-x: scroll;
+}
+
+#main-text {
+    width: 500px;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    bottom: -40px;
+    z-index: 1;
+}
+
+#cross {
+    position: absolute;
+    top: 70px;
+    left: 150px;
+    z-index: 1;
+}
+
+#background {
+    z-index: 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 5px;
+    margin-top: 10px;
+    background: white;
+    box-shadow: 1px 1px 5px rgb(85, 83, 83);
 }
 
 #items {
@@ -79,16 +108,6 @@ aside {
     height: calc(100vh - 165px);
     width: 150px;
     overflow-y: scroll;
-}
-
-#background {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 5px;
-    margin-top: 10px;
-    background: white;
-    box-shadow: 1px 1px 5px rgb(85, 83, 83);
 }
 
 .elements {

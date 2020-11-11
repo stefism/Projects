@@ -1,0 +1,58 @@
+﻿@using MyFirstAspNetCoreApplication.ViewModels.Recipes
+@model AddRecipeInputModel
+
+<h1>Add recipe</h1>
+
+<form method="post" class="col-md-6" enctype="multipart/form-data">
+    @*enctype="multipart/form-data" - когато качваме файл, задължително се пише това.  *@
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Decription"></label>
+        <textarea rows="4" asp-for="Decription" class="form-control" /></textarea>
+        <span asp-validation-for="Decription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FirstCooked"></label>
+        <input asp-for="FirstCooked" class="form-control" />
+        <span asp-validation-for="FirstCooked" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type"></label>
+        <select asp-for="Type" asp-items="@Html.GetEnumSelectList<RecipeType>()" class="form-control"></select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time.CookingTime"></label>
+        <input asp-for="Time.CookingTime" class="form-control" />
+        <span asp-validation-for="Time.CookingTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time.PreparationTime"></label>
+        <input asp-for="Time.PreparationTime" class="form-control" />
+        <span asp-validation-for="Time.PreparationTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@* Горното се прави за да имаме валидация при клиента и да не праща всеки път заявка към сървъра за валидация. *@

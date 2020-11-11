@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyFirstAspNetCoreApplication.Models
 {
-    public interface RecipeType
+    public enum RecipeType
     {
         Unknown = 0,
         FastFood = 1,

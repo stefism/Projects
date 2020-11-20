@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using MyFirstAspNetCoreApplication.ViewModels.Recipes;
 using System;
@@ -110,6 +111,7 @@ namespace MyFirstAspNetCoreApplication.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")] // Този екшън ще е достъпен само за логнат потребител в роля Admin.
         public IActionResult Image()
         {
             return PhysicalFile(webHostEnvironment.WebRootPath + "/user.svg", "image/png");

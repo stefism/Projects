@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MyFirstAspNetCoreApplication.Data;
 using MyFirstAspNetCoreApplication.Models;
 using MyFirstAspNetCoreApplication.ViewModels.Home;
+using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace MyFirstAspNetCoreApplication.Controllers
 {
@@ -43,6 +41,22 @@ namespace MyFirstAspNetCoreApplication.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        // [ValidateAntiForgeryToken] //Ако не го регистрираме глобално, го пишем за всеки екшън, който приема форма с пост заявка.
+        // Глобално -> StartUp -> ConfigureServices -> configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); //Задължително във всяко приложение за да се предпазим от крос сайт рекуест форджъри атака!
+        public IActionResult AjaxDemo()
+        {
+            return View();
+        }
+
+        public IActionResult AjaxDemoData()
+        {
+            return Json(new[] {
+            new { Name = "Niki2", Date = DateTime.UtcNow.ToString("O")},
+            new { Name = "Stoyan2", Date = DateTime.UtcNow.AddDays(1).ToString("O")},
+            new { Name = "Stefan", Date = DateTime.UtcNow.AddDays(2).ToString("O")},
+            });
         }
 
         public IActionResult StatusCodeError(int errorCode)

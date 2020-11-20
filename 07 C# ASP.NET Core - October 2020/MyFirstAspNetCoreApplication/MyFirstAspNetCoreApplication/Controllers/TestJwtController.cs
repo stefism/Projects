@@ -24,18 +24,29 @@ namespace MyFirstAspNetCoreApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(JwtLoginInputModel input)
+        [IgnoreAntiforgeryToken] //За Jwt трябва да се игнорира за да работи!
+        public ActionResult<string> Login(JwtLoginInputModel input)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(jwtSettings.Value.Secret);
+            
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[] 
                 {
-                    new Claim(ClaimTypes.Name, "Stefan"),
+                    new Claim(ClaimTypes.Name, input.Username.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString())
-                })
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature)
             };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenAsString = tokenHandler.WriteToken(token);
+
+            return tokenAsString;
         }
     }
 

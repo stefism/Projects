@@ -67,8 +67,8 @@ namespace MyFirstAspNetCoreApplication
             services.AddAuthentication(opt => 
             {
                 //Ако искаме дефолтна аутентикация с JWT, се прави тук
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                //opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                //opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
                 
                 //Ако искае аутентикация със Фейсбук.

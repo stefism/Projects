@@ -17,13 +17,21 @@ namespace MyFirstAspNetCoreApplication.ValidationAttributes
         {
             if (value is int intValue) //Ако value е int го записва в променливата intValue.
             {
-                if (intValue > DateTime.UtcNow.Year && intValue < MinYear)
+                if (intValue <= DateTime.UtcNow.Year && intValue >= MinYear)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            if (value is DateTime dtValue)
+            {
+                if (dtValue.Year <= DateTime.UtcNow.Year && dtValue.Year >= MinYear)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

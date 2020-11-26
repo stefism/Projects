@@ -12,6 +12,7 @@ using MyFirstAspNetCoreApplication.Data;
 using MyFirstAspNetCoreApplication.Models;
 using MyFirstAspNetCoreApplication.Settings;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace MyFirstAspNetCoreApplication
@@ -104,6 +105,22 @@ namespace MyFirstAspNetCoreApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Ако искаме автоматично да си направи юзър при стартирането на приложението:
+            var userManager = app.ApplicationServices.CreateScope()
+                .ServiceProvider
+                .GetRequiredService<UserManager<ApplicationUser>>();
+
+            if (!userManager.Users.Any(x => x.UserName == "kostov@nikolay.it"))
+            {
+                userManager.CreateAsync(new ApplicationUser
+                {
+                    UserName = "kostov@nikolay.it",
+                    Email = "kostov@nikolay.it",
+                    EmailConfirmed = true,
+                }, "kostov@nikolay.it").GetAwaiter().GetResult();
+            }
+            // ---- Най-добре е това да се изнесе в отделен клас и класът да се казва сиидър.
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

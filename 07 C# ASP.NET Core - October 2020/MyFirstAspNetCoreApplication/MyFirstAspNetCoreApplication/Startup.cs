@@ -37,6 +37,27 @@ namespace MyFirstAspNetCoreApplication
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            //Активиране на Кеш. В случая мемори.
+            services.AddMemoryCache();
+
+            // Активиране на Distributed кеш.
+            services.AddDistributedSqlServerCache(opt =>
+            {
+                opt.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+                opt.SchemaName = "dbo";
+                opt.TableName = "CacheRecords";
+            });
+
+            //Активиране на сесия;
+            // Трябва освен тук, да се добави и middleware в Configure метода!
+            services.AddSession(opt => 
+            {
+                opt.IdleTimeout = new TimeSpan(365, 0, 0, 0); // Колко време да се пази информацията. Ако не му се зададе време, ще се пази до приключване на сесията.
+                opt.Cookie.HttpOnly = true; //Сесийната бисквитка да не се вижда от JavaScript. Задължително! За не открадне някой сесията и да се представи за потребителя.
+                opt.Cookie.IsEssential = true; //Ползвай сесия и без разрешението на потребителя.
+            });
+            //Сесийната информация се пази в Distributed cach, затова преди да се ползва сесия, трябва Distributed cach да бъде активирано и да има направена таблица за кеша в базата.
+
             //Configure JWT autentication
             var jwtSettings = jwtSettingsSection.Get<JwtSettings>(); //JwtSettings - клас, който ние сме си направили.
             var key = Encoding.ASCII.GetBytes(jwtSettings.Secret); //jwtSettings.Secret - пропертито в нашия клас. То е вързано със секцията JwtSettings (която ние си създадохме) в appsettings.json и  в нея е записан Secret ключа, който ние си го измислихме какъв да бъде.
@@ -135,6 +156,9 @@ namespace MyFirstAspNetCoreApplication
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            //За използване на сесия, трябва да се добави и този ред, освен настройките в горния метод.
+            app.UseSession();
 
             app.UseRouting();
 

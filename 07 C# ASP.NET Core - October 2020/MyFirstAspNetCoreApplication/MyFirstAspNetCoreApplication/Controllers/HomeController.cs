@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MyFirstAspNetCoreApplication.Data;
@@ -29,6 +30,7 @@ namespace MyFirstAspNetCoreApplication.Controllers
                 Year = DateTime.UtcNow.Year,
                 Id = id,
                 Name = "Stefan",
+                ReadPrivacy = HttpContext.Session.Keys.Contains("ReadPrivacy"),
                 ProcessorCount = Environment.ProcessorCount,
                 UsersCount = dbContext.Users.Count(),
                 Descripton = "Това е дескрипшън."
@@ -40,6 +42,8 @@ namespace MyFirstAspNetCoreApplication.Controllers
 
         public IActionResult Privacy()
         {
+            //Ползване на сесия:
+            HttpContext.Session.SetString("ReadPrivacy", "true"); //SetString е екстеншън метод и трябва да се добави юзинг към Microsoft.AspNetCore.Http;
             return View();
         }
 

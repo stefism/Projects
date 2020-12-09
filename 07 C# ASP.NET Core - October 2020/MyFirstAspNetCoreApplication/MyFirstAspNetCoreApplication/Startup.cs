@@ -37,6 +37,15 @@ namespace MyFirstAspNetCoreApplication
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            //Конфигуриране на искане за потвърждение на бисквитки от потребителя: Прави се в 3 стъпки;
+            // Стъпка 1.
+            services.Configure<CookiePolicyOptions>(
+                options => 
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                }); // Стъпка 2 - Трябва и в другия метод да добавим мидълуера.
+
             //Активиране на Кеш. В случая мемори.
             services.AddMemoryCache();
 
@@ -45,7 +54,7 @@ namespace MyFirstAspNetCoreApplication
             {
                 opt.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
                 opt.SchemaName = "dbo";
-                opt.TableName = "CacheRecords";
+                opt.TableName = "TestCache";
             });
 
             //Активиране на сесия;
@@ -157,6 +166,9 @@ namespace MyFirstAspNetCoreApplication
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            //Активиране на искане на потвърждение за бисквитките от потребителя - стъпка 2: След това трябва да направим и UI-а, когато не сме приели бисквитката - стъпка 3.
+            app.UseCookiePolicy();
+
             //За използване на сесия, трябва да се добави и този ред, освен настройките в горния метод.
             app.UseSession();
 
@@ -169,9 +181,15 @@ namespace MyFirstAspNetCoreApplication
 
             app.UseEndpoints(endpoints =>
             {
+                //Работа с Areas:
+                endpoints.MapControllerRoute(
+                    "areaRoute",
+                    "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //---
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

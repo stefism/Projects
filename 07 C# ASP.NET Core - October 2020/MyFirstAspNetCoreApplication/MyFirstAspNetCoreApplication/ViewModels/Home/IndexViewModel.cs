@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace MyFirstAspNetCoreApplication.ViewModels.Home
 {
@@ -18,5 +15,7 @@ namespace MyFirstAspNetCoreApplication.ViewModels.Home
         public string Name { get; set; }
 
         public string Descripton { get; set; }
+
+        public bool ReadPrivacy { get; internal set; }
     }
 }

@@ -62,7 +62,7 @@ namespace MergeSort
 
         static void Main(string[] args)
         {
-            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int[] numbers = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
             Sort(numbers, 0, numbers.Length - 1);
             Console.WriteLine(string.Join(", ", numbers));
         }

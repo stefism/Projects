@@ -88,12 +88,41 @@ namespace Snakes
 
         private static string Rotate(string snake)
         {
+            //За да я завъртиме трябва:
+            // 1. Надясно да стане надолу или R -> D
+            // 2. Надолу да стане наляво или D -> L
+            // 3. Наляво да стане нагоре или L -> U
+            // 4. Нагоре да стане надясно или U -> R
 
+            var newSnake = new char[snake.Length];
+
+            for (int i = 0; i < snake.Length; i++)
+            {
+                switch (snake[i])
+                {
+                    case 'R': newSnake[i] = 'D'; break;
+                    case 'D': newSnake[i] = 'L'; break;
+                    case 'L': newSnake[i] = 'U'; break;
+                    case 'U': newSnake[i] = 'R'; break;
+                    default: newSnake[i] = snake[i]; break;
+                }
+            }
+
+            return new string(newSnake);
         }
 
         private static string Reverse(string snake)
         {
-            throw new NotImplementedException();
+            var newSnake = new char[snake.Length];
+
+            newSnake[0] = 'S';
+
+            for (int i = 1; i < snake.Length; i++)
+            {
+                newSnake[snake.Length - i] = snake[i];
+            }
+
+            return new string(newSnake);
         }
 
         private static string Flip(string snake)

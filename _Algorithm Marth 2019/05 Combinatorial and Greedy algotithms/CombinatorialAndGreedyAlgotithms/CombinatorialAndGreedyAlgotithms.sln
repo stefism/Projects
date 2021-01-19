@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snakes", "Snakes\Snakes.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. FractionalKnapsackProblem", "01. FractionalKnapsackProblem\01. FractionalKnapsackProblem.csproj", "{77AE9672-F563-477E-A6AA-7C9CAE525DB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. EgyptianFractions", "05. EgyptianFractions\05. EgyptianFractions.csproj", "{E6732D58-65D4-48F5-BBD4-4828845320AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{77AE9672-F563-477E-A6AA-7C9CAE525DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77AE9672-F563-477E-A6AA-7C9CAE525DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77AE9672-F563-477E-A6AA-7C9CAE525DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6732D58-65D4-48F5-BBD4-4828845320AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6732D58-65D4-48F5-BBD4-4828845320AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6732D58-65D4-48F5-BBD4-4828845320AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6732D58-65D4-48F5-BBD4-4828845320AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

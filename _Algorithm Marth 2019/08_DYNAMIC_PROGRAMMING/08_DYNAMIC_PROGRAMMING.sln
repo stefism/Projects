@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Knapsack", "Knapsack\01_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSum", "SubsetSum\SubsetSum.csproj", "{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSumWithRepeat", "SubsetSumWithRepeat\SubsetSumWithRepeat.csproj", "{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestCommonSubsequence", "ConsoleApp1\LongestCommonSubsequence.csproj", "{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

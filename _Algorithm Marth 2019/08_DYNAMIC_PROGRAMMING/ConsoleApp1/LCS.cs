@@ -30,6 +30,27 @@ namespace LongestCommonSubsequence
             }
 
             Console.WriteLine(lcs[firstSequence.Length, secondSequence.Length]);
+
+            int currentRow = firstSequence.Length;
+            int currentCol = secondSequence.Length;
+
+            while (currentRow > 0 && currentCol > 0)
+            {
+                if (firstSequence[currentRow - 1] == secondSequence[currentCol - 1])
+                {
+                    Console.Write(firstSequence[currentRow - 1] + " ");
+                    currentRow--;
+                    currentCol--;
+                }
+                else if (lcs[currentRow -1, currentCol] == lcs[currentRow, currentCol])
+                {
+                    currentRow--;
+                }
+                else
+                {
+                    currentCol--;
+                }
+            }
         }
     }
 }

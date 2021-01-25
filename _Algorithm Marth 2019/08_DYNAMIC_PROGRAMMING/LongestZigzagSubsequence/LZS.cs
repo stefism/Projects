@@ -15,7 +15,7 @@ namespace LongestZigzagSubsequence
             int[,] prevBestIndexes = new int[numbers.Length, 2];
 
             currIndexValues[0, 0] = currIndexValues[0, 1] = 1;
-            prevBestIndexes[0, 0] = currIndexValues[0, 1] = -1;
+            prevBestIndexes[0, 0] = prevBestIndexes[0, 1] = -1;
 
             int maxResult = 0;
             int maxIndexRow = 0;

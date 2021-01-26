@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Fibonacci", "Fibonacci\01_Fibonacci.csproj", "{B8705F7A-A029-47D4-95AE-97EE3943F210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Fibonacci", "Fibonacci\01_Fibonacci.csproj", "{B8705F7A-A029-47D4-95AE-97EE3943F210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_LongestIncreasingSubsequence", "LongestIncreasingSubsequence\02_LongestIncreasingSubsequence.csproj", "{F5B69E23-ADFF-4F1D-82D1-BDEC2751E3EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_LongestIncreasingSubsequence", "LongestIncreasingSubsequence\02_LongestIncreasingSubsequence.csproj", "{F5B69E23-ADFF-4F1D-82D1-BDEC2751E3EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_MoveDownRight", "MoveDownRight\03_MoveDownRight.csproj", "{E25EE7FF-E341-4933-ADA4-D031A9453AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_MoveDownRight", "MoveDownRight\03_MoveDownRight.csproj", "{E25EE7FF-E341-4933-ADA4-D031A9453AD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Knapsack", "Knapsack\01_Knapsack.csproj", "{F0608777-3835-4555-BF42-F1F2AF3BF17B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Knapsack", "Knapsack\01_Knapsack.csproj", "{F0608777-3835-4555-BF42-F1F2AF3BF17B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSum", "SubsetSum\SubsetSum.csproj", "{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubsetSum", "SubsetSum\SubsetSum.csproj", "{218C3395-6ABA-4E8D-AD1C-0B0DA9FC63CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSumWithRepeat", "SubsetSumWithRepeat\SubsetSumWithRepeat.csproj", "{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubsetSumWithRepeat", "SubsetSumWithRepeat\SubsetSumWithRepeat.csproj", "{1B8FEC37-21E3-4ED6-849F-1A05B52CB3DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestCommonSubsequence", "ConsoleApp1\LongestCommonSubsequence.csproj", "{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestCommonSubsequence", "ConsoleApp1\LongestCommonSubsequence.csproj", "{EF55705D-B4B5-40D4-9C3F-E11E3D841E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestZigzagSubsequence", "LongestZigzagSubsequence\LongestZigzagSubsequence.csproj", "{21DB8088-EE6B-43B6-9AE1-C0CBD51F96A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestZigzagSubsequence", "LongestZigzagSubsequence\LongestZigzagSubsequence.csproj", "{21DB8088-EE6B-43B6-9AE1-C0CBD51F96A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DividingPresents", "DividingPresents\DividingPresents.csproj", "{6D3E79E5-8CF0-4217-A4F9-65153F81C3CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DividingPresents", "DividingPresents\DividingPresents.csproj", "{6D3E79E5-8CF0-4217-A4F9-65153F81C3CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumEditDistance", "MinimumEditDistance\MinimumEditDistance.csproj", "{3ECAE9BD-EF03-487E-A011-9B1D4DFD2FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6D3E79E5-8CF0-4217-A4F9-65153F81C3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D3E79E5-8CF0-4217-A4F9-65153F81C3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D3E79E5-8CF0-4217-A4F9-65153F81C3CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ECAE9BD-EF03-487E-A011-9B1D4DFD2FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECAE9BD-EF03-487E-A011-9B1D4DFD2FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECAE9BD-EF03-487E-A011-9B1D4DFD2FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECAE9BD-EF03-487E-A011-9B1D4DFD2FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

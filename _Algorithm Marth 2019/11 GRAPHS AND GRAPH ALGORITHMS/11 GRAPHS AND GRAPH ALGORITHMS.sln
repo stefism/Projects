@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphDepthFirstSearch", "ConsoleApp1\GraphDepthFirstSearch.csproj", "{F019B027-BB5C-45C6-AAD3-66076C0D1937}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAndGraphTraversal", "ConsoleApp1\GraphAndGraphTraversal.csproj", "{F019B027-BB5C-45C6-AAD3-66076C0D1937}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

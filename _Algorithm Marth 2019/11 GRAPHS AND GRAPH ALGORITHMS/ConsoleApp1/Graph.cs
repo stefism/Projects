@@ -23,6 +23,35 @@ namespace Graph
             }
         }
 
+        static void BreadthFirstSearch(int graphNode)
+        {
+            //If we using Stack instead Queue, we implement iterative DepthFirstSearch approach.
+
+            if (visited[graphNode])
+            {
+                return;
+            }
+
+            var queue = new Queue<int>();
+            queue.Enqueue(graphNode);
+            visited[graphNode] = true;
+
+            while (queue.Count != 0)
+            {
+                int currentNode = queue.Dequeue();
+                Console.Write($"{currentNode} ");
+
+                foreach (var child in graph[currentNode])
+                {
+                    if (!visited[child])
+                    {
+                        queue.Enqueue(child);
+                        visited[child] = true;
+                    }
+                }
+            }
+        }
+
         static void Main()
         {
             graph = new List<int>[] //without directions between nodes
@@ -40,7 +69,8 @@ namespace Graph
 
             for (int graphNode = 0; graphNode < graph.Length; graphNode++)
             {
-                DepthFirstSearch(graphNode);
+                //DepthFirstSearch(graphNode);
+                BreadthFirstSearch(graphNode);
             }
         }
     }

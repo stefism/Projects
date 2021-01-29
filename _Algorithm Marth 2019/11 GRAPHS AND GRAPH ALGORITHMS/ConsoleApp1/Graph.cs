@@ -63,14 +63,25 @@ namespace Graph
                 new List<int> { 1, 2, 6, },
                 new List<int> { 1, 2, 3, },
                 new List<int> { 0, 1, 4, },
+                new List<int> { 8, },
+                new List<int> { 7, },
             };
 
             visited = new bool[graph.Length];
 
+            int components = 0;
+
             for (int graphNode = 0; graphNode < graph.Length; graphNode++)
-            {
-                //DepthFirstSearch(graphNode);
-                BreadthFirstSearch(graphNode);
+            {                
+                if (!visited[graphNode]) //Graph Connectivity
+                {
+                    components++;
+                    Console.WriteLine($"Connected component {components}: ");
+                    DepthFirstSearch(graphNode);
+                    Console.WriteLine();
+                }
+
+                //BreadthFirstSearch(graphNode);
             }
         }
     }

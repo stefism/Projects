@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopologicalSorting", "Topol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kruskal'sAlgorithm", "Kruskal'sAlgorithm\Kruskal'sAlgorithm.csproj", "{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimsAlgorithm", "PrimsAlgorithm\PrimsAlgorithm.csproj", "{ECF27EFF-42C1-483D-95AF-31F41C0EB748}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF27EFF-42C1-483D-95AF-31F41C0EB748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF27EFF-42C1-483D-95AF-31F41C0EB748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF27EFF-42C1-483D-95AF-31F41C0EB748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF27EFF-42C1-483D-95AF-31F41C0EB748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

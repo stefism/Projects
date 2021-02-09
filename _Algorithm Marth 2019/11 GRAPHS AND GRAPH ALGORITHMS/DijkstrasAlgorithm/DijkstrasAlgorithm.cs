@@ -49,7 +49,30 @@ namespace DijkstrasAlgorithm
                 nodeToEdges[edge.SecondNode].Add(edge);
             }
 
+            var distances = new int[nodes.Max() + 1];
 
+            for (int i = 0; i < distances.Length; i++)
+            {
+                distances[i] = int.MaxValue;
+            }
+
+            distances[nodes.First()] = 0;
+
+            var queue = new SortedSet<int>(Comparer<int>
+                .Create((f, s) => distances[f] - distances[s]));
+            
+            queue.Add(nodes.First());
+
+            while (queue.Count != 0)
+            {
+                var min = queue.Min();
+                queue.Remove(min);
+
+                foreach (var edge in nodeToEdges[min])
+                {
+
+                }
+            }
         }
     }
 }

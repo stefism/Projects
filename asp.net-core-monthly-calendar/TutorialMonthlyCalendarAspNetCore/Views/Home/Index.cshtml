@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="~/js/daypilot/daypilot-all.min.js" asp-append-version="true"></script>
+<link href="icons/style.css" rel="stylesheet" type="text/css">
+
+<div class="main" style="display: flex;">
+    <div style="">
+        <div id="nav"></div>
+    </div>
+    <div style="flex-grow: 1; margin-left: 10px;">
+        <div class="navi">
+            <button id="previous">&#9668;</button>
+            <button id="today" class="highlighted">Today</button>
+            <button id="next">&#9658;</button>
+        </div>
+        <div id="dp"></div>
+    </div>
+</div>
+
+<script>
+
+    var nav = new DayPilot.Navigator("nav");
+    nav.showMonths = 3;
+    nav.skipMonths = 3;
+    nav.selectMode = "month";
+    nav.onTimeRangeSelected = function (args) {
+        dp.startDate = args.day;
+        dp.update();
+        dp.events.load("/api/events");
+    };
+    nav.init();
+    
+
+    var dp = new DayPilot.Month("dp");
+    dp.onTimeRangeSelected = function (args) {
+        DayPilot.Modal.prompt("Create a new event:", "Event").then(function (modal) {
+            var dp = args.control;
+            dp.clearSelection();
+            if (modal.canceled) {
+                return;
+            }
+            var params = {
+                start: args.start.toString(),
+                end: args.end.toString(),
+                text: modal.result,
+                resource: args.resource
+            };
+            DayPilot.Http.ajax({
+                method: 'POST',
+                url: '/api/events',
+                data: params,
+                success: function (ajax) {
+                    console.log("created");
+                    var data = ajax.data;
+                    dp.events.add(data);
+                    dp.message("Event created");
+                }
+            });
+        });
+    };
+    dp.onEventMove = function (args) {
+        var params = {
+            id: args.e.id(),
+            start: args.newStart.toString(),
+            end: args.newEnd.toString()
+        };
+        DayPilot.Http.ajax({
+            method: 'PUT',
+            url: '/api/events/' + args.e.id() + "/move",
+            data: params,
+            success: function (ajax) {
+                dp.message("Event moved");
+            }
+        });
+    };
+    dp.onEventResize = function (args) {
+        var params = {
+            id: args.e.id(),
+            start: args.newStart.toString(),
+            end: args.newEnd.toString()
+        };
+        DayPilot.Http.ajax({
+            method: 'PUT',
+            url: '/api/events/' + args.e.id() + "/move",
+            data: params,
+            success: function (ajax) {
+                dp.message("Event resized");
+            }
+        });
+    };
+    dp.onBeforeEventRender = function (args) {
+        args.data.backColor = args.data.color;
+        args.data.areas = [
+            { top: 3, right: 3, bottom: 3, icon: "icon-triangle-down", visibility: "Hover", action: "ContextMenu", style: "font-size: 12px; background-color: rgba(255, 255, 255, .5); border: 1px solid #aaa; padding: 3px; cursor:pointer;" }
+        ];
+    };
+    dp.contextMenu = new DayPilot.Menu({
+        items: [
+            {
+                text: "Delete",
+                onClick: function (args) {
+                    var e = args.source;
+                    DayPilot.Http.ajax({
+                        method: 'DELETE',
+                        url: '/api/events/' + e.id(),
+                        success: function (ajax) {
+                            dp.events.remove(e);
+                            dp.message("Event deleted");                            
+                        }
+                    });
+                }
+            },
+            {
+                text: "-"
+            },
+            {
+                text: "Blue",
+                icon: "icon icon-blue",
+                color: "#a2c4c9",
+                onClick: function (args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Green",
+                icon: "icon icon-green",
+                color: "#b6d7a8",
+                onClick: function (args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Yellow",
+                icon: "icon icon-yellow",
+                color: "#ffe599",
+                onClick: function (args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Red",
+                icon: "icon icon-red",
+                color: "#ea9999",
+                onClick: function (args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Auto",
+                color: "auto",
+                onClick: function (args) { updateColor(args.source, args.item.color); }
+            },
+        ]
+    });
+    dp.init();
+
+    dp.events.load("/api/events");
+
+
+    function updateColor(e, color) {
+        var params = {
+            color: color
+        };
+        DayPilot.Http.ajax({
+            method: 'PUT',
+            url: '/api/events/' + e.id() + '/color',
+            data: params,
+            success: function (ajax) {
+                e.data.color = color;
+                dp.events.update(e);
+                dp.message("Color updated");
+            }
+        });
+    }
+
+    var elements = {
+        previous: document.querySelector("#previous"),
+        today: document.querySelector("#today"),
+        next: document.querySelector("#next"),
+    };
+
+    elements.previous.addEventListener("click", function (ev) {
+        nav.select(nav.selectionDay.addMonths(-1));
+    });
+
+    elements.today.addEventListener("click", function (ev) {
+        nav.select(DayPilot.Date.today());
+    });
+
+    elements.next.addEventListener("click", function (ev) {
+        nav.select(nav.selectionDay.addMonths(1));
+    });
+
+</script>

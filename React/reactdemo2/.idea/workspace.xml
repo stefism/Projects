@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../reactdemo/public/demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/MyInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/UnorderedList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../reactdemo/src/demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Appl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Algorithm Marth 2019/08. Advanced-Graph-Algorithms-Part-II-Lab-CSharp-Skeletons.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Algorithm Marth 2019/11 GRAPHS AND GRAPH ALGORITHMS/11 GRAPHS AND GRAPH ALGORITHMS.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Algorithm Marth 2019/11 GRAPHS AND GRAPH ALGORITHMS/11 GRAPHS AND GRAPH ALGORITHMS.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Appl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MainContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Appl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +36,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\SoftUni\React\reactdemo2\src\Components" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -59,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613068356015</updated>
       <workItem from="1613068357188" duration="588000" />
-      <workItem from="1613069000772" duration="2060000" />
+      <workItem from="1613069000772" duration="11763000" />
     </task>
     <servers />
   </component>

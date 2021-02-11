@@ -19,6 +19,16 @@ public class ArticulationPoints
         lowpoint = new int[targetGraph.Length];
         parent = new int?[targetGraph.Length];
         articulationPoints = new List<int>();
+
+        for (int node = 0; node < graph.Length; node++)
+        {
+            if (!visited[node])
+            {
+                FindArticulationPoints(node, 1);
+            }
+        }
+
+        return articulationPoints;
     }
 
     private static void FindArticulationPoints(int node, int depth)
@@ -34,12 +44,26 @@ public class ArticulationPoints
         {
             if (!visited[child])
             {
+                parent[child] = node;
+                FindArticulationPoints(child, depth + 1);
+                childCount++;
 
+                if (lowpoint[child] >= depths[node])
+                {
+                    isArticulationPoint = true;
+                }
+
+                lowpoint[node] = Math.Min(lowpoint[node], lowpoint[child]);
             }
             else if (child != parent[node])
             {
-
+                lowpoint[node] = Math.Min(lowpoint[node], depths[child]);
             }
+        }
+
+        if ((parent[node] == null && childCount > 1) || (parent[node] != null && isArticulationPoint))
+        {
+            articulationPoints.Add(node);
         }
     }
 }

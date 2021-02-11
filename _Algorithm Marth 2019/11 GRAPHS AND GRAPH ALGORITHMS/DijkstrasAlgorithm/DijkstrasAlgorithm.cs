@@ -6,7 +6,7 @@ using Wintellect.PowerCollections;
 namespace DijkstrasAlgorithm
 {
     class DijkstrasAlgorithm
-    {     
+    {
         static Dictionary<int, List<Edge>> nodeToEdges = new Dictionary<int, List<Edge>>();
 
         static void Main()
@@ -60,7 +60,7 @@ namespace DijkstrasAlgorithm
 
             var queue = new SortedSet<int>(Comparer<int>
                 .Create((f, s) => distances[f] - distances[s]));
-            
+
             queue.Add(nodes.First());
 
             while (queue.Count != 0)
@@ -70,7 +70,23 @@ namespace DijkstrasAlgorithm
 
                 foreach (var edge in nodeToEdges[min])
                 {
+                    var otherNode = edge.FirstNode == min
+                        ? edge.SecondNode
+                        : edge.FirstNode;
 
+                    if (distances[otherNode] == int.MaxValue)
+                    {
+                        queue.Add(otherNode);
+                    }
+
+                    var newDistance = distances[min] + edge.EdgeWeight;
+
+                    if (newDistance < distances[otherNode])
+                    {
+                        distances[otherNode] = newDistance;
+                        queue = new SortedSet<int>(queue, Comparer<int>
+                                .Create((f, s) => distances[f] - distances[s]));
+                    }
                 }
             }
         }

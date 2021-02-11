@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../reactdemo/public/demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/MyInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../reactdemo/src/components/UnorderedList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../reactdemo/src/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Appl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Algorithm Marth 2019/08. Advanced-Graph-Algorithms-Part-II-Lab-CSharp-Skeletons.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Algorithm Marth 2019/11 GRAPHS AND GRAPH ALGORITHMS/11 GRAPHS AND GRAPH ALGORITHMS.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Algorithm Marth 2019/11 GRAPHS AND GRAPH ALGORITHMS/11 GRAPHS AND GRAPH ALGORITHMS.sln" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1oLaWTDnQHjVQDY1TWWDeImzdTG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="" />
+      <created>1613068356015</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613068356015</updated>
+      <workItem from="1613068357188" duration="588000" />
+      <workItem from="1613069000772" duration="2060000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -12,7 +12,7 @@ function App() {
                 </ul>
             </nav>
         </div>
-    )
+    );
 }
 
 export default App

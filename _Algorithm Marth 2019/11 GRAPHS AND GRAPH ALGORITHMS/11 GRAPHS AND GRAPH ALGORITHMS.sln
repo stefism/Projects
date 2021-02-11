@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAndGraphTraversal", "ConsoleApp1\GraphAndGraphTraversal.csproj", "{F019B027-BB5C-45C6-AAD3-66076C0D1937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphAndGraphTraversal", "ConsoleApp1\GraphAndGraphTraversal.csproj", "{F019B027-BB5C-45C6-AAD3-66076C0D1937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopologicalSorting", "TopologicalSorting\TopologicalSorting.csproj", "{C744F125-ECBF-4422-AB9A-3B1AF4BD154D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopologicalSorting", "TopologicalSorting\TopologicalSorting.csproj", "{C744F125-ECBF-4422-AB9A-3B1AF4BD154D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kruskal'sAlgorithm", "Kruskal'sAlgorithm\Kruskal'sAlgorithm.csproj", "{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kruskal'sAlgorithm", "Kruskal'sAlgorithm\Kruskal'sAlgorithm.csproj", "{EEB4F0D4-B15C-4F99-9503-4C507060EC6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimsAlgorithm", "PrimsAlgorithm\PrimsAlgorithm.csproj", "{ECF27EFF-42C1-483D-95AF-31F41C0EB748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimsAlgorithm", "PrimsAlgorithm\PrimsAlgorithm.csproj", "{ECF27EFF-42C1-483D-95AF-31F41C0EB748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DijkstrasAlgorithm", "DijkstrasAlgorithm\DijkstrasAlgorithm.csproj", "{08E8381C-B07E-4CBB-A3DD-C3E6A14271D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DijkstrasAlgorithm", "DijkstrasAlgorithm\DijkstrasAlgorithm.csproj", "{08E8381C-B07E-4CBB-A3DD-C3E6A14271D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakCycles", "BreakCycles\BreakCycles.csproj", "{AC97D978-5EC5-4E4E-8A51-43CF2175847F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{08E8381C-B07E-4CBB-A3DD-C3E6A14271D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08E8381C-B07E-4CBB-A3DD-C3E6A14271D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08E8381C-B07E-4CBB-A3DD-C3E6A14271D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC97D978-5EC5-4E4E-8A51-43CF2175847F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC97D978-5EC5-4E4E-8A51-43CF2175847F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC97D978-5EC5-4E4E-8A51-43CF2175847F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC97D978-5EC5-4E4E-8A51-43CF2175847F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

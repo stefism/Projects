@@ -5,19 +5,21 @@ function MainContent(){
     let hours = date.getHours();
     let timeOfDay;
 
-    if (hours < 12){
-        timeOfDay = "morning";
-    } else if(hours >= 12 && hours < 17){
-        timeOfDay = "afternoon";
-    } else {
-        timeOfDay = "night";
-    }
-
     let style = {
-        color: "blue",
         "font-weight": "bold",
         "font-size": "22px",
     };
+
+    if (hours < 12){
+        timeOfDay = "morning";
+        style.color = "green";
+    } else if(hours >= 12 && hours < 17){
+        timeOfDay = "afternoon";
+        style.color = "red";
+    } else {
+        timeOfDay = "night";
+        style.color = "blue";
+    }
 
     return(
         <main>

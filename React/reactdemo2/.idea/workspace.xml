@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/TodoItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Appl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Appl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/MainContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MainContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613068356015</updated>
       <workItem from="1613068357188" duration="588000" />
-      <workItem from="1613069000772" duration="17427000" />
+      <workItem from="1613069000772" duration="17536000" />
     </task>
     <servers />
   </component>

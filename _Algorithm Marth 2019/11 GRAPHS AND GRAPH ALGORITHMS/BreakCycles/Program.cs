@@ -21,13 +21,18 @@ namespace BreakCycles
 
                 var edgeParts = line.Split();
                 var node = edgeParts[0][0]; //Ако искаме само една буква от string да я вземем като char, може така -> [0][0]. На нулевото, нулевото един вид. Щото то незнае, че стринга е само от една буква.
+                
                 var otherNodes = edgeParts.Skip(2).ToArray();
 
                 if (!graph.ContainsKey(node))
                 {
-
+                    graph[node] = new List<char>();
                 }
+
+                graph[node].AddRange(otherNodes.Select(str => str[0]));
             }
         }
+
+
     }
 }

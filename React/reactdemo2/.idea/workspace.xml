@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="" />
+    <list default="true" id="2ad67ee7-ba3a-4abf-81ac-74a704c5e020" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/TodosData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../propsandstyling3/src/components/Application.js" beforeDir="false" afterPath="$PROJECT_DIR$/../propsandstyling3/src/components/Application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../propsandstyling3/src/components/TodosData.js" beforeDir="false" afterPath="$PROJECT_DIR$/../propsandstyling3/src/components/TodosData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reactdemo1/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../reactdemo1/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reactdemo1/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../reactdemo1/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reactdemo1/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../reactdemo1/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Appl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Appl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MainContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MainContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TodoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TodoItem.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -63,6 +76,7 @@
       <updated>1613068356015</updated>
       <workItem from="1613068357188" duration="588000" />
       <workItem from="1613069000772" duration="17536000" />
+      <workItem from="1613298067742" duration="8249000" />
     </task>
     <servers />
   </component>

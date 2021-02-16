@@ -1,0 +1,19 @@
+#all-letters{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+#letter{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#letter:hover{
+    color: rgb(238, 255, 0);
+    text-decoration: line-through;
+}
+
+#empty-word {
+    margin-right: 10px;
+}

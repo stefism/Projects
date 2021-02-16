@@ -4,10 +4,8 @@ function SingleLetter(props){
     return(
         <div>         
             <h3 
-            id="letter"
-            letterId={props.item.id}
-            isClicked={props.item.isClicked}
-            onClick={() => props.ifClicked()}
+            class="letter"
+            onClick={() => props.ifClicked(props.item.id)}
             >{props.item.letter} </h3>
         </div>
     )

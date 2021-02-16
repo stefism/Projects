@@ -4,12 +4,12 @@
     
 }
 
-#letter{
+.letter{
     margin-right: 10px;
     cursor: pointer;
 }
 
-#letter:hover{
+.letter:hover{
     color: rgb(238, 255, 0);
     text-decoration: line-through;
 }

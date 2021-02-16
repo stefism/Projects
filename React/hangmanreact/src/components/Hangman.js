@@ -31,7 +31,19 @@ class Hangman extends React.Component {
     //     })
     // }
 
-    handleLetterClick(){
+    handleLetterClick(id){
+        this.setState((prevState) => {
+            let updatedLettersIfClicked = prevState.letters.map(l => {
+                if(l.id === id){
+                    l.ifClicked = true
+                }
+                return l
+            })
+            return {
+                letters: updatedLettersIfClicked
+            }
+        })
+        
         console.log("clicked on letter")
         
     }
@@ -43,6 +55,13 @@ class Hangman extends React.Component {
                 item={l}
                 ifClicked={this.handleLetterClick}
             />)
+
+            for(let i = 0; i < allLetters.length; i++){
+                
+                if(allLetters[i].ifClicked){
+                    allLetters[i].classList.add("clicked")
+                }
+            }
 
             let randomWord = this.state.randomWord.toUpperCase()
             let randomWordAsArray = []

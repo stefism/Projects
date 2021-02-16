@@ -1,0 +1,35 @@
+#header {
+display: flex;
+background-color: blueviolet;
+color:cornsilk;
+font-size: 30px;
+}
+
+#meme {
+    display: flex;
+    z-index: 0;
+}
+
+#top-text {
+    display: block;
+    margin-left: -320px;
+    margin-top: -10px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(211, 32, 76);
+}
+
+#bottom-text {
+    display: block;
+    margin-left: -170px;
+    margin-top: 120px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(211, 32, 76);
+}

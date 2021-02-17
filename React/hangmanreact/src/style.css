@@ -17,3 +17,12 @@
 #empty-word {
     margin-right: 10px;
 }
+
+#have-turns {
+    font-size: 20px;
+    color: red;
+}
+
+#turns-left {
+    font-size: 50px;
+}

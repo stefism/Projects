@@ -10,7 +10,9 @@ class Hangman extends React.Component {
             letters: letters,
             turnsLeft: 5,
             randomWord: "",
-            allWords: ["veganic", "nyctograph", "bibliomania", "farinose"]
+            allWords: ["VEGANIK", "NYCTOGRAPH", "BIBLIOMANIA", "FARINOSE"],
+            currClickedWord: "",
+            wordToFill: []
         }
         this.handleLetterClick = this.handleLetterClick.bind(this)
     }
@@ -18,7 +20,15 @@ class Hangman extends React.Component {
     componentDidMount(){
         const randNum = Math.floor(Math.random() * this.state.allWords.length)
         const randomWord = this.state.allWords[randNum]
+        
+        const emptyWord = []
+
+        for(let i = 0; i < randomWord.length; i++){
+            emptyWord.push("_")
+        }
+
         this.setState({randomWord: randomWord})
+        this.setState({wordToFill: emptyWord})
     }
 
     // componentDidMount(){
@@ -35,61 +45,61 @@ class Hangman extends React.Component {
         this.setState((prevState) => {
             let updatedLettersIfClicked = prevState.letters.map(l => {
                 if(l.id === id){
-                    l.ifClicked = true
+                    l.isClicked = true
+                    this.setState({currClickedWord: l.letter})
+                    console.log(this.state.currClickedWord);
                 }
                 return l
             })
+            //debugger;
             return {
                 letters: updatedLettersIfClicked
             }
         })
         
-        console.log("clicked on letter")
+        if(this.state.randomWord.includes(this.state.currClickedWord)){
+            
+            console.log("CONTAINS")
+
+            let letterIndex = this.state.randomWord.indexOf(this.state.currClickedWord)
+
+            let wordCopy = [...this.state.wordToFill]
+            let letterToChange = {...wordCopy[letterIndex]}
+            letterToChange = this.state.currClickedWord
+            wordCopy[letterIndex] = letterToChange
+            this.setState({wordToFill: wordCopy})
+            
+        } else {
+            console.log("NOT CONTAINS")
+            this.setState(prevState => {
+                return {turnsLeft: prevState.turnsLeft - 1}
+            })
+        }
         
+        console.log("clicked on letter")
     }
 
     render() {
         let allLetters = this.state.letters.map(l => 
-            <SingleLetter 
-                key={l.id}
-                item={l}
-                ifClicked={this.handleLetterClick}
-            />)
+        <SingleLetter 
+            key={l.id}
+            item={l}
+            ifClicked={this.handleLetterClick}/>
+        );
 
-            for(let i = 0; i < allLetters.length; i++){
-                
-                if(allLetters[i].ifClicked){
-                    allLetters[i].classList.add("clicked")
-                }
-            }
-
-            let randomWord = this.state.randomWord.toUpperCase()
-            let randomWordAsArray = []
-
-            for(let i = 0; i < randomWord.length; i++){
-                randomWordAsArray.push(randomWord[i])
-            }
-
-            let emptyWord = []
-
-            for(let i = 0; i < randomWord.length; i++){
-                emptyWord.push("_")
-            }
-
-            console.log(randomWordAsArray)
-            console.log(emptyWord)
-
-            return(
-                <div>
-                    <h3 id="empty-word">{emptyWord.join(" ")}</h3>
-                    <p>You have {this.state.turnsLeft} turns to guess the word.</p>
-                
-                <div id="all-letters">
-                    {allLetters}
-                </div>
-
-                </div>
-            )
+        console.log(this.state.randomWord)
+        console.log(this.state.wordToFill)
+        
+        return(
+            <div>
+                <h3 id="empty-word">{this.state.wordToFill.join(" ")}</h3>
+                <p id="have-turns">You have <span id="turns-left"><b>{this.state.turnsLeft}</b></span> turns to guess the word.</p>
+            
+            <div id="all-letters">
+                {allLetters}
+            </div>
+            </div>
+        )
     }
 }
 

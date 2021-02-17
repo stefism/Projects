@@ -72,6 +72,10 @@ class Application extends React.Component {
             return(
                 <div>
 
+                    <div className="todo-list">
+                    {todoItems}
+                    </div>
+
                     <form onSubmit={this.handleSubmit}>
                         <input 
                         type="text" 
@@ -143,10 +147,6 @@ class Application extends React.Component {
 
                     <h4>{this.state.character.name}</h4>
                     <p>{this.state.character.bio}</p>
-                    
-                    <div className="todo-list">
-                    {todoItems}
-                    </div>
                 
                 </div>
                 

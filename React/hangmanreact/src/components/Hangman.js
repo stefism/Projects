@@ -8,9 +8,11 @@ class Hangman extends React.Component {
         super()
         this.state = {
             letters: letters,
+            wrongTurn: false,
+            isGuess: false,
             turnsLeft: 5,
             randomWord: "",
-            allWords: ["VEGANIK", "NYCTOGRAPH", "BIBLIOMANIA", "FARINOSE"],
+            allWords: ["PRO", "VAVSDXYZV", "VEGANIK", "NYCTOGRAPH", "BIBLIOMANIA", "FARINOSE"],
             currClickedWord: "",
             wordToFill: []
         }
@@ -57,26 +59,69 @@ class Hangman extends React.Component {
             }
         })
         
-        if(this.state.randomWord.includes(this.state.currClickedWord)){
-            
+        this.clickOnLetterLogic()
+        
+        console.log("clicked on letter")
+    }
+
+    clickOnLetterLogic() {
+        if (this.state.randomWord.includes(this.state.currClickedWord)) {
+
             console.log("CONTAINS")
 
-            let letterIndex = this.state.randomWord.indexOf(this.state.currClickedWord)
+            let isGuess = this.isWordGuessed(this.state.wordToFill)
+            console.log("Is Guess: " + isGuess)
+
+            if (isGuess) {
+                this.setState({isGuess: true})
+            }
+
+            let letterIndexes = this.getAllLetterIndexes(this.state.randomWord, this.state.currClickedWord)
 
             let wordCopy = [...this.state.wordToFill]
-            let letterToChange = {...wordCopy[letterIndex]}
-            letterToChange = this.state.currClickedWord
-            wordCopy[letterIndex] = letterToChange
-            this.setState({wordToFill: wordCopy})
-            
+
+            for (let i = 0; i < letterIndexes.length; i++) {
+                
+                let letterIndex = letterIndexes[i]
+                
+                let letterToChange = { ...wordCopy[letterIndex] }
+                letterToChange = this.state.currClickedWord
+                wordCopy[letterIndex] = letterToChange
+            }
+
+            this.setState({ wordToFill: wordCopy })
+            this.setState({wrongTurn: false})
+
         } else {
             console.log("NOT CONTAINS")
             this.setState(prevState => {
-                return {turnsLeft: prevState.turnsLeft - 1}
+                return { turnsLeft: prevState.turnsLeft - 1 }
             })
+            this.setState({wrongTurn: true})
+        }
+    }
+
+    isWordGuessed(wordArr){
+        for (let i = 0; i <= wordArr.length; i++) {          
+           if (wordArr[i] === "_") {
+               return false
+           }
+
+           if (i == wordArr.length && wordArr[i] != "_") {
+               return true
+           }
+        }
+    }
+
+    getAllLetterIndexes(array, letter){
+        var indexes = [];
+        
+        for(let i = 0; i < array.length; i++){
+            if (array[i] === letter)
+            indexes.push(i);
         }
         
-        console.log("clicked on letter")
+        return indexes;
     }
 
     render() {
@@ -89,10 +134,31 @@ class Hangman extends React.Component {
 
         console.log(this.state.randomWord)
         console.log(this.state.wordToFill)
+
+        if (this.state.isGuess) {
+            return (
+                <h1>Congratulation! You guess the word!</h1>
+            )
+        }
+
+        if(this.state.turnsLeft === 0){
+            return (
+                <h1>GAME OVER. Try Again?</h1>
+            )
+        }
+
+        let wronTurnStyleRed = {
+            color: "red"
+        }
+
+        let wrongTurnStyleWhite = {
+            color: "white"
+        }
         
         return(
             <div>
                 <h3 id="empty-word">{this.state.wordToFill.join(" ")}</h3>
+                <h3 id="wrong-turn" style={this.state.wrongTurn ? wronTurnStyleRed : wrongTurnStyleWhite}>Wrong turn. Sorry :)</h3>
                 <p id="have-turns">You have <span id="turns-left"><b>{this.state.turnsLeft}</b></span> turns to guess the word.</p>
             
             <div id="all-letters">

@@ -43,17 +43,20 @@ class Hangman extends React.Component {
     //     })
     // }
 
-    handleLetterClick(id){
+    handleLetterClick(id, cuurClickedLetter){
+        
+        this.setState({currClickedWord: cuurClickedLetter})
+        
         this.setState((prevState) => {
             let updatedLettersIfClicked = prevState.letters.map(l => {
                 if(l.id === id){
-                    l.isClicked = true
-                    this.setState({currClickedWord: l.letter})
+                    l.isClicked = true                   
                     console.log(this.state.currClickedWord);
                 }
+                
                 return l
             })
-            //debugger;
+            
             return {
                 letters: updatedLettersIfClicked
             }

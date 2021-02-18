@@ -11,7 +11,7 @@ function SingleLetter(props){
             <h3 
             class="letter"
             style={props.item.isClicked ? clickedStyle : null}
-            onClick={() => props.ifClicked(props.item.id)}
+            onClick={() => props.ifClicked(props.item.id, props.item.letter)}
             >{props.item.letter} </h3>
         </div>
     )

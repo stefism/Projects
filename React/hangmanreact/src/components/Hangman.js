@@ -51,7 +51,7 @@ class Hangman extends React.Component {
             let updatedLettersIfClicked = prevState.letters.map(l => {
                 if(l.id === id){
                     l.isClicked = true                   
-                    console.log(this.state.currClickedWord);
+                    console.log("!clicked on letter:! " + this.state.currClickedWord);
                 }
                 
                 return l
@@ -64,7 +64,8 @@ class Hangman extends React.Component {
         
         this.clickOnLetterLogic()
         
-        console.log("clicked on letter")
+        console.log("clicked on letter: " + this.state.currClickedWord)
+
     }
 
     clickOnLetterLogic() {
@@ -146,7 +147,10 @@ class Hangman extends React.Component {
 
         if(this.state.turnsLeft === 0){
             return (
+                <>
                 <h1>GAME OVER. Try Again?</h1>
+                <h4>The word is {this.state.randomWord}</h4>
+                </>
             )
         }
 

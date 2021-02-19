@@ -44,14 +44,14 @@ class Hangman extends React.Component {
     // }
 
     handleLetterClick(id, cuurClickedLetter){
-
+        
         this.setState({currClickedWord: cuurClickedLetter})
         
         this.setState((prevState) => {
             let updatedLettersIfClicked = prevState.letters.map(l => {
                 if(l.id === id){
                     l.isClicked = true                   
-                    console.log(this.state.currClickedWord);
+                    console.log("!clicked on letter:! " + this.state.currClickedWord);
                 }
                 
                 return l
@@ -60,16 +60,26 @@ class Hangman extends React.Component {
             return {
                 letters: updatedLettersIfClicked
             }
-        },
-        () => { //Callback function. The state is asynchronous!
-            this.clickOnLetterLogic()
         })
+        
+        this.clickOnLetterLogic()
+        
+        console.log("clicked on letter: " + this.state.currClickedWord)
+
     }
 
     clickOnLetterLogic() {
         if (this.state.randomWord.includes(this.state.currClickedWord)) {
+
             console.log("CONTAINS")
-            
+
+            let isGuess = this.isWordGuessed(this.state.wordToFill)
+            console.log("Is Guess: " + isGuess)
+
+            if (isGuess) {
+                this.setState({isGuess: true})
+            }
+
             let letterIndexes = this.getAllLetterIndexes(this.state.randomWord, this.state.currClickedWord)
 
             let wordCopy = [...this.state.wordToFill]
@@ -84,15 +94,7 @@ class Hangman extends React.Component {
             }
 
             this.setState({ wordToFill: wordCopy })
-            this.setState({wrongTurn: false}, 
-                () => { //Callback function. The state is asynchronous!
-                let isGuess = this.isWordGuessed(this.state.wordToFill)
-                console.log("Is Guess: " + isGuess)
-    
-                if (isGuess) {
-                    this.setState({isGuess: true})
-                }
-            })
+            this.setState({wrongTurn: false})
 
         } else {
             console.log("NOT CONTAINS")
@@ -104,7 +106,6 @@ class Hangman extends React.Component {
     }
 
     isWordGuessed(wordArr){
-        // debugger;
         for (let i = 0; i <= wordArr.length; i++) {          
            if (wordArr[i] === "_") {
                return false
@@ -148,7 +149,7 @@ class Hangman extends React.Component {
             return (
                 <>
                 <h1>GAME OVER. Try Again?</h1>
-                <h4>The hidden word is {this.state.randomWord}</h4>
+                <h4>The word is {this.state.randomWord}</h4>
                 </>
             )
         }

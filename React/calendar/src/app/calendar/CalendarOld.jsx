@@ -5,7 +5,7 @@ import "./styles.css";
 
 export default function Calendar({ value, onChange }) {
   const [calendar, setCalendar] = useState([]);
-  const [prices, setPrices] = useState({});
+  const [nonWorkDay, setNonWorkDay] = useState(0);
 
   useEffect(() => {
     setCalendar(buildCalendar(value));
@@ -19,11 +19,20 @@ export default function Calendar({ value, onChange }) {
 
     const _date = startDay.clone().subtract(1, "day");
 
-    getPricesFromApi().then((result) => {
-      setPrices(result.prices);
-    });
+    let prices = {};
 
-    console.log(prices);
+    getPricesFromApi()
+      .then((result) => {
+        console.log(result.prices);
+        setNonWorkDay(result.prices.nonWorkDay)
+
+        console.log(result.prices.nonWorkDay);
+        prices = result.prices;
+        
+      })
+
+    // let nonWorkDay = prices.nonWorkDay;
+    console.log('Nonworkday: ' + nonWorkDay)
 
     while (_date.isBefore(endDay, "day")) {
       calendarBody.push(
@@ -83,21 +92,7 @@ export default function Calendar({ value, onChange }) {
         window.alert(e);
       })
 
-      return result;
-  }
-
-  function GetPrice(day){
-    var price = "";
-
-    if(day.day() == 0 || day.day() == 6){
-      price = prices.nonWorkDay
-    }
-    else{
-      price = prices.workDay
-    }
-
-    //В случей че price е undefined, toFixed няма да работи и ще гръмне за това правя тука такава проверка
-    return price ? price.toFixed(2) : price
+    return result;
   }
 
   return (
@@ -129,7 +124,7 @@ export default function Calendar({ value, onChange }) {
                   {/* <p>Price: 4.20</p> */}
                 </div>
 
-                <p>Price: { GetPrice(day) }</p>
+                <p>Price: 4.20</p>
                 <hr />
               </div>
             ))}

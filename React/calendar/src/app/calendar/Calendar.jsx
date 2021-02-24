@@ -11,24 +11,29 @@ export default function Calendar({ value, onChange }) {
   }, [value]);
 
   function buildCalendar(date) {
-    const a = [];
+    const calendarBody = [];
 
     const startDay = date.clone().startOf("month").startOf("week");
     const endDay = date.clone().endOf("month").endOf("week");
 
     const _date = startDay.clone().subtract(1, "day");
 
+    let prices = getPricesFromApi();
+
+    console.log(prices);
+
     while (_date.isBefore(endDay, "day")) {
-      a.push(
+      calendarBody.push(
         Array(7)
           .fill(0)
           .map(() => _date.add(1, "day").clone())
       );
     }
-    return a;
+    return calendarBody;
   }
 
   function isSelected(day) {
+    // console.log('function isSelected: ' + day)
     return value.isSame(day, "day");
   }
 
@@ -37,6 +42,7 @@ export default function Calendar({ value, onChange }) {
   }
 
   function isToday(day) {
+    // console.log('function isToday = ' + day);
     return moment(new Date()).isSame(day, "day");
   }
 
@@ -53,6 +59,28 @@ export default function Calendar({ value, onChange }) {
 
   function currYear() {
     return value.format("YYYY");
+  }
+
+  async function getPricesFromApi() {
+    const endpoint = 'https://localhost:44324/Data/GetReservedDates';
+
+    const result = await fetch(endpoint, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Accept': '*/*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*'
+      }
+    })
+      .then(response => response.json())
+      .then((result) => {
+        return result;
+      }, (e) => {
+        window.alert(e);
+      })
+
+      return result;
   }
 
   return (
@@ -72,13 +100,20 @@ export default function Calendar({ value, onChange }) {
                 key={di}
                 className="day"
                 onClick={() => {
+
+                  // Changes on click the day.
                   if (day < moment(new Date()).startOf("day")) return;
                   onChange(day);
+                  console.log('Day is: ' + day.format("D").toString())
                 }}
               >
                 <div className={dayStyles(day)}>
                   {day.format("D").toString()}
+                  {/* <p>Price: 4.20</p> */}
                 </div>
+
+                <p>Price: 4.20</p>
+                <hr />
               </div>
             ))}
           </div>

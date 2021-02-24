@@ -64,6 +64,7 @@
   box-sizing: border-box;
   z-index: 1;
   text-align: center;
+  border: 1px solid blue;
 }
 
 .calendar .day div {
@@ -73,6 +74,7 @@
   color: var(--black);
   z-index: 100;
   line-height: 44px;
+  /* border: 1px solid blue; */
 }
 
 .calendar .day div.before {
@@ -87,4 +89,8 @@
 
 .calendar .day div.today {
   background-color: var(--grey);
+}
+
+.clicked {
+  background-color: burlywood;
 }

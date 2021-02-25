@@ -121,7 +121,8 @@ export default function Calendar({ value, onChange }) {
                   // Changes on click the day.
                   if (day < moment(new Date()).startOf("day")) return;
                   onChange(day);
-                  console.log('Day is: ' + day.format("D").toString())
+                  console.log('Day is: ' + day.format("D").toString() 
+                  + ' notformated: ' + day + ' day-day: ' + day.day())
                 }}
               >
                 <div className={dayStyles(day)}>

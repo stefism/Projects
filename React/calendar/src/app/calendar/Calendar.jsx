@@ -6,12 +6,20 @@ import "./styles.css";
 export default function Calendar({ value, onChange }) {
   const [calendar, setCalendar] = useState([]);
   const [prices, setPrices] = useState({});
+  const [reservedDates, setReservedDates] = useState([]);
+  const [currentYear, setCurrYear] = useState();
+  const [currMonth, setCurrMonth] = useState();
 
   useEffect(() => {
     setCalendar(buildCalendar(value));
   }, [value]);
 
+  console.log('date from state: ' + value.format('YYYY-MM-DD'));
+
   function buildCalendar(date) {
+    setCurrYear(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[0]));
+    setCurrMonth(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[1]));
+
     const calendarBody = [];
 
     const startDay = date.clone().startOf("month").startOf("week");
@@ -19,11 +27,12 @@ export default function Calendar({ value, onChange }) {
 
     const _date = startDay.clone().subtract(1, "day");
 
-    getPricesFromApi().then((result) => {
+    getPricesFromApi(currentYear, currMonth).then((result) => {
       setPrices(result.prices);
+      result.reservedDays.map(d =>
+        setReservedDates((prev) =>
+          [...prev, d.reservedDate.split('T')[0]]));
     });
-
-    console.log(prices);
 
     while (_date.isBefore(endDay, "day")) {
       calendarBody.push(
@@ -64,8 +73,8 @@ export default function Calendar({ value, onChange }) {
     return value.format("YYYY");
   }
 
-  async function getPricesFromApi() {
-    const endpoint = 'https://localhost:44324/Data/GetReservedDates';
+  async function getPricesFromApi(year = 2021, month = 3) {
+    const endpoint = `https://localhost:44324/Data/GetReservedDates?year=${year}&month=${month}`;
 
     const result = await fetch(endpoint, {
       mode: 'cors',
@@ -74,7 +83,7 @@ export default function Calendar({ value, onChange }) {
         'Accept': '*/*',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*'
-      }
+      },
     })
       .then(response => response.json())
       .then((result) => {
@@ -83,16 +92,16 @@ export default function Calendar({ value, onChange }) {
         window.alert(e);
       })
 
-      return result;
+    return result;
   }
 
-  function GetPrice(day){
+  function GetPrice(day) {
     var price = "";
 
-    if(day.day() == 0 || day.day() == 6){
+    if (day.day() == 0 || day.day() == 6) {
       price = prices.nonWorkDay
     }
-    else{
+    else {
       price = prices.workDay
     }
 
@@ -112,25 +121,26 @@ export default function Calendar({ value, onChange }) {
         </div>
         {calendar.map((week, wi) => (
           <div key={wi}>
-            {week.map((day, di) => (
+            {week.map((date, di) => (
               <div
                 key={di}
-                className="day"
+                // className="day"
+                className={reservedDates.includes(date.format('YYYY-MM-DD').toString()) ? 'day reserved' : 'day'}
                 onClick={() => {
 
                   // Changes on click the day.
-                  if (day < moment(new Date()).startOf("day")) return;
-                  onChange(day);
-                  console.log('Day is: ' + day.format("D").toString() 
-                  + ' notformated: ' + day + ' day-day: ' + day.day())
+                  if (date < moment(new Date()).startOf("day")) return;
+                  onChange(date);
+                  console.log('Day is: ' + date.format("D").toString()
+                    + ' notformated: ' + date + ' day-day: ' + date.format('YYYY-MM-DD'))
                 }}
               >
-                <div className={dayStyles(day)}>
-                  {day.format("D").toString()}
+                <div className={dayStyles(date)}>
+                  {date.format("D").toString()}
                   {/* <p>Price: 4.20</p> */}
                 </div>
 
-                <p>Price: { GetPrice(day) }</p>
+                <p>Price: {GetPrice(date)}</p>
                 <hr />
               </div>
             ))}

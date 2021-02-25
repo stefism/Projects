@@ -91,6 +91,10 @@
   background-color: var(--grey);
 }
 
-.clicked {
-  background-color: burlywood;
+.calendar .day:hover {
+  cursor: pointer;
+}
+
+.calendar .day.reserved {
+  background-color: rgb(241, 129, 85);
 }

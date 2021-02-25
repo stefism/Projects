@@ -16,8 +16,8 @@ async function ChangePrices(workDaysPrice, weekDaysPrice) {
         },
         body: JSON.stringify(
             { 
-                Workday: workDaysPrice,
-                Weekends: weekDaysPrice
+                Workday: parseFloat(workDaysPrice),
+                Weekends: parseFloat(weekDaysPrice)
             })
     })
     .then(() => {

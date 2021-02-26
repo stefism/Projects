@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Header from "./header";
 import "./styles.css";
-import { render } from "@testing-library/react";
 
 export default function Calendar({ value, onChange }) {
   const [calendar, setCalendar] = useState([]);

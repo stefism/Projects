@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getJwt } from './helpers/jwt'
+import { getJwt } from './jwt'
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 

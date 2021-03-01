@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../components/Home';
 import Authenticate from './Authenticate';
-import Loged from './Loged';
+import Calendar from '../calendar-component/Calendar';
 
 import Login from './Login';
 
@@ -15,7 +15,7 @@ class App extends Component {
         <Route path='/Login' component={Login} />
         <Route path='/' exact component={Home} />
         <Authenticate>
-        <Route path='/Loged'component={Loged}/>
+        <Route path='/Loged'component={Calendar}/>
         </Authenticate>
         
       </Switch>

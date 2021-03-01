@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Loged = () => {
+const Calendar = () => {
     return (
         <h1>Page for loged users.</h1>
     )
 }
 
-export default Loged;
+export default Calendar;

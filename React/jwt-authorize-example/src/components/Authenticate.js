@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { getJwt } from './helpers/jwt'
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 class Authenticate extends Component {
     constructor(props){
@@ -9,13 +12,36 @@ class Authenticate extends Component {
        } 
     }
 
+    componentDidMount() {
+        const jwt = getJwt();
+
+        if(!jwt) {
+            this.props.history.push('/Login');
+        }
+
+        axios.get('https://localhost:44324/api/jwt', { 
+            headers: {Authorization: `Bearer ${jwt}` } })
+            .then(result => this.setState({user: result.data}))
+            .catch(error => {
+                localStorage.removeItem('my-super-cool-jwt');
+                this.props.history.push('/Login');
+            })
+    }
+
     render() {
+        if(this.state.user === undefined) {
+            return (
+                <div>
+                    <h1>Loading ...</h1>
+                </div>
+            )
+        }
         return (
             <div>
-                This is authenticate page.
+                {this.props.children}
             </div>
         )
     }
 }
 
-export default Authenticate
+export default withRouter(Authenticate);

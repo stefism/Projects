@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class Login extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class Login extends Component {
             password: ''
         }
 
-        this.change = this.change.bind(this)
+        this.change = this.change.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     change(event) {
@@ -18,11 +20,22 @@ class Login extends Component {
         })
     }
 
+    submit(event) {
+        event.preventDefault();
+        axios.post('https://localhost:44324/api/jwt', {
+            username: this.state.username,
+            password: this.state.password
+        }).then(result => {
+            localStorage.setItem('my-super-cool-jwt', result.data);
+            this.props.history.push('/Loged');
+        });
+    }
+
     render() {
         return (
             <div>
                 <h2>Please login to use the site :)</h2>
-                <form>
+                <form onSubmit={event => this.submit(event)}>
                     <label>Username: </label>
                     <input type='text' name='username' 
                     onChange={event => this.change(event)}

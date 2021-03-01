@@ -4,12 +4,16 @@ import Calendar from "../app/calendar/Calendar";
 import "../app/calendar/styles.css";
 
 import ChangePricesForm from '../components/changePricesForm'
+import GetUsername from './GetUsername'
 
 function LogedApp () {
   const [selectedDate, setSelectedDate] = useState(moment());
+
+  const username = GetUsername();
+
   return (
     <>
-  <ChangePricesForm />
+  {username === 'admin@proba.net' && <ChangePricesForm />}
   <Calendar value={selectedDate} 
     onChange={setSelectedDate} />
     </>)

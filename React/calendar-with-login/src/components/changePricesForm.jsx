@@ -15,9 +15,6 @@ function ChangePricesForm() {
 
     function handleSubmit(e){
         ChangePrices(workDaysPrice, weekDaysPrice);
-        // console.log('Week days price:' + weekDaysPrice)
-        // console.log('Work days price:' + workDaysPrice)
-        // e.preventDefault();
     }
 
     return (

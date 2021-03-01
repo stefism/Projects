@@ -1,0 +1,118 @@
+﻿body {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+#github {
+    position: absolute;
+    right: -5rem;
+    top: 0.6rem;
+    background-color: black;
+    transform: rotate(25deg);
+}
+
+    #github a,
+    #github a:link,
+    #github a:visited {
+        display: inline-block;
+        padding: 1rem 8rem;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 300ms;
+    }
+
+        #github a:hover {
+            text-decoration: underline;
+            transform: translateX(0.4rem);
+        }
+
+#download-options {
+    margin-bottom: 2rem;
+}
+
+    #download-options h3:last-of-type {
+        margin-top: 2rem;
+    }
+
+    #download-options code {
+        font-size: 1.2rem;
+    }
+
+#myCalendarWrapper {
+    width: -webkit-fill-available;
+    border: 1px dashed black;
+    padding: 2em 4em;
+    position: relative;
+    font-size: 1rem;
+    margin: 2rem auto 5rem;
+}
+
+    #myCalendarWrapper:before {
+        /*content: '#myCalendarWrapper';*/
+        position: absolute;
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 2.4rem);
+        font-size: 1.2rem;
+        background-color: rgba(93, 93, 93, 0.2);
+        padding: 0.5rem 1rem 0.4rem;
+        color: rgb(233, 72, 99);
+    }
+
+code {
+    font-size: 0.7rem;
+    background-color: rgb(249, 249, 249);
+    padding: 0.5rem;
+    margin: 1rem 0 3rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+    code h3 {
+        padding: 0;
+        margin: 0;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    code pre {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+
+.pink {
+    color: rgb(233, 72, 99);
+}
+
+#example {
+    margin: 0 auto;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+    #example h3:not(:first-of-type) {
+        margin-top: 3rem;
+    }
+
+    #example p {
+        font-size: 0.9rem;
+    }
+
+#download-options {
+    margin-bottom: 5rem;
+}
+
+    #download-options h2:last-of-type {
+        margin-top: 2rem;
+    }
+
+    #download-options code {
+        font-size: 1.2rem;
+    }

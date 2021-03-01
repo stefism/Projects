@@ -3,6 +3,9 @@ import moment from "moment";
 import Header from "./header";
 import "./styles.css";
 
+import GetPricesFromApi from '../../components/GetPricesFromApi'
+import ReserveAvailableDate from '../../components/ReserveAvailableDate'
+
 export default function Calendar({ value, onChange }) {
   const [calendar, setCalendar] = useState([]);
   const [prices, setPrices] = useState({});
@@ -13,8 +16,6 @@ export default function Calendar({ value, onChange }) {
   useEffect(() => {
     setCalendar(buildCalendar(value));
   }, [value]);
-
-  console.log('date from state: ' + value.format('YYYY-MM-DD'));
 
   function buildCalendar(date) {
     setCurrYear(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[0]));
@@ -27,7 +28,7 @@ export default function Calendar({ value, onChange }) {
 
     const _date = startDay.clone().subtract(1, "day");
 
-    getPricesFromApi(currentYear, currMonth).then((result) => {
+    GetPricesFromApi(currentYear, currMonth).then((result) => {
       setPrices(result.prices);
       result.reservedDays.map(d =>
         setReservedDates((prev) =>
@@ -73,29 +74,7 @@ export default function Calendar({ value, onChange }) {
     return value.format("YYYY");
   }
 
-  async function getPricesFromApi(year = 2021, month = 3) {
-    const endpoint = `https://localhost:44324/Data/GetReservedDates?year=${year}&month=${month}`;
-
-    const result = await fetch(endpoint, {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        'Accept': '*/*',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*'
-      },
-    })
-      .then(response => response.json())
-      .then((result) => {
-        return result;
-      }, (e) => {
-        window.alert(e);
-      })
-
-    return result;
-  }
-
-  function GetPrice(day) {
+  function PutPricesIntoCalendarBody(day) {
     var price = "";
 
     if (day.day() == 0 || day.day() == 6) {
@@ -131,6 +110,7 @@ export default function Calendar({ value, onChange }) {
                   // Changes on click the day.
                   if (date < moment(new Date()).startOf("day")) return;
                   onChange(date);
+                  ReserveAvailableDate(date.format('YYYY-MM-DD'));
                   console.log('Day is: ' + date.format("D").toString()
                     + ' notformated: ' + date + ' day-day: ' + date.format('YYYY-MM-DD'))
                 }}
@@ -140,7 +120,7 @@ export default function Calendar({ value, onChange }) {
                   {/* <p>Price: 4.20</p> */}
                 </div>
 
-                <p>Price: {GetPrice(date)}</p>
+                <p>Price: {PutPricesIntoCalendarBody(date)}</p>
                 <hr />
               </div>
             ))}

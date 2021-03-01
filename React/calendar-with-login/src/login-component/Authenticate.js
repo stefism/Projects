@@ -16,7 +16,7 @@ class Authenticate extends Component {
         const jwt = getJwt();
 
         if(!jwt) {
-            this.props.history.push('/Login');
+            this.props.history.push('/');
         }
 
         axios.get('https://localhost:44324/api/jwt', { 
@@ -30,7 +30,7 @@ class Authenticate extends Component {
             .then(result => this.setState({user: result.data}))
             .catch(error => {
                 localStorage.removeItem('my-super-cool-jwt');
-                this.props.history.push('/Login');
+                this.props.history.push('/');
             });
     }
 
@@ -44,6 +44,7 @@ class Authenticate extends Component {
         }
         return (
             <div>
+                <h3>Welcome {this.state.user}</h3>
                 {this.props.children}
             </div>
         )

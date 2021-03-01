@@ -7,6 +7,9 @@ import LogedApp from '../login-component/loged-app';
 import Login from '../login-component/Login';
 import Authenticate from '../login-component/Authenticate';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 export default function () {
   return (
     <BrowserRouter>

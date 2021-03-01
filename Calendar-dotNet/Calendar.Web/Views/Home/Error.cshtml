@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="bg-danger p-4 text-white rounded-lg">
+    <h2>There are some errors:</h2>
+    <div>@TempData["ErrorMessage"]</div>
+    <a onclick="goBack()" class="btn btn-warning"><b>Back</b></a>
+</div>
+
+@section Scripts {
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+}

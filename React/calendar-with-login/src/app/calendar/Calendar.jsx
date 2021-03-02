@@ -7,10 +7,6 @@ import GetPricesFromApi from '../../components/GetPricesFromApi'
 import ReserveAvailableDate from '../../components/ReserveAvailableDate'
 import GetUserInfo from '../../login-component/GetUserInfo'
 
-function userInfo(){
-  const userInfo = GetUserInfo();
-  return userInfo
-}
 
 export default function Calendar({ value, onChange }) {
   const [calendar, setCalendar] = useState([]);
@@ -18,19 +14,12 @@ export default function Calendar({ value, onChange }) {
   const [reservedDates, setReservedDates] = useState([]);
   const [currentYear, setCurrYear] = useState();
   const [currMonth, setCurrMonth] = useState();
-  // const [userId, setUserId] = useState();
 
-  let pr = userInfo();
-  // const userId = userInfo.userId;
-
-  // console.log('userInfo: ' + pr.userId);
+  const userInfo = GetUserInfo();
 
   useEffect(() => {
     setCalendar(buildCalendar(value));
-    // setUserId(userInfo.userId);
   }, [value]);
-
-  // console.log('userId: ' + userId);
 
   function buildCalendar(date) {
     setCurrYear(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[0]));
@@ -125,7 +114,7 @@ export default function Calendar({ value, onChange }) {
                   // Changes on click the day.
                   if (date < moment(new Date()).startOf("day")) return;
                   onChange(date);
-                  ReserveAvailableDate(date.format('YYYY-MM-DD'));
+                  ReserveAvailableDate(date.format('YYYY-MM-DD'), userInfo.userId);
                   console.log('Day is: ' + date.format("D").toString()
                     + ' notformated: ' + date + ' day-day: ' + date.format('YYYY-MM-DD'))
                 }}

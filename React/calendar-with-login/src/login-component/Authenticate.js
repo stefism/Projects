@@ -27,7 +27,7 @@ class Authenticate extends Component {
                 'Access-Control-Allow-Headers': '*',
                 Authorization: `Bearer ${jwt}` 
             } })
-            .then(result => this.setState({user: result.data}))
+            .then(result => this.setState({user: result.data.username}))
             .catch(error => {
                 localStorage.removeItem('my-super-cool-jwt');
                 this.props.history.push('/');

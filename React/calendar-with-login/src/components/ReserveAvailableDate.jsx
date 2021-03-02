@@ -3,9 +3,9 @@ import { Button, Modal } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-async function ReserveAvailableDate(date) {
+async function ReserveAvailableDate(date, userId) {
 
-        const endpoint = 'https://localhost:44324/Data/AddAvailableDate';
+        const endpoint = `https://localhost:44324/Data/AddAvailableDate?dateToString=${date}&userId=${userId}`;
     
         var success = false;
         await fetch(endpoint, {
@@ -15,11 +15,11 @@ async function ReserveAvailableDate(date) {
                 'Accept': '*/*',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': '*'
+                'Access-Control-Allow-Headers': '*',
             },
             body: JSON.stringify(
                 { 
-                    date: date
+                    "dateToString": date
                 })
         })
         .then(() => {

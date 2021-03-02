@@ -3,8 +3,9 @@ import { getJwt } from './jwt'
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-function GetUsername() {
+function GetUserInfo() {
     const [username, setUsername] = useState();
+    const [userId, setUserId] = useState();
 
     const jwt = getJwt();
 
@@ -16,9 +17,12 @@ function GetUsername() {
                 'Access-Control-Allow-Headers': '*',
                 Authorization: `Bearer ${jwt}` 
             } })
-            .then(result => setUsername(result.data));
+            .then(result => setUsername(result.data.username), 
+            result => setUserId(result.data.userId));
+            // debugger
+            return {username: username, userId: userId}
 
-   return username; 
+//    return username; 
 }
 
-export default GetUsername;
+export default GetUserInfo;

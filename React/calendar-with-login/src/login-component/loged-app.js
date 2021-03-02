@@ -10,12 +10,20 @@ import AllReservations from '../components/AllReservationsComponent'
 
 function LogedApp () {
   const [selectedDate, setSelectedDate] = useState(moment());
-  // const [allReservations, setAllReservations] = useState();
+  const [allReservations, setAllReservations] = useState();
 
   const userInfo = GetUserInfo();
 
-  const reservations = GetAllReservations();
-  console.log(reservations);
+  useEffect(() => {
+    GetAllReservations().then((r) =>
+    {
+      console.log(r)
+      setAllReservations(r);
+    });
+  }, []);
+
+  // debugger
+  console.log('Reservations from loged-app.js: ' + allReservations);
   
   
   // useEffect(() => {

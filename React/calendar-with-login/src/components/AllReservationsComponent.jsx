@@ -1,8 +1,20 @@
 import React from 'react'
 
 import "../app/calendar/styles.css";
+import ReleaseReservation from './ReleaseReservation'
+import GetAllReservations from '../components/GetAllReservations';
 
 function AllReservations(props){
+    
+    function handle(event){
+        ReleaseReservation(event.target.value)
+        .then((result) => {
+            if(result.success){
+              GetAllReservations(props.setAllReservations);
+            }
+          });
+    }
+
     return <div>
         <table id='all-reservations'>
             <th>Username</th>
@@ -15,7 +27,9 @@ function AllReservations(props){
                 <td>{item.username}</td>
                 <td>{item.reservedDate}</td>
                 <td>{item.price}</td>
-                <td><button class="del-reservations">Delete</button></td>
+                <td><button value={item.reservationDateId}
+                    class="del-reservations" 
+                    onClick={event => handle(event)}>Delete</button></td>
                 </tr>
                 )
             }

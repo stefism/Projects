@@ -3,15 +3,16 @@ import moment from "moment";
 import Header from "./header";
 import "./styles.css";
 
-import GetPricesFromApi from '../../components/GetPricesFromApi'
-import ReserveAvailableDate from '../../components/ReserveAvailableDate'
-import GetUserInfo from '../../login-component/GetUserInfo'
+import GetPricesFromApi from '../../components/GetPricesFromApi';
+import ReserveAvailableDate from '../../components/ReserveAvailableDate';
+import GetUserInfo from '../../login-component/GetUserInfo';
+import GetAllReservations from '../../components/GetAllReservations';
 
 
-export default function Calendar({ value, onChange }) {
+export default function Calendar({ value, setAllReservations, onChange, reservedDates, setReservedDates }) {
   const [calendar, setCalendar] = useState([]);
   const [prices, setPrices] = useState({});
-  const [reservedDates, setReservedDates] = useState([]);
+  // const [reservedDates, setReservedDates] = useState([]);
   const [currentYear, setCurrYear] = useState();
   const [currMonth, setCurrMonth] = useState();
 
@@ -114,7 +115,15 @@ export default function Calendar({ value, onChange }) {
                   // Changes on click the day.
                   if (date < moment(new Date()).startOf("day")) return;
                   onChange(date);
-                  ReserveAvailableDate(date.format('YYYY-MM-DD'), userInfo.userId);
+                  
+                  //Reload component after make reservation
+                  ReserveAvailableDate(date.format('YYYY-MM-DD'), userInfo.userId)
+                    .then((result) => {
+                      if(result.success){
+                        GetAllReservations(setAllReservations);
+                      }
+                    });
+                  
                   console.log('Day is: ' + date.format("D").toString()
                     + ' notformated: ' + date + ' day-day: ' + date.format('YYYY-MM-DD'))
                 }}

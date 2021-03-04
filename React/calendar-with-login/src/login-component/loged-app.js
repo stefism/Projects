@@ -11,6 +11,7 @@ import AllReservations from '../components/AllReservationsComponent'
 function LogedApp () {
   const [selectedDate, setSelectedDate] = useState(moment());
   const [allReservations, setAllReservations] = useState();
+  const [reservedDates, setReservedDates] = useState([]);
 
   const userInfo = GetUserInfo();
 
@@ -54,8 +55,16 @@ function LogedApp () {
   return (
     <>
   {userInfo.username === 'admin@proba.net' && <ChangePricesForm />}
-  <Calendar value={selectedDate} onChange={setSelectedDate} />
-  <AllReservations reservations={ allReservations } />
+  <Calendar value={selectedDate} 
+            setAllReservations={setAllReservations} 
+            onChange={setSelectedDate}
+            reservedDates={reservedDates}
+            setReservedDates={setReservedDates} />
+  
+  <AllReservations 
+  reservations={ allReservations }
+  setAllReservations={setAllReservations}
+  setReservedDates={setReservedDates} />
     </>)
 }
 

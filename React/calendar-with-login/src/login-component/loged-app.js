@@ -14,23 +14,20 @@ function LogedApp () {
 
   const userInfo = GetUserInfo();
 
-  useEffect(() => {
-    GetAllReservations().then((r) =>
-    {
-      console.log(r)
-      setAllReservations(r);
-    });
-  }, []);
-
-  // debugger
-  console.log('Reservations from loged-app.js: ' + allReservations);
-  
-  
   // useEffect(() => {
-  //   const reservations = GetAllReservations();
-  //   console.log(reservations);
+  //   GetAllReservations().then((r) =>
+  //   {
+  //     console.log(r)
+  //     setAllReservations(r);
+  //   });
+  // }, []); //WORK
 
-  // }, []);
+  // // debugger
+  // console.log('Reservations from loged-app.js: ' + allReservations);
+  
+  useEffect(() => {
+    GetAllReservations(setAllReservations);
+  }, []);
   
   // setAllReservations = GetAllReservations();
   // console.log(allReservations);
@@ -39,7 +36,7 @@ function LogedApp () {
   //   <AllReservations key={item.reservationDateId} 
   //   username={item.username}
   //   reservedDate={item.reservedDate}
-  //   price={item.price} />)
+  //   price={item.price} />);
 
   // let allReservationsComponents;
 
@@ -58,7 +55,7 @@ function LogedApp () {
     <>
   {userInfo.username === 'admin@proba.net' && <ChangePricesForm />}
   <Calendar value={selectedDate} onChange={setSelectedDate} />
-  {/* {allReservationsComponents} */}
+  <AllReservations reservations={ allReservations } />
     </>)
 }
 

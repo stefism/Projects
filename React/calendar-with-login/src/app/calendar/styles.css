@@ -98,3 +98,43 @@
 .calendar .day.reserved {
   background-color: rgb(241, 129, 85);
 }
+
+/* All reservations table */
+#all-reservations {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#all-reservations td, #all-reservations th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#all-reservations tr:nth-child(even){background-color: #f2f2f2;}
+
+#all-reservations tr:hover {background-color: #ddd;}
+
+#all-reservations th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #616461;
+  color: white;
+}
+
+/* Delete reservation button */
+.del-reservations {
+  color: #fff !important;
+  text-decoration: none;
+  background: #ed3330;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  }
+
+.del-reservations:hover {
+  background: #434343;
+  }

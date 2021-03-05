@@ -108,7 +108,7 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
                 // className="day"
                 className={reservedDates.includes(date.format('YYYY-MM-DD').toString()) ? 'day reserved' : 'day'}
                 onClick={() => {
-
+                
                   // Changes on click the day.
                   if (date < moment(new Date()).startOf("day")) return;
                   onChange(date);

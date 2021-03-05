@@ -81,11 +81,11 @@
   color: var(--grey);
 }
 
-.calendar .day div.selected {
+/* .calendar .day div.selected {
   background-color: var(--red);
   color: var(--white);
   font-weight: bold;
-}
+} */
 
 .calendar .day div.today {
   background-color: var(--grey);
@@ -97,6 +97,7 @@
 
 .calendar .day.reserved {
   background-color: rgb(241, 129, 85);
+  pointer-events: none;
 }
 
 /* All reservations table */

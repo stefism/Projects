@@ -1,0 +1,10 @@
+{
+    "explorer.compactFolders": false,
+    "launch": {
+
+        "configurations": [],
+        "compounds": []
+    },
+    "window.zoomLevel": 1,
+    "editor.fontSize": 20
+}

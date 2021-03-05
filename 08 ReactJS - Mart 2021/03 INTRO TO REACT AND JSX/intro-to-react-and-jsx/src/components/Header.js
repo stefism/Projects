@@ -1,9 +1,8 @@
-function Header(){
-    let headingMessage = 'Hello React World';
+function Header(props){
     
     return(
     <header>
-      <h1>{headingMessage + ' ...'}</h1>
+      <h1>{props.children}</h1>
       <h2>The Best</h2>
     </header>
     )

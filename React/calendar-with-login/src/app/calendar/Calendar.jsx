@@ -12,10 +12,7 @@ import GetAllReservations from '../../components/GetAllReservations';
 export default function Calendar({ value, setAllReservations, onChange, reservedDates, setReservedDates }) {
   const [calendar, setCalendar] = useState([]);
   const [prices, setPrices] = useState({});
-  // const [reservedDates, setReservedDates] = useState([]);
-  const [currentYear, setCurrYear] = useState();
-  const [currMonth, setCurrMonth] = useState();
-
+ 
   const userInfo = GetUserInfo();
 
   useEffect(() => {
@@ -23,8 +20,8 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
   }, [value]);
 
   function buildCalendar(date) {
-    setCurrYear(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[0]));
-    setCurrMonth(parseFloat(value.format('YYYY-MM-DD').toString().split('-')[1]));
+    const currentYear = parseFloat(value.format('YYYY-MM-DD').toString().split('-')[0]);
+    const currMonth = parseFloat(value.format('YYYY-MM-DD').toString().split('-')[1]);
 
     const calendarBody = [];
 

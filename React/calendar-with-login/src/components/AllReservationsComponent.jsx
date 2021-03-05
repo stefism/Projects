@@ -4,23 +4,26 @@ import "../app/calendar/styles.css";
 import ReleaseReservation from './ReleaseReservation'
 import GetAllReservations from '../components/GetAllReservations';
 import GetPricesFromApi from '../components/GetPricesFromApi';
-import { NavItem } from 'react-bootstrap';
 
 function AllReservations(props){
     
     function handle(event){
+        const date = new Date(event.target.getAttribute('currDate'))
+
+        const currentYear = date.getFullYear();
+        const currMonth = date.getMonth() + 1;
+
         ReleaseReservation(event.target.value)
         .then((result) => {
             if(result.success){
               GetAllReservations(props.setAllReservations);
-              
+
               GetPricesFromApi(currentYear, currMonth).then((result) => {
-                result.reservedDays.map(d =>
-                  props.setReservedDates((prev) =>
-                    [...prev, d.reservedDate.split('T')[0]]));
+                const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);
+                props.setReservedDates(resDates)
               });
             }
-          });
+        });
     }
 
     return <div>
@@ -36,13 +39,12 @@ function AllReservations(props){
                 <td>{item.reservedDate}</td>
                 <td>{item.price}</td>
                 <td><button value={item.reservationDateId}
-                    date = {item.reservedDate}
+                    currDate = {item.reservedDate}
                     class="del-reservations" 
                     onClick={event => handle(event)}>Delete</button></td>
                 </tr>
                 )
-            }
-            
+            }        
         </table>
         </div>
     

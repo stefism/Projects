@@ -1,23 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 
-function ReserveDateModal(){
-  const [show, setShow] = useState(true);
+import GetUserInfo from '../login-component/GetUserInfo';
+import GetAllReservations from '../components/GetAllReservations';
+import ReserveAvailableDate from '../components/ReserveAvailableDate';
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function ReserveDateModal(props){
+  const userInfo = GetUserInfo();
+
+  const handleClose = () => props.setShowModal(false);
+  
+  const isModalConfirm = () => {
+    ReserveAvailableDate(props.dateToChange, userInfo.userId)
+    .then((result) => {
+        if(result.success){
+          GetAllReservations(props.setAllReservations);
+        }
+    });
+
+    props.setShowModal(false);
+  }
 
     return(
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={props.showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm reservation</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Confirm reservation on this date?</Modal.Body>
+        <Modal.Body>Confirm reservation on {props.selectedDate}?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={isModalConfirm}>
             Confirm
           </Button>
         </Modal.Footer>

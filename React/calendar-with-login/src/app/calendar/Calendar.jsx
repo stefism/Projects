@@ -4,16 +4,12 @@ import Header from "./header";
 import "./styles.css";
 
 import GetPricesFromApi from '../../components/GetPricesFromApi';
-import ReserveAvailableDate from '../../components/ReserveAvailableDate';
-import GetUserInfo from '../../login-component/GetUserInfo';
-import GetAllReservations from '../../components/GetAllReservations';
-
+import ReserveDateModal from "../../components/ReserveDateModal";
 
 export default function Calendar({ value, setAllReservations, onChange, reservedDates, setReservedDates }) {
   const [calendar, setCalendar] = useState([]);
   const [prices, setPrices] = useState({});
- 
-  const userInfo = GetUserInfo();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setCalendar(buildCalendar(value));
@@ -91,6 +87,14 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
   }
 
   return (
+    <>
+    <ReserveDateModal
+    showModal={showModal}
+    setShowModal={setShowModal}
+    selectedDate={value.format('DD MMMM YYYY').toString().split('T')[0]}
+    dateToChange={value.format('YYYY-MM-DD').toString().split('T')[0]}
+    setAllReservations={setAllReservations}/>
+
     <div className="calendar">
       <Header value={value} onChange={onChange} />
 
@@ -114,12 +118,7 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
                   onChange(date);
                   
                   //Reload component after make reservation
-                  ReserveAvailableDate(date.format('YYYY-MM-DD'), userInfo.userId)
-                    .then((result) => {
-                      if(result.success){
-                        GetAllReservations(setAllReservations);
-                      }
-                    });
+                  setShowModal(true);
                   
                   console.log('Day is: ' + date.format("D").toString()
                     + ' notformated: ' + date + ' day-day: ' + date.format('YYYY-MM-DD'))
@@ -138,5 +137,6 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
         ))}
       </div>
     </div>
+    </>
   );
 }

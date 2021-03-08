@@ -4,9 +4,15 @@ import {Modal, Button} from 'react-bootstrap'
 import GetUserInfo from '../login-component/GetUserInfo';
 import GetAllReservations from '../components/GetAllReservations';
 import ReserveAvailableDate from '../components/ReserveAvailableDate';
+import GetPricesFromApi from '../components/GetPricesFromApi';
 
 function ReserveDateModal(props){
   const userInfo = GetUserInfo();
+
+  const date = new Date(props.dateToChange)
+
+        const currentYear = date.getFullYear();
+        const currMonth = date.getMonth() + 1;
 
   const handleClose = () => props.setShowModal(false);
   
@@ -15,6 +21,10 @@ function ReserveDateModal(props){
     .then((result) => {
         if(result.success){
           GetAllReservations(props.setAllReservations);
+
+          GetPricesFromApi(currentYear, currMonth).then((result) => {
+            const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);
+            props.setReservedDates(resDates)});
         }
     });
 

@@ -20,8 +20,7 @@ function AllReservations(props){
 
               GetPricesFromApi(currentYear, currMonth).then((result) => {
                 const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);
-                props.setReservedDates(resDates)
-              });
+                props.setReservedDates(resDates)});
             }
         });
     }

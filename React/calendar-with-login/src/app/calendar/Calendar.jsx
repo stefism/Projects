@@ -93,7 +93,8 @@ export default function Calendar({ value, setAllReservations, onChange, reserved
     setShowModal={setShowModal}
     selectedDate={value.format('DD MMMM YYYY').toString().split('T')[0]}
     dateToChange={value.format('YYYY-MM-DD').toString().split('T')[0]}
-    setAllReservations={setAllReservations}/>
+    setAllReservations={setAllReservations}
+    setReservedDates={setReservedDates}/>
 
     <div className="calendar">
       <Header value={value} onChange={onChange} />

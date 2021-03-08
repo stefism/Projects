@@ -13,6 +13,9 @@ function LogedApp () {
   const [allReservations, setAllReservations] = useState();
   const [reservedDates, setReservedDates] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+  const [isModalConfirm, setIsModalConfirm] = useState(false);
+
   const userInfo = GetUserInfo();
 
   // useEffect(() => {
@@ -64,7 +67,11 @@ function LogedApp () {
        <AllReservations 
        reservations={ allReservations }
        setAllReservations={setAllReservations}
-       setReservedDates={setReservedDates} />
+       setReservedDates={setReservedDates}
+       setShowModal={setShowModal}
+       setIsModalConfirm={setIsModalConfirm}
+       showModal={showModal}
+       isModalConfirm={isModalConfirm} />
        <br/>
     </>)
 }

@@ -1,31 +1,29 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import DeleteReservedDate from './DeleteReservedDateModal';
 import "../app/calendar/styles.css";
-import ReleaseReservation from './ReleaseReservation'
-import GetAllReservations from '../components/GetAllReservations';
-import GetPricesFromApi from '../components/GetPricesFromApi';
 
 function AllReservations(props){
+    const [dateProp, setDateProp] = useState();
+    const [dateId, setDateId] = useState();
     
     function handle(event){
         const date = new Date(event.target.getAttribute('currDate'))
-
-        const currentYear = date.getFullYear();
-        const currMonth = date.getMonth() + 1;
-
-        ReleaseReservation(event.target.value)
-        .then((result) => {
-            if(result.success){
-              GetAllReservations(props.setAllReservations);
-
-              GetPricesFromApi(currentYear, currMonth).then((result) => {
-                const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);
-                props.setReservedDates(resDates)});
-            }
-        });
+        // dateToDelete = date; 
+        setDateProp(date);
+        setDateId(event.target.value)
+        props.setShowModal(true);
     }
 
     return <div>
+        <DeleteReservedDate
+        showModal={props.showModal}
+        setShowModal={props.setShowModal}
+        dateToDelete={dateProp}
+        setIsModalConfirm={props.setIsModalConfirm}
+        setAllReservations={props.setAllReservations}
+        setReservedDates={props.setReservedDates}
+        dateId={dateId}/>
+
         <table id='all-reservations'>
             <th>Username</th>
             <th>Reservation date</th>

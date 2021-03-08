@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 import Calendar from "../app/calendar/Calendar";
 import "../app/calendar/styles.css";
@@ -6,7 +7,9 @@ import "../app/calendar/styles.css";
 import ChangePricesForm from '../components/changePricesForm';
 import GetUserInfo from './GetUserInfo';
 import GetAllReservations from '../components/GetAllReservations';
-import AllReservations from '../components/AllReservationsComponent'
+import AllReservations from '../components/AllReservationsComponent';
+
+import { Button } from 'react-bootstrap';
 
 function LogedApp () {
   const [selectedDate, setSelectedDate] = useState(moment());
@@ -15,45 +18,19 @@ function LogedApp () {
 
   const [showModal, setShowModal] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
+  
+  const history = useHistory();
 
   const userInfo = GetUserInfo();
 
-  // useEffect(() => {
-  //   GetAllReservations().then((r) =>
-  //   {
-  //     console.log(r)
-  //     setAllReservations(r);
-  //   });
-  // }, []); //WORK
-
-  // // debugger
-  // console.log('Reservations from loged-app.js: ' + allReservations);
+  const routeChange = () =>{ 
+    let path = `/AllReservations`; 
+    history.push(path);
+  }
   
   useEffect(() => {
     GetAllReservations(setAllReservations);
   }, []);
-  
-  // setAllReservations = GetAllReservations();
-  // console.log(allReservations);
-  
-  // let allReservationsComponents = allReservations.map(item =>
-  //   <AllReservations key={item.reservationDateId} 
-  //   username={item.username}
-  //   reservedDate={item.reservedDate}
-  //   price={item.price} />);
-
-  // let allReservationsComponents;
-
-  // for (let i = 0; i < allReservations.length; i++) {
-  //   let item = <AllReservations 
-  //   key={allReservations[i].reservationDateId}
-  //   username={allReservations[i].username}
-  //   reservedDate={allReservations[i].reservedDate}
-  //   price={allReservations[i].price}
-  //   />
-    
-  //   allReservationsComponents.push(item);
-  // }
 
   return (
     <>
@@ -63,15 +40,16 @@ function LogedApp () {
                  onChange={setSelectedDate}
                  reservedDates={reservedDates}
                  setReservedDates={setReservedDates} />
-       
-       <AllReservations 
+        <br/>
+        {userInfo.username === 'admin@proba.net' && <Button variant='primary' onClick={routeChange}>Show all reservations</Button>}
+       {/* <AllReservations 
        reservations={ allReservations }
        setAllReservations={setAllReservations}
        setReservedDates={setReservedDates}
        setShowModal={setShowModal}
        setIsModalConfirm={setIsModalConfirm}
        showModal={showModal}
-       isModalConfirm={isModalConfirm} />
+       isModalConfirm={isModalConfirm} /> */}
        <br/>
     </>)
 }

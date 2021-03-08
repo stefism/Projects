@@ -8,7 +8,6 @@ function AllReservations(props){
     
     function handle(event){
         const date = new Date(event.target.getAttribute('currDate'))
-        // dateToDelete = date; 
         setDateProp(date);
         setDateId(event.target.value)
         props.setShowModal(true);

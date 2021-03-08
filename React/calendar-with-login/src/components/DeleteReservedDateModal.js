@@ -25,6 +25,7 @@ function DeleteReservedDate(props) {
                 }
             });
     }
+    
     return(
         <Modal show={props.showModal} onHide={handleClose}>
         <Modal.Header closeButton>

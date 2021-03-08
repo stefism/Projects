@@ -21,7 +21,7 @@ function ChangePricesForm() {
         <div>
             <h3>Change prices</h3>
 
-            <form onSubmit={handleSubmit}>
+            <form class='change-prices' onSubmit={handleSubmit}>
             <label for='work-days'>Work days: </label>
             <input value={workDaysPrice} onChange={handleChangeWorkDays}
             name='work-days' type='number' step="any"/>

@@ -1,7 +1,7 @@
 .calendar {
   box-sizing: border-box;
   font-size: 1rem;
-  max-width: 400px;
+  max-width: 800px;
 }
 
 .calendar .header {
@@ -139,3 +139,24 @@
 .del-reservations:hover {
   background: #434343;
   }
+
+.change-prices {
+  display: block;
+  background-color: #d4d8d4;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  margin-right: 10px;
+}
+
+.btn-submit {
+  background-color: darkorange;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #f2f2f2;
+}
+
+.btn-submit:hover {
+  background-color: rgb(136, 80, 13);
+}

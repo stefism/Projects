@@ -3,6 +3,7 @@ using Calendar.App.ViewModels;
 using Calendar.Web.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -30,9 +31,9 @@ namespace Calendar.Web.Controllers
 
         [HttpPost]
         [IgnoreAntiforgeryToken]
-        public ActionResult<string> Login(LoginInputModel input)
+        public async Task<ActionResult<string>> Login(LoginInputModel input)
         {
-            var user = db.Users.SingleOrDefault(x => x.UserName == input.Username);
+            var user = await db.Users.SingleOrDefaultAsync(x => x.UserName == input.Username);
 
             if (user == null) return null; // Return null if user not found
 
@@ -54,16 +55,25 @@ namespace Calendar.Web.Controllers
             };
 
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenAsString = tokenHandler.WriteToken(token);
+            var tokenAsString = tokenHandler.WriteToken(token); 
 
-            return tokenAsString;
+            return tokenAsString; 
         }
 
         //[Authorize]
         [HttpGet]
         public ActionResult<string> WhoAmI()
         {
-            return this.User.Identity.Name;
+            var username = User.Identity.Name;
+            var user = db.Users.SingleOrDefault(x => x.UserName == username);
+            var userId = user.Id;  
+
+            return new JsonResult(new UserInfoWiewModel 
+            {
+                Username = username,
+                UserId = userId
+            });
+            
         }
     }
 }

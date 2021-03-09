@@ -21,13 +21,13 @@ namespace Calendar.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAvailableDate([FromBody] string dateToString)
+        public async Task<IActionResult> AddAvailableDate(string dateToString, string userId)
         {
             var date = DateTime.ParseExact(dateToString,
                                   "yyyy-MM-dd",
                                    CultureInfo.InvariantCulture);
 
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             bool isNonWorkDay = dataService.IsNonWorkDay(date);
 
@@ -49,20 +49,28 @@ namespace Calendar.Web.Controllers
             });
         }
 
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllReservations()
         {
             var model = await dataService.ShowAllReservations();           
 
-            return View(model);
+            return Json(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AllReservationsByUser(string userId)
+        {
+            var model = await dataService.ShowUserReservations(userId);
+
+            return Json(model);
+        }
+
+        //[Authorize(Roles = "Admin")]
+        [HttpPost]
         public async Task<IActionResult> ReleaseReservaton(string reservationId)
         {
             await dataService.ReleaseReservation(reservationId);
 
-            return RedirectToAction(nameof(AllReservations));
+            return Ok();
         }
 
         [Authorize]

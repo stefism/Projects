@@ -5,6 +5,7 @@ import Body from './components/Body';
 import BookList from './components/BookList';
 
 import './App.css';
+import Counter from './components/Counter';
 
 const books = [
   {title: 'Harry Potter', description: 'Wizards and stuff'},
@@ -19,6 +20,7 @@ function App() {
     <main>
       <Lorem/>
       <Body/>
+      <Counter/>
       <BookList books={books}/>
     </main>
     <Footer/>

@@ -24,13 +24,7 @@ function LogedApp () {
   
   const history = useHistory();
 
-  const userInfo = GetUserInfo().then((r) => {
-    setUserId(r.userId, () => {
-      GetAllReservationsByUser(setAllReservations, r.userId);
-      console.log('TEST' + r.username)
-    });
-  });
-
+  const userInfo = GetUserInfo();
 
   const routeChange = () =>{ 
     let path = `/AllReservations`; 

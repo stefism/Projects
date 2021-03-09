@@ -10,6 +10,7 @@ import GetAllReservations from '../components/GetAllReservations';
 import AllReservations from '../components/AllReservationsComponent';
 
 import { Button } from 'react-bootstrap';
+import GetAllReservationsByUser from "../components/GetAllReservationsByUser";
 
 function LogedApp () {
   const [selectedDate, setSelectedDate] = useState(moment());
@@ -18,19 +19,48 @@ function LogedApp () {
 
   const [showModal, setShowModal] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
+
+  const [userId, setUserId] = useState();
   
   const history = useHistory();
 
-  const userInfo = GetUserInfo();
+  const userInfo = GetUserInfo().then((r) => {
+    setUserId(r.userId, () => {
+      GetAllReservationsByUser(setAllReservations, r.userId);
+      console.log('TEST' + r.username)
+    });
+  });
+
 
   const routeChange = () =>{ 
     let path = `/AllReservations`; 
     history.push(path);
   }
+
+  // useEffect(() => {
+  //   GetAllReservations().then((r) =>
+  //   {
+  //     console.log(r)
+  //     setAllReservations(r);
+  //   });
+  // }, []); //WORK
+
   
   useEffect(() => {
-    GetAllReservations(setAllReservations);
+    // setUserId(userInfo.userId).then(() =>
+    // {
+    //   console.log(userInfo.userId)
+    //   GetAllReservationsByUser(setAllReservations, userInfo.userId)
+    // });
+    // GetAllReservations(setAllReservations);
+    setUserId(userInfo.userId, () => {
+      GetAllReservationsByUser(setAllReservations, userInfo.userId);
+      console.log('TEST' + userInfo.username)
+    });
+    
+    // GetAllReservationsByUser(setAllReservations, userInfo.userId);
   }, []);
+
 
   return (
     <>
@@ -42,14 +72,14 @@ function LogedApp () {
                  setReservedDates={setReservedDates} />
         <br/>
         {userInfo.username === 'admin@proba.net' && <Button variant='primary' onClick={routeChange}>Show all reservations</Button>}
-       {/* <AllReservations 
+       <AllReservations 
        reservations={ allReservations }
        setAllReservations={setAllReservations}
        setReservedDates={setReservedDates}
        setShowModal={setShowModal}
        setIsModalConfirm={setIsModalConfirm}
        showModal={showModal}
-       isModalConfirm={isModalConfirm} /> */}
+       isModalConfirm={isModalConfirm} />
        <br/>
     </>)
 }

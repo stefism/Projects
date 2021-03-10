@@ -15,6 +15,7 @@ function AllReservations(props){
 
     return <div>
         <DeleteReservedDate
+        isFromAllReservations={props.isFromAllReservations}
         userId={props.userId}
         showModal={props.showModal}
         setShowModal={props.setShowModal}

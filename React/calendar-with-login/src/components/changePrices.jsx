@@ -22,8 +22,6 @@ async function ChangePrices(workDaysPrice, weekDaysPrice) {
     })
     .then(() => {
         success = true;
-    }, (e) => {
-        window.alert(e);
     })
 
     return { success: success }

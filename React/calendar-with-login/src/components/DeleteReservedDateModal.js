@@ -18,7 +18,12 @@ function DeleteReservedDate(props) {
         ReleaseReservation(props.dateId)
              .then((result) => {
                  if(result.success){
-                   GetAllReservationsByUser(props.setAllReservations, props.userId);
+
+                  if(props.isFromAllReservations){
+                    GetAllReservations(props.setAllReservations)
+                  } else {
+                    GetAllReservationsByUser(props.setAllReservations, props.userId);
+                  }                 
 
                    GetPricesFromApi(currentYear, currMonth).then((result) => {
                      const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);

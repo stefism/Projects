@@ -25,8 +25,9 @@ function LogedAllReservations () {
 
   return (
     <>   
-       <AllReservations 
-       reservations={ allReservations }
+       <AllReservations
+       isFromAllReservations={true}
+       reservations={allReservations}
        setAllReservations={setAllReservations}
        setReservedDates={setReservedDates}
        setShowModal={setShowModal}

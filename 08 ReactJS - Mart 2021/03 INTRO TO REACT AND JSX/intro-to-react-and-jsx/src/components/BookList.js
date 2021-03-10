@@ -16,7 +16,7 @@ class BookList extends Component {
                 <h3>Books Collection</h3>
                 
                 {this.props.books.map(book => {
-                    return <Book 
+                    return <Book key={book.id}
                             title={book.title} 
                             description={book.description}
                             clickHandler={() => this.bookClicked(book.title)}/>;

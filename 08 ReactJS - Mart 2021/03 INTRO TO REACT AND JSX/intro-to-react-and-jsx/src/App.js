@@ -8,9 +8,9 @@ import './App.css';
 import Counter from './components/Counter';
 
 const books = [
-  {title: 'Harry Potter', description: 'Wizards and stuff'},
-  {title: 'Programing with JS', description: 'Guide to programming'},
-  {title: 'The Bible', description: 'Most important book'}
+  {id: 1, title: 'Harry Potter', description: 'Wizards and stuff'},
+  {id: 2, title: 'Programing with JS', description: 'Guide to programming'},
+  {id: 3, title: 'The Bible', description: 'Most important book'}
 ];
 
 function App() {

@@ -5,7 +5,6 @@ import GetUserInfo from '../login-component/GetUserInfo';
 import GetAllReservations from '../components/GetAllReservations';
 import ReserveAvailableDate from '../components/ReserveAvailableDate';
 import GetPricesFromApi from '../components/GetPricesFromApi';
-import GetAllReservationsByUser from '../components/GetAllReservationsByUser';
 
 function ReserveDateModal(props){
   const userInfo = GetUserInfo();
@@ -21,7 +20,7 @@ function ReserveDateModal(props){
     ReserveAvailableDate(props.dateToChange, userInfo.userId)
     .then((result) => {
         if(result.success){
-          GetAllReservationsByUser(props.setAllReservations, userInfo.userId);
+          GetAllReservations(props.setAllReservations);
 
           GetPricesFromApi(currentYear, currMonth).then((result) => {
             const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);

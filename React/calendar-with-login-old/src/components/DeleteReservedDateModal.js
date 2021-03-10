@@ -3,7 +3,6 @@ import {Modal, Button} from 'react-bootstrap';
 import ReleaseReservation from './ReleaseReservation';
 import GetAllReservations from '../components/GetAllReservations';
 import GetPricesFromApi from '../components/GetPricesFromApi';
-import GetAllReservationsByUser from './GetAllReservationsByUser';
 
 function DeleteReservedDate(props) {
     const handleClose = () => props.setShowModal(false);
@@ -18,7 +17,7 @@ function DeleteReservedDate(props) {
         ReleaseReservation(props.dateId)
              .then((result) => {
                  if(result.success){
-                   GetAllReservationsByUser(props.setAllReservations, props.userId);
+                   GetAllReservations(props.setAllReservations);
 
                    GetPricesFromApi(currentYear, currMonth).then((result) => {
                      const resDates = result.reservedDays.map(d => d.reservedDate.split('T')[0]);

@@ -3,12 +3,11 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import Calendar from "../app/calendar/Calendar";
 import "../app/calendar/styles.css";
+import { getJwt } from './jwt';
+import axios from 'axios';
 
 import ChangePricesForm from '../components/changePricesForm';
-import GetUserInfo from './GetUserInfo';
-import GetAllReservations from '../components/GetAllReservations';
 import AllReservations from '../components/AllReservationsComponent';
-
 import { Button } from 'react-bootstrap';
 import GetAllReservationsByUser from "../components/GetAllReservationsByUser";
 
@@ -20,72 +19,60 @@ function LogedApp () {
   const [showModal, setShowModal] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
 
-  // const [userId, setUserId] = useState();
-
-  
+  const [username, setUsername] = useState();
+  const [userId, setUserId] = useState();
   
   const history = useHistory();
   
-
-  const userInfo = GetUserInfo();
+  // const userInfo = GetUserInfo();
 
   const routeChange = () =>{ 
     let path = `/AllReservations`; 
     history.push(path);
   }
   
-  let info;
-  let userId;
+  const getUserInfo = () => {
+    const jwt = getJwt();
 
-  function pr1() {
-    new Promise((resolve, reject) => {
-      info = GetUserInfo();
-    });
+    const result = axios.get('https://localhost:44324/api/jwt', { 
+            mode: 'cors',
+            headers: {
+                'Accept': '*/*',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                Authorization: `Bearer ${jwt}` 
+            } });
+            
+            return result // This is a Promise. (Task that is not complete.)
   }
-  
-  function pr2() {
-    new Promise((resolve, reject) => {
-      userId = info.userId;
-    });
-  }
 
-  function pr3() {
-    new Promise((resolve, reject) => {
-      GetAllReservationsByUser(setAllReservations, userId);
-      console.log(userId);    
-    });
-  }
-  
+  useEffect(async () => {
+    const completedResult = await getUserInfo(); 
+        // За да изчакаме result да се изпълни, трябва да му сложим отпред await.
+        // След това completedResult вече няма да е promise. Вече ще е изпълнен.
 
-  Promise.all([
-    pr1(),
-    pr2(),
-    pr3()
-  ]);
-
-
-  useEffect(() => {
-    // setUserId(userInfo.userId, () => {
-      // GetAllReservationsByUser(setAllReservations, userId);
-    //   console.log('TEST' + userInfo.username)
-    // });
+    setUsername(completedResult.data.username); //Когато ползвам axios, трябва да се пише .data.нещо-си.
+    setUserId(completedResult.data.userId);
     
-    
-
+    GetAllReservationsByUser(setAllReservations, completedResult.data.userId);
+    // Понеже хука на setUserId е асинхронен и все още няма да се е ъпдейтнал, неможем да го
+    // ползваме долу във функцията GetAllReservationsByUser. Затова слагаме като втори параметър
+    // completedResult.data.userId. Него го имаме вече налично.
   }, []);
 
 
   return (
     <>
-       {userInfo.username === 'admin@proba.net' && <ChangePricesForm />}
+       {username === 'admin@proba.net' && <ChangePricesForm />}
        <Calendar value={selectedDate} 
                  setAllReservations={setAllReservations} 
                  onChange={setSelectedDate}
                  reservedDates={reservedDates}
                  setReservedDates={setReservedDates} />
         <br/>
-        {userInfo.username === 'admin@proba.net' && <Button variant='primary' onClick={routeChange}>Show all reservations</Button>}
-       <AllReservations 
+        {username === 'admin@proba.net' && <Button variant='primary' onClick={routeChange}>Show all reservations</Button>}
+       <AllReservations
+       userId={userId}
        reservations={ allReservations }
        setAllReservations={setAllReservations}
        setReservedDates={setReservedDates}

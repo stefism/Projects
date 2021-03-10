@@ -6,13 +6,20 @@ class BookList extends Component {
         super(props)
     }
 
+    bookClicked(title) {
+        console.log(`The book ${title} has been clicked.`);
+    }
+
     render() {
         return (
             <div className='book-list'>
                 <h3>Books Collection</h3>
                 
                 {this.props.books.map(book => {
-                    return <Book title={book.title} description={book.description}/>;
+                    return <Book 
+                            title={book.title} 
+                            description={book.description}
+                            clickHandler={() => this.bookClicked(book.title)}/>;
                 })}
             </div>
         )

@@ -20,9 +20,12 @@ function LogedApp () {
   const [showModal, setShowModal] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
 
-  const [userId, setUserId] = useState();
+  // const [userId, setUserId] = useState();
+
+  
   
   const history = useHistory();
+  
 
   const userInfo = GetUserInfo();
 
@@ -30,29 +33,45 @@ function LogedApp () {
     let path = `/AllReservations`; 
     history.push(path);
   }
-
-  // useEffect(() => {
-  //   GetAllReservations().then((r) =>
-  //   {
-  //     console.log(r)
-  //     setAllReservations(r);
-  //   });
-  // }, []); //WORK
-
   
-  useEffect(() => {
-    // setUserId(userInfo.userId).then(() =>
-    // {
-    //   console.log(userInfo.userId)
-    //   GetAllReservationsByUser(setAllReservations, userInfo.userId)
-    // });
-    // GetAllReservations(setAllReservations);
-    setUserId(userInfo.userId, () => {
-      GetAllReservationsByUser(setAllReservations, userInfo.userId);
-      console.log('TEST' + userInfo.username)
+  let info;
+  let userId;
+
+  function pr1() {
+    new Promise((resolve, reject) => {
+      info = GetUserInfo();
     });
+  }
+  
+  function pr2() {
+    new Promise((resolve, reject) => {
+      userId = info.userId;
+    });
+  }
+
+  function pr3() {
+    new Promise((resolve, reject) => {
+      GetAllReservationsByUser(setAllReservations, userId);
+      console.log(userId);    
+    });
+  }
+  
+
+  Promise.all([
+    pr1(),
+    pr2(),
+    pr3()
+  ]);
+
+
+  useEffect(() => {
+    // setUserId(userInfo.userId, () => {
+      // GetAllReservationsByUser(setAllReservations, userId);
+    //   console.log('TEST' + userInfo.username)
+    // });
     
-    // GetAllReservationsByUser(setAllReservations, userInfo.userId);
+    
+
   }, []);
 
 

@@ -45,6 +45,7 @@ namespace Calendar.App.Services
                 .Where(r => r.UserId == userId)
                 .Select(d => new UserReservationViewModel
                 {
+                    Username = d.User.UserName,
                     ReservationDateId = d.Id,
                     ReservedDate = d.ReservedDate,
                     Price = d.Price.ToString(),

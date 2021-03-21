@@ -4,6 +4,10 @@ import Book from './Book'
 class BookList extends Component {
     constructor(props){
         super(props)
+
+        this.state = {
+            books: []
+        }
     }
 
     bookClicked(title) {

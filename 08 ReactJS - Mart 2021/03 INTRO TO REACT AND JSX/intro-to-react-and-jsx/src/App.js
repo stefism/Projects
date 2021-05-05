@@ -7,12 +7,6 @@ import BookList from './components/BookList';
 import './App.css';
 import Counter from './components/Counter';
 
-const books = [
-  {id: 1, title: 'Harry Potter', description: 'Wizards and stuff'},
-  {id: 2, title: 'Programing with JS', description: 'Guide to programming'},
-  {id: 3, title: 'The Bible', description: 'Most important book'}
-];
-
 function App() {
   return (
     <>
@@ -21,7 +15,7 @@ function App() {
       <Lorem/>
       <Body/>
       <Counter/>
-      <BookList books={books}/>
+      <BookList/>
     </main>
     <Footer/>
     </>

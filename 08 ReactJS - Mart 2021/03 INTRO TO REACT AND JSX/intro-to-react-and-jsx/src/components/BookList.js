@@ -14,12 +14,24 @@ class BookList extends Component {
         console.log(`The book ${title} has been clicked.`);
     }
 
+    componentDidMount() {
+        fetch('http://localhost:3000/books')
+        .then(response => response.json())
+        .then(books => {
+            this.setState(() => ({books}))
+        });
+    }
+
     render() {
+        if(this.state.books.length == 0) {
+            return <span>Loading books ...</span>
+        }
+
         return (
             <div className='book-list'>
                 <h3>Books Collection</h3>
                 
-                {this.props.books.map(book => {
+                {this.state.books.map(book => {
                     return <Book key={book.id}
                             title={book.title} 
                             description={book.description}

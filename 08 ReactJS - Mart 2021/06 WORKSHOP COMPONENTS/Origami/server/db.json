@@ -2,13 +2,23 @@
     "posts": [
         {
             "id": 1,
-            "content": "Some content here",
+            "content": "Official React bindings for Redux. Contribute to reduxjs/react-redux development by creating an account on GitHub.",
             "author": "Pesho"
         },
         {
             "id": 2,
-            "content": "Content two here",
+            "content": "Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarati",
             "author": "Ivan"
+        },
+        {
+            "id": 3,
+            "content": "Jun 8, 2020 — The simplest React Redux tutorial I wish I had when I started learning. Includes will efficiently update and render just the right components when your data changes. Declarati",
+            "author": "Gosho"
+        },
+        {
+            "id": 4,
+            "content": "What is Redux? Redux is a predictable state container designed to help you write JavaScript apps that behar each state in your application, and React will efficiently update and render just the right components when your data changes. Declarati",
+            "author": "Nyakoi"
         }
     ]
 }

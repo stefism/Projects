@@ -3,7 +3,9 @@ import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Main from './components/Main/Main';
 import { Component } from 'react';
-import * as postServices from './services/postServices'
+import * as postServices from './services/postServices';
+import About from './components/About/About';
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -43,10 +45,15 @@ class App extends Component {
         <Menu 
           onMenuItemClick={this.onMenuItemClick.bind(this)} 
         />
-
-        <Main 
-          posts={this.getPosts()}
-        />
+        <Switch>
+          <Route path="/" exact>
+            <Main 
+              posts={this.getPosts()}
+            />
+          </Route>
+          <Route path="/about/:name" component={About}></Route>
+          <Route render={() => <h1>Error Page</h1>} />
+        </Switch> 
         </div>        
       </div>
     );

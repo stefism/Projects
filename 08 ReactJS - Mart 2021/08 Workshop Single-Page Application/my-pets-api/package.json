@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "json-server": "^0.16.3"
+  },
+  "name": "my-pets-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch pets.json --port 5000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

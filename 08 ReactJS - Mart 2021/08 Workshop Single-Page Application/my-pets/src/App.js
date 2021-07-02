@@ -13,6 +13,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Categories} />
         <Route path="/categories/:category" component={Categories} />
+        <Route path="/pets/details/:petId" />
       </Switch>
       
       <Footer />

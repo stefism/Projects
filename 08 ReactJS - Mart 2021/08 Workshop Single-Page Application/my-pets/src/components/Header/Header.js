@@ -1,40 +1,26 @@
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   return (
     <header id="site-header">
       <nav className="navbar">
         <section className="navbar-dashboard">
           <div className="first-bar">
-            <a href="#">Dashboard</a>
-            <a className="button" href="#">
-              My Pets
-            </a>
-            <a className="button" href="#">
-              Add Pet
-            </a>
+            <Link to="/">Dashboard</Link>
+            <Link className="button" to="#">My Pets</Link>
+            <Link className="button" to="/pets/create">Add Pet</Link>
           </div>
           <div className="second-bar">
             <ul>
               <li>Welcome!</li>
-              <li>
-                <a href="#">
-                  <i className="fas fa-sign-out-alt"></i> Logout
-                </a>
-              </li>
+              <li><Link to="#"><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
             </ul>
           </div>
         </section>
         <section className="navbar-anonymous">
           <ul>
-            <li>
-              <a href="#">
-                <i className="fas fa-user-plus"></i> Register
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fas fa-sign-in-alt"></i> Login
-              </a>
-            </li>
+            <li><Link to="#"><i className="fas fa-user-plus"></i> Register</Link></li>
+            <li><Link to="#"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
           </ul>
         </section>
       </nav>
@@ -50,7 +36,7 @@ const Header = () => {
           padding: 0.8rem 1rem;
           color: white;
         }
-        #site-header > nav > section.navbar-dashboard > a {
+        #site-header > nav > section.navbar-dashboard > Link {
           list-style: none;
           text-decoration: none;
           align-self: center;
@@ -68,14 +54,14 @@ const Header = () => {
           > section.navbar-anonymous
           > ul
           > li:nth-child(1)
-          > a,
+          > Link,
         #site-header > nav > section.navbar-user > ul > li:nth-child(1),
         #site-header
           > nav
           > section.navbar-dashboard
           > ul
           > li:nth-child(1)
-          > a {
+          > Link {
           margin-right: 0.5rem;
         }
 
@@ -90,7 +76,7 @@ const Header = () => {
           list-style: none outside;
           position: relative;
         }
-        nav.navbar ul li a {
+        nav.navbar ul li Link {
           display: block;
           padding: 0.4rem 0.8rem;
           border-radius: 0.4rem;
@@ -100,8 +86,8 @@ const Header = () => {
           color: rgb(255, 255, 255);
         }
         .button:hover,
-        nav.navbar ul li a:hover,
-        nav.navbar ul li:hover > a {
+        nav.navbar ul li Link:hover,
+        nav.navbar ul li:hover > Link {
           background: rgb(248, 215, 107);
           color: rgb(0, 0, 0);
           font-weight: bold;

@@ -16,16 +16,27 @@ const PetDetails = ({match}) => {
     // Когато използваме нещо от вънка (в случая 'match'), е хубаво да го поставим
     // вътре в масива. Така, ако 'match' се промени, това дето е в useEffect ще се изпълни на ново.
 
+    const onPetButtonClickHandler = () => {
+      let incrementedLikes = pet.likes + 1;
+
+      petService.updateLikes(match.params.petId, incrementedLikes)
+      .then((updatedPet) => { //updatedPet - сървъра ни връща актуализирания пет.
+        setPet(state => ({...state, likes: updatedPet.likes}))
+      });
+    };
+    
     return (
-      <section class="detailsOtherPet">
+      <section className="detailsOtherPet">
       <h3>{pet.name}</h3>
-      <p>Pet counter: {pet.likes} <Link href="#"><button class="button"><i class="fas fa-heart"></i>Pet</button></Link></p>
-      <p class="img"><img src={pet.imageURL} /></p>
-      <p class="description">{pet.description}</p>
+      <p>Pet counter: {pet.likes} 
+      <button onClick={onPetButtonClickHandler} className="button"><i className="fas fa-heart"></i>Pet</button>
+      </p>
+      <p className="img"><img src={pet.imageURL} alt=""/></p>
+      <p className="description">{pet.description}</p>
       
-      <div class="pet-info">
-        <Link href="#"><button class="button">Edit</button></Link>
-        <Link href="#"><button class="button">Delete</button></Link>
+      <div className="pet-info">
+        <Link to={`/pets/details/${pet.id}/edit`}><button className="button">Edit</button></Link>
+        <Link to="#"><button className="button">Delete</button></Link>
       </div>
       </section>
     );

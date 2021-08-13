@@ -21,11 +21,13 @@ class Categories extends Component {
 
     componentDidUpdate(prevProps) {
       const category = this.props.match.params.category;
+      document.title = `My Pets App - ${category}`;
 
       if(prevProps.match.params.category == category) {
         return;
       }
 
+      console.log('TOVA');
       petsService.getAll(this.props.match.params.category)
       .then(result => this.setState({pets: result}));
     }

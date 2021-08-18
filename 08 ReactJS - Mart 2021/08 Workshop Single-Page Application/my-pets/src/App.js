@@ -16,6 +16,8 @@ import RegisterPage from './components/Authentication/RegisterPage';
 import DemoPage from './components/Demo/DemoPage';
 import AdvancedApp from './components/Demo/DemoContext';
 import StartContextApp from './components/WithContext/StartContextApp';
+import StartReducerApp from './components/WithReducer/StartReducerApp';
+import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +30,7 @@ function App() {
     <div className="container">
       <Header username={user?.email} isAuthenticated={Boolean(user)} />
 
+      <ErrorBoundary>
       <Switch>
         <Route path="/" exact component={Categories} />
         <Route path="/categories/:category" component={Categories} />
@@ -45,8 +48,10 @@ function App() {
         <Route path="/demo" component={DemoPage} />
         <Route path="/demo2" component={AdvancedApp} />
         <Route path="/demo3" component={StartContextApp} />
+        <Route path="/demo4" component={StartReducerApp} />
       </Switch>
-      
+      </ErrorBoundary>
+
       <Footer />
     </div>
   );

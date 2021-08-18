@@ -5,6 +5,7 @@ const headers = {
 };
 
 export const getAll = (category = '') => {
+    // eslint-disable-next-line eqeqeq
     let petsUrl = url + ((category && category != 'all') ? `?category=${category}` : ''); //Ако има нещо в category, ще долепи към url ?category=${category}. Ако няма, ще остави празен стринг.
 
     return fetch(petsUrl)

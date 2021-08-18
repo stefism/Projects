@@ -6,7 +6,7 @@
       "description": "My dog Yara. 2 months old. doggy hjkhjk",
       "imageURL": "https://cdn1-www.dogtime.com/assets/uploads/2017/09/pit-bull-puppies-2.jpg",
       "category": "Dog",
-      "likes": 3,
+      "likes": 12,
       "_acl": {
         "creator": "5bb0874caccb650325e0227b"
       },
@@ -21,7 +21,7 @@
       "description": "If you want to write it to the DOM, pass a string instead: jsx=\"true\"",
       "imageURL": "https://cdn.omlet.co.uk/images/originals/fischer's-lovebird.jpg",
       "category": "Parrot",
-      "likes": 6,
+      "likes": 13,
       "_acl": {
         "creator": "5bb088003e67d9190597f9a6"
       },
@@ -36,7 +36,7 @@
       "description": "This is my horse Spirit. He is 5 years old. He likes to run around like crazy and go to horse races.",
       "imageURL": "https://bransbyhorses.co.uk/wp-content/uploads/2016/03/Sophie.jpg",
       "category": "Other",
-      "likes": 4,
+      "likes": 11,
       "_acl": {
         "creator": "5bb088003e67d9190597f9a6"
       },
@@ -66,7 +66,7 @@
       "description": "This is my cat Timmy. He is 2 months old and is very playful.йкнкй",
       "imageURL": "https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg",
       "category": "Cat",
-      "likes": 2,
+      "likes": 4,
       "_acl": {
         "creator": "5bb0874caccb650325e0227b"
       },
@@ -81,7 +81,7 @@
       "description": "This is my cat Lilly. She is 2 years old and is lazy",
       "imageURL": "https://www.bluecross.org.uk/sites/default/files/assets/images/124044lpr.jpg",
       "category": "Cat",
-      "likes": 7,
+      "likes": 8,
       "_acl": {
         "creator": "5bb08c01eb7615589b4f360e"
       },

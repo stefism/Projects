@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../Contexts/AuthContext';
 
-const Header = ({ username, isAuthenticated }) => {
+const Header = () => {
+  const {isAuthenticated, username} = useContext(AuthContext);
+
   return (
     <header id="site-header">
       <nav className="navbar">
@@ -99,6 +103,7 @@ const Header = ({ username, isAuthenticated }) => {
           font-weight: bold;
         }
       `}</style>
+    
     </header>
   );
 };

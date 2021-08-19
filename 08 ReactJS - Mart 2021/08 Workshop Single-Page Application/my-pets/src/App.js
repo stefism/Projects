@@ -19,6 +19,9 @@ import StartContextApp from './components/WithContext/StartContextApp';
 import StartReducerApp from './components/WithReducer/StartReducerApp';
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 
+import AuthContext from './components/Contexts/AuthContext';
+import RouteGuard from './HighOrderedComponents/RouteGuard';
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -26,17 +29,24 @@ function App() {
     auth.onAuthStateChanged(setUser);
   }, []);
 
+  const authInfo = {
+    isAuthenticated: Boolean(user),
+    username: user?.email
+  }
+
   return (
     <div className="container">
-      <Header username={user?.email} isAuthenticated={Boolean(user)} />
+      <AuthContext.Provider value={authInfo}>
+      
+      <Header />
 
       <ErrorBoundary>
       <Switch>
         <Route path="/" exact component={Categories} />
         <Route path="/categories/:category" component={Categories} />
         <Route path="/pets/details/:petId" exact component={PetDetails} />
-        <Route path="/pets/details/:petId/edit" component={EditPetDetails} />
-        <Route path="/pets/create/" component={CreatePet} />
+        <Route path="/pets/details/:petId/edit" component={RouteGuard(EditPetDetails)} />
+        <Route path="/pets/create/" component={RouteGuard(CreatePet)} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         
@@ -53,6 +63,8 @@ function App() {
       </ErrorBoundary>
 
       <Footer />
+
+      </AuthContext.Provider>
     </div>
   );
 }

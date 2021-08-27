@@ -376,6 +376,7 @@ body {
 
 .button {
   display: block;
+  margin-right: 5px;
   padding: 0.6rem 1rem;
   border-radius: 0.4rem;
   text-decoration: none;
@@ -480,6 +481,7 @@ h3 {
 }
 
 .pet-info {
+  display: flex;
   padding-bottom: 1rem;
 }
 

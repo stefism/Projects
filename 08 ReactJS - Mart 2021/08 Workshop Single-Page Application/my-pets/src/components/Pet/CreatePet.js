@@ -44,9 +44,9 @@ const CreatePet = ({history}) => {
                        </span>
                    </p>
                    <p className="field">
-                       <label htmlFor="image">Image</label>
+                       <label htmlFor="image">Image URL</label>
                        <span className="input">
-                           <input type="text" name="imageURL" id="image" placeholder="Image" />
+                           <input type="text" name="imageURL" id="image" placeholder="Image URL" />
                            <span className="actions"></span>
                        </span>
                    </p>

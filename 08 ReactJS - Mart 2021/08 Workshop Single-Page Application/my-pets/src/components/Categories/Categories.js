@@ -21,9 +21,7 @@ class Categories extends Component {
 
   componentDidMount() {
     const user = this.context;
-    this.setState({userName: user.username})
-    
-    this.getDataFromDb();
+    this.setState({userName: user.username}, () => this.getDataFromDb());
   }
 
   componentDidUpdate(prevProps) {
@@ -37,9 +35,7 @@ class Categories extends Component {
     }
 
     const user = this.context;
-    this.setState({userName: user.username})
-    
-    this.getDataFromDb("category", category);
+    this.setState({userName: user.username}, () => this.getDataFromDb("category", category));
   }
 
   getDataFromDb(property, value) {
@@ -113,6 +109,7 @@ class Categories extends Component {
           {this.state.pets.map(pet =>
             <PetCard
               key={pet.id}
+              isMyPets={this.props.match.params.category == 'myPets'}
               {...pet}
             />
           )}

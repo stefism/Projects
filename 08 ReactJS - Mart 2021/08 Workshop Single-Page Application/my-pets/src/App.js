@@ -13,10 +13,6 @@ import EditPetDetails from './components/Pet/EditPetDetails';
 import LoginPage from './components/Authentication/LoginPage';
 import RegisterPage from './components/Authentication/RegisterPage';
 
-import DemoPage from './components/Demo/DemoPage';
-import AdvancedApp from './components/Demo/DemoContext';
-import StartContextApp from './components/WithContext/StartContextApp';
-import StartReducerApp from './components/WithReducer/StartReducerApp';
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 
 import AuthContext from './components/Contexts/AuthContext';
@@ -44,8 +40,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={Categories} />
         <Route path="/categories/:category" component={Categories} />
-        <Route path="/pets/details/:petId" exact component={PetDetails} />
-        <Route path="/pets/details/:petId/edit" component={RouteGuard(EditPetDetails)} />
+        <Route path="/pets/details/:petId" exact component={RouteGuard(EditPetDetails)} />
+        {/* <Route path="/pets/details/:petId/edit" component={RouteGuard(EditPetDetails)} /> */}
         <Route path="/pets/create/" component={RouteGuard(CreatePet)} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
@@ -54,11 +50,6 @@ function App() {
           auth.signOut();
           return <Redirect to="/" />
         }} />
-
-        <Route path="/demo" component={DemoPage} />
-        <Route path="/demo2" component={AdvancedApp} />
-        <Route path="/demo3" component={StartContextApp} />
-        <Route path="/demo4" component={StartReducerApp} />
       </Switch>
       </ErrorBoundary>
 

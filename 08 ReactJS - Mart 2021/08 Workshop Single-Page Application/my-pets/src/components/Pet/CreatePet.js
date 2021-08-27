@@ -1,26 +1,28 @@
-import * as petsService from "../../Services/PetsService"
-
-//History е едно от пропертитата,което се подава на елемента от Route. 
-//Ако нямаме Route, който да инжектне History, може да напишем горе: 
-//import {WithRouter} from 'react-router-dom'; и най долу да е: export default WithRouter(CreatePet);
+import * as petsService from "../../Services/PetsService";
+import firebase from "firebase";
+import AuthContext from "../Contexts/AuthContext";
+import { useContext } from "react";
 
 const CreatePet = ({history}) => {
-    const onCreatePetSubmitHandler = (e) => {
-        e.preventDefault(); // Пречи на страницата да се презареди при изпращане на формата. Желано поведение.
-        console.log(e.target); // Таргет е самата форма по-долу. Това е форма с неконтролирани елементи.
-        console.log(e.target.name.value);
-        console.log(e.target.description.value);
-        console.log(e.target.category.value);
-        //----
+    const { username } = useContext(AuthContext);
 
+    const onCreatePetSubmitHandler = (e) => {
+        e.preventDefault();
+
+        var db = firebase.firestore();
         const {name, description, imageURL, category} = e.target;
-        
-        petsService.create(name.value, description.value, imageURL.value, category.value)
+
+        db.collection('pets').add({
+            category: category.value,
+            description: description.value,
+            imageURL: imageURL.value,
+            likes: 0,
+            name: name.value,
+            user: username
+        })
         .then(() => {history.push('/')});
     };
 
-    //Ако нямаме нужда от контролирани елементи, не ги правим.
-    //Контролираните елементи минават през стейта на Реакт.
     return (
         <section className="create">
            <form onSubmit={onCreatePetSubmitHandler}>

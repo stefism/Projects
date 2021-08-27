@@ -10,9 +10,13 @@ const Header = () => {
       <nav className="navbar">
         <section className="navbar-dashboard">
           <div className="first-bar">
-            <Link to="/">Dashboard</Link>
-            <Link className="button" to="#">My Pets</Link>
+            <Link to="/"><i class="fas fa-paw"></i> My Pets</Link>
+            {isAuthenticated &&
+            <>
+            <Link className="button" to="/categories/myPets">My Pets</Link>
             <Link className="button" to="/pets/create">Add Pet</Link>
+            </>
+            }   
           </div>
           <div className="second-bar">
             <ul>

@@ -1,8 +1,39 @@
+import firebase from "firebase";
+
+const db = firebase.firestore();
+
 const url = 'http://localhost:5000/pets';
 
 const headers = {
     'Content-Type': 'application/json',
 };
+
+export const getAl = () => {
+    var currPets = [];
+
+    db.collection('pets').get()
+    .then((querySnapshot) => {
+      
+      querySnapshot.forEach((doc) => {
+        var pet = {
+          id: doc.id,
+          name: doc.get('name'),
+          description: doc.get('description'),
+          imageURL: doc.get('imageURL'),
+          category: doc.get('category'),
+          likes: doc.get('likes')
+        };
+
+        currPets.push(pet);
+      })
+      
+    })
+    .catch(err => console.log(err));
+
+    // console.log(currPets);
+
+    return currPets;
+}
 
 export const getAll = (category = '') => {
     // eslint-disable-next-line eqeqeq

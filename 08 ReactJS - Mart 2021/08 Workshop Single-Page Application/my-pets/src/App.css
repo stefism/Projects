@@ -377,6 +377,7 @@ body {
 .button {
   display: block;
   margin-right: 5px;
+  margin-bottom: 5px;
   padding: 0.6rem 1rem;
   border-radius: 0.4rem;
   text-decoration: none;

@@ -334,8 +334,8 @@ form textarea:focus {
 
 .description {
 	width: 17rem;
-	height: 10vh;
-	padding: 2rem;
+	height: 15vh;
+	padding: 1rem;
 	overflow: auto;
 }
 

@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import InputError from '../Shared/InputError';
 import firebase from 'firebase';
+import { Modal, Button } from 'react-bootstrap';
 
 const EditPetDetails = ({match, history}) => {
     const [pet, setPet] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
+    const [showModal, setShowModal] = useState(false);
+
+    var db = firebase.firestore();
+
     useEffect(() => {
-        var db = firebase.firestore();
+        
         var currentPet = db.collection('pets').doc(match.params.petId);
 
         currentPet.get().then((doc) => {
             var pet = {
-                id: doc.id,
                 category: doc.get('category'),
                 description: doc.get('description'),
                 imageURL: doc.get('imageURL'),
@@ -24,7 +28,20 @@ const EditPetDetails = ({match, history}) => {
 
             setPet(pet);
         });
-    }, [match]);
+    }, [db, match.params.petId]);
+
+    const handleCloseModal = () => setShowModal(false);
+    
+    const handleShowModal = () => setShowModal(true);
+
+    const handleDeletePet = () => {
+        var currentPet = db.collection('pets').doc(match.params.petId);
+
+        currentPet.delete().then(() => {
+            history.push(`/categories/myPets`);
+            return;
+        });
+    };
 
     const onDescriptionSaveSubmit = (e) => {
         e.preventDefault();
@@ -37,13 +54,12 @@ const EditPetDetails = ({match, history}) => {
             imageURL: e.target.imageURL.value
         };
 
-        console.log(updatedPet);
+        var currentPet = db.collection('pets').doc(match.params.petId);
 
-        // petService.update(petId, updatedPet)
-        // .then(() => {
-        //     history.push(`/pets/details/${petId}`);
-        //     return;
-        // });
+        currentPet.set(updatedPet).then(() => {
+                history.push(`/categories/myPets`);
+                return;
+            });
     };
 
     const onDescriptionChangeHandler = (e) => {
@@ -65,6 +81,24 @@ const EditPetDetails = ({match, history}) => {
     }
 
     return (
+        <>
+        <Modal show={showModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+            <Modal.Title>Warning!</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>This pet is permanently deleted! Realy want to do this?</Modal.Body>
+            
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+                Cancel
+            </Button>
+            <Button variant="danger" onClick={handleDeletePet}>
+                Delete Pet
+            </Button>
+            </Modal.Footer>
+        </Modal>
+
         <section className="detailsMyPet">
                 <p>Pet counter: <i className="fas fa-heart"></i> {pet.likes}</p>
                 <p className="img"><img src={pet.imageURL} alt="" /></p>
@@ -96,10 +130,12 @@ const EditPetDetails = ({match, history}) => {
 
                     <InputError>{errorMessage}</InputError>
 
-                    <button  className="button">Edit</button>
-                    <button className="button">Delete Pet</button>
+                    <button className="button">Edit</button>
                 </form>
+
+                <button onClick={handleShowModal} className="button">Delete Pet</button>
         </section>
+        </>
     );
 };
 

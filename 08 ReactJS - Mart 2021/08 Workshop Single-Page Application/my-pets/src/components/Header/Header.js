@@ -10,7 +10,7 @@ const Header = () => {
       <nav className="navbar">
         <section className="navbar-dashboard">
           <div className="first-bar">
-            <Link to="/"><i class="fas fa-paw"></i> My Pets</Link>
+            <Link to="/"><i class="fas fa-paw"></i> Sweety Pets </Link>
             {isAuthenticated &&
             <>
             <Link className="button" to="/categories/myPets">My Pets</Link>

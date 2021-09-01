@@ -1,9 +1,5 @@
 ﻿using A1_Invoice_System.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace A1_Invoice_System.Data
 {
@@ -60,7 +56,7 @@ namespace A1_Invoice_System.Data
 				Console.WriteLine();
 
 				Console.Write("Желаете ли да продължите? (Y/N): ");
-				
+
 				string yesOrNo = Console.ReadLine();
 
 				Console.WriteLine(yesOrNo);

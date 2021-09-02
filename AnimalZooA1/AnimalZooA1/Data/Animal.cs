@@ -5,7 +5,7 @@ namespace AnimalZooA1.Data
 	internal abstract class Animal
 	{
 		private int health = 100;
-		private int animalLeft = 5;
+		private int animalsLeft = 5;
 
 		internal int Health
 		{
@@ -27,9 +27,9 @@ namespace AnimalZooA1.Data
 			}
 		}
 
-		internal int AnimalLeft
+		internal int AnimalsLeft
 		{
-			get => animalLeft;
+			get => animalsLeft;
 
 			set
 			{
@@ -38,7 +38,7 @@ namespace AnimalZooA1.Data
 					value = 0;
 				}
 
-				animalLeft = value;
+				animalsLeft = value;
 			}
 		}
 

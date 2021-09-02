@@ -86,52 +86,60 @@ namespace AnimalZooA1.Data
 			switch(action)
 			{
 				case "feed":
-					animal.Feed();
-					Console.WriteLine($"Thanks for food. Now {typeOfAnimal} health is {animal.Health}");
+					if(animal.AnimalsLeft == 0)
+					{
+						Console.WriteLine($"There are no more {typeOfAnimal} in the zoo.");
+					}
+					else
+					{
+						animal.Feed();
+						Console.WriteLine($"Thanks for food. Now {typeOfAnimal} health is {animal.Health}");
+					}
+					
 					break;
 
 				case "hungry":
-					animal.Stavration();
-					Console.WriteLine($"Now {typeOfAnimal} health is {animal.Health}");
-					VerifyIfAnimalIsDied(animal);
+					if(animal.AnimalsLeft == 0)
+					{
+						Console.WriteLine($"There are no more {typeOfAnimal} in the zoo.");
+					}
+					else
+					{
+						animal.Stavration();
+						Console.WriteLine($"Now {typeOfAnimal} health is {animal.Health}");
+						DecreaseAnimals(animal);
+					}
+
 					break;
 			}
 		}
 
-		private void VerifyIfAnimalIsDied(Animal animal)
+		private void DecreaseAnimals(Animal animal)
 		{
+			string animalsLeft = animal.AnimalsLeft > 0 ? animal.AnimalsLeft.ToString() : "No more";
+			
 			if(animal is Monkey)
 			{
-				if(animal.AnimalLeft == 0)
-				{
-					Console.WriteLine($"There are no more monkeys in the zoo.");
-				}
-				else if(animal.Health < 40)
+				if(animal.Health < 40)
 				{
 					DecreaseNumberOfAnimal(animal);
-					Console.WriteLine($"One monkey is died. {animal.AnimalLeft} Monkey left in the Zoo.");
+					Console.WriteLine($"One monkey is died. {animalsLeft} Monkeys left in the Zoo.");
 				}
 			}
 			else if(animal is Lion)
 			{
-				if(animal.AnimalLeft == 0)
-				{
-					Console.WriteLine($"There are no more lions in the zoo.");
-				}
-				else if(animal.Health < 50)
+				if(animal.Health < 50)
 				{
 					DecreaseNumberOfAnimal(animal);
+					Console.WriteLine($"One Lion is died. {animalsLeft} Lions left in the Zoo.");
 				}
 			}
 			else if(animal is Elephant)
 			{
-				if(animal.AnimalLeft == 0)
-				{
-					Console.WriteLine($"There are no more Еlephant in the zoo.");
-				}
-				else if(animal.Health < 70)
+				if(animal.Health < 70)
 				{
 					DecreaseNumberOfAnimal(animal);
+					Console.WriteLine($"One Elephant is died. {animal.AnimalsLeft} Elephants left in the Zoo.");
 				}
 			}
 		}
@@ -142,22 +150,22 @@ namespace AnimalZooA1.Data
 			{
 				if(animal is Monkey)
 				{
-					Console.WriteLine($"Monkey left: {animal.AnimalLeft}");
+					Console.WriteLine($"Monkey left: {animal.AnimalsLeft}");
 				}
 				else if(animal is Lion)
 				{
-					Console.WriteLine($"Lions left: {animal.AnimalLeft}");
+					Console.WriteLine($"Lions left: {animal.AnimalsLeft}");
 				}
 				else if(animal is Elephant)
 				{
-					Console.WriteLine($"Elephants left: {animal.AnimalLeft}");
+					Console.WriteLine($"Elephants left: {animal.AnimalsLeft}");
 				}
 			}
 		}
 
 		private void DecreaseNumberOfAnimal(Animal animal)
 		{
-			animal.AnimalLeft--;
+			animal.AnimalsLeft--;
 			animal.Health = 100;
 		}
 	}

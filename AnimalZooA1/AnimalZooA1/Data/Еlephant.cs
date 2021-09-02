@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimalZooA1.Data
+﻿namespace AnimalZooA1.Data
 {
 	internal class Elephant : Animal
 	{

@@ -1,9 +1,5 @@
 ﻿using AnimalZooA1.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalZooA1.Data
 {
@@ -29,7 +25,7 @@ namespace AnimalZooA1.Data
 			while(true)
 			{
 				string[] commands = Console.ReadLine().Split();
-				
+
 				string animal = commands[0].ToLower();
 
 				if(animal == "exit")
@@ -110,7 +106,7 @@ namespace AnimalZooA1.Data
 				{
 					Console.WriteLine($"There are no more monkeys in the zoo.");
 				}
-				else if (animal.Health < 40)
+				else if(animal.Health < 40)
 				{
 					DecreaseNumberOfAnimal(animal);
 					Console.WriteLine($"One monkey is died. {animal.AnimalLeft} Monkey left in the Zoo.");
@@ -161,8 +157,8 @@ namespace AnimalZooA1.Data
 
 		private void DecreaseNumberOfAnimal(Animal animal)
 		{
-				animal.AnimalLeft--;
-				animal.Health = 100;
+			animal.AnimalLeft--;
+			animal.Health = 100;
 		}
 	}
 }

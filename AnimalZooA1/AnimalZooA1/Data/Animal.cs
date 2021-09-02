@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalZooA1.Data
 {
@@ -20,7 +16,7 @@ namespace AnimalZooA1.Data
 				if(value > 100)
 				{
 					value = 100;
-					
+
 				}
 				else if(value < 0)
 				{
@@ -28,13 +24,13 @@ namespace AnimalZooA1.Data
 				}
 
 				health = value;
-			} 
+			}
 		}
 
-		internal int AnimalLeft 
+		internal int AnimalLeft
 		{
 			get => animalLeft;
-			
+
 			set
 			{
 				if(value < 0)

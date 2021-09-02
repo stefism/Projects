@@ -1,6 +1,5 @@
 ﻿using AnimalZooA1.Contracts;
 using AnimalZooA1.Data;
-using System;
 
 namespace AnimalZooA1
 {

@@ -139,7 +139,7 @@ namespace AnimalZooA1.Data
 				if(animal.Health < 70)
 				{
 					DecreaseNumberOfAnimal(animal);
-					Console.WriteLine($"One Elephant is died. {animal.AnimalsLeft} Elephants left in the Zoo.");
+					Console.WriteLine($"One Elephant is died. {animalsLeft} Elephants left in the Zoo.");
 				}
 			}
 		}

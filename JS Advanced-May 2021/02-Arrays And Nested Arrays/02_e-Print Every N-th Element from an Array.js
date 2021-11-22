@@ -8,9 +8,20 @@ function solve(array, element){
     return result;
 }
 
-console.log(solve(['1', 
-'2',
-'3', 
+console.log(solve(['5', 
+'20', 
+'31', 
 '4', 
-'5'], 
-6));
+'20'], 
+2));
+
+function solve2(array, step){
+    return array.filter((element, index) => index % step === 0);
+}
+
+console.log(solve2(['5', 
+'20', 
+'31', 
+'4', 
+'20'], 
+2));

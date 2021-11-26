@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <h1>JS DOM</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ea facere minima animi molestiae molestias,
+        ratione error dolores dolore sed mollitia fuga temporibus pariatur. Libero eos iusto aut deleniti voluptatum?
+    </p>
+    <section>
+        <h3 id="superheroes-heading">Superheroes</h3>
+        <ul>
+            <li>Superman</li>
+            <li>Capitan America</li>
+            <li>Третия който е третия</li>
+        </ul>
+
+        <label for="superhero-name">Add Superhero</label>
+        <input type="text" id="superhero-name" />
+        <button id="add-superhero" onclick="addSuperhero();">Add</button>
+    </section>
+
+    <script>
+        let headingElement = document.getElementById('superheroes-heading');
+        headingElement.textContent += ' plus js code.'
+
+        function addSuperhero(){
+            let newHero = document.getElementById("superhero-name").value;
+        }
+    </script>
+</body>
+
+</html>

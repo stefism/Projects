@@ -15,23 +15,50 @@
     </p>
     <section>
         <h3 id="superheroes-heading">Superheroes</h3>
-        <ul>
+        <ul id="superhero-list">
             <li>Superman</li>
             <li>Capitan America</li>
             <li>Третия който е третия</li>
+            <li>Четири</li>
+            <li>Петия супер герой</li>
+            <li>Шести номер е трамвая</li>
         </ul>
 
         <label for="superhero-name">Add Superhero</label>
         <input type="text" id="superhero-name" />
         <button id="add-superhero" onclick="addSuperhero();">Add</button>
+
+        <button id="toggle-heroes-button" onclick="toggleSuperheroes();">Toggle Heroes</button>
     </section>
 
     <script>
         let headingElement = document.getElementById('superheroes-heading');
         headingElement.textContent += ' plus js code.'
 
+        let oddHeroes = document.querySelectorAll('#superhero-list li:nth-of-type(2n)');
+
+        for(const hero of oddHeroes){
+            hero.style.backgroundColor = 'lightGray';
+        }
+
         function addSuperhero(){
             let newHero = document.getElementById("superhero-name").value;
+            let heroes = document.getElementById('superhero-list');
+            
+        }
+
+        function toggleSuperheroes(){
+            let superheroListElement = document.getElementById('superhero-list');
+
+            let toggleButtonElement = document.getElementById('toggle-heroes-button');
+
+            if (superheroListElement.style.display == 'none') {
+                superheroListElement.style.display = 'block';
+                toggleButtonElement.textContent = 'Hide Heroes';
+            } else {
+                superheroListElement.style.display = 'none';
+                toggleButtonElement.textContent = 'Show Heroes';
+            }
         }
     </script>
 </body>

@@ -89,7 +89,7 @@ function solve2(input){
             result.push(string);
         });
 
-    console.log(result.join('\n'));
+    console.log(dictionary);
 }
 
 solve2([

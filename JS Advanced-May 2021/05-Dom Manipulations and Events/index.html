@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events</title>
+</head>
+<body>
+    <h1>Super Heroes is <span id="heroName">...</span></h1>
+
+    <ul id="hero-list">
+        <li>Superman</li>
+        <li>Bathman</li>
+        <li>Thor</li>
+        <li>Thanos</li>
+        <li>Ghroot</li>
+    </ul>
+
+    <label for="hero-name">Hero Name</label>
+    <input id="hero-name" type="text" />
+
+    <button id="add-hero-button" onclick="addHero();">Add Hero</button>
+    <button onclick="deleteHero();">Delete last Hero</button>
+
+    <script src="./script.js"></script>
+</body>
+</html>

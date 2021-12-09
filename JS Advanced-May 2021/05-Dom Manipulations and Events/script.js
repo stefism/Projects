@@ -17,9 +17,13 @@ function addHero() {
 
 let heroListElement = document.getElementById('hero-list');
 heroListElement.addEventListener('mouseover', showCurrentHeroName);
+let currentHeroName = document.getElementById('heroName');
 
 function showCurrentHeroName(e){
+    currentHeroName.textContent = e.target.textContent;
+    
     console.log(e.target.textContent);
+    console.log(e.currentTarget); //heroListElement (ul) е currentTarget, а вътре li-тата в ul са target. currentTarget е това върху което сме закачили ивента.
 }
 
 function deleteHero(){

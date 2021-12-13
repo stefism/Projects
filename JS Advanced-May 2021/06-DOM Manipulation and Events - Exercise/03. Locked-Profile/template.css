@@ -18,7 +18,7 @@ body{
     flex-wrap: wrap;
 }
 #main{   
-    background: url(background.png) no-repeat center center;
+    /* background: url(background.png) no-repeat center center; */
     background-size: cover;
     margin-top: 1%; 
 }

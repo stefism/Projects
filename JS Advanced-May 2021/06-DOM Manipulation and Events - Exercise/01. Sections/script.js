@@ -13,6 +13,7 @@ function create(array){
     });
 
     content.addEventListener('click', (e) => {
-        e.target.firstChild.style.removeProperty('display');
-    })
+        // e.target.firstChild.style.removeProperty('display');
+        e.target.firstChild.removeAttribute('style');
+    });
 }

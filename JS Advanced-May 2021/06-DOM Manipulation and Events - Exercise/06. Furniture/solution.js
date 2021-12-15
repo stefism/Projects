@@ -4,7 +4,7 @@ function solve() {
     let tableBody = document.querySelector('.table tbody');
 
     let generateBtn = buttons[0];
-    let buyBtn = buttons[1]; 
+    let buyBtn = buttons[1];
 
     generateBtn.addEventListener('click', (e) => {
         let json = JSON.parse(textAreas[0].value);
@@ -22,20 +22,18 @@ function solve() {
         let totalPrice = 0;
         let averageDecFactor = 0;
 
-        tableRows.forEach(r => {
-            let checkbox = r.querySelector('td input');
+        let checkedRows = tableRows.filter(r => r.querySelector('td input').checked);
 
-            if (checkbox.checked) {
-                let paragraphs = r.querySelectorAll('td p');
+        checkedRows.forEach(r => {
+            let paragraphs = r.querySelectorAll('td p');
 
-                let product = paragraphs[0].textContent;
-                let price = Number(paragraphs[1].textContent);
-                let decFactor = Number(paragraphs[2].textContent);
+            let product = paragraphs[0].textContent;
+            let price = Number(paragraphs[1].textContent);
+            let decFactor = Number(paragraphs[2].textContent);
 
-                buyedProducts.push(product);
-                totalPrice += price;
-                averageDecFactor += decFactor;
-            }
+            buyedProducts.push(product);
+            totalPrice += price;
+            averageDecFactor += decFactor;
         });
 
         averageDecFactor /= buyedProducts.length;

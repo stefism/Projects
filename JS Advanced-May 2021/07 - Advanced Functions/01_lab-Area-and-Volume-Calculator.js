@@ -1,21 +1,24 @@
 function area() {
     return Math.abs(this.x * this.y);
-};
+}
 
 function vol() {
     return Math.abs(this.x * this.y * this.z);
-};
+}
 
 function solve (areaF, volF, input) {
     let jsonInput = JSON.parse(input);
     let output = [];
 
     jsonInput.forEach(input => {
-        console.log(input.x, input.y);
-        let area = areaF(Number(input.x), Number(input.y));
-        let vol = volF(Number(input.x), Number(input.y), Number(input.z));
-        console.log(area, vol);
+        let area = areaF.call(input);
+        let volume = volF.call(input);
+
+        let currOutput = { area, volume };
+        output.push(currOutput);
     });
+
+    return output;
 }
 
 solve(area, vol, `[

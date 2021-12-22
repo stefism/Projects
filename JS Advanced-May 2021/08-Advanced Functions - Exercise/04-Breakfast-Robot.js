@@ -1,7 +1,7 @@
 function breakfastRobot() {
     let microElements = { protein: 0, carbohydrate: 0, fat: 0, flavour: 0 }
 
-    let products = {
+    let meals = {
         apple: { carbohydrate: 1, flavour: 2 },
         lemonade: { carbohydrate: 10, flavour: 20 },
         burger: { carbohydrate: 5, fat: 7, flavour: 3 },
@@ -18,7 +18,7 @@ function breakfastRobot() {
                 return 'Success';
 
             case 'prepare':
-                let productToPrepare = products[product];
+                let productToPrepare = meals[product];
                 prepareProduct(productToPrepare, quantity);
                 return 'Success';
 

@@ -14,7 +14,13 @@ function solve() {
         let movieHall = movieProperties[1].value;
         let ticketPrice = movieProperties[2].value;
 
-        if(movieName == '' || movieHall == '' || ticketPrice == '' || isNaN(ticketPrice)) {
+        if(movieName == '' || movieHall == '' || ticketPrice == '') {
+            alert('All fields must be filled.');
+            return;
+        }
+
+        if(isNaN(ticketPrice)) {
+            alert('Ticket Price is not a number.');
             return;
         }
 
@@ -72,7 +78,13 @@ function solve() {
         let ticketSold = filmLi.querySelector('div input').value;
         let totalAmount = Number(ticketPrice) * Number(ticketSold);
 
-        if(isNaN(ticketSold) || ticketSold == ''){
+        if(ticketSold == ''){
+            alert('Please fill Ticket Sold field.');
+            return;
+        }
+
+        if(isNaN(ticketSold)) {
+            alert('Ticket Sold is not a number.');
             return;
         }
 
@@ -102,10 +114,19 @@ function solve() {
 
         if(e.target.textContent == 'Clear') {
             let movieItems = Array.from(document.querySelectorAll('#archive ul li'));
-            movieItems.forEach(item => item.remove());
+            let confirmClearAllMovies = confirm('All movies has been removed. Do you want to proceed?');
+            
+            if(confirmClearAllMovies) {
+                movieItems.forEach(item => item.remove());
+            }
         } else {
             let currentMovie = e.target.parentNode;
-            currentMovie.remove();
+            let movieName = currentMovie.querySelector('span').textContent;
+            let confirmDelete = confirm(`Are you sure you want to delete "${movieName}" movie?`);
+
+            if(confirmDelete) {
+                currentMovie.remove();
+            }
         }
     }
 }

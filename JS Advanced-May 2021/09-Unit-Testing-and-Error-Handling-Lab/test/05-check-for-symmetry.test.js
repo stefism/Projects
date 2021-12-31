@@ -20,6 +20,13 @@ describe('Test symmetric functionality', () => {
         assert.strictEqual(actualResult, expectedResult);
     });
 
+    it('Return false if the input array contains different types', () => {
+        let expectedResult = false;
+        let actualResult = isSymmetric(['1', 2, 1]);
+
+        assert.strictEqual(actualResult, expectedResult);
+    });
+
     it('Return true if the input array is symmetric 2', () => {
         let expectedResult = true;
         let actualResult = isSymmetric([1, 1, 1]);

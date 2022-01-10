@@ -12,7 +12,7 @@ describe('Test lookupChar', () => {
 
     it('Return "Incorrect index" if index < 0', () => {
         assert.equal(lookupChar('Ivan e gotin', -1), 'Incorrect index');
-        
+        assert.equal(lookupChar('Ivan', 15), 'Incorrect index');
     });
 
     it('Return correct index if input parameters is valid', () => {

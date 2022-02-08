@@ -32,3 +32,23 @@ let person2 = new Person('Gosho', 22);
 
 person1.greet(); // My name is Pesho
 person2.greet(); // My name is Gosho
+console.log(Object.getPrototypeOf(employee));
+
+let employeePrototype = {
+    employer: 'SoftUni',
+    sayHi: function() {
+        console.log('Hi');
+    }
+}
+
+function Employee(id, department) {
+    this.id = id;
+    this.department = department;
+}
+
+Employee.prototype = employeePrototype;
+
+let empl = new Employee('1010', 'IT');
+empl.sayHi(); // Hi
+// __proto__ -> for objects
+// prototype -> for functions

@@ -3,6 +3,7 @@
 // 2. npm i mocha chai
 // 3. In package.json -> "test": "mocha"
 // 4. Make folder test and put test file in folder.
+// 5. Write 'npm test' in terminal.
 
 const assert = require('chai').assert;
 const sum = require('../04-sum-of-numbers');

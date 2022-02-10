@@ -1,33 +1,35 @@
 function solve() {
-  let modules = document.querySelector(".modules");
-  let addButton = document.querySelector(".form-control button");
-  let module = document.querySelector(".form-control select");
+  let modules = document.querySelector('.modules');
+  let addButton = document.querySelector('.form-control button');
+  let module = document.querySelector('select[name="lecture-module"]');
 
   modules.addEventListener('click', (e) => {
     if(e.target.tagName.toLowerCase() == 'button') {
       let currLecture = e.target.parentNode;
-      currLecture.remove();
-
-      let moduleDiv = document.getElementById(module.value);
+      
+      // let moduleDiv = currLecture.parentNode.parentNode;
+      let moduleDiv = currLecture.closest('.module'); //За да не пишем parentNode.parentNode няколко пъти, .closest обикаля на горе по дървото и търси първото с указания селектор. В случая първото е div тага, който има клас .module. Върши същата работа като горното.
       let moduleUl = moduleDiv.querySelectorAll(`ul li`);
 
-      if(moduleUl.length == 0) {
+      if(moduleUl.length == 1) {
         moduleDiv.remove();
       }
+
+      currLecture.remove();
     }
   });
 
-  addButton.addEventListener("click", (e) => {
+  addButton.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let lectureName = document.querySelectorAll(".form-control input")[0];
-    let date = document.querySelectorAll(".form-control input")[1];
+    let lectureName = document.querySelector('input[name="lecture-name"]');
+    let date = document.querySelector('input[name="lecture-date"]');
 
-    if (date.value != "" && lectureName.value != "" && module.value != "Select module") {
+    if (date.value != '' && lectureName.value != '' && module.value != 'Select module') {
       let moduleDiv = document.getElementById(module.value);
 
       if (moduleDiv == null) {
-        moduleDiv = CreateModuleDiv(moduleDiv, module);
+        moduleDiv = createModuleDiv(moduleDiv, module);
       }
 
       appendLectureToModule(date, lectureName, module);
@@ -47,16 +49,16 @@ function solve() {
     listItems.forEach(i => ul.appendChild(i));
   }
 
-  function CreateModuleDiv(moduleDiv, module) {
-    moduleDiv = document.createElement("div");
-    moduleDiv.classList.add("module");
+  function createModuleDiv(moduleDiv, module) {
+    moduleDiv = document.createElement('div');
+    moduleDiv.classList.add('module');
     moduleDiv.id = module.value;
 
-    let moduleHeader = document.createElement("h3");
-    moduleHeader.textContent = module.value.toUpperCase() + "-MODULE";
+    let moduleHeader = document.createElement('h3');
+    moduleHeader.textContent = module.value.toUpperCase() + '-MODULE';
 
-    let lecturesUnsortedList = document.createElement("ul");
-    lecturesUnsortedList.id = 'unsortedList';
+    let lecturesUnsortedList = document.createElement('ul');
+    lecturesUnsortedList.classList.add('unsortedList');
 
     moduleDiv.appendChild(moduleHeader);
     moduleDiv.appendChild(lecturesUnsortedList);
@@ -67,23 +69,21 @@ function solve() {
   }
 
   function appendLectureToModule(date, lectureName, module) {
-    let lecturesListItem = document.createElement("li");
-    lecturesListItem.classList.add("flex");
+    let lecturesListItem = document.createElement('li');
+    lecturesListItem.classList.add('flex');
 
-    let lectureDescription = document.createElement("h4");
+    let lectureDescription = document.createElement('h4');
 
     let [currDate, currTime] = date.value.split('T');
-    let [year, month, day] = currDate.split('-');
+    currDate = currDate.replaceAll('-', '/');
+    //currDate = currDate.replace(/-/g, '/'); //Мега хитро. Еквивалент на горното но с регекс.
 
-    let formatedDateWithDash = `${year}/${month}/${day}`;
+    lectureDescription.textContent = `${lectureName.value.toUpperCase()} - ${currDate} - ${currTime}`;
 
-    lectureDescription.textContent = `${lectureName.value.toUpperCase()} - ${formatedDateWithDash} - ${currTime}`;
-
-    let delButton = document.createElement("button");
-    delButton.classList.add("red");
-    delButton.textContent = "Del";
+    let delButton = document.createElement('button');
+    delButton.classList.add('red');
+    delButton.textContent = 'Del';
     
-
     lecturesListItem.appendChild(lectureDescription);
     lecturesListItem.appendChild(delButton);
 

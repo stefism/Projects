@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: 'consolas';
+}
+
+.game-view {
+    background-color: skyblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+.start-screen {
+    margin-top: 100px;
+    text-align: center;
+    padding: 20px;
+    background-color: lightgreen;
+    font-weight: bold;
+    position: absolute;
+    width: 500px;
+    left: 50%; /* Дава го на средата на екрана но началото на елемента започва от средата на екрана и не стои центрирано */
+    transform: translate(-50%); /* Затова - така връщаме елемента и самия елемент стои по средата центриран. */
+}
+
+.wizard {
+    position: absolute;
+    background-image: url('../src/images/wizard.png');
+    width: 82px;
+    height: 100px;
+}
+
+.hidden {
+    display: none;
+}

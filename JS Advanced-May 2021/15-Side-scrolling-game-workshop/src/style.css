@@ -21,11 +21,21 @@ body {
     transform: translate(-50%); /* Затова - така връщаме елемента и самия елемент стои по средата центриран. */
 }
 
+.play-screen {
+    width: 100%;
+    height: 100%;
+}
+
 .wizard {
     position: absolute;
     background-image: url('../src/images/wizard.png');
     width: 82px;
     height: 100px;
+}
+
+.bug {
+    position: absolute;
+    background-image: url('../src/images/bug.png');
 }
 
 .hidden {

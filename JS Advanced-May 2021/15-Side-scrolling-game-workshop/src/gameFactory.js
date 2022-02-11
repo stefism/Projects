@@ -11,7 +11,18 @@ function gameFactory() {
     let factory = {
         startScreen,
         playScreen,
-        wizardElement
+        wizardElement,
+        createBug: () => {
+            let bugElement = document.createElement('div');
+            bugElement.classList.add('bug');
+            bugElement.style.width = state.bugStats.width + 'px';
+            bugElement.style.height = state.bugStats.height + 'px';
+
+            bugElement.style.left = playScreen.offsetWidth - state.bugStats.width + 'px';
+            bugElement.style.top = '100px';
+
+            playScreen.appendChild(bugElement);
+        }
     };
 
     return factory;

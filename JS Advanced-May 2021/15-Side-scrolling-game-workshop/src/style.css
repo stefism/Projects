@@ -26,9 +26,16 @@ body {
     height: 100%;
 }
 
+.score-screen {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
 .wizard {
     position: absolute;
     background-image: url('../src/images/wizard.png');
+    background-size: cover;
     width: 82px;
     height: 100px;
 }
@@ -36,6 +43,19 @@ body {
 .bug {
     position: absolute;
     background-image: url('../src/images/bug.png');
+    background-size: cover;
+}
+
+.fireball {
+    position: absolute;
+    background-image: url('../src/images/fire-ball.png');
+    background-size: cover;
+}
+
+.cloud {
+    position: absolute;
+    background-image: url('../src/images/cloud.png');
+    background-size: cover;
 }
 
 .hidden {

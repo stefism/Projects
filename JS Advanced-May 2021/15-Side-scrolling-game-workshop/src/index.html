@@ -10,7 +10,7 @@
 <body>
     <div class="game-view">
         <div class="start-screen">Start Game</div>
-        
+        <div class="score-screen">Keys: (A - left, D - right, W - up, S - down, Fire - M) Points: 0</div>
         <div class="play-screen hidden">
 
         </div>
@@ -19,8 +19,6 @@
     <script src="../src/gameState.js"></script>
     <script src="../src/gameFactory.js"></script>
     <script>
-        let getState = gameStateFactory();
-        let state = getState();
         let game = gameFactory();
 
         game.startScreen.addEventListener('click', gameStart);
@@ -35,17 +33,83 @@
             window.requestAnimationFrame(gameLoop);
         }
 
-        function gameLoop() {
+        function gameLoop(timestamp) { //timestamp си го получава по дефолт гейм луупа. Както ивент обжекта подобно. Идва от requestAnimationFrame.
             let { wizard } = state;
-            let { wizardElement } = game;
+            let { wizardElement, scoreScreen } = game;
 
             modifyWizardPosition(state, game);
-            game.createBug();
 
+            if(state.keys.KeyM) {
+                wizardElement.style.backgroundImage = "url('../src/images/wizard-fire.png')";
+                
+                if(state.fireballStats.nextFireball < timestamp) {
+                    game.createFireball();
+                    state.fireballStats.nextFireball = timestamp + state.fireballStats.attackSpeed;
+                }  
+            } else {
+                wizardElement.style.backgroundImage = "url('../src/images/wizard.png')";
+            }
+
+            Array.from(document.getElementsByClassName('fireball')).forEach(ball => {
+                let currentPosition = parseInt(ball.style.left);
+
+                if(currentPosition + state.fireballStats.width < game.playScreen.offsetWidth) {
+                    ball.style.left = currentPosition + state.fireballStats.speed + 'px';
+                } else {
+                    ball.remove();
+                }
+
+                Array.from(document.getElementsByClassName('bug')).forEach(bug => {
+                    if(checkCollision(ball, bug)) {
+                        bug.remove();
+                        ball.remove();
+                        state.score += 5;
+                    }
+                });
+            });
+
+            Array.from(document.getElementsByClassName('cloud')).forEach(cloud => {
+                let currentPosition = parseInt(cloud.style.left); //parseInt - ако има 10px примерно в това дето парсва, ще вземе като число само десетката.
+                
+                if(currentPosition > 0) {
+                    cloud.style.left = currentPosition - state.cloudStats.speed + 'px';
+                } else {
+                    cloud.remove();
+                }
+            });
+
+            Array.from(document.getElementsByClassName('bug')).forEach(bug => {
+                let currentPosition = parseInt(bug.style.left); //parseInt - ако има 10px примерно в това дето парсва, ще вземе като число само десетката.
+                
+                if(currentPosition > 0) {
+                    bug.style.left = currentPosition - state.bugStats.speed + 'px';
+                } else {
+                    bug.remove();
+                }
+                
+                if(checkCollision(wizardElement, bug)) {
+                    state.gameOver = true;
+                }
+            });
+
+            if(state.bugStats.nextBugCreation < timestamp) {
+                game.createBug();
+                state.bugStats.nextBugCreation = timestamp + Math.random() * state.bugStats.maxCreationInterval;
+            }
+
+            if(state.cloudStats.nextCloudCreation < timestamp) {
+                game.createCloud();
+                state.cloudStats.nextCloudCreation = timestamp + Math.random() * state.cloudStats.maxCreationInterval;
+            }
+
+            state.bugStats.speed += 0.001;
+            
             wizardElement.style.top = wizard.y + 'px';
             wizardElement.style.left = wizard.x + 'px';
+            scoreScreen.textContent = `Keys: (A - left, D - right, W - up, S - down, Fire - M) Points: ${state.score.toFixed(2)}`;
 
             if(!state.gameOver) {
+                state.score += 0.01;
                 window.requestAnimationFrame(gameLoop);
             } else {
                 alert('Game Over');
@@ -55,11 +119,17 @@
         function modifyWizardPosition(state, game) {
             let wizard = state.wizard;
 
+            let isLowerBound = wizard.y + wizard.height >= game.playScreen.offsetHeight;
+
+            if(!isLowerBound) {
+                wizard.y += wizard.gravity;
+            }
+            
             if(state.keys.KeyW && wizard.y > 0) {
                 wizard.y -= wizard.speed;
             }
 
-            if(state.keys.KeyS && wizard.y + wizard.height < game.playScreen.offsetHeight) {
+            if(state.keys.KeyS && !isLowerBound) {
                 wizard.y += wizard.speed;
             }
 
@@ -70,6 +140,14 @@
             if(state.keys.KeyD && wizard.x + wizard.width < game.playScreen.offsetWidth) {
                 wizard.x += wizard.speed;
             }
+        }
+
+        function checkCollision(firstElement, secondElement) {
+            let first = firstElement.getBoundingClientRect();
+            let second = secondElement.getBoundingClientRect();
+
+            return !(first.top > second.bottom || first.bottom < second.top || first.right < second.left || first.left > second.right);
+            
         }
 
         function onKeyDown(e) {

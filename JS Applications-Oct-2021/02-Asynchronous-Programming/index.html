@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Make request</button>
+    <script>
+        document.querySelector('button').addEventListener('click', makeRequest);
+
+        function makeRequest() {
+            const request = fetch('https://swapi.dev/api/planets/1/')
+            // console.log(request);
+
+            // request.then(responce => {
+            //     console.log(responce); //Респонса е бодито.
+
+            //     const dataPromise = responce.json(); //Тука му казваме, дай ми и тялото.
+            //     console.log(dataPromise);
+
+            //     dataPromise.then(data => {
+            //         console.log(data);
+            //     });
+            // });
+            .then(responce => {
+                if(!responce.ok) {
+                    throw new Error(`${responce.status} - ${responce.statusText}`);
+                }
+
+                return responce.json();
+            }) //header
+            .then(data => console.log(data)) //body
+            .catch(error => console.log(error)); //.catch хваща грешки само от мрежово естество. Ако сървъра върне 404 примерно, това е успешен респонс за функцията. Грешката от горе, се обработва долу в error.
+        }
+    </script>
+</body>
+</html>

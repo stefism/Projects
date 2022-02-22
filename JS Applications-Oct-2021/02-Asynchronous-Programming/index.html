@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <button>Make request</button>
+    <button id="sync">Make request</button>
+    <button id="async">Make request Async</button>
     <script>
-        document.querySelector('button').addEventListener('click', makeRequest);
+        document.getElementById('sync').addEventListener('click', makeRequest);
+        document.getElementById('async').addEventListener('click', makeRequestAsync);
 
         function makeRequest() {
             const request = fetch('https://swapi.dev/api/planets/1/')
@@ -35,6 +37,29 @@
             .then(data => console.log(data)) //body
             .catch(error => console.log(error)); //.catch хваща грешки само от мрежово естество. Ако сървъра върне 404 примерно, това е успешен респонс за функцията. Грешката от горе, се обработва долу в error.
         }
+
+        async function makeRequestAsync() {
+            try {
+                const responce = await fetch('https://swapi.dev/api/planets/1/');
+
+                if(!responce.ok) {
+                    throw new Error(`${responce.status} - ${responce.statusText}`);
+                }
+
+                const data = await responce.json();
+            } catch (error) {
+                console.log('Error: ', error);
+            }
+        }
+
+        //Когато искаме да пуснем примерно три асинхронни заявки да се изпълняват паралелно (а не една да чака изпълнението на предишната) тогава ползваме Promise.all().
+
+        const [fetch1Result, fetch2Result, fetch3Result] = await Promise.all([
+            fetch('https://some_url_1'),
+            fetch('https://some_url_2'),
+            fetch('https://some_url_3')
+        ]); //Това ще пусне паралелно да се изпълняват трите заявки (а не последователно) и в деструктурираните променливи ще върне не промис, а резултата от изпълнението.
+        // Подаваме за явките като масив и имаме един промис, който е вързан и за трите едновременно.
     </script>
 </body>
 </html>

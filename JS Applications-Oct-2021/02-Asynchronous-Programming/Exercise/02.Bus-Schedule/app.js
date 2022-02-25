@@ -1,44 +1,43 @@
-function solve () {
-	const html = {
-		info: document.getElementById(`info`),
-		depart: document.getElementById(`depart`),
-		arrive: document.getElementById(`arrive`),
-	}
+let nextBusStop = 'depot';
+let currBusName = '';
 
-	const getStop = async (name) => {
-		try {
-			const stop = await fetch(`http://localhost:3030/jsonstore/bus/schedule/${name}`)
+function solve() {
+    let departButton = document.getElementById('depart');
+    let arriveButton = document.getElementById('arrive');
+    let info = document.getElementById('info');
 
-			return await stop.json()
-		} catch (e) {
-			html.info.innerHTML = 'Error'
-			html.arrive.disabled = true
-			html.depart.disabled = true
-		}
-	}
-	let nextStop
-	let nextStopName = 'depot'
+    function depart() {
+        departButton.disabled = true;
+        arriveButton.disabled = false;
 
+        let url = `http://localhost:3030/jsonstore/bus/schedule/${nextBusStop}`;
 
-	async function depart () {
-		html.depart.disabled = true
-		html.arrive.disabled = false
-		nextStop = await getStop(nextStopName)
-		html.info.innerHTML = `Next stop ${nextStop.name}`
-	}
+        getNextStop(url, info);
+    }
 
-	function arrive () {
-		html.depart.disabled = false
-		html.arrive.disabled = true
+    function arrive() {
+        departButton.disabled = false;
+        arriveButton.disabled = true;
 
-		html.info.innerHTML = `Arriving at ${nextStop.name}`
-		nextStopName = nextStop.next
-	}
+        info.textContent = `Arriving at ${currBusName}`;
+    }
 
-	return {
-		depart,
-		arrive
-	}
+    return {
+        depart,
+        arrive
+    };
 }
 
-let result = solve()
+async function getNextStop(url, info) {
+    try {
+        let responce = await fetch(url);
+        let data = await responce.json();
+        info.textContent = `Next stop ${data.name}`;
+        currBusName = data.name;
+        nextBusStop = data.next;
+    } catch (error) {
+        
+    }
+}
+
+let result = solve();

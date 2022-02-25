@@ -1,27 +1,42 @@
-async function getInfo () {
-	const html = {
-		stopName: document.getElementById(`stopName`),
-		busses: document.getElementById(`buses`),
-		stopID: document.getElementById(`stopId`)
-	}
+let busesUlElement = document.getElementById('buses');
+let stopName = document.getElementById('stopName');
 
-	html.stopName.innerHTML = ''
-	html.busses.innerHTML = ''
+async function getInfo() {
+	stopName.textContent = 'Loading ...'
+	let stopId = document.getElementById('stopId').value;
 
 	try {
-		const data = await fetch(`http://localhost:3030/jsonstore/bus/businfo/${html.stopID.value}/1`)
-		if (! data.ok) throw new Error()
-		const deserialized = await data.json()
-
-		html.stopName.innerHTML = deserialized.name
-		Object.entries(deserialized.buses).forEach(([bus, time]) => {
-			const e = document.createElement('li')
-			e.innerHTML = `Bus ${bus} arrives in ${time}`
-
-			html.busses.appendChild(e)
-		})
-
-	} catch (e) {
-		html.stopName.innerHTML = 'Error'
+		const responce = await fetch(`http://localhost:3030/jsonstore/bus/businfo/${stopId}`);
+		
+		if(responce.status != 200) {
+			throw new Error('Stop Id not found.');
+		}
+		
+		const data = await responce.json();
+		showBusStop(data)
+	} catch (error) {
+		showError(error);
 	}
+}
+
+function showBusStop(data) {
+	removeOldStops();
+	stopName.textContent = data.name;
+	
+	for (const key in data.buses) {
+		let li = document.createElement('li');
+		li.textContent = `Bus ${key} arrives in ${data.buses[key]} minutes`;
+
+		busesUlElement.appendChild(li);
+	}
+}
+
+function showError(error) {
+	removeOldStops();
+	stopName.textContent = 'Error: ' + error.message;
+}
+
+function removeOldStops() {
+	let liItems = Array.from(document.querySelectorAll('#buses li'));
+	liItems.forEach(e => e.remove());
 }

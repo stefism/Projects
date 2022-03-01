@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Demo</title>
+</head>
+
+<body>
+    <a href="/auth-demo.html">Login / Register</a>
+    <form>
+        <label>Person: <input type="text" name="person" /></label>
+        <label>Phone: <input type="text" name="phone" /></label>
+        <input type="submit" value="Create Record" />
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            const data = new FormData(form);
+
+            const person = data.get('person').trim();
+            const phone = data.get('phone').trim();
+
+            const record = { person, phone };
+
+            postData(record);
+            form.reset(); //Изчиства автоматично полетата.
+        });
+
+        function postData(data) {
+            const url = 'http://localhost:3030/jsonstore/phonebook';
+  
+            const options = {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            //body: JSON.stringify(data) - Ако просто сложим бодито без JSON.stringify, браузъра това нещо ще се опита да го сериализира. Браузъра очаква в бодито да получи нещо, което е от тип string. Браузъра ще иска имплицитно да конфертира обекта в стринг, което става, като се извика метода .toString() на обекта. Обаче този вграден метод връща стринга "[Object object]", което не ни върши работа, защото за всички обекти ще връща това нещо. Затова трябва ръчно да сериализираме бодито, което става с горния метод JSON.stringify. Това ще вземе обекта и ще го превърне в истински джейсън стринг.
+
+            fetch(url, options);
+
+            //Ако искаме да върнем данни, си правим функцията асинхронна и връщаме резулта, както когато правим гет заявки.
+        }
+
+        async function getData() {
+            const url = 'http://localhost:3030/jsonstore/phonebook';
+
+            const options = { headers: {} };
+            const authToken = sessionStorage.getItem('authToken');
+
+            if(authToken != null) {
+                options.headers['X-Authorization'] = authToken;
+            }
+
+            const responce = await fetch(url, options);
+            const resultData = await responce.json();
+
+            return resultData;
+        }
+
+        async function getDataById(id) {
+            const url = 'http://localhost:3030/jsonstore/phonebook' + id;
+
+            const responce = await fetch(url);
+            const resultData = await responce.json();
+
+            return resultData;
+        }
+
+        async function updateData(id, data) {
+            const url = 'http://localhost:3030/jsonstore/phonebook' + id;
+
+            const options = {
+                method: 'put',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            const responce = await fetch(url, options);
+            const resultData = await responce.json();
+
+            return resultData;
+        }
+
+        //const record = await getDataById('2d5ae478-87c7-45fa-acf9-f04aa4724421');
+        //record.phone = '{new phone}';
+        //await updateData('2d5ae478-87c7-45fa-acf9-f04aa4724421', record);
+
+        async function deleteData(id) {
+            const url = 'http://localhost:3030/jsonstore/phonebook' + id;
+
+            const options = {
+                method: 'delete',
+            };
+
+            const responce = await fetch(url, options);
+            const resultData = await responce.json();
+
+            return resultData;
+        }
+    </script>
+</body>
+
+</html>

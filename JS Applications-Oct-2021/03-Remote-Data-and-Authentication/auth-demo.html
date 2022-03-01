@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Demo</title>
+</head>
+
+<body>
+    <h3>Register</h3>
+    <form id="register-form">
+        <label>Email: <input type="text" name="email" /></label>
+        <label>Password: <input type="password" name="password" /></label>
+        <label>Repeat password: <input type="password" name="repass" /></label>
+        <input type="submit" name="Register" />
+    </form>
+
+    <h3>Login</h3>
+    <form id="login-form">
+        <label>Email: <input type="text" name="email" /></label>
+        <label>Password: <input type="password" name="password" /></label>
+        <input type="submit" name="Login" />
+    </form>
+
+    <script>
+        const registerForm = document.getElementById('register-form');
+        registerForm.addEventListener('submit', onRegister);
+
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', onLogin);
+
+        async function onRegister(e) {
+            const url = 'http://localhost:3030/users/register';
+
+            e.preventDefault();
+            const formData = new FormData(registerForm);
+
+            const email = formData.get('email').trim();
+            const password = formData.get('password').trim();
+            const repass = formData.get('repass').trim();
+
+            const responce = await fetch(url, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const resData = await responce.json();
+            sessionStorage.setItem('authToken', resData.accessToken); //Сървъра връща токен за оторизация и така го запазваме в сешън сторижа.
+            console.log(resData);
+        }
+
+        async function onLogin(e) {
+            const url = 'http://localhost:3030/users/login';
+
+            e.preventDefault();
+            const formData = new FormData(loginForm);
+
+            const email = formData.get('email').trim();
+            const password = formData.get('password').trim();
+
+            try {
+                const responce = await fetch(url, {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if(responce.status != 200) {
+                    const error = await responce.json();
+                    throw new Error(`Error: ${error.message}`);
+                }
+
+                const resData = await responce.json();
+                sessionStorage.setItem('authToken', resData.accessToken);
+                console.log(resData);
+
+                window.location = '/index-demo.html';
+            } catch (error) {
+                alert(error.message);
+            }
+            //За да изкараме в конзолата на браузъра съдържанието на sessionStorage, пишем само sessionStorage и ентер.
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Cookbook</title>
+    <link rel="stylesheet" href="static/site.css">
+    <link rel="stylesheet" href="static/recipe.css">
+    <link rel="stylesheet" href="static/form.css">
+</head>
+
+<body>
+    <header>
+        <h1>My Cookbook</h1>
+        <nav>
+            <a href="index.html">Catalog</a>
+            <a class="active">Create Recipe</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>New Recipe</h2>
+            <form>
+                <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
+                <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+                <label class="ml">Ingredients: <textarea name="ingredients"
+                        placeholder="Enter ingredients on separate lines"></textarea></label>
+                <label class="ml">Preparation: <textarea name="steps"
+                        placeholder="Enter preparation steps on separate lines"></textarea></label>
+                <input type="submit" value="Create Recipe">
+            </form>
+        </article>
+    </main>
+
+    <script>
+        const newRecipeForm = document.querySelector('form');
+        newRecipeForm.addEventListener('submit', addRecipe);
+
+        async function addRecipe(e) {
+            e.preventDefault();
+
+            const formData = new FormData(newRecipeForm);
+
+            const name = formData.get('name').trim();
+            const img = formData.get('img').trim();
+            const ingredients = formData.get('ingredients').split('\n');
+            const steps = formData.get('steps').split('\n');
+
+            const authToken = sessionStorage.getItem('authToken');
+
+            const url = 'http://localhost:3030/data/recipes';
+
+            try {
+                const responce = await fetch(url, {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Authorization': authToken
+                    },
+                    body: JSON.stringify({ name, img, ingredients, steps })
+                });
+
+                if (responce.status != 200) {
+                    const error = await responce.json();
+                    throw new Error(`Error: ${error.message}`);
+                }
+
+                const result = await responce.json();
+
+                window.location = '/index.html';
+                console.log('result ', result);
+            } catch (error) {
+                alert(error.message);
+            }
+
+            console.log(name, img, ingredients, steps);
+        }
+    </script>
+</body>
+
+</html>

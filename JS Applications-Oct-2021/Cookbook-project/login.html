@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Cookbook</title>
+    <link rel="stylesheet" href="static/site.css">
+    <link rel="stylesheet" href="static/recipe.css">
+    <link rel="stylesheet" href="static/form.css">
+</head>
+
+<body>
+    <header>
+        <h1>My Cookbook</h1>
+        <nav>
+            <a href="index.html">Catalog</a>
+            <a class="active">Login</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Login</h2>
+            <form>
+                <label>E-mail: <input type="text" name="email"></label>
+                <label>Password: <input type="password" name="password"></label>
+                <input type="submit" value="Login">
+            </form>
+        </article>
+    </main>
+
+    <script>
+        const loginForm = document.querySelector('form');
+        loginForm.addEventListener('submit', login)
+        
+        async function login(e) {
+            e.preventDefault();
+            
+            const url = 'http://localhost:3030/users/login';
+
+            const formData = new FormData(loginForm);
+            
+            const email = formData.get('email').trim();
+            const password = formData.get('password').trim();
+
+            try {
+                const responce = await fetch(url, {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if(responce.status != 200) {
+                    const error = await responce.json();
+                    throw new Error(`Error: ${error.message}`);
+                }
+
+                const result = await responce.json();
+                sessionStorage.setItem('authToken', result.accessToken);
+
+                window.location = '/index.html';
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

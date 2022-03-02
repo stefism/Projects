@@ -1,6 +1,12 @@
 const newRecipeForm = document.querySelector('form');
         newRecipeForm.addEventListener('submit', addRecipe);
 
+        const authToken = sessionStorage.getItem('authToken');
+
+        if(authToken == null) {
+            window.location = '/login.html';
+        }
+
         async function addRecipe(e) {
             e.preventDefault();
 
@@ -9,9 +15,7 @@ const newRecipeForm = document.querySelector('form');
             const name = formData.get('name').trim();
             const img = formData.get('img').trim();
             const ingredients = formData.get('ingredients').split('\n');
-            const steps = formData.get('steps').split('\n');
-
-            const authToken = sessionStorage.getItem('authToken');
+            const steps = formData.get('steps').split('\n');  
 
             const url = 'http://localhost:3030/data/recipes';
 
@@ -30,7 +34,7 @@ const newRecipeForm = document.querySelector('form');
                     throw new Error(`Error: ${error.message}`);
                 }
 
-                const result = await responce.json();
+                await responce.json();
 
                 window.location = '/index.html';
             } catch (error) {

@@ -35,7 +35,6 @@ async function sendMessage() {
     } catch (error) {
         alert(error.message);
     }
-    
 }
 
 async function refreshData() {

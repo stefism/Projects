@@ -114,6 +114,10 @@ hr {
     display: block;
 }
 
+#logout {
+    display: none;
+}
+
 .catches {
     text-align: center;
 }

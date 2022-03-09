@@ -7,7 +7,10 @@ const userToken = sessionStorage.getItem('authToken');
 const catches = document.getElementById('catches');
 
 const header = document.getElementById('header');
-header.textContent = `${header.textContent}  <${userEmail}>`;
+
+if(userEmail) {
+    header.textContent = `${header.textContent}  <${userEmail}>`;
+}
 
 const loadBtn = document.querySelector('main aside button');
 loadBtn.addEventListener('click', showCatchesOnDom);
@@ -19,10 +22,35 @@ logoutBtn.addEventListener('click', onLogout);
 
 const addBtn = document.getElementById('addBtn');
 
+const addForm = document.getElementById('addForm');
+addForm.addEventListener('submit', addNewCatch);
+
 if(userId != undefined) {
     addBtn.disabled = false;
     loginBtn.style.display = 'none';
     logoutBtn.style.display = 'block';
+}
+
+async function addNewCatch(e) {
+    e.preventDefault();
+
+    const formData = new FormData(addForm);
+
+    for (const entry of formData.entries()) {
+        console.log(entry);
+    }
+
+    // console.log(formData.entries());
+    // console.log([...formData.entries()]);
+
+    const formDataAsObject = [...formData.entries()].reduce((acc, [key, value]) => Object.assign(acc, {[key]: value}), {});
+    // formData.entries() e итератор. Затова с [...formData.entries()] го превръщаме в масив от масиви, където нулевия елемент е името на полето във формата, а първия е неговата стойност. С горния ред си правим обект с имената и велютата на всички полета във формата и така не си играем да ги взимаме едно по едно полетата от формата.
+    // console.log(data);
+
+    if(Object.values(formDataAsObject).some(field => field == '')) {
+        throw new Error('All fields are required.');
+    }
+    
 }
 
 async function onLogout() {
@@ -35,6 +63,9 @@ async function onLogout() {
     });
 
     sessionStorage.clear();
+
+    loginBtn.style.display = 'block';
+    logoutBtn.style.display = 'none';
 }
 
 async function loadCatches() {
@@ -49,13 +80,10 @@ async function showCatchesOnDom() {
 }
 
 function createCatchDivElement(currCatch) {
-    let isButtonDisabled = '';
-
-    if(currCatch._ownerId != userId) {
-        isButtonDisabled = 'disabled';
-    }
+    let isButtonDisabled = currCatch._ownerId != userId ? 'disabled' : '';
 
     let divElement = document.createElement('div');
+    divElement.classList.add('catch');
     divElement.innerHTML = `
     <label id="${currCatch._ownerId}">Angler</label>
     <input type="text" class="angler" value="${currCatch.angler}"/>

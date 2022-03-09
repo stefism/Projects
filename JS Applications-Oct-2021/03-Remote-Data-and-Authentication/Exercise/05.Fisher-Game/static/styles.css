@@ -118,6 +118,14 @@ hr {
     display: none;
 }
 
+.add {
+    background-color: rgb(23, 175, 112);
+}
+
+.delete {
+    background-color: darkorange;
+}
+
 .catches {
     text-align: center;
 }

@@ -22,15 +22,15 @@ async function loadMovies() {
         options.headers['X-Authorizaton'] = userData.token;
     }
 
-    const responce = await fetch('http://localhost:3030/data/movies', options);
+    const response = await fetch('http://localhost:3030/data/movies', options);
 
-    if(responce.status == 403) {
+    if(response.status == 403) {
         sessionStorage.removeItem('userData');
         updateUserNav();
         showLoginPage();
     } // Тука се подсигуряваме в случай, че сървъра се рестартира. Тогава чистиме sessionStorage иначе приложението ще си мисли, че е логнато. 403 е невалиден токен в този случай.
 
-    const movies = await responce.json();
+    const movies = await response.json();
 
     ul.replaceChildren(...movies.map(createMovieCard));
 }

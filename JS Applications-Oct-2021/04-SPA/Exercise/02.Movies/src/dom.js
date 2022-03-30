@@ -4,9 +4,17 @@ export function showView(section) {
     main.replaceChildren(section);
 }
 
-export async function request(url, options) {
-    const responce = await fetch(url, options);
+export function getDataFromSessionStorage(dataName) {
+    return JSON.parse(sessionStorage.getItem(dataName));
+}
 
+export function showLoading() {
+    return createDomElement('p', {}, 'Loading...');
+}
+
+export async function request(url, options) {
+    const response = await fetch(url, options);
+    
     if(options && options.body != undefined) {
         Object.assign(options, {
             headers: {
@@ -15,13 +23,13 @@ export async function request(url, options) {
         });
     }
 
-    if(responce.ok != true) {
-        const error = await responce.json();
+    if(response.ok != true) {
+        const error = await response.json();
         // alert(error.message);
         throw new Error(error.message);
     }
 
-    const data = await responce.json();
+    const data = await response.json();
 
     return data;
 }

@@ -48,7 +48,7 @@ async function onLogout(e) {
     e.stopImmediatePropagation(); //Тази функция на евента спира изпълнението на евент лисенерите, след този на който е закачена. Ако искаме някой евент да не се изпълнява когато този се изпълние, трябва горе в кода, да го сложим след този. Използва се когато се очаква, ако се изпълни този евент, нещо в друг евент да гръмне. В случая, горе в кода, понеже евента, който изпълнява функцият onNavigate е закачен след този, когато този се изпълни, onNavigate няма да се изпълни. Сътветно ако този не се изпълни, тоест ако нямаме излизане на потребител, onNavigate функцията от евента, който е закачен след този, ще се изпълни.
 
     const { token } = JSON.parse(sessionStorage.getItem('userData')); //{ token } - Деструктурираме обекта userData и взимаме от неко само token.
-    const responce = await fetch('http://localhost:3030/users/logout', {
+    const response = await fetch('http://localhost:3030/users/logout', {
         headers: {
             'X-Authorization': token
         }

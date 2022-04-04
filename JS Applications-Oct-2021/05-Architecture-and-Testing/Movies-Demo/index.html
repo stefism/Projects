@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Demo</title>
+    <script src="./src/app.js" type="module"></script>
+    <!-- Скриптовете маркирани като модулни се изпълняват след като се зареди страницата, дори и да са закачени горе. Задължително ако ползваме модули трябва да има type="module". Иначе ще хвърля грешка и няма да работят import и export ключовите думи. -->
+    <style>
+        #sections {
+            display: none;
+        }
+
+        #loginForm {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="javascript:void(0)" id="homeBtn">Home</a>
+        <a href="javascript:void(0)" id="catalogBtn">Catalog</a>
+        <a href="javascript:void(0)" id="aboutBtn">About Us</a>
+        <a href="javascript:void(0)" id="loginBtn">Login</a>
+        <a href="javascript:void(0)" id="logoutBtn">Logout</a>
+        <a href="javascript:void(0)" id="registerBtn">Register</a>
+        <!-- javascript:void(0) - така имаме anchor таг, който не презарежда страницата и не е нужно после в кода да му слагаме preventDefault -->
+    </nav>
+    <main>
+
+    </main>
+
+    <div id="sections">
+        <h1>SPA Demo</h1>
+
+        <section id="homeSection">
+            <h1>Home Page</h1>
+            <p>Home page content</p>
+        </section>
+
+        <section id="catalogSection">
+            <h1>Catalog</h1>
+            <ul>
+                <li>Product 1</li>
+                <li>Product 2</li>
+                <li>Product 3</li>
+            </ul>
+        </section>
+
+        <section id="loginSection">
+            <h1>Login</h1>
+
+            <form id="loginForm">
+                <label for="email">Email: <input type="text" name="email" placeholder="Type your email here"></label>
+
+                <label for="password">Password: <input type="password" name="password" placeholder="Type Password"> <img
+                        src="./img/eye-solid.svg" width="20px" /></label>
+
+                <button>Login</button>
+            </form>
+        </section>
+
+        <section id="registerSection">
+            <h1>Register</h1>
+
+            <form>
+                <label for="email">Email: </label>
+                <input type="text" name="email" placeholder="Type your email here">
+                <label for="password">Password: </label>
+                <input type="password" name="password" placeholder="Type Password">
+                <label for="re-password">Password: </label>
+                <input type="password" name="rePassword" placeholder="Retype Password">
+                <button>Register</button>
+            </form>
+
+        </section>
+
+        <section id="aboutSection">
+            <h1>About Us</h1>
+            <p>Contact information:</p>
+            <p>Phone: +1-555-7985</p>
+        </section>
+    </div>
+</body>
+
+</html>

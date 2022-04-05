@@ -38,7 +38,7 @@ describe('E2E tests', async function() {
         expect(visible).to.be.true;
     });
 
-    it('Less button works', async () => {
+    it.only('Less button works', async () => {
         await page.goto('http://127.0.0.1:5501/Lab/01.%20Accordion/index.html');
         await page.waitForSelector('.accordion');
 
@@ -54,7 +54,7 @@ describe('E2E tests', async function() {
         expect(visible).to.be.false;
     });
 
-    it.only('Form input', async () => {
+    it('Form input', async () => {
         await page.goto('http://127.0.0.1:5501/Lab/01.%20Accordion/index.html');
         await page.fill('[name="email"]', 'Peter');
         await page.waitForTimeout(60000);

@@ -1,7 +1,9 @@
 import { html, render } from '../node_modules/lit-html/lit-html.js';
 
+const url = 'http://localhost:3030/jsonstore/advanced/dropdown';
+
 async function getData() {
-    const responce = await fetch('http://localhost:3030/jsonstore/advanced/dropdown');
+    const responce = await fetch(url);
     const data = await responce.json();
 
     return data;
@@ -23,10 +25,14 @@ async function onSubmit(e) {
     const formData = new FormData(form);
     const text = formData.get('itemText');
 
+    if (text == '' || text == ' ') {
+        return;
+    }
+
     dataArray.push({text: text, _id: text});
     form.reset();
 
-    const responce = await fetch('http://localhost:3030/jsonstore/advanced/dropdown', {
+    await fetch(url, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -37,13 +43,6 @@ async function onSubmit(e) {
     console.log(dataArray);
 
     onRender();
-}
-
-async function postDataOnServer() {
-    const responce = await fetch('http://localhost:3030/jsonstore/advanced/dropdown');
-    const data = await responce.json();
-
-    return data;
 }
 
 function onRender() {

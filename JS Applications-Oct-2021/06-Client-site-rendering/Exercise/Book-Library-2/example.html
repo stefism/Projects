@@ -7,15 +7,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Books</title>
     <link rel="stylesheet" href="./styles.css">
-    <script type="module" src="./app.js"></script>
 </head>
 
 <body>
     <button id="loadBooks">LOAD ALL BOOKS</button>
-
-    <section id="table">
-
-    </section>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Harry Potter</td>
+                <td>J. K. Rowling</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Game of Thrones</td>
+                <td>George R. R. Martin</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <form id="add-form">
         <h3>Add book</h3>
@@ -26,7 +48,7 @@
         <input type="submit" value="Submit">
     </form>
 
-    <form id="edit-form" style="display: none;">
+    <form id="edit-form">
         <input type="hidden" name="id">
         <h3>Edit book</h3>
         <label>TITLE</label>

@@ -30,14 +30,19 @@ function onSearch() {
     }
 
     data.forEach(item => {
-        item.match = false;
+        item.match = Object.values(item) //Това връща масив от велютата на които прилагаме .some().
+        .some(v => typeof(v) == 'string' 
+        ? v.toLocaleLowerCase().includes(searchText) 
+        : false); //Това, което приема .some() е предикат. Предиката e функция, която връща true или false.
+        
+        // item.match = false;
 
-        for (const key in item) {
-            if (typeof (item[key]) != 'boolean' && item[key].toLowerCase().includes(searchText)) {
-                item.match = true;
-                break;
-            }
-        }
+        // for (const key in item) {
+        //     if (typeof (item[key]) == 'string' && item[key].toLowerCase().includes(searchText)) {
+        //         item.match = true;
+        //         break;
+        //     }
+        // }
     });
 
     searchField.value = '';

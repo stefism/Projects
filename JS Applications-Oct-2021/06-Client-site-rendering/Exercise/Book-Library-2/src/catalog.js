@@ -1,4 +1,4 @@
-import { getBooks, html, until } from './utility.js';
+import { deleteBook, getBooks, html, until } from './utility.js';
 
 const catalogTemplate = (booksPromise) => html`
 <table>
@@ -19,13 +19,13 @@ const catalogTemplate = (booksPromise) => html`
 </table>
 `;
 
-const bookRowTemplate = (book, onEdit) => html`
+const bookRowTemplate = (book, onEdit, onDelete) => html`
 <tr>
    <td>${book.title}</td>
    <td>${book.author}</td>
    <td>
        <button @click=${onEdit}>Edit</button>
-       <button>Delete</button>
+       <button @click=${onDelete}>Delete</button>
    </td>
 </tr>
 `;
@@ -39,10 +39,16 @@ async function loadBooks(context) {
 
     const books = Object.entries(data).map(([k, v]) => Object.assign(v, { _id: k}));
 
-    return Object.values(books).map(book => bookRowTemplate(book, () => toggleEditor(book, context))); //() => toggleEditor - няма как да му подадем параметрите ако не е така. (Опаковаща функция)
+    return Object.values(books).map(book => bookRowTemplate(book, () => toggleEditor(book, context), onDelete.bind(null, book._id, context))); //() => toggleEditor - няма как да му подадем параметрите ако не е така. (Опаковаща функция)
+    //onDelete.bind и () => toggleEditor правят като синтаксис едно и също, само едното е с .bind
 }
 
 function toggleEditor(book, context) {
     context.book = book;
+    context.update();
+}
+
+async function onDelete(id, context) {
+    await deleteBook(id);
     context.update();
 }

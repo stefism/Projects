@@ -1,4 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { until } from '../../node_modules/lit-html/directives/until.js'; //until директивата визуализира нещо друго докато не дойдат данните.
 
 const host = 'http://localhost:3030/jsonstore/collections';
 
@@ -15,7 +16,7 @@ async function request(url, method = 'get', data) {
 
     const responce = await fetch(host + url, options);
 
-    if(responce.ok = false) {
+    if(responce.ok == false) {
         const error = await responce.json();
         alert(error.message);
         throw new Error(error.message);
@@ -44,4 +45,8 @@ async function deleteBook(id) {
     return request('/books/' + id, 'delete');
 }
 
-export { html, render, request, getBooks, createBook, updateBook, deleteBook, getById };
+export { 
+    html, until, render, request, 
+    getBooks, createBook, updateBook, 
+    deleteBook, getById 
+};

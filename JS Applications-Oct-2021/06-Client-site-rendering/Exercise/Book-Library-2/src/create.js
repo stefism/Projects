@@ -1,7 +1,7 @@
-import { html } from './utility.js';
+import { createBook, html } from './utility.js';
 
-const createTemplate = () => html`
-<form id="add-form">
+const createTemplate = (contextUpdate) => html`
+<form @submit=${ev => onSubmit(ev, contextUpdate)} id="add-form">
    <h3>Add book</h3>
    <label>TITLE</label>
    <input type="text" name="title" placeholder="Title...">
@@ -12,5 +12,23 @@ const createTemplate = () => html`
 `;
 
 export function showCreate(context) {
-    return createTemplate();
+    if(context.book == undefined) {
+        return createTemplate(context.update);
+    } else {
+        return null;
+    }
+}
+
+async function onSubmit(e, contextUpdate) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const title = formData.get('title').trim();
+    const author = formData.get('author').trim();
+
+    await createBook({ title, author });
+
+    e.target.reset();
+    contextUpdate();
 }

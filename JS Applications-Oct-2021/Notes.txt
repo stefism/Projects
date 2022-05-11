@@ -1,0 +1,2 @@
+Как се вика вложена функция от друга функция има на 
+D:\Stefan\SoftUni\Projects\JS Applications-Oct-2021\07-Routing\movies\src\views\login.js

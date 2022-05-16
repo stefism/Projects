@@ -18,3 +18,12 @@ export function getLoginData(targetForm) {
 
     return { email, password };
 }
+
+export function getAllFormEntriesAsObject(formData) {
+    let formElements = {};
+        [...formData.entries()].forEach(e => {
+            formElements[e[0]] = e[1];
+        });
+
+        return formElements;
+}

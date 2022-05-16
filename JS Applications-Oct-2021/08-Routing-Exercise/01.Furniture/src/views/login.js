@@ -31,7 +31,7 @@ export function loginPage(context) {
 
     async function onSubmit(event) {
         event.preventDefault();
-
+        
         const formData = new FormData(event.target);
 
         const email = formData.get('email');

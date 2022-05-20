@@ -28,6 +28,14 @@ export function getAllFormEntriesAsObject(formData) {
     return formElements;
 }
 
+export function parseQuerystring(string) {
+    const params = string.split('&')
+    .map(p => p.split('='))
+    .reduce((a, [k, v]) => Object.assign(a, {[k]: v}), {});
+ 
+    return params;
+}
+
 export function verifyFormFields(formElementEntries) {
     let filledValues = {};
     

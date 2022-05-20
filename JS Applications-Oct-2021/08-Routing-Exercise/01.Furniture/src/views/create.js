@@ -37,7 +37,7 @@ export const createTemplate = (onSubmit, filledValues, item) => html`
             <div class="form-group">
                 ${filledValues && filledValues.price.errorMsg ? html`<div class="form-group error">${filledValues.price.errorMsg}</div>` : null}
                 <label class="form-control-label" for="new-price">Price</label>
-                <input class=${'form-control' + (filledValues && filledValues.price.errorMsg ? ' is-invalid' : ' is-valid')} id="new-price" type="number" name="price" .value="${item != undefined ? item.price : ''}">
+                <input class=${'form-control' + (filledValues && filledValues.price.errorMsg ? ' is-invalid' : ' is-valid')} id="new-price" type="number" step=".01" name="price" .value="${item != undefined ? item.price : ''}">
             </div>
             <div class="form-group">
                 ${filledValues && filledValues.img.errorMsg ? html`<div class="form-group error">${filledValues.img.errorMsg}</div>` : null}
@@ -75,7 +75,7 @@ export function createPage(context) {
             const result = await createItem(formElementEntries);
         
             context.updateUserNav();
-            context.page.redirect('/details/' + result.id);
+            context.page.redirect('/details/' + result._id);
         } catch (error) {
             alert(error);
         }

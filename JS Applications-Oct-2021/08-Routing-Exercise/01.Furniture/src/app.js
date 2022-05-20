@@ -18,6 +18,7 @@ document.getElementById('logoutBtn').addEventListener('click', onLogout);
 
 page(decorateContext); //Така, това ще се изпълни винаги преди останалите. Това е мидълуер.
 
+page('/index.html', '/');
 page('/', catalogPage);
 page('/details/:id', detailsPage);
 page('/create', createPage);

@@ -1,2 +1,6 @@
 Как се вика вложена функция от друга функция има на 
 D:\Stefan\SoftUni\Projects\JS Applications-Oct-2021\07-Routing\movies\src\views\login.js
+
+Модален прозорец:
+D:\Stefan\SoftUni\Projects\JS Applications-Oct-2021\08-Routing-Exercise\01.Furniture\static\style.css
+D:\Stefan\SoftUni\Projects\JS Applications-Oct-2021\08-Routing-Exercise\01.Furniture\src\common\modal.js

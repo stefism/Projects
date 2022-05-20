@@ -1,4 +1,5 @@
 import { deleteItem, getById } from '../api/data.js';
+import { showModal } from '../common/modal.js';
 import { html, until } from '../lib.js';
 import { getUserData } from '../util.js';
 
@@ -50,8 +51,17 @@ async function loadItem(context) {
 }
 
 async function deleteItemById(context, item) {
-    if(confirm(`Are you sure to delete item ${item.make}, model ${item.model}?`)) {
-        await deleteItem(context.params.id);
-        context.page.redirect('/');
+    showModal(`Are you sure to delete item ${item.make}, model ${item.model}?`, currentCallback);
+
+    async function currentCallback(choice) {
+        if(choice) {
+            await deleteItem(context.params.id);
+            context.page.redirect('/');
+        }
     }
+
+    // if(confirm(`Are you sure to delete item ${item.make}, model ${item.model}?`)) {
+    //     await deleteItem(context.params.id);
+    //     context.page.redirect('/');
+    // }
 }

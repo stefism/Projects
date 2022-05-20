@@ -220,3 +220,54 @@ img {
     color: red;
     font-size: 125%;
 }
+
+.pages {
+    margin-right: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+#notification {
+    position: fixed;
+    top: 150px;
+    right: 300px;
+    background-color: rgb(227, 144, 102);
+    color: black;
+    padding:  16px 32px;
+    cursor: pointer;
+    box-shadow: 3px 3px 2px lightblue;
+}
+
+#overlay {
+    background-color: #7d818460;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#modal {
+    background-color: #08c3e9;
+    width: 350px;
+    padding: 16px 32px;
+    text-align: center;
+    color: rgb(242, 244, 238);
+    margin: auto;
+    margin-top: 20vh;
+    border-radius: 20px;
+    box-shadow: 5px 5px 3px rgb(147, 149, 150);
+    text-shadow: 1px 1px 1px rgb(38, 39, 39);
+    font-weight: bold;
+}
+
+.modal-ok, .modal-cancel {
+    border: 1px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgb(147, 149, 150);
+}

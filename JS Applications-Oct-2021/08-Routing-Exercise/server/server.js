@@ -1217,6 +1217,26 @@
     	}
     };
     var seedData = {
+        topics: {
+            "0a272c58-b7ea-4e09-a000-7ec988248f67": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "First Topic",
+    			_createdOn: 1614260681375,
+    		},
+            "0a272c58-b7ea-4e09-a000-7ec988248f77": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Second Topic",
+    			_createdOn: 1614260681375,
+    		},
+            "0a272c58-b7ea-4e09-a000-7ec988248f88": {
+    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Third Topic",
+    			_createdOn: 1614260681375,
+    		}
+        },
+        topicComments: {
+
+        },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

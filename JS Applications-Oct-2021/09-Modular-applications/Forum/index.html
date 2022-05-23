@@ -5,28 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Forum/css/site.css">
+    <script type="module" src="src/app.js"></script>
     <title>Forum</title>
 </head>
 <body>
     <div id="container">
         <header>
-            <div>Forum</div>
+            <div><a href="/Forum/index.html">Forum</a></div>
             <nav>
-                <a href="/topic">Topics</a>
-                <a href="/create">Create New Topic</a>
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-                <a href="javascript:void(0)">Logout</a>
+                <a class="user" href="/Forum/topics">Topics</a>
+                <a class="user" href="/Forum/create">Create New Topic</a>
+                <a class="guest" href="/Forum/login">Login</a>
+                <a class="guest" href="/Forum/register">Register</a>
+                <a id="logoutBtn" class="user" href="javascript:void(0)">Logout</a>
             </nav>
         </header>
     
         <main></main>
     
         <footer>Bla bla, bla blaaa. Blaaa.</footer>
-    
-        <section>
-            <div>Welcome to forum.</div>
-        </section>
     </div>
 </body>
 </html>

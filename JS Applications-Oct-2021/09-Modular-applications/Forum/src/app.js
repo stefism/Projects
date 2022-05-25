@@ -16,6 +16,7 @@ page('/Forum/topics', topicsPage);
 page('/Forum/login', loginPage);
 page('/Forum/register', registerPage);
 
+updateUserNav();
 page.start();
 
 function decorateContext(context, next) {

@@ -57,7 +57,9 @@ label {
 
 label span {
     display: inline-block;
-    width: 100px;
+    width: 150px;
+    text-align: right;
+    margin-right: 8px;
 }
 
 .narrow {
@@ -81,4 +83,13 @@ label span {
 .action:hover {
     cursor: pointer;
     background-color: coral;
+}
+
+.error input {
+    border: 1px solid red;
+}
+
+.error-msg {
+    color: red;
+    margin-bottom: 10px;
 }

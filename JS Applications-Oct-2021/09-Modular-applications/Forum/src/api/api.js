@@ -94,4 +94,5 @@ export async function register(email, password) {
 export async function logout() {
     await get('/users/logout');
     clearUserData();
+    //Евентуално clearUserData() да е първо, защото ако даде грешка в логаута няма да изчисти данните. Грешка може да има от невалиден токен.
 }

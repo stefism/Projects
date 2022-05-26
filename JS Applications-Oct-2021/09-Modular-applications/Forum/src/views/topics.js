@@ -9,8 +9,8 @@ ${until(topicsPromise, html`<p class="spinner">Loading...</p>`)}
 
 const topicPreviewCard = (topic) => html`
 <article class="preview drop">
-    <header><a href="/Forum/topic/${topic._id}">${topic.title}</a></header>
-    <div>Comments: 11</div>
+    <header><a href="/Forum/topic/${ topic._id }">${ topic.title }</a></header>
+    <div>by ${ topic.author.username || topic.author.email } | 11 Comments</div>
 </article>
 `;
 

@@ -48,7 +48,7 @@ async function onRegister(e, context) {
             };
         }
 
-        await register(formEntries.email, formEntries.password);
+        await register(formEntries.email, formEntries.username, formEntries.password);
         context.page.redirect('/Forum/index.html');
     } catch (error) {
         const message = error.message || error.error.message;

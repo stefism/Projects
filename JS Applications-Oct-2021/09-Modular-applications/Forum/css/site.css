@@ -60,6 +60,7 @@ label span {
     width: 150px;
     text-align: right;
     margin-right: 8px;
+    vertical-align: top;
 }
 
 .narrow {

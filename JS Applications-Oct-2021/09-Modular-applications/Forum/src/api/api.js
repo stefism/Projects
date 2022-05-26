@@ -72,6 +72,7 @@ export async function login(email, password) {
 
     const userData = {
         email: result.email,
+        username: result.username,
         id: result._id,
         token: result.accessToken
     }
@@ -79,11 +80,12 @@ export async function login(email, password) {
     setUserData(userData);
 }
 
-export async function register(email, password) {
-    const result = await post('/users/register', {email, password});
+export async function register(email, username, password) {
+    const result = await post('/users/register', {email, username, password});
 
     const userData = {
         email: result.email,
+        username: result.username,
         id: result._id,
         token: result.accessToken
     }

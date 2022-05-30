@@ -138,3 +138,7 @@ a:visited {
     background-color: #6c8b47;
     color: white;
 }
+
+.spinner {
+    width: 200px;
+}

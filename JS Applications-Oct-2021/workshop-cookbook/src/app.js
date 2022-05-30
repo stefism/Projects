@@ -1,3 +1,8 @@
-import * as api from './api/comment-service.js';
+import { page } from './lib.js';
+import decorateContext from './middlewares/render.js';
+import { homePage } from './views/home.js';
 
-window.api = api;
+page(decorateContext);
+page('/', homePage);
+
+page.start();

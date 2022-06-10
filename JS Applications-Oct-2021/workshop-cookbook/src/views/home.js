@@ -1,4 +1,4 @@
-import { getRecipes } from '../api/recipe-service.js';
+import { getRecentRecipes } from '../api/recipe-service.js';
 import { html, until } from '../lib.js';
 import { spinner } from './common.js';
 
@@ -35,7 +35,7 @@ export function homePage(context) {
 }
 
 async function loadRecipes() {
-    const recipes = await getRecipes();
+    const recipes = await getRecentRecipes();
 
     if(recipes.results.length == 0) {
         return html`<p>No recipes found.</p>`;

@@ -2,7 +2,7 @@ import * as api from './api.js';
 import { addOwner, createPointer } from './data-service.js';
 
 export function getCommentsByRecipeId(recipeId) {
-    return api.get(`/classes/Comment?where=${ createPointerQuery('recipe', 'Recipe', recipeId) }&include=owner`);
+    return api.get(`/classes/Comment?where=${ createPointerQuery('recipe', 'Recipe', recipeId) }&include=owner&order=-createdAt`);
 }
 
 export function createComment(recipeId, comment) {

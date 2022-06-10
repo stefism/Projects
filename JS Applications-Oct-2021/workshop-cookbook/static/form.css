@@ -13,6 +13,7 @@ label {
 
 input[type="text"], input[type="password"], .ml textarea {
     position: absolute;
+    /* position: absolute; */
     right: 0px;
     width: 500px;
     padding: 8px;
@@ -28,17 +29,57 @@ input[type="text"], input[type="password"], .ml textarea {
 }
 
 input[type="submit"] {
+    /* display: block; */
     display: block;
     border: none;
     margin: auto;
+    /* margin: auto; */
     background-color: salmon;
     padding: 8px 16px;
     text-decoration: none;
     color: black;
 }
 
+#catalog-input {
+    right: 0px;
+    width: 500px;
+    padding: 8px;
+    position: inherit;
+}
+
+#catalog-submit {
+    border: none;
+    background-color: salmon;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: black;
+    display: initial;
+}
+
 input[type="submit"]:hover {
     background-color: #6c8b47;
     color: white;
     cursor: pointer;
+}
+
+input.error, textarea.error {
+    background-color: rgb(237, 186, 186);
+    border: 1px solid red;
+}
+
+p.error {
+    color: red;
+}
+
+/* #searchForm input[type="text"] {
+    left: 434px;
+} */
+
+#searchForm input[type="submit"] {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.ml textarea[name="steps"] {
+    top: 10px;
 }

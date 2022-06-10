@@ -1,0 +1,14 @@
+#notification {
+    position: fixed;
+    right: 20%;
+    top: 80px;
+}
+
+.notification {
+    list-style: none;
+    background-color: rgb(233, 124, 151);
+    box-shadow: 0 0 8px 8px rgb(159, 155, 155), 12px 12px 20px 0 rgb(159, 155, 155);
+    padding:  16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+}

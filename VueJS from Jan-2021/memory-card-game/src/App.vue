@@ -1,47 +1,43 @@
 <template>
   <div id="app">
 
-    <div class="controls">
-      <button class="btn" 
-              @click="onGameStart" 
-              :disabled="isGameStarted">
-              Start new game
-      </button>
-      <button class="btn" 
-              @click="handleGameReset" 
-              :disabled="!isGameStarted">
-              Reset game
-      </button>
-      <span class="counter">TIME LEFT: {{counter}}</span>
-    </div>
+    <Controls 
+      :counter="counter"
+      :isGameStarted="isGameStarted"
+      @onGameStart="onGameStart"
+      @handleGameReset="handleGameReset"
+    />
+    <!-- Тук използваме къстъм евентите, които сме описали в компонента. Имената на евентите, които пишем тук, трябва да са същите както имената, които сме декларирали в компонента. -->
 
-    <div class="results" v-if="stopGame">
-      <p v-if="areAllFound" class="win"> YOU WIN :)</p>
-      <p v-else class="fail"> YOU Fail.</p>
-    </div>
+    <Message :stopGame="stopGame" :areAllFound="areAllFound" />
 
     <ul class="memory-game">
-      <li v-for="(card, index) in shuffleCards" 
-          :key="index"
-          class="memory-card"
-          :class="{ flip: card.visible, 'disable-card': card.matched }"
-          :data-framework="card.name"
-          @click="onCardClick(card, index)">
-
-          <img class="front-face" svg-inline :src="card.image" :alt="card.name" />
-          <img class="back-face" src="./assets/img/js-badge.svg" :alt="card.name" />
-      </li>
+      <Card
+         v-for="(card, index) in shuffleCards"
+         :key="index"
+         :card="card"
+         :index="index"
+         @onCardClick="onCardClick"
+      />
+      <!-- В компонент също можем да ползваме v-for цъкъла на Vue и да подадем всяка една карта от масива shuffleCards на компонента Card. Тук се вижда, че не подаваме изрично на евента onCardClick, в скоби card и index, както ги подаваме в евента @click вътре в компонента Controls-comp.vue -->
     </ul>
 
   </div>
 </template>
 
 <script>
+import Message from './components/Message-comp.vue';
+import Controls from './components/Controls-comp.vue';
+import Card from './components/Card-comp.vue';
+
 const timerSeconds = 60;
 let interval;
 
 export default {
   name:"App",
+  components: {
+    Message, Controls, Card
+  },
   data() {
     return {
       isGameStarted: false,
@@ -175,7 +171,7 @@ export default {
       this.stopGame = true;
       this.isGameStarted = false;
       if(!this.areAllFound) {
-        this.shuffleCards.forEach(card => card.matched = true);
+        this.shuffleCards.forEach(card => card.matched = true); //Блокираме картите да не могат да се кликат.
       }
     },
     resetState() {

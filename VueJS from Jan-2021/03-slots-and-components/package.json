@@ -1,5 +1,5 @@
 {
-  "name": "memory-card-game",
+  "name": "03-slots-and-components",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -39,10 +39,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "description": "```\r npm install\r ```",
-  "main": "babel.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  ]
 }

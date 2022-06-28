@@ -1,0 +1,76 @@
+{
+    "technologies": [
+        {
+            "id": "1",
+            "name": "C#",
+            "subjects": [
+                {
+                    "name": "Stacks and Queues",
+                    "content": "Stacks and Queues Content..."
+                },
+                {
+                    "name": "Generics",
+                    "content": "Generics Content..."
+                },
+                {
+                    "name": "Multidimentional Arrays",
+                    "content": "Multidimentional Arrays Content..."
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Java",
+            "subjects": [
+                {
+                    "name": "Java Stacks and Queues",
+                    "content": "Stacks anad Queues Content..."
+                },
+                {
+                    "name": "Java Generics",
+                    "content": "Generics Content..."
+                },
+                {
+                    "name": "Java Multidimentional Arrays",
+                    "content": "Multidimensional Arrays Content..."
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "JavaScript",
+            "subjects": [
+                {
+                    "name": "Object Composition",
+                    "content": "Object Composition Content..."
+                },
+                {
+                    "name": "Prototype and Inheritance",
+                    "content": "Prototype and Inheritance Content..."
+                },
+                {
+                    "name": "Asynchronous programming",
+                    "content": "Asynchronous programming Content..."
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Python",
+            "subjects": [
+                {
+                    "name": "Tuples and Sets",
+                    "content": "Tuples and Sets Content..."
+                },
+                {
+                    "name": "Multidimensional Lists",
+                    "content": "Multidimensional Lists Content..."
+                },
+                {
+                    "name": "Comprehension",
+                    "content": "Comprehension Content..."
+                }
+            ]
+        }
+    ]
+}

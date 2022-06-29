@@ -1,6 +1,6 @@
 <template>
   <section class="content-info">
-
+    <slot/>
   </section>
 </template>
 

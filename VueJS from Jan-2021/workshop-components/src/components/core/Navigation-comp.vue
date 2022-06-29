@@ -8,7 +8,8 @@
     </ul>
 
     <ul>
-      <li><a href="#">SUBJECT [+]</a></li>
+      <li><a href="#" @click="$emit('on-create-subject')">SUBJECT [+]</a></li>
+      <!-- Може и така директно да подаваме нагоре емита. В случая не подаваме данни, а само събитието. -->
     </ul>
   </div>
 </template>

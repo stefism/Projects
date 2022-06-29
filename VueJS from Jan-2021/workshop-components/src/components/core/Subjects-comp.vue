@@ -16,7 +16,7 @@ export default {
     type: Array,
     required: true
   },
-  selectedMenuId: {
+  selectedTechnologiesId: {
     type: String,
     required: true
   },
@@ -27,7 +27,7 @@ export default {
  },
  computed: {
   subjectsForTechnology() {
-    const { subjects }  = this.technologies.find(t => t.id == this.selectedMenuId);
+    const { subjects }  = this.technologies.find(t => t.id == this.selectedTechnologiesId);
     return subjects;
   }
  },

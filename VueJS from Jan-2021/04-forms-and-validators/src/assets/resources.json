@@ -1,0 +1,35 @@
+{
+    "skillSets": [
+        {
+            "id": "js",
+            "name": "JavaScript"
+        },
+        {
+            "id": "csharp",
+            "name": "C#"
+        },
+        {
+            "id": "java",
+            "name": "Java"
+        },
+        {
+            "id": "php",
+            "name": "PHP"
+        }
+    ],
+    "genders": [
+        {
+            "id": "male",
+            "name": "Male"
+        },
+        {
+            "id": "female",
+            "name": "Female"
+        },
+        {
+            "id": "other",
+            "name": "Other"
+        }
+    ],
+    "countries": ["Bulgaria", "Germany", "England", "Other"]
+}

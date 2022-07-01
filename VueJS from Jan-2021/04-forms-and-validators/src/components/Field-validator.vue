@@ -7,6 +7,11 @@
             <p v-if="!vData.password.maxLength">Field {{forField}} must have max {{ vData.password.$params.maxLength.max }} characters.</p>
         </div>
     </div>
+    <div v-else-if="forField == 'repass'">
+        <div v-if="vData.password.$model != vData.repass.$model" class="alert alert-danger">
+            <p>Passwords is not match.</p>
+        </div>
+    </div>
     <div v-else-if="forField == 'email'">
         <div v-if="vData.email.$error" class="alert alert-danger">
             <p v-if="!vData.email.required">Field {{forField}} is required.</p>

@@ -42,7 +42,16 @@
               <Validator forField="password" :vData="$v.formData"/>
           </div>
 
-          
+          <div class="form-group">
+            <label for="repass">Re enter Password</label>
+            <input
+              v-model.lazy.trim="$v.formData.repass.$model" 
+              type="password" 
+              id="repass" 
+              class="form-control"/>
+
+              <Validator forField="repass" :vData="$v.formData"/>
+          </div>
 
           <div class="form-group">
             <label for="age">Age</label>
@@ -113,7 +122,7 @@
       <hr />
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <button type="submit" class="btn btn-primary">Submit!</button>
+          <button :disabled="isSubmitDisabled" type="submit" class="btn btn-primary">Submit!</button>
         </div>
       </div>
     </form>
@@ -153,7 +162,7 @@ import EmailInputVModel from './components/Email-inputwith-v-model.vue';
 import Validator from './components/Field-validator.vue';
 
 import { required, email, minLength, maxLength, 
-          alphaNum, minValue } from 'vuelidate/lib/validators';
+          alphaNum, minValue, sameAs } from 'vuelidate/lib/validators';
 
 export default {
   name: 'App',
@@ -169,6 +178,7 @@ export default {
       formData: {
         email: '',
         password: '',
+        repass: '',
         age: null, //Age is be a number. Automatically cast by v-model.number property.
         description: '',
         skillSet: [], // Когато имаме чек бокс, променливата трябва да е масив.
@@ -188,7 +198,11 @@ export default {
           required, 
           minLength: minLength(4), 
           maxLength: maxLength(16), 
-          alphaNum },
+          alphaNum 
+          },
+        repass: {
+          sameAs: sameAs('password')
+        },
         age: {
           required,
           minValue: minValue(18)
@@ -203,6 +217,9 @@ export default {
   computed: {
     skillSets() {
       return resources.skillSets;
+    },
+    isSubmitDisabled() {
+      return this.$v.$invalid;
     }
   },
   methods: {

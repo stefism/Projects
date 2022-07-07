@@ -42,6 +42,7 @@ export async function fetchSingleBook(bookId) {
 export async function fetchFavouriteBooks() {
   try {
     const res = await axios.get(`${baseURL}/users/${process.env.VUE_APP_BOOKS_USER_ID}/bookshelves/0/volumes`);
+    
     return res.data;
   } catch (e) {
     console.error("Unexpected error while loading book", e);

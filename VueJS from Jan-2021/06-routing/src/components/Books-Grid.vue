@@ -18,6 +18,8 @@
           >
         </div>
       </div>
+
+      <el-button type="primary" @click="onBookClick(book.id)">View more</el-button>
     </el-card>
   </div>
 </template>
@@ -35,6 +37,16 @@ export default {
     getTitle(title) {
       return title.length > 60 ? title.substring(0, 60) + " ..." : title;
     },
+    onBookClick(bookId) {
+      //Редиректваме към друг адрес през раутера. Пушваме в хисторито новия адрес. Този адрес трябва да е регистриран в раутовете за да работи.
+      this.$router.push({ 
+        name: 'bookDetails', 
+        params: { bookId }, //Параметъра се ползва когато искаме да намерим нещо.
+        query: { bookId, qq: 'Simo' } //Куерито се ползва, когато искаме да филтрираме нещо.
+        });
+        //                                  | параметър  |  куери
+        //http://localhost:8080/book-details/YZZ9AAAAMAAJ?bookId=YZZ9AAAAMAAJ&qq=Simo
+    }
   },
 };
 </script>

@@ -12,11 +12,20 @@
       Also you need to set your Google Book API Key in a .env file as
       'VUE_APP_BOOKS_KEY'
     </p>
+
+    <el-button type="primary" @click="onAuthUser">Authenticate me</el-button>
   </section>
 </template>
 
 <script>
-export default {};
+import { authMe } from '../utils/authUtils.js';
+export default {
+  methods: {
+    onAuthUser() {
+      authMe();
+    }
+  }
+};
 </script>
 
 <style></style>

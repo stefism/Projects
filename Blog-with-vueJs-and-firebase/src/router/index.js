@@ -2,6 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Blogs from "../views/Blogs-view.vue";
+import Login from "../views/Login-view.vue";
+import Register from "../views/Register-view.vue";
+import ForgotPassword from "../views/ForgotPassword-view.vue";
 
 Vue.use(VueRouter);
 
@@ -22,6 +25,30 @@ const routes = [
       title: 'Блогове'
     }
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: {
+      title: 'Вход'
+    }
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+    meta: {
+      title: 'Регистрация'
+    }
+  },
+  {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPassword,
+    meta: {
+      title: 'Забравена парола'
+    }
+  }
 ];
 
 const router = new VueRouter({

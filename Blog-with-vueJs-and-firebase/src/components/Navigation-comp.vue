@@ -8,8 +8,8 @@
       </div>
       <div class="nav-links">
         <ul v-show="!mobile">
-          <router-link class="link" to="#">Начало</router-link>
-          <router-link class="link" to="#">Блогове</router-link>
+          <router-link class="link" :to="{ name: 'Home' }">Начало</router-link>
+          <router-link class="link" :to="{ name: 'Blogs' }">Блогове</router-link>
           <router-link class="link" to="#">Напиши пост</router-link>
           <router-link class="link" to="#">Вход / Регистрация</router-link>
         </ul>
@@ -18,8 +18,8 @@
     <MenuIcon @click="toggleMobileNav" v-show="mobile" class="menu-icon" />
     <Transition name="mobile-nav">
       <ul v-show="mobileNav" class="mobile-nav">
-        <router-link class="link" to="#">Начало</router-link>
-        <router-link class="link" to="#">Блогове</router-link>
+        <router-link class="link" :to="{ name: 'Home' }">Начало</router-link>
+        <router-link class="link" :to="{ name: 'Blogs' }">Блогове</router-link>
         <router-link class="link" to="#">Напиши пост</router-link>
         <router-link class="link" to="#">Вход / Регистрация</router-link>
       </ul>

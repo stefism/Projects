@@ -147,5 +147,21 @@ header {
         color: white;
     }
   }
+
+  .mobile-nav-enter-active, .mobile-nav-leave-active {
+    transition: all 1s ease;
+  }
+
+  .mobile-nav-enter {
+    transform: translateX(-250px);
+  }
+
+  .mobile-nav-enter-to {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-leave-to {
+    transform: translateX(-250px);
+  }
 }
 </style>

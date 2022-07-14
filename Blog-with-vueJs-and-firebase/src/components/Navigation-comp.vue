@@ -10,7 +10,7 @@
         <ul v-show="!mobile">
           <router-link class="link" :to="{ name: 'Home' }">Начало</router-link>
           <router-link class="link" :to="{ name: 'Blogs' }">Блогове</router-link>
-          <router-link class="link" :to="{ name: 'Blogs' }">Напиши пост</router-link>
+          <router-link class="link" to="#">Напиши пост</router-link>
           <router-link class="link" :to="{ name: 'Login' }">Вход / Регистрация</router-link>
         </ul>
       </div>
@@ -21,7 +21,7 @@
         <router-link class="link" :to="{ name: 'Home' }">Начало</router-link>
         <router-link class="link" :to="{ name: 'Blogs' }">Блогове</router-link>
         <router-link class="link" to="#">Напиши пост</router-link>
-        <router-link class="link" to="#">Вход / Регистрация</router-link>
+        <router-link class="link" :to="{ name: 'Login' }">Вход / Регистрация</router-link>
       </ul>
     </Transition>
   </header>

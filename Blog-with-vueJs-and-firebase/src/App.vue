@@ -12,6 +12,10 @@
 import Navigation from './components/Navigation-comp.vue';
 import Footer from './components/Footer-comp.vue';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+
 export default {
   name: "app",
   components: {
@@ -24,6 +28,7 @@ export default {
   },
   created() {
     this.checkRoute();
+    console.log(firebase.auth().currentUser);
   },
   mounted() {},
   methods: {
@@ -149,6 +154,12 @@ button,
   pointer-events: none !important;
   cursor: none !important;
   background-color: rgba(128, 128, 128, 0.5) !important;
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: red;
 }
 
 .blog-card-wrap {

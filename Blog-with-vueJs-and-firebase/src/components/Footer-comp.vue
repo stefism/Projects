@@ -3,7 +3,7 @@
     <div class="container">
       <div class="left">
         <div class="col-1">
-          <router-link class="header" :to="{ name: 'home' }">Сайт за блогове</router-link>
+          <router-link class="header" :to="{ name: 'Home' }">Сайт за блогове</router-link>
           <ul>
             <li>
               <a href="#"><youTube class="svg-icon"/></a>
@@ -21,10 +21,10 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="footer-link" :to="{ name: 'home' }">Начало</router-link>
-            <router-link class="footer-link" :to="{ name: 'blogs' }">Блогове</router-link>
-            <router-link v-if="user" class="footer-link" :to="{ name: 'newpost' }">Нов пост</router-link>
-            <router-link v-if="!user" class="footer-link" :to="{ name: 'login' }">Вход / Регистрация</router-link>
+            <router-link class="footer-link" :to="{ name: 'Home' }">Начало</router-link>
+            <router-link class="footer-link" :to="{ name: 'Blogs' }">Блогове</router-link>
+            <router-link v-if="user" class="footer-link" to="#">Нов пост</router-link>
+            <router-link v-if="!user" class="footer-link" :to="{ name: 'Login' }">Вход / Регистрация</router-link>
           </ul>
         </div>
       </div>

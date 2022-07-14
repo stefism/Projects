@@ -43,6 +43,11 @@ import linkedin from "../assets/Icons/linkedin-brands.svg";
 export default {
   name: "footer-vue",
   components: { youTube, twitter, instagram, linkedin },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  }
 };
 </script>
 

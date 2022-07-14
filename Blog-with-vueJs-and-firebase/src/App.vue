@@ -27,8 +27,18 @@ export default {
     };
   },
   created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit('updateUser', user);
+
+      if(user) {
+        this.$store.dispatch('getCurrentUser');
+      }
+    });
+
+    //Проверяваме чрез служебния метод на firebase дали имаме логнат потребител.
+    //Ако имаме логнат потребител викаме от стора чрез dispatch екшъна getCurrentUser, който от своя страна, бърка в колекцията users, вади от там потребителя, който се е логнал в момента и после сетва данните от този потребител на стейта.
+
     this.checkRoute();
-    console.log(firebase.auth().currentUser);
   },
   mounted() {},
   methods: {

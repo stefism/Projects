@@ -27,14 +27,14 @@
             <div class="options">
               
               <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{ name: 'Profile' }">
                   <userIcon class="icon" />
                   <p>Профил на потребителя</p>
                 </router-link>
               </div>
 
               <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{ name: 'Admin' }">
                   <adminIcon class="icon" />
                   <p>Администрация</p>
                 </router-link>

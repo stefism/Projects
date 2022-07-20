@@ -1,10 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
 import Home from "../views/Home.vue";
 import Blogs from "../views/Blogs-view.vue";
 import Login from "../views/Login-view.vue";
 import Register from "../views/Register-view.vue";
 import ForgotPassword from "../views/ForgotPassword-view.vue";
+import Admin from "../views/Admin-view.vue";
+import Profile from "../views/Profile-view.vue";
 
 Vue.use(VueRouter);
 
@@ -47,6 +50,22 @@ const routes = [
     component: ForgotPassword,
     meta: {
       title: 'Забравена парола'
+    }
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Admin,
+    meta: {
+      title: 'Администрация'
+    }
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    meta: {
+      title: 'Потребителски профил'
     }
   }
 ];

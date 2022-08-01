@@ -11,13 +11,16 @@
             v-model="adminEmail">
         </div>
         <span>{{ this.functionMsg }}</span>
-        <button class="submit">Добави</button>
+        <button @click="addAdmin" class="button">Добави</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import 'firebase/functions';
+
 export default {
   name: 'Admin',
   data() {
@@ -25,6 +28,13 @@ export default {
       adiminEmail: '',
       functionMsg: null
     };
+  },
+  methods: {
+    async addAdmin() {
+      const addAdmin = await firebase.functions().httpsCallable('addAdminRole');
+      const result = await addAdmin({ email: this.adiminEmail });
+      this.functionMsg = result.data.message;
+    }
   }
 }
 </script>

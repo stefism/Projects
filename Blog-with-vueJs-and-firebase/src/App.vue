@@ -40,7 +40,15 @@ export default {
 
     this.checkRoute();
   },
-  mounted() {},
+  mounted() {
+    // const editorScript1 = document.createElement('script');
+    // const editorScript2 = document.createElement('script');
+    // editorScript1.setAttribute('src', 'https://unpkg.com/vue/dist/vue.js');
+    // editorScript2.setAttribute('src', 'https://unpkg.com/vue2-editor/dist/vue2-editor.umd.min.js');
+
+    // document.head.appendChild(editorScript1);
+    // document.head.appendChild(editorScript2);
+  },
   methods: {
     checkRoute() {
       if (

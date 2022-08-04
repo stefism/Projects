@@ -8,6 +8,9 @@ import Register from "../views/Register-view.vue";
 import ForgotPassword from "../views/ForgotPassword-view.vue";
 import Admin from "../views/Admin-view.vue";
 import Profile from "../views/Profile-view.vue";
+import CreatePost from '../views/CreatePost-view.vue';
+import BlogPreview from '../views/BlogPreview-view.vue';
+import ViewBlog from '../views/ViewBlog-view.vue';
 
 Vue.use(VueRouter);
 
@@ -66,6 +69,30 @@ const routes = [
     component: Profile,
     meta: {
       title: 'Потребителски профил'
+    }
+  },
+  {
+    path: "/create-post",
+    name: "CreatePost",
+    component: CreatePost,
+    meta: {
+      title: 'Нов пост'
+    }
+  },
+  {
+    path: "/blog-preview",
+    name: "BlogPreview",
+    component: BlogPreview,
+    meta: {
+      title: 'Предварителен преглед'
+    }
+  },
+  {
+    path: "/view-blog",
+    name: "ViewBlog",
+    component: ViewBlog,
+    meta: {
+      title: 'Преглед на поста'
     }
   }
 ];

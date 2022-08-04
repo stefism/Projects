@@ -23,7 +23,7 @@
           <ul>
             <router-link class="footer-link" :to="{ name: 'Home' }">Начало</router-link>
             <router-link class="footer-link" :to="{ name: 'Blogs' }">Блогове</router-link>
-            <router-link v-if="user" class="footer-link" to="#">Нов пост</router-link>
+            <router-link v-if="admin" class="footer-link" :to="{ name: 'CreatePost' }">Нов пост</router-link>
             <router-link v-if="!user" class="footer-link" :to="{ name: 'Login' }">Вход / Регистрация</router-link>
           </ul>
         </div>
@@ -46,6 +46,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    admin() {
+      return this.$store.state.profileAdmin;
     }
   }
 };

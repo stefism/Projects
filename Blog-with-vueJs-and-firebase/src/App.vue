@@ -31,7 +31,7 @@ export default {
       this.$store.commit('updateUser', user);
 
       if(user) {
-        this.$store.dispatch('getCurrentUser');
+        this.$store.dispatch('getCurrentUser', user);
       }
     });
 
@@ -39,6 +39,7 @@ export default {
     //Ако имаме логнат потребител викаме от стора чрез dispatch екшъна getCurrentUser, който от своя страна, бърка в колекцията users, вади от там потребителя, който се е логнал в момента и после сетва данните от този потребител на стейта.
 
     this.checkRoute();
+    this.$store.dispatch('getPost');
   },
   mounted() {
     // const editorScript1 = document.createElement('script');

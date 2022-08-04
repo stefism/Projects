@@ -8,13 +8,10 @@
         <Delete class="delete" />
       </div>
     </div>
-    <img
-      :src="require(`../assets/blogCards/${post.blogCoverPhoto}.jpg`)"
-      alt="image"
-    />
+    <img :src="post.blogCoverPhoto" alt="image" />
     <div class="info">
       <h4>{{ post.blogTitle }}</h4>
-      <h6>Пуснат на {{ post.blogDate }}</h6>
+      <h6>Пуснат на {{ new Date(post.blogDate).toLocaleString('bg-bg') }}</h6>
       <router-link class="link" to="#"
         >Вижте поста <Arrow class="arrow"
       /></router-link>

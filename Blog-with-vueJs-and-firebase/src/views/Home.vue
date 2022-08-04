@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <BlogPost v-if="!user" :post="welcomeScreen" />
-    <BlogPost :post="post" v-for="(post, index) in sampleBlogPost" :key="index" />
+    <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index" />
     <div class="blog-card-wrap">
       <div class="container">
         <h3>Вижте повече скорошни постове</h3>
         <div class="blog-cards">
-          <BlogCard :post="card" v-for="(card, index) in sampleBlogCards" :key="index"/>
+          <BlogCard :post="card" v-for="(card, index) in blogPostCards" :key="index"/>
         </div>
       </div>
     </div>
@@ -38,23 +38,15 @@ export default {
         blogPost: 'Седмични блог артикули за всички неща от програмирането, включително HTML, CSS, JavaScript и други.',
         welcomeScreen: true,
         photo: 'coding'
-      },
-      sampleBlogPost: [
-        {
-          title: 'Това е филтърно заглавие',
-          blogHTML: 'Това е филтър блог пост заглавие',
-          blogCoverPhoto: 'beautiful-stories',
-        },
-        {
-          title: 'Две Това е филтърно заглавие 2 ',
-          blogHTML: 'Две Това е филтър блог пост заглавие 2',
-          blogCoverPhoto: 'designed-for-everyone',
-        }
-      ]
+      }
     };
-  },computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards;
+  },
+  computed: {
+    blogPostCards() {
+      return this.$store.getters.blogPostCards;
+    },
+    blogPostsFeed() {
+      return this.$store.getters.blogPostsFeed;
     },
     user() {
       return this.$store.state.user;

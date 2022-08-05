@@ -2,10 +2,10 @@
   <div class="blog-card">
     <div v-show="editPost" class="icons">
       <div class="icon">
-        <Edit class="edit" />
+        <font-awesome-icon icon="fa-solid fa-pen-to-square" />
       </div>
       <div class="icon">
-        <Delete class="delete" />
+        <font-awesome-icon icon="fa-solid fa-trash-can" />
       </div>
     </div>
     <img :src="post.blogCoverPhoto" alt="image" />
@@ -13,21 +13,19 @@
       <h4>{{ post.blogTitle }}</h4>
       <h6>Пуснат на {{ new Date(post.blogDate).toLocaleString('bg-bg') }}</h6>
       <router-link class="link" to="#"
-        >Вижте поста <Arrow class="arrow"
-      /></router-link>
+        >Вижте поста <font-awesome-icon class="arrow" icon="fa-solid fa-right-long" /></router-link>
     </div>
   </div>
 </template>
 
 <script>
-import Arrow from "../assets/Icons/arrow-right-light.svg";
-import Edit from "../assets/Icons/edit-regular.svg";
-import Delete from "../assets/Icons/trash-regular.svg";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPenToSquare, faTrashCan, faRightLong } from '@fortawesome/free-solid-svg-icons';
+library.add([faPenToSquare, faTrashCan, faRightLong]);
 
 export default {
   name: "blogCard",
   props: ["post"],
-  components: { Arrow, Edit, Delete },
   computed: {
     editPost() {
         return this.$store.state.editPost;

@@ -7,7 +7,7 @@
       </div>
       <BlogCard
         :post="card"
-        v-for="(card, index) in sampleBlogCards"
+        v-for="(card, index) in blogPosts"
         :key="index"
       />
     </div>
@@ -21,8 +21,8 @@ export default {
   name: "blogs",
   components: { BlogCard },
   computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards;
+    blogPosts() {
+      return this.$store.state.blogPosts;
     },
     editPost: {
         get() {

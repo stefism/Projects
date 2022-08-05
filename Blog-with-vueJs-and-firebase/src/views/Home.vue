@@ -14,7 +14,7 @@
         <div class="container">
           <h2>Никога не пропускайте пост. Регистрирайте се безплатно.</h2>
           <router-link class="router-button" to="#">
-            Регистрация за блоговете <Arrow class="arrow arrow-light" />
+            Регистрация за блоговете -->
           </router-link>
         </div>
     </div>
@@ -24,13 +24,10 @@
 <script>
 import BlogPost from '../components/BlogPost-comp.vue';
 import BlogCard from '../components/BlogCard-comp.vue';
-import Arrow from "../assets/Icons/arrow-right-light.svg";
 
 export default {
   name: "Home",
-  components: {
-    BlogPost, BlogCard, Arrow
-  },
+  components: { BlogPost, BlogCard },
   data() {
     return {
       welcomeScreen: {

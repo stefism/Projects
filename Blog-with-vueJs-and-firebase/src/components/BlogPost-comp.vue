@@ -9,10 +9,10 @@
         <p v-else class="content-preview" v-html="post.blogHTML"></p>
 
         <router-link v-if="post.welcomeScreen" class="link link-light" to="#">
-          Вход / Регистрация <Arrow class="arrow arrow-light" />
+          Вход / Регистрация <img class="arrow" src="../assets/right-arrow.png" alt="">
         </router-link>
         <router-link v-else class="link" to="#">
-          Виж постовете <Arrow class="arrow" />
+          Виж постовете <img class="arrow" src="../assets/right-arrow.png" alt="">
         </router-link>
       </div>
     </div>
@@ -28,12 +28,9 @@
 </template>
 
 <script>
-import Arrow from "../assets/Icons/arrow-right-light.svg";
-
 export default {
   name: "blogPost",
   props: ["post"],
-  components: { Arrow },
   computed: {
     user() {
       return this.$store.state.user;

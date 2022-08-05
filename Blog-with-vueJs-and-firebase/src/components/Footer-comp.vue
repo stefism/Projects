@@ -6,16 +6,16 @@
           <router-link class="header" :to="{ name: 'Home' }">Сайт за блогове</router-link>
           <ul>
             <li>
-              <a href="#"><youTube class="svg-icon"/></a>
+              <a href="#"><font-awesome-icon class="svg-icon" icon="fa-brands fa-square-youtube" /></a>
             </li>
             <li>
-              <a href="#"><twitter class="svg-icon"/></a>
+              <a href="#"><font-awesome-icon class="svg-icon" icon="fa-brands fa-square-twitter" /></a>
             </li>
             <li>
-              <a href="#"><instagram class="svg-icon"/></a>
+              <a href="#"><font-awesome-icon class="svg-icon" icon="fa-brands fa-square-instagram" /></a>
             </li>
             <li>
-              <a href="#"><linkedin class="svg-icon"/></a>
+              <a href="#"><font-awesome-icon class="svg-icon" icon="fa-brands fa-linkedin" /></a>
             </li>
           </ul>
         </div>
@@ -36,13 +36,12 @@
 </template>
 
 <script>
-import youTube from "../assets/Icons/youtube-brands.svg";
-import twitter from "../assets/Icons/twitter-brands.svg";
-import instagram from "../assets/Icons/instagram-brands.svg";
-import linkedin from "../assets/Icons/linkedin-brands.svg";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSquareYoutube, faSquareTwitter, faSquareInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+library.add([faSquareYoutube, faSquareTwitter, faSquareInstagram, faLinkedin]);
+
 export default {
   name: "footer-vue",
-  components: { youTube, twitter, instagram, linkedin },
   computed: {
     user() {
       return this.$store.state.user;

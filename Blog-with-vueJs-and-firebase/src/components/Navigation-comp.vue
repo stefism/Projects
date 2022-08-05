@@ -28,20 +28,20 @@
               
               <div class="option">
                 <router-link class="option" :to="{ name: 'Profile' }">
-                  <userIcon class="icon" />
+                  <font-awesome-icon class="icon" icon="fa-solid fa-user" />
                   <p>Профил на потребителя</p>
                 </router-link>
               </div>
 
               <div v-if="admin" class="option">
                 <router-link class="option" :to="{ name: 'Admin' }">
-                  <adminIcon class="icon" />
+                  <font-awesome-icon class="icon" icon="fa-solid fa-screwdriver-wrench" />
                   <p>Администрация</p>
                 </router-link>
               </div>
 
               <div @click="signOut" class="option">
-                <signOutIcon class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-right-from-bracket" />
                 <p>Изход от профила</p>
               </div>
 
@@ -50,7 +50,7 @@
         </div>
       </div>
     </nav>
-    <MenuIcon @click="toggleMobileNav" v-show="mobile" class="menu-icon" />
+    <font-awesome-icon @click="toggleMobileNav" v-show="mobile" class="menu-icon" icon="fa-solid fa-bars" />
     <Transition name="mobile-nav">
       <ul v-show="mobileNav" class="mobile-nav">
         <router-link class="link" :to="{ name: 'Home' }">Начало</router-link>
@@ -63,20 +63,15 @@
 </template>
 
 <script>
-import MenuIcon from "../assets/Icons/bars-regular.svg";
-import userIcon from "../assets/Icons/user-alt-light.svg";
-import adminIcon from "../assets/Icons/user-crown-light.svg";
-import signOutIcon from "../assets/Icons/sign-out-alt-regular.svg";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBars, faUser, faScrewdriverWrench, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+library.add([faBars, faUser, faScrewdriverWrench, faRightFromBracket]);
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 export default {
   name: "Navigation",
-  components: {
-    MenuIcon, userIcon, adminIcon, signOutIcon
-  },
-
   data() {
     return {
         profileMenu: null,

@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <div class="app">
+    <div class="app" v-if="this.$store.state.postLoaded">
       <Navigation v-if="!navigation" />
       <router-view />
       <Footer v-if="!navigation" />
@@ -40,15 +40,6 @@ export default {
 
     this.checkRoute();
     this.$store.dispatch('getPost');
-  },
-  mounted() {
-    // const editorScript1 = document.createElement('script');
-    // const editorScript2 = document.createElement('script');
-    // editorScript1.setAttribute('src', 'https://unpkg.com/vue/dist/vue.js');
-    // editorScript2.setAttribute('src', 'https://unpkg.com/vue2-editor/dist/vue2-editor.umd.min.js');
-
-    // document.head.appendChild(editorScript1);
-    // document.head.appendChild(editorScript2);
   },
   methods: {
     checkRoute() {

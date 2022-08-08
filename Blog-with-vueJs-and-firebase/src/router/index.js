@@ -11,6 +11,7 @@ import Profile from "../views/Profile-view.vue";
 import CreatePost from '../views/CreatePost-view.vue';
 import BlogPreview from '../views/BlogPreview-view.vue';
 import ViewBlog from '../views/ViewBlog-view.vue';
+import EditBlog from '../views/EditPost-view.vue';
 
 Vue.use(VueRouter);
 
@@ -88,11 +89,19 @@ const routes = [
     }
   },
   {
-    path: "/view-blog",
+    path: "/view-blog/:blogid",
     name: "ViewBlog",
     component: ViewBlog,
     meta: {
       title: 'Преглед на поста'
+    }
+  },
+  {
+    path: "/edit-blog/:blogid",
+    name: "EditBlog",
+    component: EditBlog,
+    meta: {
+      title: 'Редакция на поста'
     }
   }
 ];

@@ -11,8 +11,8 @@
         <router-link v-if="post.welcomeScreen" class="link link-light" to="#">
           Вход / Регистрация <img class="arrow" src="../assets/right-arrow.png" alt="">
         </router-link>
-        <router-link v-else class="link" to="#">
-          Виж постовете <img class="arrow" src="../assets/right-arrow.png" alt="">
+        <router-link v-else class="link" :to="{ name: 'ViewBlog', params: { blogid: this.post.blogId } }">
+          Вижте поста <img class="arrow" src="../assets/right-arrow.png" alt="">
         </router-link>
       </div>
     </div>

@@ -1,18 +1,18 @@
 <template>
   <div class="blog-card">
     <div v-show="editPost" class="icons">
-      <div class="icon">
-        <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+      <div @click="editCurrentPost" class="icon">
+        <font-awesome-icon class="edit" icon="fa-solid fa-pen-to-square" />
       </div>
-      <div class="icon">
-        <font-awesome-icon icon="fa-solid fa-trash-can" />
+      <div @click="deletePost" class="icon">
+        <font-awesome-icon class="delete" icon="fa-solid fa-trash-can" />
       </div>
     </div>
     <img :src="post.blogCoverPhoto" alt="image" />
     <div class="info">
       <h4>{{ post.blogTitle }}</h4>
       <h6>Пуснат на {{ new Date(post.blogDate).toLocaleString('bg-bg') }}</h6>
-      <router-link class="link" to="#"
+      <router-link class="link" :to="{ name: 'ViewBlog', params: { blogid: this.post.blogId } }"
         >Вижте поста <font-awesome-icon class="arrow" icon="fa-solid fa-right-long" /></router-link>
     </div>
   </div>
@@ -26,6 +26,14 @@ library.add([faPenToSquare, faTrashCan, faRightLong]);
 export default {
   name: "blogCard",
   props: ["post"],
+  methods: {
+    deletePost() {
+      this.$store.dispatch('deletePost', this.post.blogId);
+    },
+    editCurrentPost() {
+      this.$router.push({ name: 'EditBlog', params: { blogid: this.post.blogId } });
+    }
+  },
   computed: {
     editPost() {
         return this.$store.state.editPost;

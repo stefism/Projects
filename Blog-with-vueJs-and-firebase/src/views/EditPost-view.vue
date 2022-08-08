@@ -34,8 +34,8 @@
             />
         </div>
         <div class="blog-actions">
-            <button @click="uploadBlog">Публикувай</button>
-            <router-link class="router-button" :to="{ name: 'BlogPreview'}">Превю на поста</router-link>
+            <button @click="updateBlog">Запиши промените</button>
+            <router-link class="router-button" :to="{ name: 'BlogPreview'}">Превю на промените</router-link>
         </div>
     </div>
   </div>
@@ -66,12 +66,19 @@ export default {
             error: null,
             errorMsg: null,
             loading: null,
+            routeId: null,
+            currentBlog: null,
             editorSettings: {
                 modules: {
                     imageResize: {}
                 }
             }
         }
+    },
+    async mounted() {
+        this.routeId = this.$route.params.blogid;
+        this.currentBlog = await this.$store.state.blogPosts.filter(post => post.blogId == this.routeId);
+        this.$store.commit('setBlogState', this.currentBlog[0]);
     },
     methods: {
         fileChange() {
@@ -82,15 +89,16 @@ export default {
         openPreview(){
             this.$store.commit('openPhotoPreview');
         },
+        // eslint-disable-next-line no-unused-vars
         imageHandler({ quill, html, text }) {
-           console.log('editor change!', quill, html, text);
-           console.log('blogHTML', this.blogHTML);
+        //    console.log('editor change!', quill, html, text);
+        //    console.log('blogHTML', this.blogHTML);
         },
-        uploadBlog() {
+        async updateBlog() {
+            const dataBase = await db.collection('blogPosts').doc(this.routeId);
+            
             if(this.blogTitle.length == 0 || this.blogHTML.length == 0) {
                 this.setErrorMessage('Не сте попълнили нищо в заглавието и/или в тялото на поста.', 4000);
-            } else if(!this.file) {
-                this.setErrorMessage('Не сте прикачили файл за корица на поста.', 4000);
             } else {
                 this.error = false;
                 this.loading = true;
@@ -107,24 +115,28 @@ export default {
                         this.loading = false;
                     }, async () => {
                         const downloadURL = await docRef.getDownloadURL();
-                        const timestamp = await Date.now();
-                        const dataBase = await db.collection('blogPosts').doc();
 
-                        await dataBase.set({
-                            blogId: dataBase.id,
+                        await dataBase.update({
                             blogHTML: this.blogHTML,
                             blogCoverPhoto: downloadURL,
                             blogCoverPhotoName: this.blogCoverPhotoName,
                             blogTitle: this.blogTitle,
-                            profileId: this.profileId,
-                            date: timestamp
                         });
 
-                        await this.$store.dispatch('getPost');
+                        await this.$store.dispatch('updatePost', this.routeId);
                         this.loading = false;
                         this.$router.push({ name: 'ViewBlog', params: { blogid: dataBase.id }});
                     }
                 );
+
+                await dataBase.update({
+                    blogHTML: this.blogHTML,
+                    blogTitle: this.blogTitle
+                });
+                
+                await this.$store.dispatch('updatePost', this.routeId);
+                this.loading = false;
+                this.$router.push({ name: 'ViewBlog', params: { blogid: dataBase.id }});
             }
         },
         setErrorMessage(message, stayInterval) {

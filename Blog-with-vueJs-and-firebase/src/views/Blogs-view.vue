@@ -3,7 +3,7 @@
     <div class="blog-cards container">
       <div class="toggle-edit">
         <span>Режим на редактиране на постовете</span>
-        <input type="checkbox" v-model="editPost" />
+        <input :disabled="!user" type="checkbox" v-model="editPost" />
       </div>
       <BlogCard
         :post="card"
@@ -31,6 +31,9 @@ export default {
         set(payload) {
             this.$store.commit('toggleEditPost', payload)
         }
+    },
+    user() {
+      return this.$store.state.user;
     }
   },
   beforeDestroy() {

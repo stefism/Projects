@@ -9,23 +9,23 @@
         <div class="inputs">
             <div class="input">
                 <input type="text" placeholder="First Name" v-model="firstName">
-                <user class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-user" />
             </div>
             <div class="input">
                 <input type="text" placeholder="Last Name" v-model="lastName">
-                <user class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-user" />
             </div>
             <div class="input">
                 <input type="text" placeholder="Username" v-model="userName">
-                <user class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-user" />
             </div>
             <div class="input">
                 <input type="text" placeholder="Email" v-model="email">
-                <email class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-envelope" />
             </div>
             <div class="input">
                 <input type="password" placeholder="Password" v-model="password">
-                <password class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-key" />
             </div>
             <div v-show="error" class="error">{{ errorMsg }}</div>
         </div>
@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import email from '../assets/Icons/envelope-regular.svg';
-import password from '../assets/Icons/lock-alt-solid.svg';
-import user from '../assets/Icons/user-alt-light.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+library.add([faEnvelope, faKey, faUser]);
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -48,7 +48,6 @@ import db from '../firebase/firebaseInit.js';
 
 export default {
     name: 'Register',
-    components: { email, password, user },
     data() {
         return {
             firstName: '',

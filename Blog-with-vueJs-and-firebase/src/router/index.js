@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import firebase from "firebase/app";
+import 'firebase/auth';
+
 import Home from "../views/Home.vue";
 import Blogs from "../views/Blogs-view.vue";
 import Login from "../views/Login-view.vue";
@@ -21,7 +24,8 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      title: 'Начало'
+      title: 'Начало',
+      requiresAuth: false
     }
   },
   {
@@ -29,7 +33,8 @@ const routes = [
     name: "Blogs",
     component: Blogs,
     meta: {
-      title: 'Блогове'
+      title: 'Блогове',
+      requiresAuth: false
     }
   },
   {
@@ -37,7 +42,8 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title: 'Вход'
+      title: 'Вход',
+      requiresAuth: false
     }
   },
   {
@@ -45,7 +51,8 @@ const routes = [
     name: "Register",
     component: Register,
     meta: {
-      title: 'Регистрация'
+      title: 'Регистрация',
+      requiresAuth: false
     }
   },
   {
@@ -53,7 +60,8 @@ const routes = [
     name: "ForgotPassword",
     component: ForgotPassword,
     meta: {
-      title: 'Забравена парола'
+      title: 'Забравена парола',
+      requiresAuth: false
     }
   },
   {
@@ -61,7 +69,8 @@ const routes = [
     name: "Admin",
     component: Admin,
     meta: {
-      title: 'Администрация'
+      title: 'Администрация',
+      requiresAuth: true
     }
   },
   {
@@ -69,7 +78,8 @@ const routes = [
     name: "Profile",
     component: Profile,
     meta: {
-      title: 'Потребителски профил'
+      title: 'Потребителски профил',
+      requiresAuth: true
     }
   },
   {
@@ -77,7 +87,8 @@ const routes = [
     name: "CreatePost",
     component: CreatePost,
     meta: {
-      title: 'Нов пост'
+      title: 'Нов пост',
+      requiresAuth: true
     }
   },
   {
@@ -85,7 +96,8 @@ const routes = [
     name: "BlogPreview",
     component: BlogPreview,
     meta: {
-      title: 'Предварителен преглед'
+      title: 'Предварителен преглед',
+      requiresAuth: true
     }
   },
   {
@@ -93,7 +105,8 @@ const routes = [
     name: "ViewBlog",
     component: ViewBlog,
     meta: {
-      title: 'Преглед на поста'
+      title: 'Преглед на поста',
+      requiresAuth: false
     }
   },
   {
@@ -101,7 +114,8 @@ const routes = [
     name: "EditBlog",
     component: EditBlog,
     meta: {
-      title: 'Редакция на поста'
+      title: 'Редакция на поста',
+      requiresAuth: true
     }
   }
 ];
@@ -115,6 +129,30 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | Сайт за блогове`;
   next();
+});
+
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser;
+  let admin = null;
+
+  if(user) {
+    let token = await user.getIdTokenResult();
+    admin = await token.claims.email == 'stef4otm@gmail.com';
+  }
+
+  if(to.matched.some(res => res.meta.requiresAuth)) {
+    if(user) {
+      if(to.matched.some(res => res.meta.requiresAdmin)) {
+        if(admin) {
+          return next();
+        }       
+        return next({ name: 'Home' });
+      }
+      return next();
+    }
+    return next({ name: 'Home' });
+  }
+  return next();
 });
 
 export default router;

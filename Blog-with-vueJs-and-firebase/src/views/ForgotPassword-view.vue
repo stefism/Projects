@@ -17,7 +17,7 @@
             <div class="inputs">
                 <div class="input">
                     <input type="text" placeholder="Email" v-model="email">
-                    <email class="icon" />
+                    <font-awesome-icon class="icon" icon="fa-solid fa-envelope" />
                 </div>
             </div>
             <button @click.prevent="resetPassword">Нулиране</button>
@@ -29,7 +29,10 @@
 </template>
 
 <script>
-import email from '../assets/Icons/envelope-regular.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+library.add([faEnvelope]);
+
 import Modal from '../components/Modal-comp.vue';
 import Loading from '../components/Loading-comp.vue';
 
@@ -46,7 +49,7 @@ export default {
             loading: null
         }
     },
-    components: { email, Modal, Loading },
+    components: { Modal, Loading },
     methods: {
         resetPassword() {
             this.loading = true;

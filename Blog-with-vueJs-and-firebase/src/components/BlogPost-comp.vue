@@ -8,7 +8,7 @@
         <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
         <p v-else class="content-preview" v-html="post.blogHTML"></p>
 
-        <router-link v-if="post.welcomeScreen" class="link link-light" to="#">
+        <router-link v-if="post.welcomeScreen" class="link" :to="{ name: 'Register' }">
           Вход / Регистрация <img class="arrow" src="../assets/right-arrow.png" alt="">
         </router-link>
         <router-link v-else class="link" :to="{ name: 'ViewBlog', params: { blogid: this.post.blogId } }">

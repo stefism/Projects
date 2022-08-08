@@ -9,11 +9,11 @@
         <div class="inputs">
             <div class="input">
                 <input type="text" placeholder="Email" v-model="email">
-                <email class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-envelope" />
             </div>
             <div class="input">
                 <input type="password" placeholder="Password" v-model="password">
-                <password class="icon" />
+                <font-awesome-icon class="icon" icon="fa-solid fa-key" />
             </div>
             <div v-show="error" class="error">{{ errorMsg }}</div>
         </div>
@@ -29,15 +29,15 @@
 </template>
 
 <script>
-import email from '../assets/Icons/envelope-regular.svg';
-import password from '../assets/Icons/lock-alt-solid.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
+library.add([faEnvelope, faKey]);
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 export default {
     name: 'Login',
-    components: { email, password },
     data() {
         return {
             email: null,

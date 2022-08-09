@@ -30,7 +30,6 @@
                 :editorOptions="editorSettings" 
                 v-model="blogHTML" 
                 useCustomImageHandler
-                @change="imageHandler"
             />
         </div>
         <div class="blog-actions">
@@ -70,7 +69,8 @@ export default {
             currentBlog: null,
             editorSettings: {
                 modules: {
-                    imageResize: {}
+                    imageResize: {},
+                    toolbar: [["bold","italic","underline","strike"],["blockquote","code-block"],[{"header":1},{"header":2}],[{"list":"ordered"},{"list":"bullet"}],[{"script":"sub"},{"script":"super"}],[{"indent":"-1"},{"indent":"+1"}],[{"direction":"rtl"}],[{"size":["small",false,"large","huge"]}],[{"header":[1,2,3,4,5,6,false]}],[{"color":[]},{"background":[]}],[{"font":[]}],[{"align":[]}],["clean"],["link","image","video"]]
                 }
             }
         }
@@ -88,11 +88,6 @@ export default {
         },
         openPreview(){
             this.$store.commit('openPhotoPreview');
-        },
-        // eslint-disable-next-line no-unused-vars
-        imageHandler({ quill, html, text }) {
-        //    console.log('editor change!', quill, html, text);
-        //    console.log('blogHTML', this.blogHTML);
         },
         async updateBlog() {
             const dataBase = await db.collection('blogPosts').doc(this.routeId);
@@ -146,22 +141,6 @@ export default {
                     this.error = false;
                 }, stayInterval);
         }
-        // imageHandler(file, Editor, cursorLocation, resetUploader) {
-        //     const storageRef = firebase.storage().ref();
-        //     const docRef = storageRef.child(`documents/blogPostPhotos/${file.name}`);
-        //     docRef.put(file).on('state_changed', 
-        //     (snapshot) => {
-        //         console.log(snapshot);
-        //     }, 
-        //     (err) => {
-        //         console.log(err);
-        //     }, 
-        //     async () => {
-        //         const downloadURL = await docRef.getDownloadURL();
-        //         Editor.insertEmbed(cursorLocation, 'image', downloadURL);
-        //         resetUploader();
-        //     });
-        // }
     },
     computed: {
         profileId() {
